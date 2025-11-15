@@ -6,12 +6,16 @@
 <title>RaeRoutes Holiday Travel Gift</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: #faf9f7;
-        color: #333;
-    }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f8f7fc; /* main site background */
+    color: #333;
+}
+p {
+    color: #555; /* matches your website text color */
+    line-height: 1.6;
+}
 
     /* Header */
     header {
@@ -23,9 +27,20 @@
         max-width: 150px;
         margin-bottom: 20px;
     }
-    header h1 {
-        font-size: 2.4rem;
-        letter-spacing: .5px;
+ header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #4b3fa6; /* website heading color */
+    letter-spacing: 0.5px;
+}
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #4b3fa6; /* matches website section headings */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
     }
     header p {
         max-width: 600px;
@@ -41,10 +56,6 @@
         margin: auto;
     }
 
-    h2 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
 
     p {
         line-height: 1.6;
@@ -67,14 +78,19 @@
         justify-content: center;
         margin-top: 30px;
     }
-    .collection-card {
-        background: white;
-        border-radius: 12px;
-        padding: 20px;
-        width: 280px;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-    }
+   .card, .collection-card {
+    background: #f4f2fa; /* light purple background from website */
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.collection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
     .collection-card img {
         max-width: 100%;
         border-radius: 10px;
@@ -99,8 +115,21 @@
         font-size: 1.1rem;
         margin-top: 20px;
     }
-    .btn:hover {
-        background: #c3b091;
+   .btn {
+    display: inline-block;
+    padding: 14px 22px;
+    background: #5a4baa; /* website purple */
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+.btn:hover {
+    background: #7b66d2; /* lighter hover color */
+}
+
     }
 
     /* Contact Section */
