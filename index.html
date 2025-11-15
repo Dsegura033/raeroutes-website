@@ -178,22 +178,18 @@ nav a:hover {
     gap: 25px;
 }
 
-.collection-card {
-    background: #f4f2fa;
-    padding: 30px 20px;
-    border-radius: 16px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 18px;
+.collection-card a {
+    text-decoration: none;
     color: #4b3fa6;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    display: block;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.collection-card:hover {
+.collection-card a:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
+
     .collection-card img {
     width: 100%;
     max-width: 200px;
@@ -471,51 +467,44 @@ nav a:hover {
 
 <!-- COLLECTIONS -->
 
-<section class="collections-preview">
-  <div class="container">
-    <h2>Explore Our Collections</h2>
-    <div class="collections-grid">
-      <div class="collection-card">
-        <a href="#city-collection">
-          <img src="citycollection.png" alt="City Collection" style="width:30%; border-radius:12px; margin-bottom:10px;">
-          City Collection
-        </a>
-      </div>
-      <div class="collection-card">
-        <a href="#coastal-collection">
-          <img src="Thecoastalcollection.png" alt="Coastal Collection" style="width:30%; border-radius:12px; margin-bottom:10px;">
-          Coastal Collection
-        </a>
-      </div>
-      <div class="collection-card">
-        <a href="#romantic-collection">
-          <img src="romanticescapescollection.png" alt="Romantic Collection" style="width:30%; border-radius:12px; margin-bottom:10px;">
-          Romantic Collection
-        </a>
-      </div>
-      <div class="collection-card">
-        <a href="#family-collection">
-          <img src="familyfuncollection.png" alt="Family Fun Collection" style="width:30%; border-radius:12px; margin-bottom:10px;">
-          Family Fun Collection
-        </a>
-      </div>
-      <div class="collection-card">
-        <a href="#winter-collection">
-          <img src="winterwonderland.png" alt="Winter Wonderland Collection" style="width:30%; border-radius:12px; margin-bottom:10px;">
-          Winter Wonderland Collection
-        </a>
-      </div>
-      <div class="collection-card">
-        <a href="#adventure-collection">
-          <img src="adventurecollection.png" alt="Adventure Collection" style="width:30%; border-radius:12px; margin-bottom:10px;">
-          Adventure Collection
-        </a>
-      </div>
-    </div>
+<div class="collections-grid">
+  <div class="collection-card">
+    <a href="citycollection.png" target="_blank">
+      <img src="citycollection.png" alt="City Collection">
+      <span>City Collection</span>
+    </a>
   </div>
-</section>
-
-
+  <div class="collection-card">
+    <a href="Thecoastalcollection.png" target="_blank">
+      <img src="Thecoastalcollection.png" alt="Coastal Collection">
+      <span>Coastal Collection</span>
+    </a>
+  </div>
+  <div class="collection-card">
+    <a href="romanticescapescollection.png" target="_blank">
+      <img src="romanticescapescollection.png" alt="Romantic Collection">
+      <span>Romantic Collection</span>
+    </a>
+  </div>
+  <div class="collection-card">
+    <a href="familyfuncollection.png" target="_blank">
+      <img src="familyfuncollection.png" alt="Family Fun Collection">
+      <span>Family Fun Collection</span>
+    </a>
+  </div>
+  <div class="collection-card">
+    <a href="winterwonderland.png" target="_blank">
+      <img src="winterwonderland.png" alt="Winter Wonderland Collection">
+      <span>Winter Wonderland Collection</span>
+    </a>
+  </div>
+  <div class="collection-card">
+    <a href="adventurecollection.png" target="_blank">
+      <img src="adventurecollection.png" alt="Adventure Collection">
+      <span>Adventure Collection</span>
+    </a>
+  </div>
+</div>
 
 <!-- TRIP PLANNER SECTION -->
 <section class="trip-process" id="planner">
