@@ -183,12 +183,14 @@ h2 {
     color: #555;
 }
 
-.contact-cta .qr-code {
+.qr-code {
+    display: flex;
+    justify-content: center;
     margin: 20px 0;
 }
 
-.contact-cta .qr-code img {
-    max-width: 150px;
+.contact-qr {
+    width: 50px; /* adjust size as needed */
     height: auto;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -305,19 +307,23 @@ h2 {
   
 <!-- CONTACT -->
 <section id="contact">
-  <h2>Contact RaeRoutes</h2>
-  <p>Have a trip idea in mind or gifting questions? I’d love to help you create the perfect Travel Gift surprise.</p>
+    <h2>Contact RaeRoutes</h2>
+    <p style="max-width: 500px; margin: 0 auto 30px;">
+        Have a trip idea in mind or gifting questions?  
+        I’d love to help you create the perfect Travel Gift surprise.
+    </p>
+    
+    <div class="qr-code">
+      <img src="qr-code.png" alt="Scan to contact RaeRoutes" class="contact-qr">
+    </div>
 
-  <div class="contact-cta qr-code">
-    <img src="qr-code.png" alt="Scan to contact RaeRoutes">
-  </div>
-
-  <p>
-    Or, if you prefer: <br>
-    <a href="mailto:raeroutes13@gmail.com">Email me directly</a> <br>
-    <a href="https://m.me/741937115671455" target="_blank" rel="noopener noreferrer">Send me a Messenger message</a>
-  </p>
+    <p>
+      Or, if you prefer: <br>
+      <a href="mailto:raeroutes13@gmail.com">Email me directly</a> <br>
+      <a href="https://m.me/741937115671455" target="_blank" rel="noopener noreferrer">Send me a Messenger message</a>
+    </p>
 </section>
+
 
 <!-- FOOTER -->
 <footer>
