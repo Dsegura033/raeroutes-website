@@ -88,51 +88,63 @@ nav a:hover {
     color: #7b66d2;
 }
 
-/* HERO (clean + fixed) */
+/* === FULLSCREEN HERO WITH VIDEO BACKGROUND === */
+
 .hero {
-    padding: 120px 40px 60px;
-    text-align: center;
-    background: linear-gradient(135deg, #e9e4ff, #faf7ff);
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
 }
 
-/* text */
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    color: #4b3fa6;
-    margin-bottom: 20px;
-    transition: text-shadow 0.3s ease;
-}
-
-.hero h1:hover {
-    text-shadow: 0 0 12px rgba(123, 102, 210, 0.8);
-}
-
-.hero p {
-    font-size: 20px;
-    color: #5a4baa;
-}
-
-/* centered small video */
+/* Background video */
 .hero-video {
-    width: 70%;
-    max-width: 550px;
-    border-radius: 20px;
-    margin: 30px auto 0;
-    display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.9; /* soften behind text */
 }
 
-/* responsive tweaks */
+/* Text on top */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 20px;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.75);
+}
+
+/* Hero title */
+.hero-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+/* Hero subtitle */
+.hero-text p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+}
+
+/* MOBILE FIXES */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 32px;
-    }
-    .hero p {
-        font-size: 18px;
-    }
-    .hero video {
-        width: 90%;
-    }
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+  }
 }
 
 /* INTRO */
@@ -453,20 +465,13 @@ nav a:hover {
 
 <!-- HERO SECTION -->
 <section class="hero">
-  <h1>Designed for Every Journey Big or Small</h1>
-  <p>Your next adventure starts with RaeRoutes.</p>
+  <video class="hero-video" src="video.mp4" autoplay muted loop playsinline></video>
 
-  <video 
-      src="websitevid.mp4" 
-      autoplay 
-      muted 
-      loop 
-      playsinline
-      class="hero-video">
-  </video>
+  <div class="hero-text">
+    <h1>Designed for Every Journey Big or Small</h1>
+    <p>Your next adventure starts with RaeRoutes.</p>
+  </div>
 </section>
-
-
 
 <!-- INTRO SECTION -->
 <section class="intro">
