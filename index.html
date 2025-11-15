@@ -166,6 +166,13 @@ nav a:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
+    .collection-card img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
 
 /* TRIP */ 
 
@@ -370,9 +377,13 @@ nav a:hover {
 
 <!-- HEADER -->
 <header>
-    <div class="logo"><a href="#home">RaeRoutes</a> 
-<img src="IMG_7560.jpg" alt="RaeRoutes Logo" style="height:50px;"> </a>
-    </div>
+    <div class="logo">
+  <a href="#home">
+    <img src="IMG_7560.jpg" alt="RaeRoutes Logo" style="height:50px; vertical-align: middle;">
+    RaeRoutes
+  </a>
+</div>
+
     <nav>
         <a href="#home">Home</a>
         <a href="#collections">Collections</a>
@@ -531,13 +542,14 @@ nav a:hover {
     <p>Scan the QR code below to start your journey or contact me instantly.</p>
     
     <div class="qr-code">
-      <img src="qr-code.png" alt="Scan to contact RaeRoutes" />
+     <img src="qr-code.png" alt="Scan to contact RaeRoutes" title="Scan to contact RaeRoutes">
+
     </div>
 
     <p>
       Or, if you prefer: 
       <a href="mailto:raeroutes13@gmail.com">email me directly</a> 
-      or <a href="https://m.me/741937115671455" target="_blank">send me a Messenger message</a>.
+      or <a href="https://m.me/741937115671455" target="_blank" rel="noopener noreferrer">send me a Messenger message</a>
     </p>
   </div>
 </section>
