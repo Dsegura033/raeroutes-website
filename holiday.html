@@ -71,13 +71,22 @@ h2 {
     }
 
     /* Collections */
+  /* COLLECTIONS */
+.collections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Responsive: one per row on small screens */
+@media (max-width: 600px) {
     .collections {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 30px;
+        grid-template-columns: 1fr;
     }
+}
+
    .card, .collection-card {
     background: #f4f2fa; /* light purple background from website */
     border-radius: 12px;
@@ -278,23 +287,18 @@ h2 {
 
 <!-- CONTACT -->
 <section id="contact">
-    <h2>Contact RaeRoutes</h2>
-    <p style="max-width: 500px; margin: 0 auto 30px;">
-        Have a trip idea in mind or gifting questions?  
-        I’d love to help you create the perfect Travel Gift surprise.
-    </p>
-    
-    <div class="qr-code">
-      <img src="qr-code.png" alt="Scan to contact RaeRoutes" style="width:150px; height:auto;">
-    </div>
+  <h2>Contact RaeRoutes</h2>
+  <p>Have a trip idea in mind or gifting questions? I’d love to help you create the perfect Travel Gift surprise.</p>
 
-    <p>
-      Or, if you prefer: <br>
-      <a href="mailto:raeroutes13@gmail.com">Email me directly</a> <br>
-      <a href="https://m.me/741937115671455" target="_blank" rel="noopener noreferrer">Send me a Messenger message</a>
-    </p>
+  <div class="contact-cta qr-code">
+    <img src="qr-code.png" alt="Scan to contact RaeRoutes">
   </div>
-</section>
+
+  <p>
+    Or, if you prefer: <br>
+    <a href="mailto:raeroutes13@gmail.com">Email me directly</a> <br>
+    <a href="https://m.me/741937115671455" target="_blank" rel="noopener noreferrer">Send me a Messenger message</a>
+  </p>
 </section>
 
 <!-- FOOTER -->
