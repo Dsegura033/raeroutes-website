@@ -146,8 +146,22 @@ h2 {
 }
 
     }
+  .trip-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+}
 
-    /* Contact Section */
+.trip-image {
+    max-width: 100%;
+    width: 280px; /* adjust size as needed */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    object-fit: cover;
+}
+
   /* CONTACT SECTION */
 #contact {
     background: #f8f8f6;
@@ -274,7 +288,11 @@ h2 {
     <h2>Trip Reveal Sample</h2>
     <div class="card">
         <p>This is where the final trip reveal would go once your receiver’s trip is booked.  
-           You can upload your own images here (destination photos, hotel, etc.)</p>
+           You can upload your own images here (destination photos, hotel, etc.).</p>
+        
+        <div class="trip-images">
+            <img src="newtripreveal.png" alt="Reveal Image" class="trip-image">
+        </div>
         <p><i>Example placeholders:</i></p>
         <ul>
             <li>Destination image</li>
@@ -284,7 +302,7 @@ h2 {
         </ul>
     </div>
 </section>
-
+  
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact RaeRoutes</h2>
