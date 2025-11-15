@@ -91,9 +91,15 @@ h2 {
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-    .collection-card img {
-        max-width: 100%;
-        border-radius: 10px;
+   .collection-card img {
+    width: 100%;       /* fits the card width */
+    max-width: 200px;  /* limits size */
+    height: auto;      /* keeps aspect ratio */
+    border-radius: 12px;
+    margin: 0 auto 10px auto;  /* centers the image and adds spacing below */
+    display: block;
+}
+
     }
     .collection-card h3 {
         margin-top: 12px;
@@ -133,18 +139,37 @@ h2 {
     }
 
     /* Contact Section */
-    #contact {
-        background: #f8f8f6;
-        text-align: center;
-        padding: 60px 20px;
-    }
-    .contact-cta .qr-code img {
-    max-width: 150px; /* change this to desired size */
+  /* CONTACT SECTION */
+#contact {
+    background: #f8f8f6;
+    text-align: center;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#contact h2 {
+    margin-bottom: 20px;
+}
+
+#contact p {
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+    color: #555;
+}
+
+.contact-cta .qr-code {
+    margin: 20px 0;
+}
+
+.contact-cta .qr-code img {
+    max-width: 150px;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
 
     /* Footer */
     footer {
