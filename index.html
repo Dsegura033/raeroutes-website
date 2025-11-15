@@ -9,7 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Styles Placeholder -->
-<style>
+<style> 
+html {
+  scroll-behavior: smooth;
+}
+
      /* BASE*/
         body {
     font-family: 'Inter', sans-serif;
@@ -173,7 +177,6 @@ nav a:hover {
     margin-bottom: 10px;
 }
 
-
 /* TRIP */ 
 
 .trip-process h2 {
@@ -272,6 +275,10 @@ nav a:hover {
 .service-card p {
     color: #555;
 }
+    .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
 
 /* TESTIMONIALS */
 
@@ -369,6 +376,10 @@ nav a:hover {
     h2 { font-size: 24px; }
     p { font-size: 14px; }
 }
+    @media screen and (max-width: 480px) {
+    .hero { padding: 60px 15px; }
+}
+
 
  </style>
 </head>
@@ -377,10 +388,11 @@ nav a:hover {
 
 <!-- HEADER -->
 <header>
+    <meta name="description" content="RaeRoutes curates personalized, stress-free travel experiences for every type of traveler. Explore our collections and start your journey today.">
+
     <div class="logo">
   <a href="#home">
-    <img src="IMG_7560.jpg" alt="RaeRoutes Logo" style="height:50px; vertical-align: middle;">
-    RaeRoutes
+   <img src="IMG_7560.jpg" alt="RaeRoutes Logo" style="height:50px; vertical-align: middle; margin-right:8px;">
   </a>
 </div>
 
