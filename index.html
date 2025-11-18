@@ -97,6 +97,43 @@ nav a:hover {
     background-color: #e0d4ff; /* light hover background */
     color: #4b3c9f; /* darker text on hover */
 }
+/* ===== NAV LINK BUTTON STYLE ===== */
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 10px 20px;       /* adds button-like spacing */
+    border-radius: 8px;       /* rounded corners */
+    background-color: #f4f0ff; /* subtle button background */
+    transition: all 0.3s ease; /* smooth hover transition */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* subtle depth */
+}
+
+nav a:hover {
+    background-color: #d8cfff; /* darker shade on hover */
+    color: #4b3c9f;             /* change text color */
+    transform: translateY(-2px); /* tiny lift effect */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* stronger shadow on hover */
+}
+
+/* MOBILE NAV LINKS */
+.mobile-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 12px 25px;       /* bigger touch area */
+    border-radius: 8px;
+    background-color: #f4f0ff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.mobile-nav a:hover {
+    background-color: #d8cfff;
+    color: #4b3c9f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
 
 /* ===== HAMBURGER MENU ===== */
 .hamburger {
