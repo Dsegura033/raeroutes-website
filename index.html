@@ -381,16 +381,16 @@ nav a:hover {
 
 .intro h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8rem; /* slightly bigger for impact */
+    font-size: 2.8rem;
     font-weight: 700;
-    color: #4b3c9f;
+    color: #4b3c9f;               /* solid purple */
+    -webkit-text-stroke: 0.8px #fff; /* thin white outline */
+    text-stroke: 0.8px #fff;      /* fallback for some browsers */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4); /* soft glow */
     margin-bottom: 25px;
     line-height: 1.2;
-    text-shadow: 
-        0 0 2px #fff,   /* soft white glow */
-        1px 1px 0 #4b3c9f, /* subtle purple shadow for depth */
-        -1px -1px 0 #4b3c9f;
 }
+
 
 .intro p {
     font-family: 'Playfair Display', serif;
