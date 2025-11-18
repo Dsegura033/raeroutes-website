@@ -198,41 +198,68 @@ nav a:hover {
     color: #555;
 }
 
-/* COLLECTIONS */
-
-.collections-preview h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #4b3fa6;
-    margin-bottom: 40px;
+/* ===== COLLECTIONS SECTION (Holiday Style Matching) ===== */
+.collections-section {
+    padding: 60px 20px;
+    background: linear-gradient(to bottom right, #f5f1ff, #eef7ff);
+    border-radius: 20px;
+    margin: 60px auto;
+    max-width: 1200px;
 }
 
-.collections-grid {
+.collections-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #4b3e7a;
+}
+
+/* Grid Layout */
+.collections {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 25px;
 }
 
-.collection-card a {
-    text-decoration: none;
-    color: #4b3fa6;
-    display: block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Cards */
+.collection-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .collection-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 20px 4px rgba(123, 102, 210, 0.6); /* glowy purple */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 
-    .collection-card img {
+/* Images */
+.collection-card img {
     width: 100%;
-    max-width: 200px;
-    border-radius: 12px;
-    margin-bottom: 10px;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    transition: transform 0.25s ease;
 }
+
+.collection-card:hover img {
+    transform: scale(1.03);
+}
+
+/* Text */
+.collection-card h3 {
+    font-size: 20px;
+    color: #3a2d66;
+    margin-bottom: 8px;
+}
+
+.collection-card p {
+    color: #5b5b5b;
+    font-size: 15px;
+}
+
 
 /* TRIP */ 
 
@@ -506,45 +533,48 @@ nav a:hover {
 </section>
 
 <!-- COLLECTIONS -->
+<section class="collections-section" id="collections">
+    <h2 class="collections-title">RaeRoutes Travel Collections</h2>
 
-<div class="collections-grid">
-  <div class="collection-card">
-    <a href="citycollection.png" target="_blank">
-      <img src="citycollection.png" alt="City Collection">
-      <span>City Collection</span>
-    </a>
-  </div>
-  <div class="collection-card">
-    <a href="Thecoastalcollection.png" target="_blank">
-      <img src="Thecoastalcollection.png" alt="Coastal Collection">
-      <span>Coastal Collection</span>
-    </a>
-  </div>
-  <div class="collection-card">
-    <a href="romanticescapescollection.png" target="_blank">
-      <img src="romanticescapescollection.png" alt="Romantic Collection">
-      <span>Romantic Collection</span>
-    </a>
-  </div>
-  <div class="collection-card">
-    <a href="familyfuncollection.png" target="_blank">
-      <img src="familyfuncollection.png" alt="Family Fun Collection">
-      <span>Family Fun Collection</span>
-    </a>
-  </div>
-  <div class="collection-card">
-    <a href="winterwonderland.png" target="_blank">
-      <img src="winterwonderland.png" alt="Winter Wonderland Collection">
-      <span>Winter Wonderland Collection</span>
-    </a>
-  </div>
-  <div class="collection-card">
-    <a href="adventurecollection.png" target="_blank">
-      <img src="adventurecollection.png" alt="Adventure Collection">
-      <span>Adventure Collection</span>
-    </a>
-  </div>
-</div>
+    <div class="collections">
+        <div class="collection-card">
+            <img src="citycollection.png" alt="City Collection">
+            <h3>City Collection</h3>
+            <p>Discover the best city getaways in the U.S.</p>
+        </div>
+
+        <div class="collection-card">
+            <img src="Thecoastalcollection.png" alt="Coastal Collection">
+            <h3>Coastal Collection</h3>
+            <p>Relax by the ocean and enjoy coastal vibes.</p>
+        </div>
+
+        <div class="collection-card">
+            <img src="romanticescapescollection.png" alt="Romantic Collection">
+            <h3>Romantic Collection</h3>
+            <p>Perfect escapes for couples and romantic adventures.</p>
+        </div>
+
+        <div class="collection-card">
+            <img src="familyfuncollection.png" alt="Family Fun Collection">
+            <h3>Family Fun Collection</h3>
+            <p>Memorable trips for the whole family.</p>
+        </div>
+
+        <div class="collection-card">
+            <img src="adventurecollection.png" alt="Adventure Collection">
+            <h3>Adventure Collection</h3>
+            <p>Made for the ones who chase fresh air, big views, and a little adrenaline.</p>
+        </div>
+
+        <div class="collection-card">
+            <img src="winterwonderland.png" alt="Winter Wonderland Collection">
+            <h3>Winter Wonderland Collection</h3>
+            <p>Perfect winter holiday destinations.</p>
+        </div>
+    </div>
+</section>
+
 
 <!-- TRIP PLANNER SECTION -->
 <section class="trip-process" id="planner">
