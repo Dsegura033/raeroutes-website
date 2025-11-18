@@ -24,6 +24,7 @@ body {
   color: #333;
   line-height: 1.6;
   text-align: center;
+  overflow-x: hidden; /* blocks sideways scroll everywhere */
 }
 
 a {
@@ -198,6 +199,20 @@ nav a:hover {
   overflow: hidden;
 }
 
+/* Make sure hero header, video, and mobile nav don’t overflow */
+.hero-header,
+.hero-video,
+.mobile-nav {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.hero-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .hero-video {
   position: absolute;
   top: 0;
@@ -241,6 +256,25 @@ nav a:hover {
      1px  1px 0 #fff;
   margin: 0;
 }
+
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 768px) {
+  .hero,
+  .hero-header,
+  .mobile-nav {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ===== SITE-WIDE HORIZONTAL SCROLL FIX ===== */
+body {
+  overflow-x: hidden; /* prevents any sideways scrolling */
+}
+
+
 
 /* ===== COLLECTIONS ===== */
 .collections {
