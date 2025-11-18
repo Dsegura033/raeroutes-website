@@ -146,12 +146,19 @@ nav a:hover {
     z-index: 1000;
 }
 
+/* Updated hamburger lines with dreamy pastel gradient and hover */
 .hamburger div {
     width: 28px;
     height: 3px;
-    background-color: #333;
+    background: linear-gradient(90deg, #cdb4ff, #b5e3ff); /* pastel purple to blue */
     margin: 5px 0;
     border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover div {
+    transform: scaleX(1.2);
+    background: linear-gradient(90deg, #b5e3ff, #cdb4ff); /* subtle gradient shift */
 }
 
 /* ===== MOBILE NAV ===== */
@@ -171,10 +178,25 @@ nav a:hover {
 
 .mobile-nav a {
     display: block;
-    padding: 15px 0;
+    padding: 12px 25px;
     font-size: 18px;
-    color: #444;
+    font-weight: 500;
+    color: #4b3c9f; /* dark purple text for contrast */
+    background: rgba(205, 180, 255, 0.1); /* light pastel purple overlay */
+    border-radius: 10px;
+    margin: 5px 0;
     text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* subtle depth */
+}
+
+.mobile-nav a:hover {
+    background: rgba(181, 227, 255, 0.2); /* dreamy pastel blue hover */
+    color: #fff; /* optional: invert text */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-decoration: underline 2px #b5e3ff; /* subtle underline */
 }
 
 /* ===== MEDIA QUERY FOR MOBILE ===== */
@@ -187,6 +209,7 @@ nav a:hover {
         display: none; /* hide desktop nav on mobile */
     }
 }
+
 
 
 /* ===== HERO ===== */
