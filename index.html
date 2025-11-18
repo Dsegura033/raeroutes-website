@@ -83,12 +83,12 @@ nav a:hover {
   width: 100%;
   overflow: hidden;
   display: flex;
-  justify-content: center; /* horizontal centering */
-  align-items: center; /* vertical centering */
+  justify-content: center; /* horizontal center */
+  align-items: center; /* vertical center */
   text-align: center;
-  margin: 0; /* remove any funky extra spacing */
+  margin: 0;
   padding: 0;
-  background: #000; /* fallback in case video doesn't load */
+  background: #000; /* fallback color if video fails */
 }
 
 .hero-video {
@@ -102,24 +102,31 @@ nav a:hover {
   opacity: 0.9;
 }
 
+/* HERO TEXT */
 .hero-text {
   position: relative;
   z-index: 2;
-  color: #2a1f5c; /* dark, bold text */
-  font-weight: 800;
+  color: #2a1f5c; /* dark purple */
+  font-weight: 900;
   text-align: center;
-  text-shadow: 0 4px 18px rgba(0,0,0,0.6);
-  max-width: 90%; /* prevent overflow on small screens */
-  margin: 0 auto; /* horizontal centering */
+  text-shadow: 2px 2px 0 #fff, -2px 2px 0 #fff, 2px -2px 0 #fff, -2px -2px 0 #fff; /* white outline */
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Title */
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
-  font-weight: 900;
   margin-bottom: 15px;
+  line-height: 1.1;
 }
 
+/* Subtitle */
 .hero-text p {
   font-family: 'Inter', sans-serif;
   font-size: 1.4rem;
