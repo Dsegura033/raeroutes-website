@@ -175,27 +175,46 @@ nav a:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* Desktop nav links */
+nav a {
+    text-decoration: none;
+    color: #b5a0ff; /* soft pastel purple text */
+    font-weight: 500;
+    padding: 10px 20px; /* optional button-like spacing */
+    border-radius: 8px;
+    background: transparent; /* remove solid background */
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for desktop nav */
+nav a:hover {
+    background: linear-gradient(135deg, #cdb4ff, #b5e3ff); /* dreamy pastel gradient */
+    color: #fff; /* text changes to white on hover */
+    transform: translateY(-2px); /* subtle lift effect */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
 .mobile-nav a {
     display: block;
     padding: 12px 25px;
     font-size: 18px;
     font-weight: 500;
-    color: #4b3c9f; /* dark purple text for contrast */
-    background: rgba(205, 180, 255, 0.1); /* light pastel purple overlay */
+    color: #b5a0ff; /* pastel purple text */
+    background: transparent; /* clean, no solid background */
     border-radius: 10px;
     margin: 5px 0;
     text-decoration: none;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* subtle depth */
+    box-shadow: none;
 }
 
 .mobile-nav a:hover {
-    background: rgba(181, 227, 255, 0.2); /* dreamy pastel blue hover */
-    color: #fff; /* optional: invert text */
+    background: linear-gradient(135deg, #cdb4ff, #b5e3ff); /* dreamy gradient */
+    color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-decoration: underline 2px #b5e3ff; /* subtle underline */
+    text-decoration: underline 2px #b5e3ff;
 }
 
 /* ===== MEDIA QUERY FOR MOBILE ===== */
