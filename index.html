@@ -89,34 +89,46 @@ nav a:hover {
 }
 
 /* ===== MOBILE NAV ===== */
+/* HAMBURGER */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-    margin-left: 15px;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  z-index: 9999;
 }
 
 .hamburger div {
-    width: 28px;
-    height: 3px;
-    background: #4b3c72;
-    transition: 0.3s ease;
+  width: 28px;
+  height: 3px;
+  background: #5a4baa;
+  border-radius: 3px;
 }
 
 .mobile-nav {
-    display: none;
-    flex-direction: column;
-    background: #faf7ff;
-    padding: 15px;
-    border-radius: 12px;
-    margin-top: 10px;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background: #ffffff;
+  width: 60%;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 9999;
 }
 
 .mobile-nav a {
-    padding: 12px 0;
-    text-align: center;
+  padding: 12px 0;
+  display: block;
+  font-weight: 600;
+  color: #5a4baa;
 }
+
 
 /* show mobile menu when active */
 .mobile-nav.show {
@@ -125,12 +137,13 @@ nav a:hover {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    nav {
-        display: none;
-    }
-    .hamburger {
-        display: flex;
-    }
+  nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }
 
 /* ===== HERO ===== */
@@ -607,9 +620,11 @@ footer {
 </script>
 <script>
 function toggleMenu() {
-    document.getElementById("mobileNav").classList.toggle("show");
+    const menu = document.getElementById("mobileNav");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
 </script>
+
 
 </body>
 </html>
