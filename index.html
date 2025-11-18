@@ -434,13 +434,13 @@ nav a:hover {
 }
 
 .why-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(205,180,255,0.25)); /* same soft pastel purple gradient */
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(205,180,255,0.25)); /* soft pastel purple gradient */
     padding: 30px 20px;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.06); /* floating effect */
     transition: all 0.3s ease;
+    border: 1px solid rgba(205,180,255,0.5); /* soft pastel purple border */
 }
-
 
 .why-card h3 {
     font-family: 'Playfair Display', serif;
@@ -459,10 +459,11 @@ nav a:hover {
 
 
 .why-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.1); /* subtle hover lift */
+    transform: translateY(-5px); /* subtle lift */
+    box-shadow: 0 12px 25px rgba(108,83,177,0.25); /* stronger shadow on hover */
+    border: 1px solid rgba(205,180,255,0.8); /* brighter border on hover */
 }
-
+  
 /* Section Divider */
 .why-raeroutes + .section-divider {
     height: 3px;
