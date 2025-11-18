@@ -386,7 +386,10 @@ nav a:hover {
     color: #4b3c9f;
     margin-bottom: 25px;
     line-height: 1.2;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.5); /* soft glow effect */
+    text-shadow: 
+        0 0 2px #fff,   /* soft white glow */
+        1px 1px 0 #4b3c9f, /* subtle purple shadow for depth */
+        -1px -1px 0 #4b3c9f;
 }
 
 .intro p {
