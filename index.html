@@ -193,6 +193,12 @@ body {
 }
 
 /* ===== HERO ===== */
+html, body {
+  overflow-x: hidden;   /* stop horizontal scroll globally */
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .hero {
   position: relative;
   height: 100vh;
@@ -234,7 +240,9 @@ body {
   color: #1a1a1a;
   font-family: 'Playfair Display', serif;
   line-height: 1.2;
-  padding: 0 20px;
+  padding: 0 10px; /* slightly smaller to prevent overflow on small screens */
+  max-width: 100%;  /* ensure text container doesn’t exceed viewport */
+  box-sizing: border-box;
 }
 
 .hero-text h1 {
@@ -256,6 +264,13 @@ body {
     -1px  1px 0 #fff,
      1px  1px 0 #fff;
   margin: 0;
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+  .hero-text {
+    padding: 0 10px; /* ensure no overflow on very small screens */
+  }
 }
 
 /* ===== NAVIGATION ===== */
