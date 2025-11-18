@@ -242,20 +242,16 @@ nav a:hover {
   overflow: hidden;
 }
 
-/* ===== HERO VIDEO MOBILE FIX ===== */
-@media (max-width: 768px) {
-  .hero {
-    height: 70vh;       /* adjust height on mobile */
-    width: 100vw;       /* full viewport width */
-  }
-
-  .hero-video {
-    width: 100vw;       /* fill full width */
-    height: 100%;       /* fill hero container height */
-    object-fit: cover;  /* cover container without distortion */
-  }
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.9;
 }
-
 
 .hero-text {
   position: relative;
