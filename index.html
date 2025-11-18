@@ -526,9 +526,43 @@ nav a:hover {
 }
 
 .collections-section {
-  padding: 60px 20px;
-  margin: 60px auto;
-  text-align: center;
+    padding: 60px 20px;
+    margin: 60px auto;
+    text-align: center;
+    background: linear-gradient(135deg, #f4f0ff, #e7ddff); /* soft pastel gradient */
+    border-radius: 20px;
+    position: relative; /* needed for background animation */
+    overflow: hidden;   /* keeps animation inside container */
+}
+.collections-section::before,
+.collections-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(205, 180, 255, 0.2); /* soft pastel purple circles */
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    z-index: 0; /* behind the content */
+    animation: float 15s ease-in-out infinite alternate;
+}
+
+.collections-section::after {
+    width: 150px;
+    height: 150px;
+    top: auto;
+    bottom: -30px;
+    right: -40px;
+    background: rgba(181, 227, 255, 0.2); /* soft pastel blue circle */
+    animation-duration: 20s;
+}
+
+/* Floating animation */
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, 20px) scale(1.05); }
+    100% { transform: translate(0, 40px) scale(1); }
 }
 
 /* ===== LIGHTBOX ===== */
