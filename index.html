@@ -9,33 +9,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Styles Placeholder -->
-<style> 
+<style>
 html {
   scroll-behavior: smooth;
 }
 
-     /* BASE*/
-        body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f8f7fc;
-    color: #333;
-    line-height: 1.6;
+/* BASE */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f7fc;
+  color: #333;
+  line-height: 1.6;
 }
 
 a {
-    color: #5a4baa;
-    text-decoration: none;
+  color: #5a4baa;
+  text-decoration: none;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
- /*Background & sections */
-    .intro { background: #f9f7ff; }
+
+/* Background & sections */
+.intro { background: #f9f7ff; }
 .why-raeroutes { background: #f4f2fa; }
 .collections-preview { background: #faf7ff; }
 .trip-process { background: #f9f7ff; }
@@ -43,59 +44,63 @@ a {
 .services-gifting { background: #faf7ff; }
 .testimonials { background: #f9f7ff; }
 .contact-cta { background: #f4f2fa; }
-    
-/*Button & Cards*/
-    .button {
-    background: linear-gradient(135deg, #5a4baa, #7b66d2);
-    color: white;
-    padding: 14px 32px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(91,75,170,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+/* BUTTONS */
+.button {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #5a4baa, #7b66d2);
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
 }
 .button:hover {
-    background-color: #7b66d2;
-    box-shadow: 0 0 15px 3px rgba(123, 102, 210, 0.7);
+  background-color: #7b66d2;
+  box-shadow: 0 0 15px 3px rgba(123, 102, 210, 0.7);
 }
 
 /* HEADER */
-   header {
-    padding: 20px 40px;
-    background: linear-gradient(135deg, #f0ebff, #faf7ff);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+header {
+  padding: 20px 40px;
+  background: linear-gradient(135deg, #f0ebff, #faf7ff);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-header .logo a {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 600;
-    color: #4b3fa6;
+header .logo a img {
+  height: 70px; /* medium-large logo */
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex: 1;
 }
 
 nav a {
-    margin: 0 15px;
-    font-weight: 600;
-    transition: color 0.3s ease;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: #7b66d2;
+  color: #7b66d2;
 }
 
-/* === FULLSCREEN HERO WITH VIDEO BACKGROUND === */
-
+/* HERO */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 90vh; /* slightly smaller than full height */
   width: 100%;
-  padding: 0;
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,361 +117,241 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  opacity: 0.9; /* soften behind text */
+  opacity: 0.85;
 }
 
-/* Text on top */
+/* Text overlay (magazine cover style) */
 .hero-text {
   position: relative;
   z-index: 2;
   color: white;
-  padding: 20px;
-  text-shadow: 0 4px 18px rgba(0,0,0,0.75);
+  text-align: center;
+  max-width: 90%;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
-/* Hero title */
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
+  line-height: 1.2;
   margin-bottom: 15px;
 }
 
-/* Hero subtitle */
 .hero-text p {
   font-family: 'Inter', sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
-/* MOBILE FIXES */
-@media (max-width: 768px) {
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-  .hero-text p {
-    font-size: 1.1rem;
-  }
+/* SECTION DIVIDERS */
+section {
+  padding: 60px 20px;
+  position: relative;
 }
 
-/* INTRO */
-
-.intro h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #4b3fa6;
-    margin-bottom: 20px;
-    text-align: center;
+section:not(:last-child)::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 60px;
+  background: #555; /* dark grey */
+  margin: 40px auto 0 auto; /* spaced from section */
+  border-radius: 2px;
 }
 
-.intro p {
-    font-size: 18px;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    color: #555;
-}
-
-/* WHY */
-
-.why-raeroutes h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #4b3fa6;
-    margin-bottom: 40px;
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    text-align: center;
-}
-
-.why-card {
-    background: #f4f2fa;
-    padding: 30px 20px;
-    border-radius: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-}
-
-.why-card h3 {
-    color: #4b3fa6;
-    margin-bottom: 15px;
-}
-
-.why-card p {
-    color: #555;
-}
-
-/* ===== COLLECTIONS SECTION (Holiday Style Matching) ===== */
+/* COLLECTIONS */
 .collections-section {
-    padding: 60px 20px;
-    background: linear-gradient(to bottom right, #f5f1ff, #eef7ff);
-    border-radius: 20px;
-    margin: 60px auto;
-    max-width: 1200px;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom right, #f5f1ff, #eef7ff);
+  border-radius: 20px;
+  margin: 60px auto;
+  max-width: 1200px;
 }
 
 .collections-title {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 40px;
-    color: #4b3e7a;
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #4b3e7a;
 }
 
-/* Grid Layout */
 .collections {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
-/* Cards */
 .collection-card {
-    background: #fff;
-    border-radius: 18px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .collection-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 
-/* Images */
 .collection-card img {
-    width: 100%;
-    border-radius: 14px;
-    margin-bottom: 15px;
-    transition: transform 0.25s ease;
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 15px;
+  transition: transform 0.25s ease;
 }
 
 .collection-card:hover img {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
-/* Text */
 .collection-card h3 {
-    font-size: 20px;
-    color: #3a2d66;
-    margin-bottom: 8px;
+  font-size: 20px;
+  color: #3a2d66;
+  margin-bottom: 8px;
 }
 
 .collection-card p {
-    color: #5b5b5b;
-    font-size: 15px;
+  color: #5b5b5b;
+  font-size: 15px;
 }
 
-
-/* TRIP */ 
-
-.trip-process h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #4b3fa6;
-    margin-bottom: 20px;
+/* TRIP PROCESS */
+.trip-process h2,
+.about-preview h2,
+.services-gifting h2,
+.testimonials h2,
+.contact-cta h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #4b3fa6;
+  margin-bottom: 20px;
 }
 
-.trip-process p {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 30px;
+.trip-process p,
+.about-preview p,
+.services-gifting p,
+.testimonials p,
+.contact-cta p {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
 }
 
 .process-list {
-    list-style: decimal inside;
-    max-width: 600px;
-    margin: 0 auto 30px auto;
-    padding: 0;
-    color: #555;
+  list-style: decimal inside;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  padding: 0;
+  color: #555;
 }
 
 .process-list li {
-    margin-bottom: 15px;
-    font-weight: 500;
+  margin-bottom: 15px;
+  font-weight: 500;
 }
 
-/* Buttons */
-
-.button {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #5a4baa;
-    color: white;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-}
-
-.button:hover {
-    background-color: #7b66d2;
-}
-
-/* ABOUT */
-
-.about-preview h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #4b3fa6;
-    margin-bottom: 20px;
-}
-
-.about-preview p {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
-    max-width: 800px;
-    margin: 0 auto 20px auto;
+/* ABOUT PREVIEW */
+.about-preview .button {
+  display: block;
+  margin: 0 auto;
 }
 
 /* SERVICES */
-
-.services-gifting h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #4b3fa6;
-    margin-bottom: 20px;
-}
-
 .service-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    text-align: center;
-    margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: center;
+  margin-top: 30px;
 }
 
 .service-card {
-    background: #f4f2fa;
-    padding: 25px 20px;
-    border-radius: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  background: #f4f2fa;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 .service-card h3 {
-    color: #4b3fa6;
-    margin-bottom: 15px;
+  color: #4b3fa6;
+  margin-bottom: 15px;
 }
 
 .service-card p {
-    color: #555;
-}
-    .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  color: #555;
 }
 
 /* TESTIMONIALS */
-
-.testimonials h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #4b3fa6;
-    margin-bottom: 40px;
-}
-
 .testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-behavior: smooth;
 }
 
 .testimonial {
-    background: #f4f2fa;
-    padding: 25px 20px;
-    border-radius: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    font-style: italic;
-    color: #555;
-    text-align: center;
+  min-width: 250px;
+  flex: 0 0 auto;
+  background: #f4f2fa;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  font-style: italic;
+  color: #555;
+  text-align: center;
 }
 
 /* CONTACT */
-
-.contact-cta h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #4b3fa6;
-    margin-bottom: 20px;
+.contact-cta .qr-code img {
+  width: 180px; /* medium size */
+  height: auto;
+  margin-bottom: 20px;
 }
 
-.contact-cta p {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 30px;
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.contact-cta .qr-code {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.contact-cta .qr-code img:hover {
-    box-shadow: 0 0 20px 5px rgba(123, 102, 210, 0.7);
-    transform: scale(1.05);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+.contact-buttons a.button {
+  margin: 10px 0;
 }
 
 /* FOOTER */
-
-       footer {
-    padding: 40px;
-    background: #f0eef8;
-    text-align: center;
-    margin-top: 60px;
-    font-size: 14px;
-    color: #555;
+footer {
+  padding: 40px;
+  background: #f0eef8;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 14px;
+  color: #555;
 }
 
-/* RESPONSIVE STYLES */
-
-/* Large tablets / small desktops */
-@media screen and (max-width: 1024px) {
-    header { padding: 20px; }
-    .hero { padding: 100px 20px; }
-    .hero h1 { font-size: 42px; }
-    .hero p { font-size: 18px; }
-    section { padding: 60px 20px; }
-}
-
-/* Tablets */
+/* RESPONSIVE */
 @media screen and (max-width: 768px) {
-    header { flex-direction: column; align-items: flex-start; }
-    nav { margin-top: 10px; }
-    nav a { display: block; margin: 8px 0; }
-    .hero h1 { font-size: 36px; }
-    .hero p { font-size: 16px; }
-    h2 { font-size: 28px; }
-    p { font-size: 16px; }
+  header { flex-direction: column; align-items: center; }
+  nav { margin-top: 10px; }
+  nav a { display: block; margin: 8px 0; }
+  .hero-text h1 { font-size: 2.2rem; }
+  .hero-text p { font-size: 1.2rem; }
+  .testimonial-grid { flex-direction: column; overflow-x: visible; }
 }
 
-/* Phones / small screens */
 @media screen and (max-width: 480px) {
-    .hero h1 { font-size: 28px; }
-    .hero p { font-size: 14px; }
-    section { padding: 40px 15px; }
-    h2 { font-size: 24px; }
-    p { font-size: 14px; }
+  .hero-text h1 { font-size: 1.8rem; }
+  .hero-text p { font-size: 1rem; }
 }
-    @media screen and (max-width: 480px) {
-    .hero { padding: 60px 15px; }
-}
-
-
- </style>
-</head>
+</style>
 
 <body>
 
@@ -474,31 +359,39 @@ nav a:hover {
 <header>
     <meta name="description" content="RaeRoutes curates personalized, stress-free travel experiences for every type of traveler. Explore our collections and start your journey today.">
 
-    <div class="logo">
-  <a href="#home">
-   <img src="IMG_7560.jpg" alt="RaeRoutes Logo" style="height:50px; vertical-align: middle; margin-right:8px;">
-  </a>
-</div>
+    <div class="header-inner">
+        <div class="logo">
+            <a href="#home">
+                <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
+            </a>
+        </div>
 
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#collections">Collections</a>
-        <a href="#planner">Trip Planner</a>
-        <a href="#about">About</a>
-        <a href="#services">Services & Gifting</a>
-        <a href="#contact">Contact</a>
-    </nav>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#collections">Collections</a>
+            <a href="#planner">Trip Planner</a>
+            <a href="#about">About</a>
+            <a href="#services">Services & Gifting</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <video class="hero-video" src="websitevid.mp4" autoplay muted loop playsinline></video>
 
-  <div class="hero-text">
-    <h1>Designed for Every Journey Big or Small</h1>
-    <p>Your next adventure starts with RaeRoutes.</p>
-  </div>
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-video-wrapper">
+        <video class="hero-video" src="websitevid.mp4" autoplay muted loop playsinline></video>
+    </div>
+
+    <div class="hero-text">
+        <h1>Designed for Every Journey Big or Small</h1>
+        <p>Your next adventure starts with RaeRoutes.</p>
+    </div>
 </section>
+
+<div class="section-divider"></div>
+
 
 <!-- INTRO SECTION -->
 <section class="intro">
@@ -511,10 +404,13 @@ nav a:hover {
   </div>
 </section>
 
+<div class="section-divider"></div>
+
+
 <!-- WHY RAEROUTES SECTION -->
 <section class="why-raeroutes">
   <div class="container">
-    <h2>Why Choose RaeRoutes</h2>
+    <h2>Why Choose RaeRoutes?</h2>
     <div class="why-grid">
       <div class="why-card">
         <h3>Personalized Itineraries</h3>
@@ -531,6 +427,9 @@ nav a:hover {
     </div>
   </div>
 </section>
+
+<div class="section-divider"></div>
+
 
 <!-- COLLECTIONS -->
 <section class="collections-section" id="collections">
@@ -575,37 +474,47 @@ nav a:hover {
     </div>
 </section>
 
+<div class="section-divider"></div>
+
 
 <!-- TRIP PLANNER SECTION -->
 <section class="trip-process" id="planner">
   <div class="container">
     <h2>Plan Your Trip</h2>
-    <p>Share your dream trip and I’ll craft the perfect route tailored just for you.</p>
+    <p class="center-text">Share your dream trip and I’ll craft the perfect route tailored just for you.</p>
     <ol class="process-list">
       <li>Tell me your vision</li>
       <li>I research and curate your options</li>
       <li>You review and refine your trip</li>
-      <li>Book & go — stress-free</li>
+      <li>Book & go (stress-free)</li>
     </ol>
-    <a href="https://lnk.bio/RaeRoutes" target="_blank" class="button">Start Planning</a>
+    <div class="button-center">
+        <a href="https://lnk.bio/RaeRoutes" target="_blank" class="button">Start Planning</a>
+    </div>
   </div>
 </section>
-    
+
+<div class="section-divider"></div>
+
+
 <!-- ABOUT SECTION -->
 <section class="about-preview" id="about">
-  <div class="container">
+  <div class="container center-content">
     <h2>About RaeRoutes</h2>
     <a href="about.html" class="button">Read My Story</a>
   </div>
 </section>
 
+<div class="section-divider"></div>
+
+
 <!-- SERVICES & GIFTING SECTION -->
 <section class="services-gifting" id="services">
-  <div class="container">
+  <div class="container center-content">
     <h2>Services & Gifting Options</h2>
-    <p>Perfect for holidays, surprises, or just because — RaeRoutes makes travel thoughtful and stress-free.</p>
-    <div class="service-cards">
+    <p class="center-text">Perfect for holidays, surprises, or just because; RaeRoutes makes travel thoughtful and stress-free.</p>
 
+    <div class="service-cards">
       <div class="service-card">
         <h3>Custom Trip Planning</h3>
         <p>I create personalized itineraries based on your vision and needs.</p>
@@ -614,53 +523,52 @@ nav a:hover {
 
       <div class="service-card">
         <h3>Travel Vouchers</h3>
-        <p>Gift a curated experience — perfect for birthdays, holidays, or special surprises.</p>
+        <p>Gift a curated experience: perfect for birthdays, holidays, or special surprises.</p>
         <a href="holiday.html" class="button">Get a Holiday Voucher</a>
       </div>
 
      <div class="service-card">
-  <h3>Guided Assistance</h3>
-  <p>Support and advice throughout your trip for a seamless experience.</p>
-  <a href="#contact" class="button">Learn More</a>
-</div>
-        
+        <h3>Guided Assistance</h3>
+        <p>Support and advice throughout your trip for a seamless experience.</p>
+        <a href="#contact" class="button">Learn More</a>
+     </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS SECTION -->
+<div class="section-divider"></div>
+
+
+<!-- TESTIMONIALS SECTION - CAROUSEL READY -->
 <section class="testimonials">
   <div class="container">
-    <h2>What People Say</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial">
-        “The trip was planned perfectly. Every detail felt thoughtful and intentional.”
-      </div>
-      <div class="testimonial">
-        “I never knew travel could feel this stress-free. RaeRoutes made it so easy.”
-      </div>
-      <div class="testimonial">
-        “I told her my vision once — she brought it to life exactly as I imagined.”
-      </div>
+    <h2>What People Say about RaeRoutes:</h2>
+
+    <div class="testimonial-carousel">
+      <div class="testimonial">“Thank you so much I feel all boujie haha!”</div>
+      <div class="testimonial">“RaeRoutes has helped me find such good deals and she makes the process so easy & quick!”</div>
+      <div class="testimonial">“I told her my vision and she gave me numeorus options and accomodates all your requests!”</div>
     </div>
   </div>
 </section>
+
+<div class="section-divider"></div>
+
 
 <!-- CONTACT SECTION -->
 <section class="contact-cta" id="contact">
-  <div class="container">
+  <div class="container center-content">
     <h2>Ready to Plan Your Next Trip?</h2>
     <p>Scan the QR code below or use one of the options to start your journey instantly.</p>
     
     <div class="qr-code">
-      <img src="qr-code.png" alt="Scan to contact RaeRoutes" title="Scan to contact RaeRoutes">
+      <img src="qr-code.png" alt="Scan to contact RaeRoutes">
     </div>
 
-    <p>
-      Or, if you prefer: <br>
-      <a href="mailto:raeroutes13@gmail.com">Email me directly</a> <br>
-      <a href="https://m.me/741937115671455" target="_blank" rel="noopener noreferrer">Send me a Messenger message</a>
-    </p>
+    <div class="contact-buttons">
+      <a href="mailto:raeroutes13@gmail.com" class="button">Email Me</a>
+      <a href="https://m.me/741937115671455" target="_blank" class="button">Message Me</a>
+    </div>
   </div>
 </section>
 
@@ -670,4 +578,3 @@ nav a:hover {
 </footer>
 
 </body>
-</html>
