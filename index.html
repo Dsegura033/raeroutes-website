@@ -101,24 +101,27 @@ nav a:hover {
 .hero-text {
   position: relative;
   z-index: 2;
-  color: white;
+  color: #2a1f5c; /* darker, deep purple/navy color */
+  font-weight: 700; /* bold */
   padding: 20px;
-  text-shadow: 0 4px 18px rgba(0,0,0,0.75);
+  text-align: center; /* center the text */
+  text-shadow: 0 4px 18px rgba(0,0,0,0.6); /* subtle shadow for readability */
 }
 
 .hero-text h1 {
-  font-family: 'Playfair Display', serif; /* magazine-style font */
-  font-weight: 700; /* bold */
+  font-family: 'Playfair Display', serif;
+  font-weight: 800; /* extra bold */
   font-size: 3rem;
   margin-bottom: 15px;
 }
 
 .hero-text p {
   font-family: 'Inter', sans-serif;
+  font-weight: 600;
   font-size: 1.4rem;
 }
 
-/* Responsive tweaks */
+/* MOBILE FIXES */
 @media (max-width: 768px) {
   .hero-text h1 {
     font-size: 2.2rem;
@@ -127,6 +130,7 @@ nav a:hover {
     font-size: 1.1rem;
   }
 }
+
 
 
 /* ===== Collection Cards ===== */
