@@ -7,6 +7,8 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
     <!-- Styles Placeholder -->
 <style>
@@ -170,6 +172,12 @@ nav a:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 25px rgba(108, 83, 177, 0.25);
 }
+    .collection-card a:hover img {
+    transform: scale(1.03);
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
 
 /* ===== Responsive ===== */
 @media (max-width: 480px) {
@@ -413,44 +421,61 @@ footer {
 
 
 <!-- COLLECTIONS -->
+<!-- COLLECTIONS -->
 <section id="collections" class="collections-section">
-
-    <h2>RaeRoutes Travel Collections</h2>
+    <h2 class="collections-title">RaeRoutes Travel Collections</h2>
 
     <div class="collections">
         <div class="collection-card">
-            <img src="citycollection.png" alt="City Collection" data-full="citycollection.png">
+            <a href="citycollection.png" data-lightbox="collections" data-title="City Collection">
+                <img src="citycollection.png" alt="City Collection">
+            </a>
             <h3>City Collection</h3>
             <p>Discover the best city getaways in the U.S.</p>
         </div>
+
         <div class="collection-card">
-            <img src="Thecoastalcollection.png" alt="Coastal Collection" data-full="Thecoastalcollection.png">
+            <a href="Thecoastalcollection.png" data-lightbox="collections" data-title="Coastal Collection">
+                <img src="Thecoastalcollection.png" alt="Coastal Collection">
+            </a>
             <h3>Coastal Collection</h3>
             <p>Relax by the ocean and enjoy coastal vibes.</p>
         </div>
+
         <div class="collection-card">
-            <img src="romanticescapescollection.png" alt="Romantic Collection" data-full="romanticescapescollection.png">
+            <a href="romanticescapescollection.png" data-lightbox="collections" data-title="Romantic Collection">
+                <img src="romanticescapescollection.png" alt="Romantic Collection">
+            </a>
             <h3>Romantic Collection</h3>
             <p>Perfect escapes for couples and romantic adventures.</p>
         </div>
+
         <div class="collection-card">
-            <img src="familyfuncollection.png" alt="Family Fun Collection" data-full="familyfuncollection.png">
+            <a href="familyfuncollection.png" data-lightbox="collections" data-title="Family Fun Collection">
+                <img src="familyfuncollection.png" alt="Family Fun Collection">
+            </a>
             <h3>Family Fun Collection</h3>
             <p>Memorable trips for the whole family.</p>
         </div>
+
         <div class="collection-card">
-            <img src="adventurecollection.png" alt="Adventure Collection" data-full="adventurecollection.png">
+            <a href="adventurecollection.png" data-lightbox="collections" data-title="Adventure Collection">
+                <img src="adventurecollection.png" alt="Adventure Collection">
+            </a>
             <h3>Adventure Collection</h3>
             <p>Made for the ones who chase fresh air, big views, and a little adrenaline.</p>
         </div>
-<div class="collection-card">
-    <img src="winterwonderland.png" alt="Winter Wonderland Collection" data-full="winterwonderland.png">
-    <h3>Winter Wonderland Collection</h3>
-    <p>Perfect winter holiday destinations.</p>
-</div>
 
+        <div class="collection-card">
+            <a href="winterwonderland.png" data-lightbox="collections" data-title="Winter Wonderland Collection">
+                <img src="winterwonderland.png" alt="Winter Wonderland Collection">
+            </a>
+            <h3>Winter Wonderland Collection</h3>
+            <p>Perfect winter holiday destinations.</p>
+        </div>
     </div>
 </section>
+
 
 <!-- TRIP PLANNER SECTION -->
 <section class="trip-process" id="planner">
