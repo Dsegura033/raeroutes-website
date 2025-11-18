@@ -57,9 +57,19 @@ header {
 }
 
 /* LOGO */
+/* Make logo bigger on all screens */
 .logo img {
-    height: 55px;
+    height: 75px;   /* increase this if you want — try 80 or 90 */
 }
+
+/* Fix size specifically on mobile */
+@media (max-width: 768px) {
+    .logo img {
+        height: 85px;      /* looks good on iPhone */
+        width: auto;       /* keeps proportions correct */
+    }
+}
+
 
 /* HAMBURGER LEFT */
 .hamburger {
