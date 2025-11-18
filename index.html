@@ -85,17 +85,23 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: #4b3c9f; /* darker pastel purple for text */
     font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background 0.3s, color 0.3s;
+    padding: 10px 20px;  /* button-like spacing */
+    border-radius: 8px;
+    background: transparent; /* clean, no solid background */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow for “button” feel */
 }
 
+/* Hover effect for desktop nav */
 nav a:hover {
-    background-color: #e0d4ff; /* light hover background */
-    color: #4b3c9f; /* darker text on hover */
+    background: linear-gradient(135deg, #cdb4ff, #b5e3ff); /* dreamy gradient */
+    color: #fff; /* text changes to white on hover */
+    transform: translateY(-2px); /* subtle lift */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* stronger shadow on hover */
 }
+
 /* ===== NAV LINK BUTTON STYLE ===== */
 nav a {
     text-decoration: none;
@@ -117,22 +123,28 @@ nav a:hover {
 
 /* MOBILE NAV LINKS */
 .mobile-nav a {
-    text-decoration: none;
-    color: #333;
+    display: block;
+    padding: 12px 25px;
+    font-size: 18px;
     font-weight: 500;
-    padding: 12px 25px;       /* bigger touch area */
-    border-radius: 8px;
-    background-color: #f4f0ff;
+    color: #4b3c9f; /* darker pastel purple */
+    background: transparent; /* minimal look, matches header background */
+    border-radius: 10px;
+    margin: 5px 0;
+    text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* subtle shadow for depth */
 }
 
+/* Hover effect for mobile nav links */
 .mobile-nav a:hover {
-    background-color: #d8cfff;
-    color: #4b3c9f;
+    background: linear-gradient(135deg, #cdb4ff, #b5e3ff); /* dreamy gradient */
+    color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-decoration: underline 2px #b5e3ff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* deeper shadow on hover */
 }
+
 
 /* ===== HAMBURGER MENU ===== */
 .hamburger {
