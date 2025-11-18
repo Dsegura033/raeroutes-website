@@ -22,6 +22,7 @@ body {
   background: #f8f7fc;
   color: #333;
   line-height: 1.6;
+  text-align: center; /* center all text by default */
 }
 
 a {
@@ -38,28 +39,12 @@ a {
 /* Background & sections */
 .intro { background: #f9f7ff; }
 .why-raeroutes { background: #f4f2fa; }
-.collections-preview { background: #faf7ff; }
+.collections-section { background: #faf7ff; }
 .trip-process { background: #f9f7ff; }
 .about-preview { background: #f4f2fa; }
 .services-gifting { background: #faf7ff; }
 .testimonials { background: #f9f7ff; }
 .contact-cta { background: #f4f2fa; }
-
-/* BUTTONS */
-.button {
-  display: inline-block;
-  padding: 12px 30px;
-  background: linear-gradient(135deg, #5a4baa, #7b66d2);
-  color: white;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-}
-.button:hover {
-  background-color: #7b66d2;
-  box-shadow: 0 0 15px 3px rgba(123, 102, 210, 0.7);
-}
 
 /* HEADER */
 header {
@@ -67,27 +52,20 @@ header {
   background: linear-gradient(135deg, #f0ebff, #faf7ff);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* center nav + logo */
   align-items: center;
+  gap: 40px;
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
-header .logo a img {
-  height: 70px; /* medium-large logo */
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex: 1;
+header .logo img {
+  height: 70px; /* medium size logo */
 }
 
 nav a {
+  margin: 0 15px;
   font-weight: 600;
   transition: color 0.3s ease;
 }
@@ -99,76 +77,60 @@ nav a:hover {
 /* HERO */
 .hero {
   position: relative;
-  height: 90vh; /* slightly smaller than full height */
-  width: 100%;
+  width: 90%; /* slimmer width */
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 80vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end; /* text below video like magazine cover */
   align-items: center;
-  text-align: center;
   overflow: hidden;
+  border-radius: 16px;
 }
 
-/* Background video */
 .hero-video {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-/* Text overlay (magazine cover style) */
 .hero-text {
   position: relative;
   z-index: 2;
   color: white;
+  padding: 20px;
+  background: rgba(0,0,0,0.3); /* subtle overlay for readability */
+  border-radius: 12px;
+  max-width: 800px;
   text-align: center;
-  max-width: 90%;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.8);
 }
 
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
-  line-height: 1.2;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .hero-text p {
   font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
-}
-
-/* SECTION DIVIDERS */
-section {
-  padding: 60px 20px;
-  position: relative;
-}
-
-section:not(:last-child)::after {
-  content: '';
-  display: block;
-  height: 2px;
-  width: 60px;
-  background: #555; /* dark grey */
-  margin: 40px auto 0 auto; /* spaced from section */
-  border-radius: 2px;
+  font-size: 1.4rem;
 }
 
 /* COLLECTIONS */
 .collections-section {
   padding: 60px 20px;
-  background: linear-gradient(to bottom right, #f5f1ff, #eef7ff);
   border-radius: 20px;
   margin: 60px auto;
-  max-width: 1200px;
 }
 
 .collections-title {
-  text-align: center;
   font-size: 32px;
   margin-bottom: 40px;
   color: #4b3e7a;
@@ -178,15 +140,16 @@ section:not(:last-child)::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
+  justify-items: center; /* center the cards */
 }
 
 .collection-card {
   background: #fff;
   border-radius: 18px;
   padding: 20px;
-  text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
 }
 
 .collection-card:hover {
@@ -216,28 +179,23 @@ section:not(:last-child)::after {
   font-size: 15px;
 }
 
-/* TRIP PROCESS */
-.trip-process h2,
-.about-preview h2,
-.services-gifting h2,
-.testimonials h2,
+/* TRIP PLANNER */
+.trip-process h2, 
+.about-preview h2, 
+.services-gifting h2, 
+.testimonials h2, 
 .contact-cta h2 {
-  text-align: center;
   font-family: 'Playfair Display', serif;
   font-size: 32px;
   color: #4b3fa6;
   margin-bottom: 20px;
 }
 
-.trip-process p,
-.about-preview p,
-.services-gifting p,
-.testimonials p,
-.contact-cta p {
-  text-align: center;
+.trip-process p, .about-preview p, .services-gifting p, .contact-cta p {
   font-size: 18px;
   color: #555;
-  margin-bottom: 30px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
 }
 
 .process-list {
@@ -253,10 +211,20 @@ section:not(:last-child)::after {
   font-weight: 500;
 }
 
-/* ABOUT PREVIEW */
-.about-preview .button {
-  display: block;
-  margin: 0 auto;
+.button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #5a4baa;
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.button:hover {
+  background-color: #7b66d2;
 }
 
 /* SERVICES */
@@ -264,7 +232,7 @@ section:not(:last-child)::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
-  text-align: center;
+  justify-items: center;
   margin-top: 30px;
 }
 
@@ -273,6 +241,8 @@ section:not(:last-child)::after {
   padding: 25px 20px;
   border-radius: 16px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 
 .service-card:hover {
@@ -280,20 +250,12 @@ section:not(:last-child)::after {
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-.service-card h3 {
-  color: #4b3fa6;
-  margin-bottom: 15px;
-}
-
-.service-card p {
-  color: #555;
-}
-
-/* TESTIMONIALS */
+/* TESTIMONIALS CAROUSEL */
 .testimonial-grid {
   display: flex;
   overflow-x: auto;
-  gap: 20px;
+  gap: 25px;
+  padding-bottom: 10px;
   scroll-behavior: smooth;
 }
 
@@ -311,45 +273,52 @@ section:not(:last-child)::after {
 
 /* CONTACT */
 .contact-cta .qr-code img {
-  width: 180px; /* medium size */
-  height: auto;
+  width: 200px; /* medium size QR */
   margin-bottom: 20px;
 }
 
-.contact-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+.contact-cta a.button {
+  display: inline-block;
+  margin: 10px;
 }
 
-.contact-buttons a.button {
-  margin: 10px 0;
+/* DIVIDERS */
+section {
+  position: relative;
+  padding-bottom: 60px;
+  margin-bottom: 60px;
+}
+
+section::after {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 2px;
+  background: #333; /* thin dark grey line */
+  margin: 40px auto 0 auto;
+  border-radius: 1px;
 }
 
 /* FOOTER */
 footer {
   padding: 40px;
   background: #f0eef8;
-  text-align: center;
-  margin-top: 60px;
   font-size: 14px;
   color: #555;
+  text-align: center;
+  margin-top: 60px;
 }
 
 /* RESPONSIVE */
 @media screen and (max-width: 768px) {
-  header { flex-direction: column; align-items: center; }
-  nav { margin-top: 10px; }
-  nav a { display: block; margin: 8px 0; }
   .hero-text h1 { font-size: 2.2rem; }
-  .hero-text p { font-size: 1.2rem; }
-  .testimonial-grid { flex-direction: column; overflow-x: visible; }
+  .hero-text p { font-size: 1.1rem; }
+  nav { flex-direction: column; }
 }
 
 @media screen and (max-width: 480px) {
-  .hero-text h1 { font-size: 1.8rem; }
-  .hero-text p { font-size: 1rem; }
+  .hero-text h1 { font-size: 28px; }
+  .hero-text p { font-size: 14px; }
 }
 </style>
 
