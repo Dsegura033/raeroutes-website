@@ -82,11 +82,11 @@ nav a:hover {
   margin: 0 auto;
   height: 80vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end; /* text below video like magazine cover */
+  justify-content: center;
   align-items: center;
+  text-align: center;
   overflow: hidden;
-  border-radius: 16px;
+  background: #000; /* or a dark shade matching your video */
 }
 
 .hero-video {
@@ -350,7 +350,7 @@ footer {
 <!-- HERO SECTION -->
 <section class="hero" id="home">
     <div class="hero-video-wrapper">
-        <video class="hero-video" src="websitevid.mp4" autoplay muted loop playsinline></video>
+       <video class="hero-video" src="websitevid.mp4" autoplay muted loop playsinline poster="hero-placeholder.png"></video>
     </div>
 
     <div class="hero-text">
