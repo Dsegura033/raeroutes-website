@@ -76,15 +76,19 @@ nav a:hover {
   color: #7b66d2;
 }
 
+/* HERO */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 100vh; /* full viewport height */
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   overflow: hidden;
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center; /* vertical centering */
+  text-align: center;
+  margin: 0; /* remove any funky extra spacing */
+  padding: 0;
+  background: #000; /* fallback in case video doesn't load */
 }
 
 .hero-video {
@@ -95,30 +99,32 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  opacity: 0.9; /* softens the video so text pops */
+  opacity: 0.9;
 }
 
 .hero-text {
   position: relative;
   z-index: 2;
-  color: #2a1f5c; /* darker, deep purple/navy color */
-  font-weight: 700; /* bold */
-  padding: 20px;
-  text-align: center; /* center the text */
-  text-shadow: 0 4px 18px rgba(0,0,0,0.6); /* subtle shadow for readability */
+  color: #2a1f5c; /* dark, bold text */
+  font-weight: 800;
+  text-align: center;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+  max-width: 90%; /* prevent overflow on small screens */
+  margin: 0 auto; /* horizontal centering */
 }
 
 .hero-text h1 {
   font-family: 'Playfair Display', serif;
-  font-weight: 800; /* extra bold */
   font-size: 3rem;
+  font-weight: 900;
   margin-bottom: 15px;
 }
 
 .hero-text p {
   font-family: 'Inter', sans-serif;
-  font-weight: 600;
   font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 /* MOBILE FIXES */
@@ -130,8 +136,6 @@ nav a:hover {
     font-size: 1.1rem;
   }
 }
-
-
 
 /* ===== Collection Cards ===== */
     .collections {
