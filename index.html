@@ -187,6 +187,11 @@ nav a:hover {
     }
 }
 
+/* ===== SITE-WIDE FIX ===== */
+body {
+  overflow-x: hidden; /* prevents sideways scroll anywhere */
+}
+
 /* ===== HERO ===== */
 .hero {
   position: relative;
@@ -199,7 +204,6 @@ nav a:hover {
   overflow: hidden;
 }
 
-/* Make sure hero header, video, and mobile nav don’t overflow */
 .hero-header,
 .hero-video,
 .mobile-nav {
@@ -236,7 +240,6 @@ nav a:hover {
 .hero-text h1 {
   font-size: 3rem;
   font-weight: 900;
-  color: #1a1a1a;
   text-shadow: 
     -1px -1px 0 #fff,
      1px -1px 0 #fff,
@@ -246,9 +249,7 @@ nav a:hover {
 }
 
 .hero-text p {
-  font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  color: #1a1a1a;
   text-shadow: 
     -1px -1px 0 #fff,
      1px -1px 0 #fff,
@@ -257,7 +258,87 @@ nav a:hover {
   margin: 0;
 }
 
-/* ===== MOBILE FIXES ===== */
+/* ===== NAVIGATION ===== */
+nav {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Desktop nav links */
+nav a {
+  text-decoration: none;
+  color: #b5a0ff;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffffff, #f7f7f7);
+  border: 2px solid #b5a0ff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background: linear-gradient(135deg, #cdb4ff, #b5e3ff);
+  color: #fff;
+  border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* MOBILE NAV LINKS */
+.mobile-nav a {
+  display: block;
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #b5a0ff;
+  background: linear-gradient(135deg, #ffffff, #f7f7f7);
+  border-radius: 10px;
+  border: 2px solid #b5a0ff;
+  margin: 5px 0;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.mobile-nav a:hover {
+  background: linear-gradient(135deg, #cdb4ff, #b5e3ff);
+  color: #fff;
+  border-color: #fff;
+  transform: translateY(-2px);
+  text-decoration: underline 2px #b5e3ff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger div {
+  width: 28px;
+  height: 3px;
+  background: linear-gradient(90deg, #cdb4ff, #b5e3ff);
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover div {
+  transform: scaleX(1.2);
+  background: linear-gradient(90deg, #b5e3ff, #cdb4ff);
+}
+
+/* ===== MOBILE LAYOUT FIXES ===== */
 @media (max-width: 768px) {
   .hero,
   .hero-header,
@@ -267,14 +348,15 @@ nav a:hover {
     margin-left: 0;
     margin-right: 0;
   }
+
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    display: none;
+  }
 }
-
-/* ===== SITE-WIDE HORIZONTAL SCROLL FIX ===== */
-body {
-  overflow-x: hidden; /* prevents any sideways scrolling */
-}
-
-
 
 /* ===== COLLECTIONS ===== */
 .collections {
