@@ -64,6 +64,74 @@ nav a {
 nav a:hover {
   color: #7b66d2;
 }
+/* ===== NAVIGATION UPGRADE ===== */
+
+/* container */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 0;
+}
+
+/* links */
+nav a {
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+/* hover effect */
+nav a:hover {
+    background: #e9e4ff;
+    color: #4b3c72;
+}
+
+/* ===== MOBILE NAV ===== */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    margin-left: 15px;
+}
+
+.hamburger div {
+    width: 28px;
+    height: 3px;
+    background: #4b3c72;
+    transition: 0.3s ease;
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: #faf7ff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.mobile-nav a {
+    padding: 12px 0;
+    text-align: center;
+}
+
+/* show mobile menu when active */
+.mobile-nav.show {
+    display: flex;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
 
 /* ===== HERO ===== */
 .hero {
@@ -302,6 +370,24 @@ footer {
                 <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
             </a>
         </div>
+     <header>
+    <div class="header-container">
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#home">Home</a>
+            <a href="#collections">Collections</a>
+            <a href="#planner">Trip Planner</a>
+            <a href="#about">About</a>
+            <a href="#services">Services & Gifting</a>
+            <a href="#contact">Contact</a>
+        </div>
+
         <nav>
             <a href="#home">Home</a>
             <a href="#collections">Collections</a>
@@ -310,6 +396,7 @@ footer {
             <a href="#services">Services & Gifting</a>
             <a href="#contact">Contact</a>
         </nav>
+
     </div>
 </header>
 
@@ -517,6 +604,11 @@ footer {
       }
       setInterval(autoScroll, 20);
   }
+</script>
+<script>
+function toggleMenu() {
+    document.getElementById("mobileNav").classList.toggle("show");
+}
 </script>
 
 </body>
