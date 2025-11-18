@@ -86,7 +86,7 @@ nav a:hover {
   align-items: center;
   text-align: center;
   overflow: hidden;
-  background: #000; /* or a dark shade matching your video */
+  background: #fff; /* or a dark shade matching your video */
 }
 
 .hero-video {
@@ -251,24 +251,26 @@ nav a:hover {
 }
 
 /* TESTIMONIALS CAROUSEL */
-.testimonial-grid {
+.testimonial-track {
   display: flex;
-  overflow-x: auto;
-  gap: 25px;
-  padding-bottom: 10px;
-  scroll-behavior: smooth;
+  gap: 30px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .testimonial {
-  min-width: 250px;
   flex: 0 0 auto;
+  min-width: 300px;
   background: #f4f2fa;
   padding: 25px 20px;
   border-radius: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-  font-style: italic;
-  color: #555;
-  text-align: center;
+  box-shadow: 0 4px 14px rgba(123,102,210,0.2); /* soft purple glow/shadow */
+  transition: transform 0.3s ease;
+}
+
+/* Optional: make items scale slightly on hover (for desktop) */
+.testimonial:hover {
+  transform: scale(1.05);
 }
 
 /* CONTACT */
@@ -350,7 +352,8 @@ footer {
 <!-- HERO SECTION -->
 <section class="hero" id="home">
     <div class="hero-video-wrapper">
-       <video class="hero-video" src="websitevid.mp4" autoplay muted loop playsinline poster="hero-placeholder.png"></video>
+      <video class="hero-video" src="websitevid.mp4" autoplay muted loop playsinline poster="hero-poster.jpg"></video>
+
     </div>
 
     <div class="hero-text">
@@ -511,17 +514,15 @@ footer {
 <!-- TESTIMONIALS SECTION - CAROUSEL READY -->
 <section class="testimonials">
   <div class="container">
-    <h2>What People Say about RaeRoutes:</h2>
-
-    <div class="testimonial-carousel">
-      <div class="testimonial">“Thank you so much I feel all boujie haha!”</div>
-      <div class="testimonial">“RaeRoutes has helped me find such good deals and she makes the process so easy & quick!”</div>
-      <div class="testimonial">“I told her my vision and she gave me numeorus options and accomodates all your requests!”</div>
+    <h2>What People Say</h2>
+    <div class="testimonial-track">
+      <div class="testimonial">“The trip was planned perfectly. Every detail felt thoughtful and intentional.”</div>
+      <div class="testimonial">“I never knew travel could feel this stress-free. RaeRoutes made it so easy.”</div>
+      <div class="testimonial">“I told her my vision once — she brought it to life exactly as I imagined.”</div>
+      <!-- repeat testimonials if you want a loop -->
     </div>
   </div>
 </section>
-
-<div class="section-divider"></div>
 
 
 <!-- CONTACT SECTION -->
@@ -545,5 +546,20 @@ footer {
 <footer>
     <p>© 2025 RaeRoutes. Designed for Every Journey.</p>
 </footer>
+<script>
+  const track = document.querySelector('.testimonial-track');
+  let scrollAmount = 0;
+  const speed = 1; // lower = slower
+
+  function autoScroll() {
+    scrollAmount++;
+    if (scrollAmount >= track.scrollWidth - track.clientWidth) {
+      scrollAmount = 0;
+    }
+    track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  }
+
+  setInterval(autoScroll, 20); // adjust timing for scroll speed
+</script>
 
 </body>
