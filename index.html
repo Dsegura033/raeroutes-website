@@ -126,6 +126,17 @@ nav a:hover {
 }
 
 /* ===== Collection Cards ===== */
+    .collections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    justify-items: center;  /* This centers each card within its grid cell */
+    align-items: start;     /* Keeps cards aligned at the top */
+    text-align: center;     /* Centers text inside cards */
+    max-width: 1200px;
+    margin: 0 auto;         /* Centers the whole grid in the section */
+}
+
 .collection-card {
   flex: 0 0 220px;      /* keep width */
   width: 220px;
@@ -176,6 +187,11 @@ nav a:hover {
     transform: scale(1.03);
     cursor: pointer;
     transition: transform 0.25s ease;
+}
+    .collections-section {
+    padding: 60px 20px;
+    margin: 60px auto;
+    text-align: center;
 }
 
 
