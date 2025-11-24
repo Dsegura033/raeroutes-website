@@ -85,9 +85,7 @@ nav {
     gap: 30px;
     margin-top: 20px;
     padding: 10px 0;
-    background-color: transparent; /* remove background */
-    box-shadow: none;               /* remove shadow */
-    border-radius: 0;               /* remove rounding */
+    background-color: transparent; /* no border or background */
     font-family: 'Inter', sans-serif;
 }
 
@@ -96,14 +94,14 @@ nav a {
     color: #6a4bff;
     font-weight: 600;
     padding: 10px 16px;
-    border-radius: 8px; /* keep rounded hover effect on links */
+    border-radius: 0; /* remove any border/box shape */
     transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 nav a:hover {
-    background: rgba(186, 160, 255, 0.2);
+    background: linear-gradient(90deg, rgba(186,160,255,0.2), rgba(107,85,255,0.2)); /* soft gradient hover */
     color: #4b2eff;
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* subtle lift */
 }
 
 /* MOBILE NAV LINKS */
