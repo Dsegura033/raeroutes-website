@@ -77,29 +77,32 @@ header {
 }
 
 /* ===== NAVIGATION (Screenshot Style) ===== */
-
 nav {
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    justify-content: center;  /* center the links */
+    align-items: center;      /* vertical align */
+    gap: 30px;                /* space between links */
     margin-top: 20px;
-    font-size: 18px;
+    padding: 10px 0;
+    background-color: #ffffff; /* optional: white background for nav */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* subtle shadow */
+    border-radius: 10px;      /* rounded container edges */
+    font-family: 'Inter', sans-serif;
 }
 
-/* Clean text links */
 nav a {
     text-decoration: none;
-    color: #6a4bff; /* your purple shade */
+    color: #6a4bff;
     font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
-/* Hover = subtle, elegant */
 nav a:hover {
-    background: rgba(186, 160, 255, 0.15); /* soft purple tint */
+    background: rgba(186, 160, 255, 0.2); /* slightly stronger hover */
     color: #4b2eff;
+    transform: translateY(-2px); /* subtle lift */
 }
 
 /* MOBILE NAV LINKS */
