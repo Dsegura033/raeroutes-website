@@ -825,43 +825,77 @@ section::after {
     display: none;
 }
 
-  /* ABOUT SECTION */
+/* ===== ABOUT SECTION (Updated) ===== */
 .about-section {
-    padding: 60px 20px;
+    padding: 100px 20px;
     text-align: center;
-    background: #faf7ff;
+    background: linear-gradient(135deg, #f3f0ff 0%, #e0d9ff 100%);
     border-radius: 20px;
     margin: 60px 0;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    overflow: hidden;
 }
 
 .about-section h2 {
-    font-size: 32px;
-    font-weight: 600;
-    color: #4b3c72;
-    margin-bottom: 15px;
+    font-size: 42px;
+    font-weight: 700;
+    color: #4a3f9e;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
 }
 
 .about-section p {
     font-size: 18px;
-    color: #555;
+    color: #4c4c4c;
     max-width: 700px;
-    margin: 0 auto 25px;
+    margin: 0 auto 40px;
     line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
 }
 
 .about-btn {
     display: inline-block;
-    padding: 12px 24px;
-    background: #4b3c72;
+    padding: 16px 50px;
+    background: linear-gradient(90deg, #b5a0ff, #8e78e5);
     color: #fff;
     text-decoration: none;
-    border-radius: 10px;
-    transition: 0.3s ease;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-btn:hover {
-    background: #362b59;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
+
+/* ===== Scroll Animation ===== */
+.about-section h2.in-view,
+.about-section p.in-view,
+.about-section .about-btn.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    .about-section h2 {
+        font-size: 32px;
+    }
+    .about-section p {
+        font-size: 16px;
+    }
+    .about-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+}
+
   
 /* ===== TRIP PLANNER SECTION ===== */
 .trip-process {
@@ -1383,6 +1417,23 @@ const observer = new IntersectionObserver(entries => {
 
 animateElements.forEach(el => observer.observe(el));
 </script>
+  <script>
+const aboutElements = document.querySelectorAll(
+  '.about-section h2, .about-section p, .about-section .about-btn'
+);
+
+const observerAbout = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      observerAbout.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+aboutElements.forEach(el => observerAbout.observe(el));
+</script>
+
 
 
 
