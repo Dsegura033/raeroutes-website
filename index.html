@@ -862,6 +862,99 @@ section::after {
 .about-btn:hover {
     background: #362b59;
 }
+  
+/* ===== TRIP PLANNER SECTION ===== */
+.trip-process {
+    background: #f8f7fc; /* light, soft background to match site */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.trip-process .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.trip-process h2 {
+    font-size: 36px;
+    color: #4a3f9e; /* slightly darker purple for heading */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.trip-process p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.trip-process .process-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.trip-process .process-list li {
+    position: relative;
+    padding-left: 40px;
+    font-size: 18px;
+    color: #333;
+}
+
+.trip-process .process-list li::before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    background: #b5a0ff;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.trip-process .process-list {
+    counter-reset: step;
+}
+
+.trip-process .button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trip-process .button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    .trip-process h2 {
+        font-size: 28px;
+    }
+    .trip-process p, 
+    .trip-process .process-list li {
+        font-size: 16px;
+    }
+    .trip-process .button {
+        padding: 12px 30px;
+    }
+}
 
 
 /* ===== FOOTER ===== */
