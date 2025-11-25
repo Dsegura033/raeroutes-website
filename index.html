@@ -83,10 +83,9 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-top: 20px;
-    padding: 10px 0;
-    background-color: transparent; /* no border or background */
-    font-family: 'Inter', sans-serif;
+    margin-top: 10px; /* smaller for cleaner spacing under the logo */
+    padding: 5px 0;
+    background: none; /* no background to avoid looking like a box */
 }
 
 nav a {
@@ -96,6 +95,11 @@ nav a {
     padding: 10px 16px;
     border-radius: 0; /* remove any border/box shape */
     transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+  nav a:focus,
+nav a:active {
+    outline: none;       /* removes the purple focus border */
+    border: none;
 }
 
 nav a:hover {
