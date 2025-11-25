@@ -70,7 +70,6 @@ header {
 }
 
 /* ===== NAVIGATION (Clean Screenshot Style) ===== */
-
 nav {
     display: flex;
     justify-content: center;
@@ -78,6 +77,7 @@ nav {
     gap: 22px;
     margin: 0;
     padding: 0;
+    background: transparent; /* remove any white background */
 }
 
 /* Desktop nav links */
@@ -85,10 +85,10 @@ nav a {
     text-decoration: none;
     color: #cbbdff;
     font-weight: 500;
-    font-size: 18px;
-    padding: 6px 12px;       /* smaller to match screenshot */
+    font-size: 16px;      /* slightly smaller for a balanced header */
+    padding: 6px 12px;       
     border-radius: 10px;
-    background: transparent;
+    background: transparent; /* ensure transparency */
     transition: 0.3s ease;
     outline: none !important;
     border: none !important;
@@ -115,7 +115,6 @@ nav a:hover {
 }
 
 /* ===== MOBILE NAV CONTAINER ===== */
-/* ===== MOBILE NAV CONTAINER ===== */
 .mobile-nav {
     display: none;
     position: fixed;
@@ -123,12 +122,12 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%; /* full screen so no white shows */
-    background: linear-gradient(135deg, #e7ddff, #d3e8ff); /* soft pastel gradient */
-    padding: 80px 20px 20px; /* header space */
+    background: linear-gradient(135deg, #e7ddff, #d3e8ff); /* pastel gradient */
+    padding: 80px 20px 20px; /* space for header */
     text-align: center;
     flex-direction: column;
     gap: 20px;
-    box-shadow: none;
+    box-shadow: none; /* remove any shadow to avoid white box look */
     overflow-y: auto;
 }
 
@@ -136,10 +135,10 @@ nav a:hover {
 .mobile-nav a {
     display: block;
     padding: 14px 20px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: #cbbdff;
-    background: transparent; /* MUST be transparent! */
+    background: transparent; /* ensure transparent */
     border: none;
     border-radius: 10px;
     margin: 8px 0;
@@ -158,7 +157,6 @@ nav a:hover {
     color: white;
     transform: translateY(-2px);
 }
-
 
 /* ===== HAMBURGER MENU ===== */
 .hamburger {
@@ -195,10 +193,6 @@ nav a:hover {
     }
 }
 
-/* ===== SITE-WIDE FIX ===== */
-body {
-    overflow-x: hidden;
-}
 
 /* ===== HERO ===== */
 html, body {
