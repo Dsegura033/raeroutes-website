@@ -83,9 +83,9 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-top: 10px; /* smaller for cleaner spacing under the logo */
+    margin-top: 10px; 
     padding: 5px 0;
-    background: none; /* no background to avoid looking like a box */
+    background: none;
 }
 
 nav a {
@@ -93,41 +93,54 @@ nav a {
     color: #6a4bff;
     font-weight: 600;
     padding: 10px 16px;
-    border-radius: 0; /* remove any border/box shape */
+    border-radius: 0;
     transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    
+    /* FULL OUTLINE RESET */
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
-  nav a:focus,
-nav a:active {
-    outline: none;       /* removes the purple focus border */
-    border: none;
+
+nav a:focus,
+nav a:active,
+nav a:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 nav a:hover {
-    background: linear-gradient(90deg, rgba(186,160,255,0.2), rgba(107,85,255,0.2)); /* soft gradient hover */
+    background: linear-gradient(90deg, rgba(186,160,255,0.2), rgba(107,85,255,0.2));
     color: #4b2eff;
-    transform: translateY(-2px); /* subtle lift */
+    transform: translateY(-2px);
 }
 
-/* MOBILE NAV LINKS */
+/* ===== MOBILE NAV LINKS ===== */
 .mobile-nav a {
     display: block;
     padding: 12px 25px;
     font-size: 18px;
     font-weight: 500;
-    color: #b5a0ff; /* pastel purple text */
-    background: linear-gradient(135deg, #ffffff, #f7f7f7); /* soft gradient white */
+    color: #b5a0ff;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
     border-radius: 10px;
-    border: 2px solid #b5a0ff; /* subtle border */
+    border: 2px solid #b5a0ff;
     margin: 5px 0;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05); /* subtle shadow */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
     text-decoration: none;
+
+    /* mobile tap outline reset */
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Hover effect for mobile nav links */
 .mobile-nav a:hover {
-    background: linear-gradient(135deg, #cdb4ff, #b5e3ff); /* dreamy gradient */
+    background: linear-gradient(135deg, #cdb4ff, #b5e3ff);
     color: #fff;
     border-color: #fff;
     transform: translateY(-2px);
@@ -135,10 +148,9 @@ nav a:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-
 /* ===== HAMBURGER MENU ===== */
 .hamburger {
-    display: none; /* hidden on desktop */
+    display: none;
     position: absolute;
     left: 20px;
     top: 50%;
@@ -147,7 +159,6 @@ nav a:hover {
     z-index: 1000;
 }
 
-/* Hamburger lines with dreamy gradient */
 .hamburger div {
     width: 28px;
     height: 3px;
@@ -164,13 +175,13 @@ nav a:hover {
 
 /* ===== MOBILE NAV ===== */
 .mobile-nav {
-    display: none; /* hidden by default, toggle with JS */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background: white;
-    padding: 100px 20px 20px; /* leave space for fixed header */
+    padding: 100px 20px 20px;
     text-align: center;
     flex-direction: column;
     gap: 20px;
@@ -180,17 +191,16 @@ nav a:hover {
 /* ===== MEDIA QUERY FOR MOBILE ===== */
 @media (max-width: 768px) {
     .hamburger {
-        display: block; /* show hamburger on mobile */
+        display: block;
     }
-
     nav {
-        display: none; /* hide desktop nav on mobile */
+        display: none;
     }
 }
 
 /* ===== SITE-WIDE FIX ===== */
 body {
-  overflow-x: hidden; /* prevents sideways scroll anywhere */
+    overflow-x: hidden;
 }
 
 /* ===== HERO ===== */
