@@ -76,27 +76,30 @@ header {
     }
 }
 
-/* ===== NAVIGATION (Screenshot Style) ===== */
+/* ===== NAVIGATION (Clean Screenshot Style) ===== */
 
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-top: 10px; 
+    margin-top: 10px;
     padding: 5px 0;
-    background: none;
+    background: none; /* transparent like your screenshot */
 }
 
+/* Desktop nav links */
 nav a {
     text-decoration: none;
-    color: #6a4bff;
-    font-weight: 600;
-    padding: 10px 16px;
-    border-radius: 0;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    color: #cbbdff; /* soft lavender (cleaner than the darker purple) */
+    font-weight: 500;
+    font-size: 18px;
+    padding: 8px 14px;
+    border-radius: 10px;  /* smooth and modern */
+    background: transparent;
+    transition: 0.3s ease;
     
-    /* FULL OUTLINE RESET */
+    /* HARD RESET to kill ALL borders/outlines across browsers */
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
@@ -110,43 +113,45 @@ nav a:focus-visible {
     box-shadow: none !important;
 }
 
+/* Hover: soft pastel gradient glow */
 nav a:hover {
-    background: linear-gradient(90deg, rgba(186,160,255,0.2), rgba(107,85,255,0.2));
-    color: #4b2eff;
+    background: linear-gradient(
+        135deg,
+        rgba(187, 141, 255, 0.25),
+        rgba(152, 115, 255, 0.25)
+    );
+    color: white;
     transform: translateY(-2px);
 }
+
 
 /* ===== MOBILE NAV LINKS ===== */
 .mobile-nav a {
     display: block;
-    padding: 12px 25px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #b5a0ff;
-    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    padding: 14px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #cbbdff;
+    background: none;
+    border: none;
     border-radius: 10px;
-    border: 2px solid #b5a0ff;
-    margin: 5px 0;
+    margin: 8px 0;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
+    box-shadow: none;
+    transition: 0.3s ease;
     text-decoration: none;
-
-    /* mobile tap outline reset */
-    outline: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-nav a:hover {
-    background: linear-gradient(135deg, #cdb4ff, #b5e3ff);
-    color: #fff;
-    border-color: #fff;
+    background: linear-gradient(
+        135deg,
+        rgba(187, 141, 255, 0.25),
+        rgba(152, 115, 255, 0.25)
+    );
+    color: white;
     transform: translateY(-2px);
-    text-decoration: underline 2px #b5e3ff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
 
 /* ===== HAMBURGER MENU ===== */
 .hamburger {
@@ -173,7 +178,8 @@ nav a:hover {
     background: linear-gradient(90deg, #b5e3ff, #cdb4ff);
 }
 
-/* ===== MOBILE NAV ===== */
+
+/* ===== MOBILE NAV CONTAINER ===== */
 .mobile-nav {
     display: none;
     position: fixed;
@@ -185,10 +191,11 @@ nav a:hover {
     text-align: center;
     flex-direction: column;
     gap: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== MEDIA QUERY FOR MOBILE ===== */
+
+/* ===== MEDIA QUERY ===== */
 @media (max-width: 768px) {
     .hamburger {
         display: block;
@@ -197,6 +204,7 @@ nav a:hover {
         display: none;
     }
 }
+
 
 /* ===== SITE-WIDE FIX ===== */
 body {
