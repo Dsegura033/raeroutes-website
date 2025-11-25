@@ -115,18 +115,21 @@ nav a:hover {
 }
 
 /* ===== MOBILE NAV CONTAINER ===== */
+/* ===== MOBILE NAV CONTAINER ===== */
 .mobile-nav {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(135deg, #e7ddff, #d3e8ff); /* pastel gradient */
-    padding: 100px 20px 20px; /* leave space for header */
+    height: 100%; /* full screen so no white shows */
+    background: linear-gradient(135deg, #e7ddff, #d3e8ff); /* soft pastel gradient */
+    padding: 80px 20px 20px; /* header space */
     text-align: center;
     flex-direction: column;
     gap: 20px;
-    box-shadow: none; /* remove the shadow so it doesn’t look like a white box */
+    box-shadow: none;
+    overflow-y: auto;
 }
 
 /* MOBILE NAV LINKS */
@@ -136,7 +139,7 @@ nav a:hover {
     font-size: 20px;
     font-weight: 600;
     color: #cbbdff;
-    background: transparent; /* remove white background */
+    background: transparent; /* MUST be transparent! */
     border: none;
     border-radius: 10px;
     margin: 8px 0;
@@ -155,6 +158,7 @@ nav a:hover {
     color: white;
     transform: translateY(-2px);
 }
+
 
 /* ===== HAMBURGER MENU ===== */
 .hamburger {
