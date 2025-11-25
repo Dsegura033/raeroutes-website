@@ -980,7 +980,7 @@ section::after {
 }
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
-    background: linear-gradient(135deg, #f3f0ff 0%, #e0d9ff 100%); /* soft purple gradient */
+    background: linear-gradient(135deg, #f3f0ff 0%, #e0d9ff 100%);
     padding: 100px 20px;
     font-family: 'Poppins', 'Inter', sans-serif;
     overflow: hidden;
@@ -996,7 +996,7 @@ section::after {
     color: #4a3f9e;
     margin-bottom: 20px;
     font-weight: 700;
-    text-align: left; /* matches Trip Planner left alignment */
+    text-align: left;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.8s ease-out;
@@ -1071,7 +1071,7 @@ section::after {
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-/* ===== Scroll Animation for cards ===== */
+/* ===== Scroll Animation ===== */
 .services-gifting h2.in-view,
 .services-gifting p.in-view,
 .service-card.in-view {
@@ -1100,7 +1100,6 @@ section::after {
         padding: 10px 25px;
     }
 }
-
 
 /* ===== FOOTER ===== */
 footer {
@@ -1366,6 +1365,23 @@ function toggleMenu() {
     menu.style.display = menu.style.display === "flex" ? "none" : "flex";
 }
 </script>
+  <script>
+const animateElements = document.querySelectorAll(
+  '.services-gifting h2, .services-gifting p, .service-card'
+);
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+animateElements.forEach(el => observer.observe(el));
+</script>
+
 
 
 </body>
