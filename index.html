@@ -116,12 +116,26 @@ nav a:hover {
 }
 
 /* ===== MOBILE NAV LINKS ===== */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #e7ddff, #d3e8ff); /* pastel gradient */
+    padding: 100px 20px 20px; /* leave space for header */
+    text-align: center;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: none; /* remove the shadow so it doesn’t look like a white box */
+}
+
 .mobile-nav a {
     display: block;
     padding: 14px 20px;
     font-size: 20px;
     font-weight: 600;
-    color: 
+    color: #cbbdff;
     background: linear-gradient(135deg, #e7ddff, #d3e8ff);
     border: none;
     border-radius: 10px;
