@@ -873,15 +873,16 @@ section::after {
     overflow: hidden;
     background-repeat: no-repeat !important;
     background-size: cover !important;
+    text-align: left; /* align everything to left */
+    padding: 100px 40px; /* give extra side padding */
 }
-
-}
-
+  
 .trip-process .container {
     max-width: 900px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
+
 }
 
 .trip-process h2 {
@@ -947,6 +948,8 @@ section::after {
     font-weight: 600;
     font-size: 18px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 30px; /* space from list */
+}
 }
 
 .trip-process .button:hover {
