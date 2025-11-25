@@ -95,7 +95,6 @@ nav a {
     box-shadow: none !important;
 }
 
-
 nav a:focus,
 nav a:active,
 nav a:focus-visible {
@@ -115,8 +114,8 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* ===== MOBILE NAV LINKS ===== */
-  .mobile-nav {
+/* ===== MOBILE NAV CONTAINER ===== */
+.mobile-nav {
     display: none;
     position: fixed;
     top: 0;
@@ -130,13 +129,14 @@ nav a:hover {
     box-shadow: none; /* remove the shadow so it doesn’t look like a white box */
 }
 
+/* MOBILE NAV LINKS */
 .mobile-nav a {
     display: block;
     padding: 14px 20px;
     font-size: 20px;
     font-weight: 600;
     color: #cbbdff;
-    background: linear-gradient(135deg, #e7ddff, #d3e8ff);
+    background: transparent; /* remove white background */
     border: none;
     border-radius: 10px;
     margin: 8px 0;
@@ -155,7 +155,6 @@ nav a:hover {
     color: white;
     transform: translateY(-2px);
 }
-
 
 /* ===== HAMBURGER MENU ===== */
 .hamburger {
@@ -182,23 +181,6 @@ nav a:hover {
     background: linear-gradient(90deg, #b5e3ff, #cdb4ff);
 }
 
-
-/* ===== MOBILE NAV CONTAINER ===== */
-.mobile-nav {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: white;
-    padding: 100px 20px 20px;
-    text-align: center;
-    flex-direction: column;
-    gap: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-
 /* ===== MEDIA QUERY ===== */
 @media (max-width: 768px) {
     .hamburger {
@@ -208,7 +190,6 @@ nav a:hover {
         display: none;
     }
 }
-
 
 /* ===== SITE-WIDE FIX ===== */
 body {
