@@ -1136,6 +1136,107 @@ section::after {
         padding: 10px 25px;
     }
 }
+  /* ===== CONTACT SECTION ===== */
+.contact-cta {
+    background: linear-gradient(135deg, #f3f0ff 0%, #e0d9ff 100%);
+    padding: 100px 20px;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.contact-cta h2 {
+    font-size: 42px;
+    color: #4a3f9e;
+    margin-bottom: 20px;
+    font-weight: 700;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+.contact-cta p {
+    font-size: 18px;
+    color: #4c4c4c;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+/* QR code container */
+.contact-cta .qr-code {
+    margin: 30px 0;
+}
+
+.contact-cta .qr-code img {
+    width: 200px;
+    max-width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+/* Contact buttons */
+.contact-cta .contact-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.contact-cta .button {
+    padding: 16px 40px;
+    background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-cta .button:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== Scroll Animation ===== */
+.contact-cta h2.in-view,
+.contact-cta p.in-view,
+.contact-cta .qr-code img.in-view,
+.contact-cta .button.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+    .contact-cta h2 {
+        font-size: 32px;
+    }
+    .contact-cta p {
+        font-size: 16px;
+    }
+    .contact-cta .button {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+    .contact-cta .contact-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .contact-cta .qr-code img {
+        width: 150px;
+    }
+}
+
 
 /* ===== FOOTER ===== */
 footer {
@@ -1433,9 +1534,22 @@ const observerAbout = new IntersectionObserver(entries => {
 
 aboutElements.forEach(el => observerAbout.observe(el));
 </script>
+  <script>
+const contactElements = document.querySelectorAll(
+  '.contact-cta h2, .contact-cta p, .contact-cta .qr-code img, .contact-cta .button'
+);
 
+const observerContact = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      observerContact.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
 
-
+contactElements.forEach(el => observerContact.observe(el));
+</script>
 
 </body>
 </html>
