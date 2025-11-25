@@ -52,22 +52,25 @@ header {
 /* HEADER CONTAINER */
 header {
     width: 100%;
-    background: linear-gradient(135deg, #e7ddff, #d3e8ff); /* dreamy pastel purple to blue */
-    padding: 10px 20px;
+    background: linear-gradient(135deg, #e7ddff, #d3e8ff);
+    padding: 6px 0;  /* tiny clean header */
     position: fixed;
     top: 0;
     left: 0;
     z-index: 999;
     display: flex;
-    flex-direction: column; /* stack logo on top of nav */
+    flex-direction: column; /* stack logo + nav */
     align-items: center;
+    gap: 4px; /* tiny space between logo & nav */
 }
+
 
 /* LOGO */
 .logo img {
-    height: 90px; /* desktop logo size */
-    margin-bottom: 10px; /* space between logo and nav */
+    height: 58px;  /* PERFECT size for your site */
+    margin: 0;
 }
+
 
 @media (max-width: 768px) {
     .logo img {
@@ -82,28 +85,26 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    margin-top: 10px;
-    padding: 5px 0;
-    background: none; /* transparent like your screenshot */
+    gap: 22px;
+    margin: 0;
+    padding: 0;
 }
 
 /* Desktop nav links */
 nav a {
     text-decoration: none;
-    color: #cbbdff; /* soft lavender (cleaner than the darker purple) */
+    color: #cbbdff;
     font-weight: 500;
     font-size: 18px;
-    padding: 8px 14px;
-    border-radius: 10px;  /* smooth and modern */
+    padding: 6px 12px;       /* smaller to match screenshot */
+    border-radius: 10px;
     background: transparent;
     transition: 0.3s ease;
-    
-    /* HARD RESET to kill ALL borders/outlines across browsers */
     outline: none !important;
     border: none !important;
     box-shadow: none !important;
 }
+
 
 nav a:focus,
 nav a:active,
@@ -123,7 +124,6 @@ nav a:hover {
     color: white;
     transform: translateY(-2px);
 }
-
 
 /* ===== MOBILE NAV LINKS ===== */
 .mobile-nav a {
