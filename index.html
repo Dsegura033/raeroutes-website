@@ -864,8 +864,24 @@ section::after {
 }
   
 /* ===== TRIP PLANNER SECTION ===== */
+<!-- TRIP PLANNER SECTION -->
+<section class="trip-process" id="planner">
+    <div class="container">
+        <h2>Plan Your Trip</h2>
+        <p>Share your dream trip and I’ll craft the perfect route tailored just for you.</p>
+        <ol class="process-list">
+            <li>Tell me your vision</li>
+            <li>I research and curate your options</li>
+            <li>You review and refine your trip</li>
+            <li>Book & go (stress-free)</li>
+        </ol>
+        <a href="https://lnk.bio/RaeRoutes" target="_blank" class="button">Start Planning</a>
+    </div>
+</section>
+
+/* ===== TRIP PLANNER SECTION ===== */
 .trip-process {
-    background: #f8f7fc; /* light, soft background to match site */
+    background: #f8f7fc;
     padding: 80px 20px;
     text-align: center;
 }
@@ -877,7 +893,7 @@ section::after {
 
 .trip-process h2 {
     font-size: 36px;
-    color: #4a3f9e; /* slightly darker purple for heading */
+    color: #4a3f9e;
     margin-bottom: 20px;
     font-weight: 600;
 }
@@ -896,6 +912,7 @@ section::after {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    counter-reset: step;
 }
 
 .trip-process .process-list li {
@@ -920,10 +937,6 @@ section::after {
     align-items: center;
     justify-content: center;
     font-weight: 600;
-}
-
-.trip-process .process-list {
-    counter-reset: step;
 }
 
 .trip-process .button {
@@ -953,7 +966,6 @@ section::after {
     }
     .trip-process .button {
         padding: 12px 30px;
-    }
 }
 
 
