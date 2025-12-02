@@ -617,19 +617,10 @@ nav a:hover {
 }
 
 /* ===== MOBILE ===== */
-/* Flip image to right / text to left on desktop */
-@media (min-width: 781px) {
+@media (max-width: 780px) {
     .intro-wrapper {
-        flex-direction: row-reverse; /* flips image and text */
-    }
-
-    .intro-text {
-        text-align: left; /* ensure text stays aligned nicely */
-    }
-
-    .intro-image,
-    .intro-text {
-        min-width: 100%;
+        flex-direction: column;
+        text-align: center;
     }
 
     .intro-image img {
@@ -637,11 +628,35 @@ nav a:hover {
         margin-bottom: 1.5rem;
     }
 
-    .intro-text h2,
     .intro-text p {
         margin: 0 auto;
     }
 }
+
+/* Flip image to right / text to left on desktop */
+@media (min-width: 781px) {
+    .intro-wrapper {
+        flex-direction: row-reverse; /* flips image and text */
+        align-items: center; /* vertically center content */
+        gap: 3rem;
+    }
+
+    .intro-text {
+        text-align: left;
+    }
+
+    .intro-image,
+    .intro-text {
+        min-width: 300px; /* keep your original sizing */
+        flex: 1; /* allow equal space for both */
+    }
+
+    .intro-image img {
+        max-width: 520px; /* keep image size consistent */
+        margin-bottom: 0; /* remove stacking margin */
+    }
+}
+
 
 
 /* ===== WHY RAEROUTES SECTION ===== */
