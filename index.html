@@ -617,10 +617,14 @@ nav a:hover {
 }
 
 /* ===== MOBILE ===== */
-@media (max-width: 780px) {
+/* Flip image to right / text to left on desktop */
+@media (min-width: 781px) {
     .intro-wrapper {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row-reverse; /* flips image and text */
+    }
+
+    .intro-text {
+        text-align: left; /* ensure text stays aligned nicely */
     }
 
     .intro-image,
