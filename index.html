@@ -555,14 +555,15 @@ nav a:hover {
     display: none;
   }
 }
- /* ===== INTRO SECTION ===== */
+/* ===== INTRO SECTION ===== */
 .intro {
     background: linear-gradient(135deg, #f4f0ff, #e7ddff);
-    padding: 100px 20px;
+    padding: 80px 20px;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
+/* Layout wrapper */
 .intro-wrapper {
     max-width: 1300px;
     margin: 0 auto;
@@ -573,30 +574,7 @@ nav a:hover {
     flex-wrap: wrap;
 }
 
-/* LEFT: TEXT */
-.intro-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.intro-text h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: #4b3c9f;
-    margin-bottom: 25px;
-}
-
-.intro-text p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    color: #1a1a1a;
-    max-width: 600px;
-    line-height: 1.8;
-    opacity: 0.95;
-}
-
-/* RIGHT: IMAGE */
+/* LEFT: IMAGE */
 .intro-image img {
     width: 100%;
     max-width: 520px;
@@ -605,20 +583,44 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* MOBILE STACK */
+/* RIGHT: TEXT */
+.intro-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.intro-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #4b3c9f;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.intro-text p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #1a1a1a;
+    line-height: 1.8;
+    opacity: 0.95;
+    max-width: 600px;
+}
+
+/* ===== MOBILE ===== */
 @media (max-width: 780px) {
     .intro-wrapper {
         flex-direction: column;
         text-align: center;
     }
 
-    .intro-text p {
-        margin: 0 auto;
-    }
-
     .intro-image img {
         max-width: 100%;
-        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .intro-text p {
+        margin: 0 auto;
     }
 }
 
@@ -1344,23 +1346,29 @@ footer {
         <p>Your next adventure starts with RaeRoutes.</p>
     </div>
 </section>
-
-<!-- INTRO SECTION -->
+  
+<!-- Intro Section --> 
 <section class="intro">
   <div class="intro-wrapper">
-    
-  <div class="intro-image">
-    <img src="mejumpinginthesunset.png" alt="Person jumping at sunset" />
-  </div>
 
-  <div class="intro-content">
-    <h2>Thoughtful, personalized travel for every adventure.</h2>
-    <p>
-      RaeRoutes curates experiences for every type of traveler — from weekend escapes 
-      to milestone trips. Each journey is crafted with care, comfort, and intention.
-    </p>
+    <!-- LEFT: IMAGE -->
+    <div class="intro-image">
+      <img src="mejumpinginthesunset.png" alt="Travel inspiration image">
+    </div>
+
+    <!-- RIGHT: TEXT -->
+    <div class="intro-text">
+      <h2>Thoughtful, personalized travel for every adventure.</h2>
+      <p>
+        RaeRoutes curates experiences for every type of traveler.  
+        From weekend escapes to milestone trips, each journey is crafted  
+        with care, comfort, and intention.
+      </p>
+    </div>
+
   </div>
 </section>
+
 
 
 <!-- WHY RAEROUTES SECTION -->
