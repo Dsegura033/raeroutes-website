@@ -571,31 +571,31 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 3rem;
     flex-wrap: wrap;
 }
 
-/* IMAGE */
+/* LEFT: IMAGE */
 .intro-image {
-    flex: 1 1 45%; /* default width for flex */
-    min-width: 150px;
+    flex: 1;
+    min-width: 300px;
 }
 
 .intro-image img {
     width: 100%;
+    max-width: 520px;
     border-radius: 18px;
     object-fit: cover;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* TEXT */
+/* RIGHT: TEXT */
 .intro-text {
-    flex: 1 1 50%;
-    min-width: 150px;
+    flex: 1;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
 }
 
 .intro-text h2 {
@@ -616,39 +616,33 @@ nav a:hover {
     max-width: 600px;
 }
 
-/* ===== MOBILE: SIDE-BY-SIDE SCROLLABLE ===== */
+/* ===== MOBILE: HORIZONTAL SCROLLABLE ===== */
 @media (max-width: 780px) {
     .intro-wrapper {
-        display: flex;
-        flex-direction: row-reverse; /* image on right, text on left */
+        flex-direction: row-reverse; /* image right, text left */
         gap: 1rem;
-        overflow-x: auto;  /* allow horizontal scroll */
+        overflow-x: auto;
         padding: 10px;
-        scroll-snap-type: x mandatory; /* optional: snap to each item */
+        flex-wrap: nowrap; /* prevents stacking */
+        scroll-snap-type: x mandatory;
     }
 
     .intro-wrapper::-webkit-scrollbar {
-        display: none; /* hide scrollbar for cleaner look */
+        display: none;
     }
 
     .intro-image,
     .intro-text {
-        flex: 0 0 auto; /* fixed width so items don't shrink */
-        scroll-snap-align: start; /* optional snapping */
+        flex: 0 0 auto; /* fixed width so they don’t shrink */
+        scroll-snap-align: start;
     }
 
     .intro-image {
-        width: 250px; /* fixed image width */
-    }
-
-    .intro-image img {
-        width: 100%;
-        height: auto;
-        border-radius: 18px;
+        width: 250px;
     }
 
     .intro-text {
-        width: 250px; /* fixed text width */
+        width: 250px;
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -665,21 +659,30 @@ nav a:hover {
     }
 }
 
-
-/* ===== DESKTOP (image right, text left) ===== */
+/* ===== DESKTOP: IMAGE RIGHT / TEXT LEFT ===== */
 @media (min-width: 781px) {
     .intro-wrapper {
-        flex-direction: row-reverse;
+        flex-direction: row-reverse; /* image on right */
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap; /* wrap if needed */
     }
 
     .intro-image {
-        flex: 0 0 50%;
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .intro-image img {
+        max-width: 520px;
+        width: 100%;
+        height: auto;
     }
 
     .intro-text {
-        flex: 0 0 50%;
+        flex: 1;
+        min-width: 300px;
+        text-align: left;
     }
 }
 
