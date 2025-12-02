@@ -581,12 +581,13 @@ nav a:hover {
     min-width: 300px;
 }
 
+/* ===== INTRO IMAGE ===== */
 .intro-image img {
     width: 100%;
-    max-width: 520px;
-    border-radius: 18px;
-    object-fit: cover;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    height: 100%; /* fill the container height */
+    object-fit: cover; /* ensures image fills space without distortion */
+    border-radius: 0; /* removes the boxed look */
+    box-shadow: none; /* optional: cleaner look */
 }
 
 /* RIGHT: TEXT */
