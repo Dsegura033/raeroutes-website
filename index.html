@@ -555,6 +555,7 @@ nav a:hover {
     display: none;
   }
 }
+  
 /* ===== INTRO SECTION ===== */
 .intro {
     background: linear-gradient(135deg, #f4f0ff, #e7ddff);
@@ -575,6 +576,11 @@ nav a:hover {
 }
 
 /* LEFT: IMAGE */
+.intro-image {
+    flex: 1;
+    min-width: 300px;
+}
+
 .intro-image img {
     width: 100%;
     max-width: 520px;
@@ -587,6 +593,9 @@ nav a:hover {
 .intro-text {
     flex: 1;
     min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .intro-text h2 {
@@ -614,15 +623,22 @@ nav a:hover {
         text-align: center;
     }
 
+    .intro-image,
+    .intro-text {
+        min-width: 100%;
+    }
+
     .intro-image img {
         max-width: 100%;
         margin-bottom: 1.5rem;
     }
 
+    .intro-text h2,
     .intro-text p {
         margin: 0 auto;
     }
 }
+
 
 /* ===== WHY RAEROUTES SECTION ===== */
 .why-raeroutes {
