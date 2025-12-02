@@ -616,27 +616,44 @@ nav a:hover {
     max-width: 600px;
 }
 
-/* ===== MOBILE (keep side by side, image on right) ===== */
+/* ===== MOBILE: SIDE BY SIDE ===== */
 @media (max-width: 780px) {
     .intro-wrapper {
-        flex-direction: row-reverse; /* image right, text left */
+        display: flex;
+        flex-direction: row-reverse; /* image on right, text on left */
         align-items: center;
         justify-content: space-between;
+        gap: 1rem;
+        padding: 20px; /* add padding so content isn't at the edge */
     }
 
     .intro-image {
-        flex: 0 0 45%; /* image takes 45% */
+        flex: 0 0 45%; /* image takes 45% of width */
+        min-width: 120px; /* prevents image from shrinking too small */
+    }
+
+    .intro-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
     }
 
     .intro-text {
-        flex: 0 0 50%; /* text takes 50% */
+        flex: 1 1 50%; /* text takes remaining space */
+        min-width: 150px; /* prevents text from disappearing */
         text-align: left;
     }
 
+    .intro-text h2 {
+        font-size: 1.8rem; /* smaller on mobile */
+    }
+
     .intro-text p {
-        max-width: 100%;
+        font-size: 1rem; /* smaller on mobile */
+        line-height: 1.5;
     }
 }
+
 
 /* ===== DESKTOP (image right, text left) ===== */
 @media (min-width: 781px) {
