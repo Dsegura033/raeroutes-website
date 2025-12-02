@@ -575,7 +575,7 @@ nav a:hover {
     flex-wrap: wrap;
 }
 
-/* LEFT: IMAGE */
+/* IMAGE */
 .intro-image {
     flex: 1;
     min-width: 300px;
@@ -583,13 +583,13 @@ nav a:hover {
 
 .intro-image img {
     width: 100%;
-    max-width: 520px;  /* keeps image from being too wide */
+    max-width: 520px;
     border-radius: 18px;
     object-fit: cover;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* RIGHT: TEXT */
+/* TEXT */
 .intro-text {
     flex: 1;
     min-width: 300px;
@@ -619,42 +619,44 @@ nav a:hover {
 /* ===== MOBILE ===== */
 @media (max-width: 780px) {
     .intro-wrapper {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* stack text and image */
+        align-items: center;
+        gap: 2rem;
     }
 
-    .intro-image img {
-        max-width: 100%;
-        margin-bottom: 1.5rem;
+    .intro-image,
+    .intro-text {
+        flex: 1 1 100%;
     }
 
-    .intro-text p {
-        margin: 0 auto;
+    .intro-text {
+        text-align: center; /* center text on mobile */
     }
 }
 
 /* ===== DESKTOP: IMAGE RIGHT / TEXT LEFT ===== */
 @media (min-width: 781px) {
     .intro-wrapper {
-        flex-direction: row-reverse; /* flip sides */
-        align-items: center;         /* vertical alignment */
+        flex-direction: row-reverse; /* image right, text left */
+        align-items: center;
         justify-content: space-between;
+        flex-wrap: nowrap; /* keep them side by side */
     }
 
     .intro-image {
-        flex: 0 0 50%;  /* image takes up half the wrapper */
+        flex: 0 0 50%;
         min-width: 300px;
     }
 
     .intro-image img {
-        width: 100%;   /* fill the flex space */
-        max-width: 100%; /* no bigger than its container */
+        width: 100%;
         height: auto;
+        max-width: 100%;
         margin-bottom: 0;
     }
 
     .intro-text {
-        flex: 0 0 50%;  /* text takes up half */
+        flex: 0 0 50%;
         min-width: 300px;
         text-align: left;
     }
