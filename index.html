@@ -616,23 +616,50 @@ nav a:hover {
     max-width: 600px;
 }
 
-/* ===== MOBILE ===== */
+
+/* ===== MOBILE: IMAGE RIGHT / TEXT LEFT SIDE-BY-SIDE ===== */
 @media (max-width: 780px) {
     .intro-wrapper {
-        flex-direction: column; /* stack text and image */
-        align-items: center;
-        gap: 2rem;
+        flex-direction: row-reverse; /* image right, text left */
+        align-items: center;         /* vertical centering */
+        justify-content: space-between;
+        gap: 1rem;                   /* some breathing room */
+        flex-wrap: nowrap;           /* prevent stacking */
     }
 
-    .intro-image,
-    .intro-text {
-        flex: 1 1 100%;
+    .intro-image {
+        flex: 0 0 40%;               /* image takes 40% of width */
+        min-width: 120px;            /* ensures image doesn't get too small */
+    }
+
+    .intro-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
     }
 
     .intro-text {
-        text-align: center; /* center text on mobile */
+        flex: 0 0 55%;               /* text takes 55% of width */
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .intro-text h2 {
+        font-size: 1.8rem;           /* smaller heading for mobile */
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    .intro-text p {
+        font-size: 1rem;             /* smaller paragraph */
+        line-height: 1.4;
+        max-width: 100%;
     }
 }
+
 
 /* ===== DESKTOP: IMAGE RIGHT / TEXT LEFT ===== */
 @media (min-width: 781px) {
