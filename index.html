@@ -602,6 +602,60 @@ nav a:hover {
   max-width: 900px;
   margin: 0 auto;
 }
+  /* Intro Section Layout */
+.intro {
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-wrapper {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Image column */
+.intro-image img {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Text column */
+.intro-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.intro-text h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.intro-text p {
+  font-size: 1.05rem;
+  max-width: 540px;
+  line-height: 1.55;
+  opacity: 0.9;
+}
+
+/* Mobile adjustments */
+@media (max-width: 780px) {
+  .intro-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-text p {
+    margin: 0 auto;
+  }
 
 .intro-image img {
   width: 100%;
@@ -1337,6 +1391,8 @@ footer {
 
 <!-- INTRO SECTION -->
 <section class="intro">
+  <div class="intro-wrapper">
+    
   <div class="intro-image">
     <img src="mejumpinginthesunset.png" alt="Person jumping at sunset" />
   </div>
