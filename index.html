@@ -616,20 +616,29 @@ nav a:hover {
     max-width: 600px;
 }
 
-/* ===== MOBILE: SIDE BY SIDE ===== */
+/* ===== MOBILE: SIDE-BY-SIDE SCROLLABLE ===== */
 @media (max-width: 780px) {
     .intro-wrapper {
         display: flex;
         flex-direction: row-reverse; /* image on right, text on left */
-        align-items: center;
-        justify-content: space-between;
         gap: 1rem;
-        padding: 20px; /* add padding so content isn't at the edge */
+        overflow-x: auto;  /* allow horizontal scroll */
+        padding: 10px;
+        scroll-snap-type: x mandatory; /* optional: snap to each item */
+    }
+
+    .intro-wrapper::-webkit-scrollbar {
+        display: none; /* hide scrollbar for cleaner look */
+    }
+
+    .intro-image,
+    .intro-text {
+        flex: 0 0 auto; /* fixed width so items don't shrink */
+        scroll-snap-align: start; /* optional snapping */
     }
 
     .intro-image {
-        flex: 0 0 45%; /* image takes 45% of width */
-        min-width: 120px; /* prevents image from shrinking too small */
+        width: 250px; /* fixed image width */
     }
 
     .intro-image img {
@@ -639,17 +648,19 @@ nav a:hover {
     }
 
     .intro-text {
-        flex: 1 1 50%; /* text takes remaining space */
-        min-width: 150px; /* prevents text from disappearing */
+        width: 250px; /* fixed text width */
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .intro-text h2 {
-        font-size: 1.8rem; /* smaller on mobile */
+        font-size: 1.8rem;
     }
 
     .intro-text p {
-        font-size: 1rem; /* smaller on mobile */
+        font-size: 1rem;
         line-height: 1.5;
     }
 }
