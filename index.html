@@ -583,7 +583,7 @@ nav a:hover {
 
 .intro-image img {
     width: 100%;
-    max-width: 520px;
+    max-width: 520px;  /* keeps image from being too wide */
     border-radius: 18px;
     object-fit: cover;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
@@ -633,30 +633,32 @@ nav a:hover {
     }
 }
 
-/* Flip image to right / text to left on desktop */
+/* ===== DESKTOP: IMAGE RIGHT / TEXT LEFT ===== */
 @media (min-width: 781px) {
     .intro-wrapper {
-        flex-direction: row-reverse; /* flips image and text */
-        align-items: center; /* vertically center content */
-        gap: 3rem;
+        flex-direction: row-reverse; /* flip sides */
+        align-items: center;         /* vertical alignment */
+        justify-content: space-between;
     }
 
-    .intro-text {
-        text-align: left;
-    }
-
-    .intro-image,
-    .intro-text {
-        min-width: 300px; /* keep your original sizing */
-        flex: 1; /* allow equal space for both */
+    .intro-image {
+        flex: 0 0 50%;  /* image takes up half the wrapper */
+        min-width: 300px;
     }
 
     .intro-image img {
-        max-width: 520px; /* keep image size consistent */
-        margin-bottom: 0; /* remove stacking margin */
+        width: 100%;   /* fill the flex space */
+        max-width: 100%; /* no bigger than its container */
+        height: auto;
+        margin-bottom: 0;
+    }
+
+    .intro-text {
+        flex: 0 0 50%;  /* text takes up half */
+        min-width: 300px;
+        text-align: left;
     }
 }
-
 
 
 /* ===== WHY RAEROUTES SECTION ===== */
