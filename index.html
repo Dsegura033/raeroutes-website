@@ -686,22 +686,22 @@ nav a:hover {
         text-align: left;
     }
 }
-  
-/* CLOUDY + NOISE BACKGROUND */
+
+  /* ===== WHY RAEROUTES SECTION (FIXED) ===== */
 .why-raeroutes {
-    background: 
-        /* Noise texture overlay */
-        url("data:image/svg+xml,\
-        %3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E") repeat,
-
-        /* Pastel cloudy gradient */
-        radial-gradient(circle at 20% 30%, #ffffff 0%, #f7f3ff 40%, #eae3ff 100%);
-
     padding: 100px 20px;
     text-align: center;
     border-radius: 20px;
-}
 
+    /* Cloudy gradient base (your original style + improved softness) */
+    background:
+        /* Noise layer */
+        url("data:image/svg+xml,\
+        %3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E") repeat,
+
+        /* Cloudy pastel gradient */
+        radial-gradient(circle at 20% 30%, #ffffff 0%, #fdfbff 35%, #f4f0ff 100%);
+}
 
 /* ===== ICON ANIMATIONS — REPLACEMENT / IMPROVED ===== */
 .why-icon {
