@@ -750,15 +750,10 @@ nav a:hover {
     color: #5d537d;
     line-height: 1.45;
 }
-  .why-icon img {
-    max-width: 60%;   /* keeps the icon smaller than the circle */
-    max-height: 60%;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    z-index: 1;
-}
 
+/* ============================================================
+   ICON WRAPPER
+   ============================================================ */
 
 .why-icon {
     width: 70px;
@@ -769,8 +764,19 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
+.why-icon img {
+    max-width: 60%;
+    max-height: 60%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+/* Optional for inline SVG icons */
 .why-icon svg {
     width: 34px;
     height: 34px;
@@ -796,7 +802,6 @@ nav a:hover {
         font-size: 1.7rem;
     }
 }
-
 
 
 /* ===== COLLECTIONS ===== */
