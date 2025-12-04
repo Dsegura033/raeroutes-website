@@ -262,6 +262,54 @@ nav a:hover {
   opacity: 0.95;
   max-width: 600px;
 }
+    /* ===== INTRO SECTION ORDER FIX ===== */
+@media (min-width: 781px) {
+  .intro-wrapper {
+    flex-direction: row; /* keep desktop horizontal */
+  }
+
+  .intro-text {
+    order: 0; /* text first */
+  }
+
+  .intro-image {
+    order: 1; /* image second */
+  }
+}
+
+/* MOBILE remains unchanged */
+@media (max-width: 780px) {
+  .intro-wrapper {
+    flex-direction: row;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 10px;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+  }
+
+  .intro-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .intro-image,
+  .intro-text {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .intro-image {
+    width: 250px;
+  }
+
+  .intro-text {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 
 /* ===== WHY RAEROUTES SECTION ===== */
 .why-raeroutes {
