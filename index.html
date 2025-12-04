@@ -685,18 +685,14 @@ nav a:hover {
         min-width: 300px;
         text-align: left;
     }
-}
-
-/* ============================================================
-   WHY RAEROUTES SECTION — CLEAN + RESTORED
-   ============================================================ */
-
+/* WHY RAEROUTES SECTION — CLEAN & SAFE */
 .why-raeroutes {
     padding: 80px 20px;
     text-align: center;
     border-radius: 20px;
+    background: #f7f2ff; /* simple pastel for now */
+}
 
-/* TITLE */
 .why-raeroutes h2 {
     font-size: 2rem;
     font-weight: 700;
@@ -704,7 +700,6 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-/* GRID */
 .why-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -717,9 +712,7 @@ nav a:hover {
     background: #ffffff;
     padding: 28px 24px;
     border-radius: 20px;
-    box-shadow:
-        0 5px 18px rgba(0,0,0,0.06),
-        inset 0 0 0 1px rgba(120,90,180,0.1);
+    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -728,7 +721,6 @@ nav a:hover {
     box-shadow: 0 8px 22px rgba(0,0,0,0.08);
 }
 
-/* CARD TITLES */
 .why-card h3 {
     font-size: 1.15rem;
     margin-top: 10px;
@@ -743,44 +735,25 @@ nav a:hover {
     line-height: 1.45;
 }
 
-/* ============================================================
-   ICON WRAPPER
-   ============================================================ */
-
+/* ICONS */
 .why-icon {
     width: 70px;
     height: 70px;
     margin: 0 auto 14px auto;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(205,180,255,0.22), rgba(205,180,255,0.12));
+    background: rgba(205,180,255,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .why-icon img {
-    max-width: 60%;
-    max-height: 60%;
+    width: 40px; /* fixed size so images don't explode */
+    height: 40px;
     object-fit: contain;
-    display: block;
-    margin: 0 auto;
-    z-index: 1;
 }
 
-/* Optional for inline SVG icons */
-.why-icon svg {
-    width: 34px;
-    height: 34px;
-    stroke: #a58ce0;
-    stroke-width: 2.4;
-    fill: none;
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .why-grid {
         grid-template-columns: 1fr;
