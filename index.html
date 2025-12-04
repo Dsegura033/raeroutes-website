@@ -755,18 +755,48 @@ nav a:hover {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+
+    /* allow the section to scroll side-to-side */
     .why-grid {
-        grid-template-columns: 1fr;
+        display: flex;                /* change grid to horizontal scroll */
+        gap: 16px;
+        overflow-x: auto;             /* enable scrolling */
+        padding-bottom: 10px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
 
+    /* each card becomes a "slide" */
     .why-card {
+        min-width: 260px;             /* keeps each card readable */
+        flex: 0 0 auto;
+        scroll-snap-align: start;
         padding: 26px 22px;
     }
 
+    /* heading size */
     .why-raeroutes h2 {
         font-size: 1.7rem;
     }
 }
+  
+/* --- LOTTIE ICON FIX --- */
+.why-icon {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Force Lottie SVG to size correctly */
+.why-icon svg {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 auto;
+    display: block;
+}
+
 
 
 /* ===== COLLECTIONS ===== */
