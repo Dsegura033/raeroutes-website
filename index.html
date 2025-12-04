@@ -688,158 +688,177 @@ nav a:hover {
 }
 
 
-/* ===== WHY RAEROUTES SECTION ===== */
-.why-raeroutes {
-    background: linear-gradient(135deg, #fdfbff, #f4f0ff); /* soft pastel background */
-    padding: 100px 20px;
-    text-align: center;
-    border-radius: 20px;
-}
-
-.why-raeroutes h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: #4b3c9f;
-    margin-bottom: 50px;
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.why-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(205,180,255,0.25)); /* soft pastel purple gradient */
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06); /* floating effect */
-    transition: all 0.3s ease;
-    border: 1px solid rgba(205,180,255,0.5);
-}
-
-.why-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #4b3c9f;
-    margin-bottom: 15px;
-}
-
-.why-card p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #1a1a1a;
-}
-
-.why-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(108,83,177,0.25);
-    border: 1px solid rgba(205,180,255,0.8);
-}
-  
-/* Section Divider */
-.why-raeroutes + .section-divider {
-    height: 3px;
-    width: 80px;
-    background: #cdb4ff;
-    margin: 50px auto 0 auto;
-    border-radius: 2px;
-}
-
-/* ===== ICON ANIMATION BASE ===== */
+/* ===== ICON ANIMATIONS — REPLACEMENT / IMPROVED ===== */
 .why-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 15px auto;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 14px auto;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* icons are decorative */
+}
+
+/* subtle backing circle so each icon reads clearly on the card */
+.why-icon::before {
+    content: "";
+    position: absolute;
+    width: 82%;
+    height: 82%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, rgba(205,180,255,0.18), rgba(205,180,255,0.08));
+    z-index: 0;
 }
 
 /* ===================== */
-/* 1. MAP PIN ANIMATION  */
+/* 1) MAP PIN (tuned)   */
 /* ===================== */
 .pin {
-    width: 24px;
-    height: 24px;
-    border: 3px solid #6c53b1;
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg);
+    width: 28px;
+    height: 28px;
+    position: relative;
+    z-index: 1;
+    transform: translateY(0) rotate(-45deg); /* keep rotate but use translate for better baseline */
+    animation: pinBounce 2000ms infinite cubic-bezier(.25,.8,.25,1);
+    /* small shadow to "ground" it */
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.06));
+}
+
+/* actual "pin head" circle inside the rotated square */
+.pin::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    transform: translate(-50%, -50%) rotate(45deg); /* counter-rotate inner circle so it reads upright */
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,0.03);
+    border: 2px solid #6c53b1;
+}
+
+/* vertical taper to form the 'drop' of the pin */
+.pin::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
     background: #cdb4ff;
-    margin-top: 15px;
-    animation: pinBounce 2.2s infinite ease-in-out;
+    border-left: 2px solid rgba(108,83,177,0.12);
+    border-bottom: 2px solid rgba(108,83,177,0.12);
+    border-radius: 3px;
 }
 
 @keyframes pinBounce {
-    0%, 100% { transform: translateY(0) rotate(-45deg); }
-    50% { transform: translateY(-8px) rotate(-45deg); }
+    0%,100% { transform: translateY(0) rotate(-45deg); }
+    50%   { transform: translateY(-6px) rotate(-45deg); }
 }
 
 /* ===================== */
-/* 2. SPARKLES ANIMATION */
+/* 2) SPARKLES (tuned)  */
 /* ===================== */
-.sparkles::before,
-.sparkles::after {
-    content: "";
+.sparkles {
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    display: block;
+}
+
+.sparkles .dot {
     position: absolute;
-    width: 14px;
-    height: 14px;
-    background: radial-gradient(circle, #f4eaff, #cdb4ff);
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    animation: sparkle 1.8s infinite ease-in-out;
+    background: linear-gradient(180deg,#f8f4ff,#e9dcff);
+    box-shadow: 0 2px 6px rgba(140,100,190,0.12);
+    opacity: 0.9;
+    transform-origin: center;
+    animation: sparkleMove 1800ms infinite ease-in-out;
 }
 
-.sparkles::before {
-    top: 10px;
-    left: 22px;
-}
+/* place three dots for nicer composition */
+.sparkles .dot.a { left: 6px; top: 10px; animation-delay: 0s; }
+.sparkles .dot.b { left: 18px; top: 2px;  animation-delay: 0.35s; transform: scale(0.95); }
+.sparkles .dot.c { left: 28px; top: 16px; animation-delay: 0.7s; transform: scale(0.85); }
 
-.sparkles::after {
-    bottom: 12px;
-    right: 22px;
-    animation-delay: .6s;
-}
-
-@keyframes sparkle {
-    0%, 100% { transform: scale(0.6); opacity: 0.4; }
-    50% { transform: scale(1.15); opacity: 1; }
+@keyframes sparkleMove {
+    0%   { transform: translateY(0) scale(0.85); opacity: 0.6; }
+    50%  { transform: translateY(-6px) scale(1.12); opacity: 1; }
+    100% { transform: translateY(0) scale(0.85); opacity: 0.6; }
 }
 
 /* ===================== */
-/* 3. HEART PULSE ANIMATION */
+/* 3) HEART (tuned)     */
 /* ===================== */
 .heart {
-    width: 55px;
-    height: 55px;
+    z-index: 1;
+    width: 46px;
+    height: 46px;
     position: relative;
-    transform: rotate(-45deg);
-    animation: heartbeat 1.8s infinite ease-in-out;
+    display: block;
+    transform: rotate(-45deg); /* keep base rotation for classic CSS heart */
+    animation: heartbeat 1600ms infinite cubic-bezier(.2,.8,.2,1);
+    filter: drop-shadow(0 4px 10px rgba(108,83,177,0.08));
 }
 
+/* two rounded halves that form the heart */
 .heart::before,
 .heart::after {
     content: "";
     position: absolute;
-    width: 28px;
-    height: 45px;
-    background: #cdb4ff;
-    border-radius: 25px 25px 0 0;
-}
-
-.heart::before {
-    left: 28px;
+    width: 24px;
+    height: 36px;
+    background: linear-gradient(180deg,#e9dcff,#cdb4ff);
+    border-radius: 24px 24px 0 0;
+    top: 0;
+    left: 0;
 }
 
 .heart::after {
-    top: 28px;
+    left: 22px;
+    top: 0;
+}
+
+/* small center glow to make it feel warmer */
+.heart .glow {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    transform: translate(-50%,-50%) rotate(45deg) scale(1);
+    width: 46%;
+    height: 28%;
+    border-radius: 50%;
+    background: rgba(205,180,255,0.16);
+    z-index: -1;
 }
 
 @keyframes heartbeat {
-    0%, 100% { transform: scale(1) rotate(-45deg); }
-    50% { transform: scale(1.15) rotate(-45deg); }
+    0%,100% { transform: rotate(-45deg) scale(1); }
+    40%     { transform: rotate(-45deg) scale(1.12); }
+    60%     { transform: rotate(-45deg) scale(0.98); }
+}
+
+/* ===================== */
+/* Accessibility & mobile tweaks */
+/* ===================== */
+@media (max-width: 768px) {
+    .why-icon { width: 62px; height: 62px; margin-bottom: 12px; }
+    .pin { width: 24px; height: 24px; }
+    .pin::after { width: 14px; height: 14px; top: 16%; }
+    .heart { width: 40px; height: 40px; }
+    .sparkles { width: 36px; height: 36px; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .pin, .sparkles .dot, .heart { animation: none !important; transform: none !important; }
 }
 
 
