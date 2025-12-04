@@ -600,7 +600,14 @@ footer {
             <!-- Card 1: Personalized Itineraries -->
             <div class="why-card">
                 <div class="why-icon">
-                    <img src="Mapbrowsing.json" alt="Pin Icon">
+                    <lottie-player
+                        src="Mapbrowsing.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay
+                        style="width: 80px; height: 80px;">
+                    </lottie-player>
                 </div>
                 <h3>Personalized Itineraries</h3>
                 <p>Each trip is designed to match your style, pace, and comfort.</p>
@@ -609,7 +616,14 @@ footer {
             <!-- Card 2: Stress-Free Planning -->
             <div class="why-card">
                 <div class="why-icon">
-                    <img src="Enjoybeachvacation.json" alt="Sparkles Icon">
+                    <lottie-player
+                        src="Enjoybeachvacation.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay
+                        style="width: 80px; height: 80px;">
+                    </lottie-player>
                 </div>
                 <h3>Stress-Free Planning</h3>
                 <p>I handle all the research so you can simply enjoy your journey.</p>
@@ -618,7 +632,14 @@ footer {
             <!-- Card 3: Travel With Intention -->
             <div class="why-card">
                 <div class="why-icon">
-                    <img src="loveart.json" alt="Heart Icon">
+                    <lottie-player
+                        src="loveart.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay
+                        style="width: 80px; height: 80px;">
+                    </lottie-player>
                 </div>
                 <h3>Travel With Intention</h3>
                 <p>Every adventure is crafted to feel meaningful, not rushed.</p>
@@ -628,6 +649,8 @@ footer {
     </div>
 </section>
 
+<!-- Lottie library -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 <!-- COLLECTIONS SECTION -->
 <section id="collections" class="collections-section">
@@ -776,83 +799,64 @@ footer {
       }
       setInterval(autoScroll, 20);
   }
-</script>
-<script>
-function toggleMenu() {
+
+  // Mobile nav toggle
+  function toggleMenu() {
     const menu = document.getElementById("mobileNav");
     menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-}
+  }
 </script>
-  <script>
-const animateElements = document.querySelectorAll(
-  '.services-gifting h2, .services-gifting p, .service-card'
-);
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('in-view');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-animateElements.forEach(el => observer.observe(el));
-</script>
-  <script>
-const aboutElements = document.querySelectorAll(
-  '.about-section h2, .about-section p, .about-section .about-btn'
-);
-
-const observerAbout = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('in-view');
-      observerAbout.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-aboutElements.forEach(el => observerAbout.observe(el));
-</script>
-  <script>
-const contactElements = document.querySelectorAll(
-  '.contact-cta h2, .contact-cta p, .contact-cta .qr-code img, .contact-cta .button'
-);
-
-const observerContact = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('in-view');
-      observerContact.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-contactElements.forEach(el => observerContact.observe(el));
-</script>
-  <!-- Lottie library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.11.9/lottie.min.js"></script>
 
 <script>
-  // Replace each <img> with Lottie animation
-  document.querySelectorAll('.why-icon img').forEach((el) => {
-    const path = el.getAttribute('src');
-    const container = el.parentElement;
+  // Intersection observers for animation
+  const animateElements = document.querySelectorAll(
+    '.services-gifting h2, .services-gifting p, .service-card'
+  );
 
-    // Remove the <img> element
-    el.remove();
-
-    // Load Lottie animation into the container
-    lottie.loadAnimation({
-      container: container,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: path
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
     });
-  });
+  }, { threshold: 0.2 });
+
+  animateElements.forEach(el => observer.observe(el));
+
+  const aboutElements = document.querySelectorAll(
+    '.about-section h2, .about-section p, .about-section .about-btn'
+  );
+
+  const observerAbout = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        observerAbout.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  aboutElements.forEach(el => observerAbout.observe(el));
+
+  const contactElements = document.querySelectorAll(
+    '.contact-cta h2, .contact-cta p, .contact-cta .qr-code img, .contact-cta .button'
+  );
+
+  const observerContact = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        observerContact.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  contactElements.forEach(el => observerContact.observe(el));
 </script>
+
+<!-- Lottie player (for Why RaeRoutes icons and other Lottie animations) -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 
 </body>
