@@ -720,13 +720,14 @@ html, body {
   box-shadow: 0 12px 28px rgba(0,0,0,0.1);
 }
 
-/* EMOJI / ICON */
+/* EMOJI / ICON FROM HTML ATTRIBUTE */
 .service-card::before {
-  content: '🎁'; /* change per card */
+  content: attr(data-emoji);
   font-size: 2rem;
   display: block;
   margin-bottom: 10px;
 }
+
 
 /* CARD TITLE */
 .service-card h3 {
@@ -1049,22 +1050,18 @@ footer {
 
 <!-- SERVICES & GIFTING SECTION -->
 <section class="services-gifting" id="services">
-    <div class="container">
-        <h2>Services & Gifting Options</h2>
-        <p>Perfect for holidays, surprises, or just because; RaeRoutes makes travel thoughtful and stress-free.</p>
-        <div class="service-cards">
-            <div class="service-card">
-                <h3>Travel Vouchers</h3>
-                <p>Gift a curated experience: perfect for birthdays, holidays, or special surprises.</p>
-                <a href="holiday.html" class="button">Get a Holiday Voucher</a>
-            </div>
-            <div class="service-card">
-                <h3>Guided Assistance</h3>
-                <p>Support and advice throughout your trip for a seamless experience.</p>
-                <a href="#contact" class="button">Learn More</a>
-            </div>
-        </div>
+    <div class="service-cards">
+    <div class="service-card" data-emoji="🎁">
+        <h3>Travel Vouchers</h3>
+        <p>Gift a curated experience: perfect for birthdays, holidays, or special surprises.</p>
+        <a href="holiday.html" class="button">Get a Holiday Voucher</a>
     </div>
+    <div class="service-card" data-emoji="🧭">
+        <h3>Guided Assistance</h3>
+        <p>Support and advice throughout your trip for a seamless experience.</p>
+        <a href="#contact" class="button">Learn More</a>
+    </div>
+</div>
 </section>
  <!-- ===== ABOUT SECTION ===== -->
 <section id="about" class="about-section">
