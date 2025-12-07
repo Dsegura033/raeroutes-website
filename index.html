@@ -751,16 +751,45 @@ html, body {
   margin-bottom: 50px;
 }
 
-/* CARD CONTAINER */
-.service-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
+/* ===== SCROLL WRAPPER ===== */
+.service-scroll {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
 }
 
-/* EACH CARD */
+/* subtle gradient hints for scroll */
+.service-scroll::before,
+.service-scroll::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.service-scroll::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(248,244,255,1), rgba(248,244,255,0));
+}
+
+.service-scroll::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(248,244,255,1), rgba(248,244,255,0));
+}
+
+/* ===== CARDS FLEX CONTAINER ===== */
+.service-cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+/* ===== EACH CARD ===== */
 .service-card {
   background: linear-gradient(135deg, #f7f2ff, #e7ddff);
   border-radius: 20px;
@@ -771,6 +800,9 @@ html, body {
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  flex: 0 0 auto;           /* prevent shrinking */
+  width: 250px;             /* fixed width to enable scroll */
+  scroll-snap-align: start; /* aligns each card on scroll */
 }
 
 .service-card:hover {
@@ -785,7 +817,6 @@ html, body {
   display: block;
   margin-bottom: 10px;
 }
-
 
 /* CARD TITLE */
 .service-card h3 {
@@ -820,43 +851,19 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* ===== MOBILE SCROLL ===== */
 @media (max-width: 700px) {
-  .service-cards {
-    display: flex !important;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 16px;
-    padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    max-width: 100%;
-  }
-
   .service-card {
-    flex: 0 0 auto;
-    width: 280px;   /* make each card wider than half of viewport */
-    scroll-snap-align: start;
+    width: 220px; /* slightly smaller to show next card partially */
   }
 }
 
-    /* wrapper forces scroll */
-.service-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-}
-
-.service-cards {
-  display: flex;
-  gap: 16px;
-  flex-wrap: nowrap;
-}
-
-.service-card {
-  flex: 0 0 auto;
-  width: 250px;
-  scroll-snap-align: start;
+/* ===== DESKTOP HORIZONTAL SCROLL (optional) ===== */
+@media (min-width: 1024px) {
+  .service-scroll {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
 }
 
 
@@ -1241,8 +1248,6 @@ footer {
           </div>
       </div>
     </div>
-</section>
-
 </section>
 
   <!--About me section -->
