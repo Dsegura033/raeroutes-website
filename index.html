@@ -457,21 +457,19 @@ nav a:hover {
   margin-bottom: 50px;
 }
 
-/* HORIZONTAL SCROLL LAYOUT */
-.collections-scroll {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 10px 0 15px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-left: 10px;
-  justify-content: flex-start; /* aligns cards to left for scroll */
+.collections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  align-items: start;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .collection-card {
-  min-width: 220px;         /* fixed width for scroll */
-  flex-shrink: 0;           /* prevent shrinking */
+  width: 220px;
   padding: 15px;
   text-align: center;
   border-radius: 16px;
@@ -483,7 +481,7 @@ nav a:hover {
   flex-direction: column;
   justify-content: flex-start;
   height: 320px;
-  scroll-snap-align: start;
+  margin: 15px;
 }
 
 .collection-card img {
@@ -543,18 +541,6 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* OPTIONAL MOBILE TWEAKS */
-@media (max-width: 700px) {
-  .collections-scroll {
-    padding-left: 8px;
-    gap: 16px;
-  }
-
-  .collection-card {
-    min-width: 180px;
-    max-width: 220px;
-  }
-}
 
 /* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED + BOX REFINEMENTS) ===== */
 
