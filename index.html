@@ -540,28 +540,53 @@ nav a:hover {
   font-size: 3rem;
   cursor: pointer;
 }
-    @media (max-width: 768px) {
+   /* ===== MOBILE SCROLL ===== */
+@media (max-width: 768px) {
   .collections {
-    display: flex;              /* switch from grid to flex */
-    flex-wrap: nowrap;          /* no wrapping to next line */
-    overflow-x: auto;           /* horizontal scrolling */
-    gap: 15px;                  /* spacing between cards */
-    padding-bottom: 10px;       /* extra space at bottom for scroll */
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-    scroll-snap-type: x mandatory;    /* optional: nice snapping */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
   }
 
   .collections::-webkit-scrollbar {
-    display: none;              /* hide the scrollbar */
+    display: none;
   }
 
   .collection-card {
-    flex: 0 0 auto;             /* keep width constant */
-    width: 220px;               /* same as current */
-    margin: 0;                  /* rely on gap for spacing */
-    scroll-snap-align: start;   /* optional: snap each card into view */
+    flex: 0 0 auto;
+    width: 220px;
+    margin: 0;
+    scroll-snap-align: start;
   }
 }
+
+/* ===== DESKTOP SCROLL ===== */
+@media (min-width: 1024px) {
+  .collections {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 25px;
+    padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .collections::-webkit-scrollbar {
+    display: none;
+  }
+
+  .collection-card {
+    flex: 0 0 auto;
+    width: 220px;
+    scroll-snap-align: start;
+  }
+}
+
 
 
 
