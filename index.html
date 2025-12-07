@@ -540,71 +540,77 @@ nav a:hover {
   font-size: 3rem;
   cursor: pointer;
 }
-    /* ===== PLAN YOUR TRIP SECTION ===== */
+   /* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED) ===== */
+
+html, body {
+  overflow-x: hidden;
+}
+
+/* MAIN WRAPPER */
 .trip-process {
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #f7f2ff, #ece4ff);
+  padding: 90px 20px;
   text-align: center;
+  background: linear-gradient(135deg, #f7f2ff, #ece4ff);
   border-radius: 30px;
   margin: 80px auto;
   position: relative;
   overflow: hidden;
 }
 
+/* HEADING */
 .trip-process h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  color: #3e2f6c;
-  margin-bottom: 15px;
+  color: #4c3a84;
+  margin-bottom: 12px;
 }
 
 .trip-process p {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.05rem;
   color: #5d4d88;
   margin-bottom: 40px;
 }
 
-.process-list {
-  list-style: none;
-  padding: 0;
+/* TWO-COLUMN LAYOUT */
+.trip-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  max-width: 850px;
   margin: 0 auto 40px auto;
-  max-width: 500px;
-  text-align: left;
 }
 
-.process-list li {
-  background: rgba(255, 255, 255, 0.6);
-  padding: 16px 20px;
-  margin: 12px 0;
-  border-radius: 14px;
-  font-size: 1rem;
-  color: #3a2d66;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* EACH STEP CARD */
+.trip-step {
+  background: #faf9ff;
+  padding: 18px 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255,255,255,0.5);
 }
 
-/* little sparkle/dot on each li */
-.process-list li::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  background: #bda4ff;
+/* EMOJI CIRCLE */
+.step-emoji {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
+  background: #e7ddff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
 }
 
-/* subtle hover */
-.process-list li:hover {
-  transform: translateX(6px);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.07);
+/* TEXT INSIDE THE STEP */
+.step-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: #3e2f6c;
+  text-align: left;
 }
 
 /* BUTTON */
@@ -625,87 +631,35 @@ nav a:hover {
   transform: translateY(-3px);
 }
 
-/* OPTIONAL: Sparkles background */
+/* SPARKLES (OPTIONAL) */
 .trip-process::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(rgba(255,255,255,0.45) 2px, transparent 2px);
-  background-size: 120px 120px;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.5) 2px, transparent 2px);
+  background-size: 110px 110px;
   pointer-events: none;
-  opacity: 0.4;
-}
-/* PLAN YOUR TRIP — NEW TWO-COLUMN LAYOUT */
-.trip-process {
-  padding: 80px 20px;
-  text-align: center;
-  background: linear-gradient(135deg, #f8f4ff, #ece4ff);
-  border-radius: 24px;
-}
-
-.trip-intro h2 {
-  font-size: 2.2rem;
-  font-family: "Playfair Display", serif;
-  color: #4c3a84;
-  margin-bottom: 10px;
-}
-
-.trip-intro p {
-  font-size: 1rem;
-  margin-bottom: 40px;
-  color: #5d537d;
-}
-
-.trip-columns {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 800px;
-  margin: 0 auto 40px auto;
-}
-
-.trip-step {
-  background: #faf9ff;
-  padding: 18px 20px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.step-num {
-  background: #d7c4ff;
-  color: #4c3a84;
-  font-weight: 700;
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 1.1rem;
-}
-
-.plan-btn {
-  margin-top: 20px;
-  display: inline-block;
+  opacity: 0.35;
 }
 
 /* MOBILE FIX */
 @media (max-width: 700px) {
   .trip-columns {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
-
+  
   .trip-step {
     justify-content: center;
   }
+
+  .trip-process {
+    border-radius: 18px;
+    margin: 60px 10px;
+    padding: 70px 18px;
+  }
 }
+
 
 
 /* ===== FOOTER ===== */
