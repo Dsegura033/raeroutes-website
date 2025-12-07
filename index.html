@@ -592,14 +592,18 @@ html, body {
 
 /* EACH STEP CARD */
 .trip-step {
-  background: #faf9ff;
-  padding: 18px 20px;
+  background: linear-gradient(135deg, #f7f2ff, #e7ddff);
+  padding: 14px 18px;   /* smaller padding makes boxes shorter */
   border-radius: 16px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border: 1px solid rgba(255,255,255,0.5);
+}
+.trip-step:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 /* EMOJI CIRCLE */
