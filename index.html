@@ -549,7 +549,7 @@ nav a:hover {
   font-size: 3rem;
   cursor: pointer;
 }
-   /* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED) ===== */
+/* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED + BOX REFINEMENTS) ===== */
 
 html, body {
   overflow-x: hidden;
@@ -581,11 +581,12 @@ html, body {
   margin-bottom: 40px;
 }
 
-/* TWO-COLUMN LAYOUT */
+/* TWO-COLUMN FLEX LAYOUT */
 .trip-columns {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* space between boxes */
   max-width: 850px;
   margin: 0 auto 40px auto;
 }
@@ -593,14 +594,23 @@ html, body {
 /* EACH STEP CARD */
 .trip-step {
   background: linear-gradient(135deg, #f7f2ff, #e7ddff);
-  padding: 14px 18px;   /* smaller padding makes boxes shorter */
+  padding: 14px 18px;   /* smaller padding for shorter boxes */
   border-radius: 16px;
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;  /* stack emoji + text */
+  align-items: center;     /* center horizontally */
+  justify-content: center; /* center vertically */
+  gap: 8px;                /* spacing between emoji and text */
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   border: 1px solid rgba(255,255,255,0.5);
+  min-width: 200px;
+  max-width: 250px;
+  text-align: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* HOVER EFFECT */
 .trip-step:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
@@ -608,22 +618,15 @@ html, body {
 
 /* EMOJI CIRCLE */
 .step-emoji {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #e7ddff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.5rem; /* bigger emoji */
 }
 
-/* TEXT INSIDE THE STEP */
+/* STEP TEXT */
 .step-text {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   color: #3e2f6c;
-  text-align: left;
+  text-align: center; /* centered inside box */
 }
 
 /* BUTTON */
@@ -658,12 +661,14 @@ html, body {
 /* MOBILE FIX */
 @media (max-width: 700px) {
   .trip-columns {
-    grid-template-columns: 1fr;
+    flex-direction: column; /* stack boxes vertically */
     gap: 16px;
   }
   
   .trip-step {
     justify-content: center;
+    min-width: 180px;
+    max-width: 220px;
   }
 
   .trip-process {
@@ -672,7 +677,6 @@ html, body {
     padding: 70px 18px;
   }
 }
-
 
 
 /* ===== FOOTER ===== */
