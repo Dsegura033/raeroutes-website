@@ -820,28 +820,26 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* MOBILE HORIZONTAL SCROLL */
 @media (max-width: 700px) {
   .service-cards {
-    display: flex !important;        /* override grid */
-    flex-wrap: nowrap;               /* no wrapping */
-    overflow-x: auto;                /* enable horizontal scroll */
-    gap: 16px;                       /* spacing between cards */
-    padding-bottom: 10px;            /* space for scroll */
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-    scroll-snap-type: x mandatory;   /* optional snapping */
-  }
+    display: flex !important;       
+    flex-wrap: nowrap;              
+    overflow-x: auto;               
+    gap: 16px;                      
+    padding-bottom: 10px;           
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;  
 
-  .service-cards::-webkit-scrollbar {
-    display: none;                   /* hide scrollbar */
+    max-width: 100%;                /* ensure it doesn’t stretch full width */
   }
 
   .service-card {
-    flex: 0 0 auto;                  /* prevent shrinking */
-    width: 250px;                     /* card width */
-    scroll-snap-align: start;        /* optional snap */
+    flex: 0 0 auto;                 
+    min-width: 250px;                /* each card keeps fixed width */
+    scroll-snap-align: start;       
   }
-  
+}
+
     /* ===== ABOUT SECTION ===== */
 .about-section {
   padding: 80px 20px;
