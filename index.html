@@ -588,8 +588,6 @@ nav a:hover {
 }
 
 
-
-
 /* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED + BOX REFINEMENTS) ===== */
 
 html, body {
@@ -699,25 +697,37 @@ html, body {
   opacity: 0.35;
 }
 
-/* MOBILE FIX */
 @media (max-width: 700px) {
   .trip-columns {
-    flex-direction: column; /* stack boxes vertically */
-    gap: 16px;
-  }
-  
-  .trip-step {
-    justify-content: center;
-    min-width: 180px;
-    max-width: 220px;
+    display: flex;              /* arrange steps in a row */
+    flex-wrap: nowrap;          /* no wrapping */
+    overflow-x: auto;           /* horizontal scroll */
+    gap: 16px;                  /* space between steps */
+    padding-bottom: 10px;       /* extra padding */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;  /* optional snap effect */
   }
 
-  .trip-process {
-    border-radius: 18px;
-    margin: 60px 10px;
-    padding: 70px 18px;
+  .trip-columns::-webkit-scrollbar {
+    display: none;              /* hide scrollbar */
+  }
+
+  .trip-col {
+    display: flex;              /* make inner columns horizontal too */
+    flex-direction: column;     /* stack steps inside each col */
+    flex: 0 0 auto;             /* prevent shrinking */
+    gap: 16px;                  /* spacing between steps */
+    scroll-snap-align: start;   /* optional snap for each col */
+  }
+
+  .trip-step {
+    min-width: 180px;           /* mobile width */
+    max-width: 220px;
+    flex: 0 0 auto;             /* don’t shrink */
+    scroll-snap-align: start;   /* snap each step into view */
   }
 }
+
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
   padding: 80px 20px;
