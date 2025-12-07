@@ -823,25 +823,25 @@ html, body {
 /* MOBILE HORIZONTAL SCROLL */
 @media (max-width: 700px) {
   .service-cards {
-    display: flex;              
-    flex-wrap: nowrap;          
-    overflow-x: auto;           
-    gap: 16px;                  
-    padding-bottom: 10px;       
-    -webkit-overflow-scrolling: touch; 
-    scroll-snap-type: x mandatory;    
+    display: flex !important;        /* override grid */
+    flex-wrap: nowrap;               /* no wrapping */
+    overflow-x: auto;                /* enable horizontal scroll */
+    gap: 16px;                       /* spacing between cards */
+    padding-bottom: 10px;            /* space for scroll */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    scroll-snap-type: x mandatory;   /* optional snapping */
   }
 
   .service-cards::-webkit-scrollbar {
-    display: none;              
+    display: none;                   /* hide scrollbar */
   }
 
   .service-card {
-    flex: 0 0 auto;             
-    width: 250px;               
-    scroll-snap-align: start;   
+    flex: 0 0 auto;                  /* prevent shrinking */
+    width: 250px;                     /* card width */
+    scroll-snap-align: start;        /* optional snap */
   }
-}
+  
     /* ===== ABOUT SECTION ===== */
 .about-section {
   padding: 80px 20px;
