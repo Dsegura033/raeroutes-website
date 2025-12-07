@@ -820,28 +820,27 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* MOBILE HORIZONTAL SCROLL */
 @media (max-width: 700px) {
   .service-cards {
-    display: flex;              /* arrange cards in a row */
-    flex-wrap: nowrap;          /* prevent wrapping */
-    overflow-x: auto;           /* enable horizontal scroll */
-    gap: 16px;                  /* spacing between cards */
-    padding-bottom: 10px;       /* extra padding for scroll */
-    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
-    scroll-snap-type: x mandatory;     /* optional snapping */
+    display: flex;              
+    flex-wrap: nowrap;          
+    overflow-x: auto;           
+    gap: 16px;                  
+    padding-bottom: 10px;       
+    -webkit-overflow-scrolling: touch; 
+    scroll-snap-type: x mandatory;    
   }
 
   .service-cards::-webkit-scrollbar {
-    display: none;              /* hide scrollbar */
+    display: none;              
   }
 
   .service-card {
-    flex: 0 0 auto;             /* prevent shrinking */
-    width: 250px;               /* width of each card */
-    scroll-snap-align: start;   /* optional snap */
+    flex: 0 0 auto;             
+    width: 250px;               
+    scroll-snap-align: start;   
   }
-}
-
 }
     /* ===== ABOUT SECTION ===== */
 .about-section {
