@@ -540,6 +540,29 @@ nav a:hover {
   font-size: 3rem;
   cursor: pointer;
 }
+    @media (max-width: 768px) {
+  .collections {
+    display: flex;              /* switch from grid to flex */
+    flex-wrap: nowrap;          /* no wrapping to next line */
+    overflow-x: auto;           /* horizontal scrolling */
+    gap: 15px;                  /* spacing between cards */
+    padding-bottom: 10px;       /* extra space at bottom for scroll */
+    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+    scroll-snap-type: x mandatory;    /* optional: nice snapping */
+  }
+
+  .collections::-webkit-scrollbar {
+    display: none;              /* hide the scrollbar */
+  }
+
+  .collection-card {
+    flex: 0 0 auto;             /* keep width constant */
+    width: 220px;               /* same as current */
+    margin: 0;                  /* rely on gap for spacing */
+    scroll-snap-align: start;   /* optional: snap each card into view */
+  }
+}
+
 
 
 /* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED + BOX REFINEMENTS) ===== */
