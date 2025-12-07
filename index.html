@@ -773,6 +773,94 @@ html, body {
     margin-bottom: 8px;
   }
 }
+    /* ===== ABOUT SECTION ===== */
+.about-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8f4ff, #ece4ff);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional subtle sparkles */
+.about-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.5) 2px, transparent 2px);
+  background-size: 120px 120px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Floating card */
+.about-card {
+  background: linear-gradient(135deg, #f7f2ff, #e7ddff);
+  padding: 40px 30px;
+  border-radius: 20px;
+  max-width: 650px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+}
+
+/* Heading */
+.about-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #4c3a84;
+  margin-bottom: 15px;
+}
+
+/* Paragraph */
+.about-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: #5d537d;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+/* Button */
+.about-card .about-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #7b5dff;
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.about-card .about-btn:hover {
+  background: #684ae0;
+  transform: translateY(-2px);
+}
+
+/* MOBILE FIX */
+@media (max-width: 700px) {
+  .about-card {
+    padding: 30px 20px;
+  }
+
+  .about-card h2 {
+    font-size: 2rem;
+  }
+
+  .about-card p {
+    font-size: 0.95rem;
+  }
+}
+
 
 
 /* ===== FOOTER ===== */
@@ -1063,16 +1151,20 @@ footer {
     </div>
 </div>
 </section>
- <!-- ===== ABOUT SECTION ===== -->
+  
+  <!--About me section -->
 <section id="about" class="about-section">
-    <h2>About Me</h2>
-    <p>
-        Hi! I'm the creator of RaeRoutes, your go-to for planned trips, 
-        curated travel inspiration, and easy getaway ideas. 
-        I started this to help people travel stress-free and explore more.
-    </p>
-    <a href="about.html" class="about-btn">Read More About Me</a>
+    <div class="about-card">
+        <h2>About Me</h2>
+        <p>
+            Hi! I'm the creator of RaeRoutes, your go-to for planned trips, 
+            curated travel inspiration, and easy getaway ideas. 
+            I started this to help people travel stress-free and explore more.
+        </p>
+        <a href="about.html" class="about-btn">Read More About Me</a>
+    </div>
 </section>
+
 
 <!-- CONTACT SECTION -->
 <section class="contact-cta" id="contact">
