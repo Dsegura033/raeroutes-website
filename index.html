@@ -540,6 +540,105 @@ nav a:hover {
   font-size: 3rem;
   cursor: pointer;
 }
+    /* ===== PLAN YOUR TRIP SECTION ===== */
+.trip-process {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f7f2ff, #ece4ff);
+  text-align: center;
+  border-radius: 30px;
+  margin: 80px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.trip-process h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #3e2f6c;
+  margin-bottom: 15px;
+}
+
+.trip-process p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #5d4d88;
+  margin-bottom: 40px;
+}
+
+.process-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 40px auto;
+  max-width: 500px;
+  text-align: left;
+}
+
+.process-list li {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 16px 20px;
+  margin: 12px 0;
+  border-radius: 14px;
+  font-size: 1rem;
+  color: #3a2d66;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* little sparkle/dot on each li */
+.process-list li::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #bda4ff;
+  border-radius: 50%;
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* subtle hover */
+.process-list li:hover {
+  transform: translateX(6px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.07);
+}
+
+/* BUTTON */
+.trip-process .button {
+  display: inline-block;
+  padding: 14px 34px;
+  background: #7b5dff;
+  color: white;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.trip-process .button:hover {
+  background: #684ae0;
+  transform: translateY(-3px);
+}
+
+/* OPTIONAL: Sparkles background */
+.trip-process::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.45) 2px, transparent 2px);
+  background-size: 120px 120px;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
 
 /* ===== FOOTER ===== */
 footer {
