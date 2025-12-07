@@ -316,13 +316,17 @@ nav a:hover {
   padding: 80px 20px;
   text-align: center;
   border-radius: 20px;
-  background: #f7f2ff;
+  background: #efeaf9; /* matches your site better */
+  position: relative;
+  overflow-x: hidden; /* prevents the crack */
 }
+
 .why-section {
   background: linear-gradient(135deg, #f4f0ff, #e7ddff);
   padding: 60px 20px;
 }
 
+/* Title */
 .why-raeroutes h2 {
   font-size: 2rem;
   font-weight: 700;
@@ -330,21 +334,41 @@ nav a:hover {
   margin-bottom: 30px;
 }
 
+/* GRID — FIXED MOBILE OVERFLOW */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 26px;
   max-width: 1000px;
   margin: 40px auto 0 auto;
+  overflow-x: auto;     /* keeps scroll only in this section */
+  padding-bottom: 10px; /* space under cards for scroll */
 }
 
+.why-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+/* ==== MOBILE FIX ==== */
+@media (max-width: 768px) {
+  .why-grid {
+    grid-template-columns: repeat(3, 80%); 
+    /* each card takes 80% of screen width → scrolls but doesn't overflow */
+  }
+
+  .why-raeroutes {
+    padding: 60px 15px;
+  }
+}
+
+/* Cards */
 .why-card {
-  background-color: #faf9ff; /* OR #faf9ff for a lil lavender whisper */
+  background-color: #f8f5ff;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease;
 }
-
 
 .why-card:hover {
   transform: translateY(-4px);
@@ -364,22 +388,22 @@ nav a:hover {
   color: #5d537d;
   line-height: 1.45;
 }
-    
 
-/* JSON / Lottie icon container */
+/* Icon container */
 .why-icon {
   width: 70px;
   height: 70px;
   margin: 0 auto 14px auto;
   border-radius: 50%;
-  background: rgba(205,180,255,0.2);
+  background: rgba(205,180,255,0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-    .sparkles {
+/* Sparkles stays same but with overflow fixed */
+.sparkles {
   position: absolute;
   top: 0;
   left: 0;
@@ -387,7 +411,7 @@ nav a:hover {
   height: 100%;
   pointer-events: none;
   overflow: hidden;
-  z-index: 0; /* make sure your content is above */
+  z-index: 0;
 }
 
 .sparkles span {
@@ -399,17 +423,6 @@ nav a:hover {
   border-radius: 50%;
   animation: sparkle 4s linear infinite;
 }
-
-.sparkles span:nth-child(1) { left: 10%; animation-delay: 0s; }
-.sparkles span:nth-child(2) { left: 25%; animation-delay: 1s; }
-.sparkles span:nth-child(3) { left: 40%; animation-delay: 2s; }
-.sparkles span:nth-child(4) { left: 55%; animation-delay: 0.5s; }
-.sparkles span:nth-child(5) { left: 70%; animation-delay: 1.5s; }
-.sparkles span:nth-child(6) { left: 85%; animation-delay: 2.5s; }
-.sparkles span:nth-child(7) { left: 20%; animation-delay: 3s; }
-.sparkles span:nth-child(8) { left: 35%; animation-delay: 3.5s; }
-.sparkles span:nth-child(9) { left: 60%; animation-delay: 1.2s; }
-.sparkles span:nth-child(10){ left: 75%; animation-delay: 2.2s; }
 
 @keyframes sparkle {
   0% { transform: translateY(0) scale(1); opacity: 0.8; }
