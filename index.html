@@ -820,16 +820,28 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* MOBILE STACK */
 @media (max-width: 700px) {
   .service-cards {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex;              /* arrange cards in a row */
+    flex-wrap: nowrap;          /* prevent wrapping */
+    overflow-x: auto;           /* enable horizontal scroll */
+    gap: 16px;                  /* spacing between cards */
+    padding-bottom: 10px;       /* extra padding for scroll */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    scroll-snap-type: x mandatory;     /* optional snapping */
   }
 
-  .service-card::before {
-    margin-bottom: 8px;
+  .service-cards::-webkit-scrollbar {
+    display: none;              /* hide scrollbar */
   }
+
+  .service-card {
+    flex: 0 0 auto;             /* prevent shrinking */
+    width: 250px;               /* width of each card */
+    scroll-snap-align: start;   /* optional snap */
+  }
+}
+
 }
     /* ===== ABOUT SECTION ===== */
 .about-section {
