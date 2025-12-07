@@ -751,42 +751,12 @@ html, body {
   margin-bottom: 50px;
 }
 
-/* ===== SCROLL WRAPPER ===== */
-.service-scroll {
-  position: relative;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-}
-
-/* subtle gradient hints for scroll */
-.service-scroll::before,
-.service-scroll::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 40px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.service-scroll::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(248,244,255,1), rgba(248,244,255,0));
-}
-
-.service-scroll::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(248,244,255,1), rgba(248,244,255,0));
-}
-
 /* ===== CARDS FLEX CONTAINER ===== */
 .service-cards {
   display: flex;
   gap: 16px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;          /* allows side by side and wraps if needed */
+  justify-content: center;  /* center cards horizontally */
 }
 
 /* ===== EACH CARD ===== */
@@ -800,11 +770,11 @@ html, body {
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  flex: 0 0 auto;           /* prevent shrinking */
-  width: 250px;             /* fixed width to enable scroll */
-  scroll-snap-align: start; /* aligns each card on scroll */
+  flex: 1 1 250px;     /* base width 250px, can shrink/grow */
+  max-width: 300px;     /* prevents cards from getting too wide */
 }
 
+/* CARD HOVER EFFECT */
 .service-card:hover {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 12px 28px rgba(0,0,0,0.1);
@@ -849,21 +819,6 @@ html, body {
 .service-card .button:hover {
   background: #684ae0;
   transform: translateY(-2px);
-}
-
-/* ===== MOBILE SCROLL ===== */
-@media (max-width: 700px) {
-  .service-card {
-    width: 220px; /* slightly smaller to show next card partially */
-  }
-}
-
-/* ===== DESKTOP HORIZONTAL SCROLL (optional) ===== */
-@media (min-width: 1024px) {
-  .service-scroll {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-  }
 }
 
 
