@@ -670,6 +670,108 @@ html, body {
     padding: 70px 18px;
   }
 }
+/* ===== SERVICES & GIFTING SECTION ===== */
+.services-gifting {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8f4ff, #ece4ff);
+  border-radius: 24px;
+  text-align: center;
+  position: relative;
+}
+
+.services-gifting h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  color: #4c3a84;
+  margin-bottom: 12px;
+}
+
+.services-gifting p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #5d537d;
+  margin-bottom: 50px;
+}
+
+/* CARD CONTAINER */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* EACH CARD */
+.service-card {
+  background: linear-gradient(135deg, #f7f2ff, #e7ddff);
+  border-radius: 20px;
+  padding: 25px 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.service-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+}
+
+/* EMOJI / ICON */
+.service-card::before {
+  content: '🎁'; /* change per card */
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* CARD TITLE */
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #4c3a84;
+  margin-bottom: 8px;
+}
+
+/* CARD TEXT */
+.service-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #5d537d;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* BUTTON */
+.service-card .button {
+  padding: 12px 28px;
+  border-radius: 50px;
+  background: #7b5dff;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.service-card .button:hover {
+  background: #684ae0;
+  transform: translateY(-2px);
+}
+
+/* MOBILE STACK */
+@media (max-width: 700px) {
+  .service-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card::before {
+    margin-bottom: 8px;
+  }
+}
 
 
 /* ===== FOOTER ===== */
