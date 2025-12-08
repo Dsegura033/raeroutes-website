@@ -47,6 +47,7 @@ a {
   padding: 0 20px;
 }
 
+/* ===== HEADER CONTAINER ===== */
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -55,14 +56,14 @@ a {
   position: sticky;
   top: 0;
   z-index: 999;
-  background: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.45); /* frosted glass */
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
-/* Logo */
+/* ===== LOGO ===== */
 .logo {
   flex: 1;
   text-align: center;
@@ -72,7 +73,7 @@ a {
   height: 50px;
 }
 
-/* Desktop nav */
+/* ===== DESKTOP NAV (STACKED HORIZONTALLY) ===== */
 .desktop-nav {
   display: flex;
   gap: 20px;
@@ -88,7 +89,6 @@ a {
   border: 2px solid #b5a0ff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .desktop-nav a:hover {
@@ -99,7 +99,7 @@ a {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* Hamburger */
+/* ===== HAMBURGER ===== */
 .hamburger {
   display: none;
   cursor: pointer;
@@ -115,7 +115,7 @@ a {
   transition: all 0.3s ease;
 }
 
-/* Mobile nav overlay */
+/* ===== MOBILE NAV OVERLAY ===== */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -159,16 +159,17 @@ a {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Media queries */
+/* ===== MEDIA QUERIES ===== */
 @media (max-width: 768px) {
   .desktop-nav { display: none; }
   .hamburger { display: block; }
 }
 
-/* Mobile nav active */
+/* ===== MOBILE NAV ACTIVE ===== */
 .mobile-nav.active {
   display: flex;
 }
+
 
 
 
@@ -1107,21 +1108,23 @@ html, body {
 <header>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-   <header class="header-container">
+  <header class="header-container">
 
-    <!-- HAMBURGER -->
+    <!-- HAMBURGER (LEFT, Mobile Only) -->
     <div class="hamburger" onclick="toggleMenu()">
         <div></div>
         <div></div>
         <div></div>
     </div>
 
-    <!-- LOGO -->
+    <!-- LOGO (CENTERED) -->
     <div class="logo">
-        <a href="#home"><img src="IMG_7560.jpg" alt="RaeRoutes Logo"></a>
+        <a href="#home">
+            <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
+        </a>
     </div>
 
-    <!-- DESKTOP NAV -->
+    <!-- DESKTOP NAV (stacked horizontally) -->
     <nav class="desktop-nav">
         <a href="#home">Home</a>
         <a href="#collections">Collections</a>
@@ -1142,6 +1145,7 @@ html, body {
     </div>
 
 </header>
+
 
 
 <!-- HERO SECTION -->
