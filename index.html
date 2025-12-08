@@ -163,15 +163,19 @@ a {
 @media (max-width: 1024px) {
   .desktop-nav { display: none; }
   .hamburger { display: block; }
+
+  /* Center the logo on mobile */
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
+/* Mobile nav overlay active */
 .mobile-nav.active {
   display: flex;
 }
-
-
-
-
 
 /* ===== HERO SECTION ===== */
 .hero {
