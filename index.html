@@ -910,6 +910,107 @@ html, body {
   }
 }
 
+/* ===== CONTACT SPLIT SECTION ===== */
+.contact-split {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #fdfaff, #ece6ff);
+  border-radius: 32px;
+  margin: 80px auto;
+  max-width: 1100px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+/* DESKTOP (side by side normally) */
+.scroll-wrap {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Panel shared style */
+.contact-panel {
+  flex: 1;
+}
+
+/* QR Box */
+.qr-box {
+  background: #fff;
+  padding: 20px;
+  width: 240px;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.qr-box img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+/* Right side text */
+.contact-right h2 {
+  font-size: 2.2rem;
+  color: #4b3f72;
+  margin-bottom: 10px;
+}
+
+.contact-right p {
+  font-size: 1.1rem;
+  color: #5a4f7d;
+  margin-bottom: 20px;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.button {
+  background: #6a5acd;
+  color: white;
+  padding: 12px 26px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #5848b3;
+  transform: translateY(-3px);
+}
+
+/* ===== MOBILE: horizontal scroll panels ===== */
+@media (max-width: 850px) {
+
+  .scroll-wrap {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0;
+    gap: 0;
+  }
+
+  .contact-panel {
+    min-width: 80%;
+    padding: 0 20px;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .contact-right {
+    text-align: center;
+  }
+
+  .contact-buttons {
+    justify-content: center;
+  }
+}
 
 
 /* ===== FOOTER ===== */
@@ -1220,17 +1321,29 @@ footer {
 
 
 <!-- CONTACT SECTION -->
-<section class="contact-cta" id="contact">
-    <div class="container">
-        <h2>Ready to Plan Your Next Trip?</h2>
-        <p>Scan to quickly connect with RaeRoutes and plan your next getaway </p>
-        <div class="qr-code">
-            <img src="qr-code.png" alt="Scan to contact RaeRoutes">
+<section class="contact-split" id="contact">
+    <div class="scroll-wrap">
+
+        <!-- Panel 1: QR -->
+        <div class="contact-panel">
+            <div class="qr-box">
+                <img src="qr-code.png" alt="Scan to contact RaeRoutes">
+            </div>
         </div>
-        <div class="contact-buttons">
-            <a href="mailto:raeroutes13@gmail.com" class="button">Email Me</a>
-            <a href="https://m.me/741937115671455" target="_blank" class="button">Message Me</a>
+
+        <!-- Panel 2: Text + Buttons -->
+        <div class="contact-panel">
+            <div class="contact-right">
+                <h2>Ready to Plan Your Next Trip?</h2>
+                <p>Scan to quickly connect with RaeRoutes and plan your next getaway.</p>
+
+                <div class="contact-buttons">
+                    <a href="mailto:raeroutes13@gmail.com" class="button">Email Me</a>
+                    <a href="https://m.me/741937115671455" target="_blank" class="button">Message Me</a>
+                </div>
+            </div>
         </div>
+
     </div>
 </section>
 
