@@ -73,7 +73,7 @@ a {
   height: 50px;
 }
 
-/* ===== DESKTOP NAV (STACKED HORIZONTALLY) ===== */
+/* ===== DESKTOP NAV ===== */
 .desktop-nav {
   display: flex;
   gap: 20px;
@@ -115,7 +115,7 @@ a {
   transition: all 0.3s ease;
 }
 
-/* ===== MOBILE NAV OVERLAY ===== */
+/* ===== MOBILE NAV ===== */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -160,15 +160,15 @@ a {
 }
 
 /* ===== MEDIA QUERIES ===== */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .desktop-nav { display: none; }
   .hamburger { display: block; }
 }
 
-/* ===== MOBILE NAV ACTIVE ===== */
 .mobile-nav.active {
   display: flex;
 }
+
 
 
 
@@ -1108,43 +1108,44 @@ html, body {
 <header>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <header class="header-container">
+<header class="header-container">
 
-    <!-- HAMBURGER (LEFT, Mobile Only) -->
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
+  <!-- HAMBURGER (LEFT) -->
+  <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
 
-    <!-- LOGO (CENTERED) -->
-    <div class="logo">
-        <a href="#home">
-            <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
-        </a>
-    </div>
+  <!-- LOGO (CENTERED) -->
+  <div class="logo">
+      <a href="#home">
+          <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
+      </a>
+  </div>
 
-    <!-- DESKTOP NAV (stacked horizontally) -->
-    <nav class="desktop-nav">
-        <a href="#home">Home</a>
-        <a href="#collections">Collections</a>
-        <a href="#planner">Trip Planner</a>
-        <a href="#about">About</a>
-        <a href="#services">Services & Gifting</a>
-        <a href="#contact">Contact</a>
-    </nav>
+  <!-- DESKTOP NAV -->
+  <nav class="desktop-nav">
+      <a href="#home">Home</a>
+      <a href="#collections">Collections</a>
+      <a href="#planner">Trip Planner</a>
+      <a href="#about">About</a>
+      <a href="#services">Services & Gifting</a>
+      <a href="#contact">Contact</a>
+  </nav>
 
-    <!-- MOBILE NAV OVERLAY -->
-    <div class="mobile-nav" id="mobileNav">
-        <a href="#home">Home</a>
-        <a href="#collections">Collections</a>
-        <a href="#planner">Trip Planner</a>
-        <a href="#about">About</a>
-        <a href="#services">Services & Gifting</a>
-        <a href="#contact">Contact</a>
-    </div>
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+      <a href="#home">Home</a>
+      <a href="#collections">Collections</a>
+      <a href="#planner">Trip Planner</a>
+      <a href="#about">About</a>
+      <a href="#services">Services & Gifting</a>
+      <a href="#contact">Contact</a>
+  </div>
 
 </header>
+
 
 
 
