@@ -327,34 +327,33 @@ a {
   }
 }
 
-/* MOBILE: stack text first, image second */
+/* MOBILE: keep side-by-side, text left, image right */
 @media (max-width: 780px) {
   .intro-wrapper {
-    flex-direction: column;  /* stack vertically */
-    align-items: center;     /* center content */
-    gap: 1.5rem;             /* space between text and image */
-    overflow-x: visible;     /* remove horizontal scroll */
-    padding: 20px;
+    flex-direction: row; /* side by side */
+    gap: 1rem;
+    padding: 10px 20px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;       /* optional if content overflows */
+    scroll-snap-type: x mandatory; /* optional */
   }
 
-  .intro-image,
+  .intro-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
   .intro-text {
-    flex: 0 0 auto;
-    width: 90%;              /* responsive width */
-    scroll-snap-align: unset; /* no snap needed */
+    order: 0;      /* text first */
+    width: 250px;  /* adjust as needed */
   }
 
-  .intro-text {
-    text-align: center;       /* center text on mobile */
-  }
-
-  .intro-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px;      /* optional styling */
+  .intro-image {
+    order: 1;      /* image second */
+    width: 250px;  /* adjust as needed */
   }
 }
+
 
 
 
