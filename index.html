@@ -771,6 +771,49 @@ html, body {
   }
 }
 
+    /* ===== TRIP PLANNER VIDEO HERO (ADDED) ===== */
+.video-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px; /* matches your existing rounded style */
+}
+
+/* Full background video */
+.planner-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2; /* stays behind your gradient + sparkles */
+}
+
+/* Dark overlay to keep text readable */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45); /* adjust darkness here */
+  z-index: -1;
+}
+
+/* Ensure section content stays above video */
+.video-hero .trip-grid {
+  position: relative;
+  z-index: 2;
+}
+
+/* Optional: hide video on mobile for performance */
+@media (max-width: 768px) {
+  .planner-video,
+  .video-overlay {
+    display: none;
+  }
+}
+
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
   padding: 80px 20px;
@@ -1339,7 +1382,16 @@ html, body {
 </div>
 
 <!-- TRIP PLANNER SECTION -->
-<section class="trip-process" id="planner">
+<section class="trip-process video-hero" id="planner">
+
+  <!-- Background Video -->
+  <video class="planner-video" autoplay muted loop playsinline>
+    <source src="YOUR_VIDEO.mp4" type="video/mp4">
+  </video>
+
+  <!-- Dark overlay so text stays readable -->
+  <div class="video-overlay"></div>
+
   <div class="trip-grid">
     <div class="trip-intro">
       <h2>Plan Your Trip</h2>
