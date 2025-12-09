@@ -387,8 +387,8 @@ a {
   gap: 26px;
   max-width: 1000px;
   margin: 40px auto 0 auto;
-  overflow-x: auto;     /* keeps scroll only in this section */
-  padding-bottom: 10px; /* space under cards for scroll */
+  overflow-x: auto;     
+  padding-bottom: 10px; 
 }
 
 .why-grid::-webkit-scrollbar {
@@ -399,7 +399,6 @@ a {
 @media (max-width: 768px) {
   .why-grid {
     grid-template-columns: repeat(3, 80%); 
-    /* each card takes 80% of screen width → scrolls but doesn't overflow */
   }
 
   .why-raeroutes {
@@ -409,14 +408,13 @@ a {
 
 /* Cards */
 .why-card {
-  background: linear-gradient(135deg, #f4f0ff, #ebe3ff);
+  background: linear-gradient(135deg, #e3d4ff, #d9c7ff); /* slightly darker gradient */
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: 0.25s ease;
-  border: 2px solid rgba(77, 60, 132, 0.3); /* added border */
-  opacity: 0;                   /* start hidden */
-  transform: translateY(20px);  /* slightly down */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* slightly stronger shadow */
+  border: 2px solid rgba(77, 60, 132, 0.4); 
+  opacity: 0;                  
+  transform: translateY(20px);  
   -webkit-transform: translateY(20px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   -webkit-transition: opacity 0.7s ease-out, -webkit-transform 0.7s ease-out;
@@ -431,13 +429,10 @@ a {
   opacity: 1;
   transform: translateY(0);     
   -webkit-transform: translateY(0);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-  -webkit-transition: opacity 0.7s ease-out, -webkit-transform 0.7s ease-out;
   -webkit-animation: fadeSlideUp 0.7s forwards;
   animation: fadeSlideUp 0.7s forwards;
 }
 
-/* Optional: keyframes fallback for WebKit */
 @-webkit-keyframes fadeSlideUp {
   0% {
     opacity: 0;
@@ -518,6 +513,7 @@ a {
   50% { transform: translateY(-80px) scale(1.3); opacity: 0.5; }
   100% { transform: translateY(0) scale(1); opacity: 0; }
 }
+
 
 
 
