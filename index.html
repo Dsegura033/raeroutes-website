@@ -364,9 +364,34 @@ a {
   border-radius: 20px;
   background: linear-gradient(135deg, #f4f0ff, #e7ddff);
   position: relative;
-  overflow-x: hidden; /* prevents the crack */
+  overflow-x: hidden; /* prevents horizontal overflow */
+  overflow-y: hidden; /* prevents vertical overflow for floating circles */
 }
 
+/* Floating Circle Background */
+.why-raeroutes .floating-circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 60%);
+  animation: floatGlow 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(2px);
+}
+
+/* Floating Animation Keyframes */
+@keyframes floatGlow {
+  0%   { transform: translate(-10px, -10px) scale(1); }
+  50%  { transform: translate(10px, 15px) scale(1.05); }
+  100% { transform: translate(-10px, -10px) scale(1); }
+}
+
+/* Section inside wrapper */
 .why-section {
   background: linear-gradient(135deg, #f4f0ff, #e7ddff);
   padding: 60px 20px;
@@ -378,6 +403,8 @@ a {
   font-weight: 700;
   color: #4c3a84;
   margin-bottom: 30px;
+  position: relative;
+  z-index: 2; /* above floating circles */
 }
 
 /* GRID — FIXED MOBILE OVERFLOW */
@@ -389,6 +416,8 @@ a {
   margin: 40px auto 0 auto;
   overflow-x: auto;     
   padding-bottom: 10px; 
+  position: relative;
+  z-index: 2; /* above floating circles */
 }
 
 .why-grid::-webkit-scrollbar {
@@ -418,6 +447,8 @@ a {
   -webkit-transform: translateY(20px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
   -webkit-transition: opacity 0.7s ease-out, -webkit-transform 0.7s ease-out;
+  position: relative;
+  z-index: 2; /* above floating circles */
 }
 
 .why-card:hover {
@@ -484,6 +515,8 @@ a {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+  z-index: 2; /* above floating circles */
 }
 
 /* Sparkles stays same but with overflow fixed */
@@ -495,7 +528,7 @@ a {
   height: 100%;
   pointer-events: none;
   overflow: hidden;
-  z-index: 0;
+  z-index: 0; /* behind cards */
 }
 
 .sparkles span {
@@ -1313,19 +1346,25 @@ h2, h3, h4, p {
 <section class="why-raeroutes">
     <div class="container">
         <h2>Why Choose RaeRoutes?</h2>
-<div class="sparkles">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
 
+        <!-- Floating Circles Background -->
+        <div class="floating-circles"></div>
+
+        <!-- Sparkles -->
+        <div class="sparkles">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Cards Grid -->
         <div class="why-grid">
 
             <!-- Card 1: Personalized Itineraries -->
