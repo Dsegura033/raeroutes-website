@@ -327,38 +327,35 @@ a {
   }
 }
 
-/* MOBILE remains unchanged */
+/* MOBILE: stack text first, image second */
 @media (max-width: 780px) {
   .intro-wrapper {
-    flex-direction: row;
-    gap: 1rem;
-    overflow-x: auto;
-    padding: 10px;
-    flex-wrap: nowrap;
-    scroll-snap-type: x mandatory;
-  }
-
-  .intro-wrapper::-webkit-scrollbar {
-    display: none;
+    flex-direction: column;  /* stack vertically */
+    align-items: center;     /* center content */
+    gap: 1.5rem;             /* space between text and image */
+    overflow-x: visible;     /* remove horizontal scroll */
+    padding: 20px;
   }
 
   .intro-image,
   .intro-text {
     flex: 0 0 auto;
-    scroll-snap-align: start;
-  }
-
-  .intro-image {
-    width: 250px;
+    width: 90%;              /* responsive width */
+    scroll-snap-align: unset; /* no snap needed */
   }
 
   .intro-text {
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    text-align: center;       /* center text on mobile */
+  }
+
+  .intro-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;      /* optional styling */
   }
 }
+
 
 
 /* ===== WHY RAEROUTES SECTION ===== */
