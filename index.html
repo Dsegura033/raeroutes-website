@@ -550,60 +550,16 @@ a {
 
 
 
-/* ===== COLLECTIONS ===== */
- .sparkle-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+/* ===== COLLECTIONS SECTION ===== */
+.collections-section {
+  padding: 60px 20px;
+  margin: 60px auto;
+  text-align: center;
+  background: linear-gradient(135deg, #f4f0ff, #e7ddff); /* theme gradient */
+  border-radius: 20px;
+  position: relative;
   overflow: hidden;
-  z-index: 0; /* behind cards */
 }
-
-.sparkle-bg span {
-  position: absolute;
-  display: block;
-  width: 8px;
-  height: 8px;
-  background: radial-gradient(circle, #fff, #ffd1ff);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 20px #d4b3ff) drop-shadow(0 0 30px #6c53b1);
-  opacity: 0.8;
-  animation: floatSparkle linear infinite;
-}
-
-/* Create random starting positions for 20 sparkles */
-.sparkle-bg span:nth-child(1)  { top: 5%; left: 10%; animation-duration: 12s; }
-.sparkle-bg span:nth-child(2)  { top: 20%; left: 30%; animation-duration: 15s; }
-.sparkle-bg span:nth-child(3)  { top: 50%; left: 60%; animation-duration: 18s; }
-.sparkle-bg span:nth-child(4)  { top: 70%; left: 20%; animation-duration: 14s; }
-.sparkle-bg span:nth-child(5)  { top: 80%; left: 80%; animation-duration: 16s; }
-.sparkle-bg span:nth-child(6)  { top: 40%; left: 50%; animation-duration: 13s; }
-.sparkle-bg span:nth-child(7)  { top: 10%; left: 70%; animation-duration: 17s; }
-.sparkle-bg span:nth-child(8)  { top: 35%; left: 15%; animation-duration: 12s; }
-.sparkle-bg span:nth-child(9)  { top: 60%; left: 40%; animation-duration: 15s; }
-.sparkle-bg span:nth-child(10) { top: 25%; left: 90%; animation-duration: 14s; }
-.sparkle-bg span:nth-child(11) { top: 55%; left: 5%; animation-duration: 18s; }
-.sparkle-bg span:nth-child(12) { top: 15%; left: 50%; animation-duration: 13s; }
-.sparkle-bg span:nth-child(13) { top: 45%; left: 70%; animation-duration: 16s; }
-.sparkle-bg span:nth-child(14) { top: 30%; left: 30%; animation-duration: 12s; }
-.sparkle-bg span:nth-child(15) { top: 65%; left: 80%; animation-duration: 17s; }
-.sparkle-bg span:nth-child(16) { top: 75%; left: 60%; animation-duration: 15s; }
-.sparkle-bg span:nth-child(17) { top: 20%; left: 90%; animation-duration: 16s; }
-.sparkle-bg span:nth-child(18) { top: 50%; left: 10%; animation-duration: 14s; }
-.sparkle-bg span:nth-child(19) { top: 85%; left: 40%; animation-duration: 18s; }
-.sparkle-bg span:nth-child(20) { top: 5%; left: 80%; animation-duration: 13s; }
-
-@keyframes floatSparkle {
-  0%   { transform: translate(0,0) scale(1); opacity: 0.8; }
-  25%  { transform: translate(50px,-50px) scale(1.3); opacity: 0.6; }
-  50%  { transform: translate(-60px,30px) scale(1); opacity: 0.9; }
-  75%  { transform: translate(40px,-20px) scale(1.2); opacity: 0.7; }
-  100% { transform: translate(0,0) scale(1); opacity: 0.8; }
-}
-
 
 .collections-section h2 {
   font-family: 'Playfair Display', serif;
@@ -629,7 +585,7 @@ a {
   padding: 15px;
   text-align: center;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(205,180,255,0.25));
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(205,180,255,0.25)); /* like Why Cards */
   backdrop-filter: blur(6px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.08);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -667,36 +623,7 @@ a {
   box-shadow: 0 12px 25px rgba(108, 83, 177, 0.25);
 }
 
-/* ===== LIGHTBOX ===== */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  justify-content: center;
-  align-items: center;
-}
-
-.lightbox-img {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.lightbox .close {
-  position: absolute;
-  top: 30px;
-  right: 50px;
-  color: white;
-  font-size: 3rem;
-  cursor: pointer;
-}
-   /* ===== MOBILE SCROLL ===== */
+/* ===== MOBILE SCROLL ===== */
 @media (max-width: 768px) {
   .collections {
     display: flex;
@@ -742,6 +669,7 @@ a {
     scroll-snap-align: start;
   }
 }
+
 
 
 /* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED + BOX REFINEMENTS) ===== */
