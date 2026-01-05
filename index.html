@@ -552,8 +552,8 @@ a {
 
 /* ===== COLLECTIONS SECTION ===== */
 .collections-section {
-  padding: 60px 20px;
-  margin: 60px auto;
+  padding: 20px 20px; /* much smaller top/bottom padding */
+  margin: 0 auto;     /* remove extra margin above/below */
   text-align: center;
   background: linear-gradient(135deg, #f4f0ff, #e7ddff); /* theme gradient */
   border-radius: 20px;
@@ -566,7 +566,7 @@ a {
   font-size: 2.8rem;
   font-weight: 700;
   color: #4b3c9f;
-  margin-bottom: 50px;
+  margin-bottom: 30px; /* slightly smaller gap below heading */
 }
 
 /* ===== Collections wrapper ===== */
@@ -586,7 +586,7 @@ a {
 
 /* ===== Collection Cards ===== */
 .collection-card {
-  flex: 0 0 auto; /* prevents stacking */
+  flex: 0 0 auto;
   width: 220px;
   padding: 15px;
   text-align: center;
@@ -607,7 +607,7 @@ a {
   height: 140px;
   object-fit: cover;
   border-radius: 12px;
-  cursor: pointer; /* shows clickable */
+  cursor: pointer;
 }
 
 .collection-card h3 {
@@ -633,12 +633,12 @@ a {
 /* ===== LIGHTBOX OVERLAY ===== */
 .lightbox {
   display: none;
-  position: fixed;   /* stays on top of everything */
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);  /* center */
+  transform: translate(-50%, -50%);
   z-index: 1000;
-  background: rgba(0,0,0,0.5);      /* semi-transparent background */
+  background: rgba(0,0,0,0.5);
   padding: 10px;
   border-radius: 12px;
   max-width: 90%;
@@ -649,13 +649,12 @@ a {
 }
 
 .lightbox-img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90%;   /* slightly bigger image */
+  max-height: 75vh;
   border-radius: 8px;
   object-fit: contain;
 }
 
-/* Close button */
 .lightbox .close {
   position: absolute;
   top: 5px;
@@ -678,15 +677,10 @@ a {
 
 /* ===== Desktop ===== */
 @media (min-width: 1024px) {
-  .collections {
-    gap: 25px;
-  }
   .collection-card {
     width: 220px;
   }
 }
-
-
 
 /* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED + BOX REFINEMENTS) ===== */
 
@@ -1595,15 +1589,15 @@ h2, h3, h4, p {
 
   document.querySelectorAll('.collection-card img').forEach(img => {
     img.addEventListener('click', () => {
-      // Show lightbox
+      // Show lightbox on top of everything
       lightbox.style.display = 'flex';
-      lightbox.style.zIndex = 1000; // ensure it's on top
+      lightbox.style.zIndex = '1000';
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
 
-      // Medium popup size
-      lightboxImg.style.maxWidth = '80%';
-      lightboxImg.style.maxHeight = '70vh';
+      // Medium popup size (larger but not full screen)
+      lightboxImg.style.maxWidth = '85%';
+      lightboxImg.style.maxHeight = '75vh';
     });
   });
 
@@ -1668,7 +1662,7 @@ h2, h3, h4, p {
   whyCards.forEach(card => observer.observe(card));
 </script>
 
-<!-- Lottie player (keep if you use Lottie elsewhere) -->
+<!-- Lottie player (keep if used elsewhere) -->
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </body>
