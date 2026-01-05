@@ -551,7 +551,7 @@ a {
 
 
 /* ===== COLLECTIONS ===== */
-  .collections-sparkles {
+ .sparkle-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -562,53 +562,36 @@ a {
   z-index: 0; /* behind cards */
 }
 
-.collections-sparkles span {
+.sparkle-bg span {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: white;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #fff, #ffd1ff);
   border-radius: 50%;
-  box-shadow: 0 0 10px #fff, 0 0 20px #d4b3ff, 0 0 30px #6c53b1;
-  opacity: 0.8;
-  animation: sparkleMove linear infinite;
+  filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 20px #d4b3ff) drop-shadow(0 0 30px #6c53b1);
+  animation: sparkleFly linear infinite;
 }
 
-/* Random sizes, delays, and positions */
-.collections-sparkles span:nth-child(1) { width: 5px; height: 5px; top: 20%; left: 10%; animation-duration: 8s; animation-delay: 0s; }
-.collections-sparkles span:nth-child(2) { width: 6px; height: 6px; top: 50%; left: 25%; animation-duration: 10s; animation-delay: 2s; }
-.collections-sparkles span:nth-child(3) { width: 4px; height: 4px; top: 70%; left: 40%; animation-duration: 12s; animation-delay: 4s; }
-.collections-sparkles span:nth-child(4) { width: 7px; height: 7px; top: 30%; left: 60%; animation-duration: 9s; animation-delay: 1s; }
-.collections-sparkles span:nth-child(5) { width: 5px; height: 5px; top: 60%; left: 80%; animation-duration: 11s; animation-delay: 3s; }
-.collections-sparkles span:nth-child(6) { width: 6px; height: 6px; top: 10%; left: 50%; animation-duration: 10s; animation-delay: 5s; }
-.collections-sparkles span:nth-child(7) { width: 4px; height: 4px; top: 40%; left: 70%; animation-duration: 12s; animation-delay: 2s; }
-.collections-sparkles span:nth-child(8) { width: 5px; height: 5px; top: 80%; left: 30%; animation-duration: 9s; animation-delay: 6s; }
-.collections-sparkles span:nth-child(9) { width: 6px; height: 6px; top: 25%; left: 90%; animation-duration: 11s; animation-delay: 3s; }
-.collections-sparkles span:nth-child(10){ width: 5px; height: 5px; top: 55%; left: 15%; animation-duration: 10s; animation-delay: 1s; }
+/* Random positions, sizes, durations */
+.sparkle-bg span:nth-child(1) { top:10%; left:20%; width:8px; height:8px; animation-duration:12s; animation-delay:0s; }
+.sparkle-bg span:nth-child(2) { top:50%; left:70%; width:12px; height:12px; animation-duration:14s; animation-delay:2s; }
+.sparkle-bg span:nth-child(3) { top:30%; left:40%; width:6px; height:6px; animation-duration:10s; animation-delay:1s; }
+.sparkle-bg span:nth-child(4) { top:70%; left:80%; width:10px; height:10px; animation-duration:16s; animation-delay:3s; }
+.sparkle-bg span:nth-child(5) { top:60%; left:10%; width:7px; height:7px; animation-duration:13s; animation-delay:4s; }
+.sparkle-bg span:nth-child(6) { top:20%; left:50%; width:9px; height:9px; animation-duration:15s; animation-delay:5s; }
+.sparkle-bg span:nth-child(7) { top:40%; left:90%; width:8px; height:8px; animation-duration:12s; animation-delay:2s; }
+.sparkle-bg span:nth-child(8) { top:80%; left:30%; width:10px; height:10px; animation-duration:14s; animation-delay:1s; }
+.sparkle-bg span:nth-child(9) { top:25%; left:60%; width:7px; height:7px; animation-duration:13s; animation-delay:3s; }
+.sparkle-bg span:nth-child(10){ top:55%; left:15%; width:9px; height:9px; animation-duration:16s; animation-delay:0s; }
 
-@keyframes sparkleMove {
-  0% {
-    transform: translate(0,0) scale(1);
-    opacity: 0.8;
-  }
-  25% {
-    transform: translate(20px,-30px) scale(1.2);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translate(-15px,20px) scale(1);
-    opacity: 0.8;
-  }
-  75% {
-    transform: translate(10px,-10px) scale(1.1);
-    opacity: 0.7;
-  }
-  100% {
-    transform: translate(0,0) scale(1);
-    opacity: 0.8;
-  }
+@keyframes sparkleFly {
+  0%   { transform: translate(0,0) scale(1); opacity: 0.8; }
+  25%  { transform: translate(30px,-50px) scale(1.2); opacity: 0.6; }
+  50%  { transform: translate(-40px,30px) scale(1); opacity: 0.9; }
+  75%  { transform: translate(20px,-20px) scale(1.1); opacity: 0.7; }
+  100% { transform: translate(0,0) scale(1); opacity: 0.8; }
 }
 
-.collections-section {
   padding: 60px 20px;
   margin: 60px auto;
   text-align: center;
@@ -1478,8 +1461,9 @@ h2, h3, h4, p {
 
 <!-- COLLECTIONS SECTION -->
 <section id="collections" class="collections-section">
-  <!-- Background floating orbs -->
-<div class="collections-animation">
+ <div class="sparkle-bg">
+  <span></span>
+  <span></span>
   <span></span>
   <span></span>
   <span></span>
@@ -1489,6 +1473,7 @@ h2, h3, h4, p {
   <span></span>
   <span></span>
 </div>
+
 
     <h2>RaeRoutes Travel Collections</h2>
     <div class="collections">
