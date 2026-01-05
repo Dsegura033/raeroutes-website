@@ -552,21 +552,22 @@ a {
 
 /* ===== COLLECTIONS SECTION ===== */
 .collections-section {
-  padding: 20px 20px; /* much smaller top/bottom padding */
-  margin: 0 auto;     /* remove extra margin above/below */
-  text-align: center;
-  background: linear-gradient(135deg, #f4f0ff, #e7ddff); /* theme gradient */
-  border-radius: 20px;
   position: relative;
+  padding: 20px 0;          /* minimal top/bottom padding */
+  margin: 0;                 /* remove extra margin */
+  text-align: center;
+  background: linear-gradient(135deg, #f4f0ff, #e7ddff);
+  border-radius: 20px;
   overflow: hidden;
 }
 
+/* Section heading */
 .collections-section h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #4b3c9f;
-  margin-bottom: 30px; /* slightly smaller gap below heading */
+  margin-bottom: 25px;
 }
 
 /* ===== Collections wrapper ===== */
@@ -574,8 +575,8 @@ a {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  gap: 25px;
-  padding-bottom: 15px;
+  gap: 20px;
+  padding: 0 20px 15px 20px;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
 }
@@ -586,12 +587,12 @@ a {
 
 /* ===== Collection Cards ===== */
 .collection-card {
-  flex: 0 0 auto;
+  flex: 0 0 auto; /* no stacking */
   width: 220px;
-  padding: 15px;
+  padding: 10px;
   text-align: center;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(205,180,255,0.25));
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(205,180,255,0.25));
   backdrop-filter: blur(6px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.08);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -600,22 +601,28 @@ a {
   justify-content: flex-start;
   height: 320px;
   scroll-snap-align: start;
+  z-index: 1;  /* ensure cards are above any background content */
 }
 
 .collection-card img {
   width: 100%;
-  height: 140px;
+  height: 150px;
   object-fit: cover;
   border-radius: 12px;
   cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.collection-card img:hover {
+  transform: scale(1.05);
 }
 
 .collection-card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: #4b3c9f;
-  margin: 15px 0 8px;
+  margin: 10px 0 5px;
 }
 
 .collection-card p {
@@ -630,7 +637,7 @@ a {
   box-shadow: 0 12px 25px rgba(108, 83, 177, 0.25);
 }
 
-/* ===== LIGHTBOX OVERLAY ===== */
+/* ===== LIGHTBOX ===== */
 .lightbox {
   display: none;
   position: fixed;
@@ -649,7 +656,7 @@ a {
 }
 
 .lightbox-img {
-  max-width: 90%;   /* slightly bigger image */
+  max-width: 85%;
   max-height: 75vh;
   border-radius: 8px;
   object-fit: contain;
@@ -671,7 +678,7 @@ a {
     width: 180px;
   }
   .collection-card img {
-    height: 120px;
+    height: 130px;
   }
 }
 
