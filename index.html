@@ -1423,51 +1423,59 @@ h2, h3, h4, p {
     </div>
 </section>
 
-<!-- Lottie library -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
-<!-- COLLECTIONS SECTION -->
 <section id="collections" class="collections-section">
+    <!-- Lottie animation as background -->
+    <lottie-player
+        src="websiteanimation.json"
+        class="collections-animation"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay>
+    </lottie-player>
+
     <h2>RaeRoutes Travel Collections</h2>
+
     <div class="collections">
         <div class="collection-card">
-            <img src="citycollection.png" alt="City Collection" data-full="citycollection.png">
+            <img src="citycollection.png" alt="City Collection">
             <h3>City Collection</h3>
             <p>Discover the best city getaways in the U.S.</p>
         </div>
         <div class="collection-card">
-            <img src="Thecoastalcollection.png" alt="Coastal Collection" data-full="Thecoastalcollection.png">
+            <img src="Thecoastalcollection.png" alt="Coastal Collection">
             <h3>Coastal Collection</h3>
             <p>Relax by the ocean and enjoy coastal vibes.</p>
         </div>
         <div class="collection-card">
-            <img src="romanticescapescollection.png" alt="Romantic Collection" data-full="romanticescapescollection.png">
+            <img src="romanticescapescollection.png" alt="Romantic Collection">
             <h3>Romantic Collection</h3>
             <p>Perfect escapes for couples and romantic adventures.</p>
         </div>
         <div class="collection-card">
-            <img src="familyfuncollection.png" alt="Family Fun Collection" data-full="familyfuncollection.png">
+            <img src="familyfuncollection.png" alt="Family Fun Collection">
             <h3>Family Fun Collection</h3>
             <p>Memorable trips for the whole family.</p>
         </div>
         <div class="collection-card">
-            <img src="adventurecollection.png" alt="Adventure Collection" data-full="adventurecollection.png">
+            <img src="adventurecollection.png" alt="Adventure Collection">
             <h3>Adventure Collection</h3>
             <p>Made for the ones who chase fresh air, big views, and a little adrenaline.</p>
         </div>
         <div class="collection-card">
-            <img src="winterwonderland.png" alt="Winter Wonderland Collection" data-full="winterwonderland.png">
+            <img src="winterwonderland.png" alt="Winter Wonderland Collection">
             <h3>Winter Wonderland Collection</h3>
             <p>Perfect winter holiday destinations.</p>
         </div>
     </div>
 </section>
 
-<!-- Lightbox overlay (medium popup) -->
+<!-- Lightbox overlay for medium-size preview -->
 <div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
-  <img class="lightbox-img" src="">
+    <span class="close">&times;</span>
+    <img class="lightbox-img" src="" alt="">
 </div>
+
 
 
 <!-- TRIP PLANNER SECTION -->
@@ -1604,9 +1612,14 @@ h2, h3, h4, p {
 
   document.querySelectorAll('.collection-card img').forEach(img => {
     img.addEventListener('click', () => {
+      // Show lightbox
       lightbox.style.display = 'flex';
-      lightboxImg.src = img.src;    // use the clicked image
+      lightboxImg.src = img.src;    // show the clicked image
       lightboxImg.alt = img.alt;
+
+      // Optional: constrain size for medium popup
+      lightboxImg.style.maxWidth = '80%';
+      lightboxImg.style.maxHeight = '70vh';
     });
   });
 
@@ -1670,7 +1683,7 @@ h2, h3, h4, p {
   whyCards.forEach(card => observer.observe(card));
 </script>
 
-<!-- Lottie player -->
+<!-- Lottie player (keep if you use Lottie elsewhere) -->
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </body>
