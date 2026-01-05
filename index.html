@@ -569,23 +569,29 @@ a {
   margin-bottom: 50px;
 }
 
+/* ===== Collections wrapper ===== */
 .collections {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 25px;
-  justify-items: center;
-  align-items: start;
-  text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding-bottom: 15px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
 }
 
+.collections::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Collection Cards ===== */
 .collection-card {
+  flex: 0 0 auto; /* prevents stacking */
   width: 220px;
   padding: 15px;
   text-align: center;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(205,180,255,0.25)); /* like Why Cards */
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(205,180,255,0.25));
   backdrop-filter: blur(6px);
   box-shadow: 0 6px 15px rgba(0,0,0,0.08);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -593,7 +599,7 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   height: 320px;
-  margin: 15px;
+  scroll-snap-align: start;
 }
 
 .collection-card img {
@@ -601,6 +607,7 @@ a {
   height: 140px;
   object-fit: cover;
   border-radius: 12px;
+  cursor: pointer; /* shows clickable */
 }
 
 .collection-card h3 {
@@ -608,7 +615,7 @@ a {
   font-size: 1.5rem;
   font-weight: 600;
   color: #4b3c9f;
-  margin-bottom: 15px;
+  margin: 15px 0 8px;
 }
 
 .collection-card p {
@@ -623,29 +630,7 @@ a {
   box-shadow: 0 12px 25px rgba(108, 83, 177, 0.25);
 }
 
-/* ===== MOBILE SCROLL ===== */
-@media (max-width: 768px) {
-  .collections {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 15px;
-    padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-  }
-
-  .collections::-webkit-scrollbar {
-    display: none;
-  }
-
-  .collection-card {
-    flex: 0 0 auto;
-    width: 220px;
-    margin: 0;
-    scroll-snap-align: start;
-  }
-  /* Lightbox overlay */
+/* ===== LIGHTBOX OVERLAY ===== */
 .lightbox {
   display: none;
   position: fixed;   /* stays on top of everything */
@@ -653,7 +638,7 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);  /* center */
   z-index: 1000;
-  background: rgba(0,0,0,0.5);      /* semi-transparent dark background */
+  background: rgba(0,0,0,0.5);      /* semi-transparent background */
   padding: 10px;
   border-radius: 12px;
   max-width: 90%;
@@ -681,27 +666,23 @@ a {
   z-index: 1001;
 }
 
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .collection-card {
+    width: 180px;
+  }
+  .collection-card img {
+    height: 120px;
+  }
+}
 
-/* ===== DESKTOP SCROLL ===== */
+/* ===== Desktop ===== */
 @media (min-width: 1024px) {
   .collections {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
     gap: 25px;
-    padding-bottom: 20px;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
   }
-
-  .collections::-webkit-scrollbar {
-    display: none;
-  }
-
   .collection-card {
-    flex: 0 0 auto;
     width: 220px;
-    scroll-snap-align: start;
   }
 }
 
@@ -1434,8 +1415,9 @@ h2, h3, h4, p {
         autoplay>
     </lottie-player>
 
+  <!-- COLLECTIONS SECTION -->
+<section id="collections" class="collections-section">
     <h2>RaeRoutes Travel Collections</h2>
-
     <div class="collections">
         <div class="collection-card">
             <img src="citycollection.png" alt="City Collection">
@@ -1469,6 +1451,7 @@ h2, h3, h4, p {
         </div>
     </div>
 </section>
+
 
 <!-- Lightbox overlay for medium-size preview -->
 <div id="lightbox" class="lightbox">
@@ -1614,10 +1597,11 @@ h2, h3, h4, p {
     img.addEventListener('click', () => {
       // Show lightbox
       lightbox.style.display = 'flex';
-      lightboxImg.src = img.src;    // show the clicked image
+      lightbox.style.zIndex = 1000; // ensure it's on top
+      lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
 
-      // Optional: constrain size for medium popup
+      // Medium popup size
       lightboxImg.style.maxWidth = '80%';
       lightboxImg.style.maxHeight = '70vh';
     });
@@ -1629,6 +1613,7 @@ h2, h3, h4, p {
     lightboxImg.alt = '';
   };
 
+  // Close lightbox when clicking close button or outside image
   closeBtn.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e => {
     if (e.target === lightbox) closeLightbox();
@@ -1649,7 +1634,7 @@ h2, h3, h4, p {
   // ===== Mobile nav toggle =====
   function toggleMenu() {
     const mobileNav = document.getElementById("mobileNav");
-    mobileNav.classList.toggle("active"); // toggles CSS class instead of inline style
+    mobileNav.classList.toggle("active");
   }
 
   // ===== Intersection observers =====
@@ -1676,7 +1661,7 @@ h2, h3, h4, p {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // animate only once
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
