@@ -551,6 +551,45 @@ a {
 
 
 /* ===== COLLECTIONS ===== */
+    .collections-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0; /* behind cards */
+}
+
+.collections-animation span {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(108,83,177,0.6), rgba(180,130,255,0.6));
+  width: 30px;
+  height: 30px;
+  opacity: 0.7;
+  animation: floatOrb 10s infinite ease-in-out;
+}
+
+/* Random positions, sizes, speeds, and delays */
+.collections-animation span:nth-child(1) { left: 5%;  width: 25px; height: 25px; animation-delay: 0s; animation-duration: 8s; }
+.collections-animation span:nth-child(2) { left: 20%; width: 40px; height: 40px; animation-delay: 2s; animation-duration: 12s; }
+.collections-animation span:nth-child(3) { left: 35%; width: 30px; height: 30px; animation-delay: 4s; animation-duration: 10s; }
+.collections-animation span:nth-child(4) { left: 50%; width: 45px; height: 45px; animation-delay: 1s; animation-duration: 14s; }
+.collections-animation span:nth-child(5) { left: 65%; width: 25px; height: 25px; animation-delay: 3s; animation-duration: 9s; }
+.collections-animation span:nth-child(6) { left: 75%; width: 35px; height: 35px; animation-delay: 5s; animation-duration: 11s; }
+.collections-animation span:nth-child(7) { left: 85%; width: 30px; height: 30px; animation-delay: 2s; animation-duration: 12s; }
+.collections-animation span:nth-child(8) { left: 95%; width: 40px; height: 40px; animation-delay: 6s; animation-duration: 13s; }
+
+@keyframes floatOrb {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.7; }
+  25%  { transform: translateY(-40px) rotate(90deg) scale(1.2); opacity: 0.5; }
+  50%  { transform: translateY(-80px) rotate(180deg) scale(1); opacity: 0.7; }
+  75%  { transform: translateY(-40px) rotate(270deg) scale(1.2); opacity: 0.5; }
+  100% { transform: translateY(0) rotate(360deg) scale(1); opacity: 0.7; }
+}
+
 .collections-section {
   padding: 60px 20px;
   margin: 60px auto;
@@ -1424,6 +1463,18 @@ h2, h3, h4, p {
 
 <!-- COLLECTIONS SECTION -->
 <section id="collections" class="collections-section">
+  <!-- Background floating orbs -->
+<div class="collections-animation">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
     <h2>RaeRoutes Travel Collections</h2>
     <div class="collections">
         <div class="collection-card">
