@@ -708,16 +708,16 @@ a {
 }
 
 
-/* ===== PLAN YOUR TRIP SECTION HERO ===== */
+/* ===== PLAN YOUR TRIP SECTION HERO FIXED ===== */
 .trip-process {
-  padding: 80px 20px;
-  text-align: center;
-  border-radius: 0;          /* remove rounding for full-width hero */
-  margin: 0;                 /* full-width */
   position: relative;
   overflow: hidden;
+  padding: 80px 20px;
+  text-align: center;
+  margin: 0 auto 80px auto;
+  min-height: 600px; /* desktop hero height */
+  border-radius: 0;   /* full-width hero style */
   background: none;
-  min-height: 600px;         /* hero height for desktop */
 }
 
 /* VIDEO HERO */
@@ -743,13 +743,25 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.35); /* keeps text readable */
+  background: rgba(0,0,0,0.35);
   z-index: -1;
+}
+
+/* Content grid sits above video */
+.trip-grid {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-top: 40px;   /* space from top of hero */
+  padding-bottom: 40px; /* space below content */
 }
 
 /* INTRO TEXT */
 .trip-intro {
-  background: rgba(0,0,0,0.5);  /* darker so text always pops */
+  background: rgba(0,0,0,0.5);
   padding: 30px 40px;
   border-radius: 20px;
   max-width: 600px;
@@ -799,6 +811,7 @@ a {
   padding: 14px 36px;
   font-weight: 600;
   box-shadow: 0 6px 15px rgba(123,93,255,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .trip-process .button:hover {
@@ -821,7 +834,7 @@ a {
 @media (max-width: 768px) {
   .planner-video,
   .video-overlay {
-    height: 300px; /* keep video visible */
+    display: none; /* hide video on mobile for readability */
   }
 
   .trip-columns {
@@ -851,7 +864,6 @@ a {
     max-width: 220px;
   }
 }
-
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
