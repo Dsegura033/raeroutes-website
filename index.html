@@ -711,59 +711,58 @@ a {
 /* ===== PLAN YOUR TRIP SECTION ===== */
 .trip-process {
   position: relative;
-  overflow: hidden;
   text-align: center;
-  margin: 120px auto 80px auto;
-  padding: 100px 20px;
-  border-radius: 20px;
-  min-height: auto;
-
-  /* MOBILE & fallback background for cards */
-  background: linear-gradient(135deg, rgba(123,93,255,0.15), rgba(180,150,255,0.1));
+  margin: 0 auto 80px auto;
+  padding: 0;
+  border-radius: 0; /* full width, no rounding for the header */
+  overflow: hidden;
+  background: none; /* let video show fully */
 }
 
-/* ===== VIDEO BACKGROUND (DESKTOP) ===== */
+/* ===== VIDEO HEADER ===== */
 .video-container {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
-  z-index: -2;
+  height: 60vh; /* fills most of viewport height, adjust as needed */
+  max-height: 700px; /* optional cap */
   overflow: hidden;
+  z-index: 0;
 }
 
 .planner-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* full-screen cinematic */
+  object-fit: cover; /* cover container without stretching */
 }
 
 .video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
-  z-index: -1;
+  background: rgba(0,0,0,0.35); /* subtle overlay for readability */
+  z-index: 1;
 }
 
-/* Content grid sits above video */
+/* Content grid sits over video */
 .trip-grid {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  padding: 40px 20px;
+  padding: 0 20px;
 }
 
 /* Intro text box */
 .trip-intro {
-  background: rgba(0,0,0,0.35); 
+  background: rgba(0,0,0,0.35);
   color: #fff;
   padding: 30px 40px;
   border-radius: 20px;
   max-width: 600px;
-  margin-bottom: 40px;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
 }
 
@@ -782,51 +781,6 @@ a {
 }
 
 /* Step cards */
-.trip-step {
-  background: rgba(123, 93, 255, 0.9);
-  color: #fff;
-  border-radius: 18px;
-  padding: 18px 22px;
-  min-width: 200px;
-  max-width: 250px;
-  text-align: center;
-  flex-shrink: 0;
-  box-shadow: 
-    0 0 25px rgba(123, 93, 255, 0.45),
-    0 6px 25px rgba(0,0,0,0.2);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.trip-step:hover {
-  transform: translateY(-4px);
-  box-shadow: 
-    0 0 40px rgba(123, 93, 255, 0.6),
-    0 10px 25px rgba(0,0,0,0.25);
-}
-
-.trip-step .step-text {
-  font-weight: 500;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Buttons */
-.trip-process .button {
-  background: #7b5dff;
-  color: #fff;
-  border-radius: 50px;
-  padding: 14px 36px;
-  font-weight: 600;
-  box-shadow: 0 0 20px rgba(123,93,255,0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.trip-process .button:hover {
-  background: #684ae0;
-  box-shadow: 0 0 30px rgba(123,93,255,0.6);
-  transform: translateY(-3px);
-}
-
-/* Columns layout */
 .trip-columns {
   display: flex;
   flex-wrap: wrap;
@@ -834,63 +788,37 @@ a {
   gap: 20px;
   max-width: 900px;
   margin: 0 auto;
+  padding: 40px 20px; /* spacing below video */
 }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
-  /* Shrink video to header size */
   .video-container {
-    max-height: 300px;
-    aspect-ratio: 16 / 9;
+    height: 40vh; /* smaller header on mobile */
   }
 
-  .planner-video {
-    object-fit: cover; /* fits nicely behind text */
+  .trip-grid {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px;
   }
 
-  /* Section spacing for mobile */
-  .trip-process {
-    padding: 60px 20px 40px 20px;
-  }
-
-  /* Intro text */
   .trip-intro {
     padding: 20px 25px;
     font-size: 0.95rem;
     max-width: 90%;
-    margin-bottom: 30px;
-    background: rgba(0,0,0,0.35); /* keeps text readable over video */
   }
 
-  /* Step cards stacked vertically */
-.trip-columns {
-  flex-direction: column;
-  gap: 20px;
-  max-width: 90%;
-  margin: 0 auto 20px auto;
-
-  /* Soft dreamy background behind cards */
-  background: linear-gradient(
-    135deg, 
-    rgba(123, 93, 255, 0.05),  /* soft purple */
-    rgba(180, 150, 255, 0.05)  /* soft blue */
-  );
-  padding: 15px;      /* small padding around cards */
-  border-radius: 20px;
-}
-
-  .trip-col {
-    display: contents;
-  }
-
-  .trip-step {
-    width: 100%;
-    max-width: 100%;
-    min-width: auto;
-    flex: none;
+  .trip-columns {
+    flex-direction: column;
+    gap: 20px;
+    max-width: 90%;
+    padding: 20px;
   }
 }
+
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
