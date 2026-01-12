@@ -837,16 +837,45 @@ a {
 
 /* MOBILE */
 @media (max-width: 768px) {
+  /* keep video on mobile */
   .video-container {
-    display: none; /* hide video for mobile */
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 350px; /* adjust height for mobile */
+    z-index: -2;
+    overflow: hidden;
+    border-radius: 20px;
   }
 
+  .planner-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-overlay {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+    z-index: -1;
+  }
+
+  /* horizontal scroll for steps */
   .trip-columns {
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 16px;
     padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
+    margin-top: 20px; /* spacing from intro text */
   }
 
   .trip-columns::-webkit-scrollbar {
@@ -864,8 +893,18 @@ a {
   .trip-step {
     min-width: 180px;
     max-width: 220px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  /* keep intro text readable above video */
+  .trip-intro {
+    padding: 20px 25px;
+    font-size: 0.95rem;
+    max-width: 90%;
   }
 }
+
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
