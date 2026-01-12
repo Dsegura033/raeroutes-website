@@ -708,170 +708,136 @@ a {
 }
 
 
-/* ===== PLAN YOUR TRIP SECTION (UPDATED FOR VIDEO) ===== */
-
-html, body {
-  overflow-x: hidden;
-}
-
-/* MAIN WRAPPER */
+/* ===== PLAN YOUR TRIP SECTION HERO ===== */
 .trip-process {
-  padding: 90px 20px;
+  padding: 80px 20px;
   text-align: center;
-  border-radius: 30px;
-  margin: 80px auto;
+  border-radius: 0;          /* remove rounding for full-width hero */
+  margin: 0;                 /* full-width */
   position: relative;
   overflow: hidden;
-  background: none; /* remove gradient to let video show */
-  min-height: 550px; /* extra breathing room for desktop */
+  background: none;
+  min-height: 600px;         /* hero height for desktop */
 }
 
-/* HEADING */
-.trip-process h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  color: #fff; /* brighter for video */
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
-  margin-bottom: 12px;
-}
-
-.trip-process p {
-  font-family: "Poppins", sans-serif;
-  font-size: 1.05rem;
-  color: #f5f5f5;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
-  margin-bottom: 40px;
-}
-
-/* TWO-COLUMN FLEX LAYOUT */
-.trip-columns {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; /* space between boxes */
-  max-width: 850px;
-  margin: 0 auto 40px auto;
-}
-
-/* EACH STEP CARD */
-.trip-step {
-  background: rgba(255,255,255,0.9); /* stands out against video */
-  padding: 14px 18px;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.1);
-  min-width: 200px;
-  max-width: 250px;
-  text-align: center;
-  flex-shrink: 0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* HOVER EFFECT */
-.trip-step:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-/* EMOJI CIRCLE */
-.step-emoji {
-  font-size: 1.5rem;
-}
-
-/* STEP TEXT */
-.step-text {
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-  color: #3e2f6c;
-  text-align: center;
-}
-
-/* BUTTON */
-.trip-process .button {
-  display: inline-block;
-  padding: 14px 34px;
-  background: #7b5dff;
-  color: white;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 6px 12px rgba(123,93,255,0.5);
-}
-
-.trip-process .button:hover {
-  background: #684ae0;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(123,93,255,0.6);
-}
-
-/* SPARKLES (OPTIONAL) */
-.trip-process::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.5) 2px, transparent 2px);
-  background-size: 110px 110px;
-  pointer-events: none;
-  opacity: 0.25; /* softer */
-}
-
-/* TRIP PLANNER VIDEO HERO */
+/* VIDEO HERO */
 .video-hero {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  border-radius: 20px; /* smaller curve for a “panel” feel */
-  max-width: 650px;
-  margin: 0 auto; /* center the video */
-  min-height: 550px;
+  z-index: -2;
 }
 
 .planner-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
-  z-index: -2;
 }
 
-.trip-step {
-  background: rgba(123, 93, 255, 0.85); /* semi-transparent purple */
-  color: #fff; /* readable on purple */
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35); /* keeps text readable */
+  z-index: -1;
 }
 
+/* INTRO TEXT */
 .trip-intro {
-  background: rgba(0,0,0,0.25);
-  padding: 20px 30px;
+  background: rgba(0,0,0,0.5);  /* darker so text always pops */
+  padding: 30px 40px;
   border-radius: 20px;
+  max-width: 600px;
+  margin-bottom: 40px;
 }
 
+.trip-process h2 {
+  color: #fff;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+
+.trip-process p {
+  color: #f5f5f5;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+/* STEP CARDS */
+.trip-step {
+  background: linear-gradient(135deg, rgba(123,93,255,0.9), rgba(95,65,210,0.9));
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+  padding: 18px 22px;
+  border-radius: 18px;
+  text-align: center;
+  flex-shrink: 0;
+  min-width: 200px;
+  max-width: 250px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.trip-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.trip-step .step-text {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* BUTTON */
+.trip-process .button {
+  background: #7b5dff;
+  color: white;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(123,93,255,0.5);
+}
+
+.trip-process .button:hover {
+  background: #684ae0;
+  box-shadow: 0 10px 25px rgba(123,93,255,0.6);
+  transform: translateY(-3px);
+}
+
+/* FLEX LAYOUT */
+.trip-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
 /* MOBILE */
 @media (max-width: 768px) {
   .planner-video,
   .video-overlay {
-    display: none;
+    height: 300px; /* keep video visible */
   }
+
   .trip-columns {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 16px;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
   }
+
   .trip-columns::-webkit-scrollbar {
     display: none;
   }
+
   .trip-col {
     display: flex;
     flex-direction: column;
@@ -879,13 +845,13 @@ html, body {
     gap: 16px;
     scroll-snap-align: start;
   }
+
   .trip-step {
     min-width: 180px;
     max-width: 220px;
-    flex: 0 0 auto;
-    scroll-snap-align: start;
   }
 }
+
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
