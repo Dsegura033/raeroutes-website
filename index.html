@@ -708,7 +708,7 @@ a {
 }
 
 
-/* ===== PLAN YOUR TRIP SECTION (CLEAN + MERGED + MOBILE FIXED + BOX REFINEMENTS) ===== */
+/* ===== PLAN YOUR TRIP SECTION (UPDATED FOR VIDEO) ===== */
 
 html, body {
   overflow-x: hidden;
@@ -723,21 +723,23 @@ html, body {
   position: relative;
   overflow: hidden;
   background: none; /* remove gradient to let video show */
+  min-height: 550px; /* extra breathing room for desktop */
 }
-
 
 /* HEADING */
 .trip-process h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  color: #4c3a84;
+  color: #fff; /* brighter for video */
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
   margin-bottom: 12px;
 }
 
 .trip-process p {
   font-family: "Poppins", sans-serif;
   font-size: 1.05rem;
-  color: #5d4d88;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
   margin-bottom: 40px;
 }
 
@@ -753,16 +755,16 @@ html, body {
 
 /* EACH STEP CARD */
 .trip-step {
-  background: linear-gradient(135deg, #f7f2ff, #e7ddff);
-  padding: 14px 18px;   /* smaller padding for shorter boxes */
+  background: rgba(255,255,255,0.9); /* stands out against video */
+  padding: 14px 18px;
   border-radius: 16px;
   display: flex;
-  flex-direction: column;  /* stack emoji + text */
-  align-items: center;     /* center horizontally */
-  justify-content: center; /* center vertically */
-  gap: 8px;                /* spacing between emoji and text */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.1);
   min-width: 200px;
   max-width: 250px;
   text-align: center;
@@ -778,7 +780,7 @@ html, body {
 
 /* EMOJI CIRCLE */
 .step-emoji {
-  font-size: 1.5rem; /* bigger emoji */
+  font-size: 1.5rem;
 }
 
 /* STEP TEXT */
@@ -786,7 +788,7 @@ html, body {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   color: #3e2f6c;
-  text-align: center; /* centered inside box */
+  text-align: center;
 }
 
 /* BUTTON */
@@ -799,12 +801,14 @@ html, body {
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 12px rgba(123,93,255,0.5);
 }
 
 .trip-process .button:hover {
   background: #684ae0;
   transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(123,93,255,0.6);
 }
 
 /* SPARKLES (OPTIONAL) */
@@ -815,46 +819,15 @@ html, body {
   background-image: radial-gradient(rgba(255,255,255,0.5) 2px, transparent 2px);
   background-size: 110px 110px;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.25; /* softer */
 }
 
-@media (max-width: 700px) {
-  .trip-columns {
-    display: flex;              /* arrange steps in a row */
-    flex-wrap: nowrap;          /* no wrapping */
-    overflow-x: auto;           /* horizontal scroll */
-    gap: 16px;                  /* space between steps */
-    padding-bottom: 10px;       /* extra padding */
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;  /* optional snap effect */
-  }
-
-  .trip-columns::-webkit-scrollbar {
-    display: none;              /* hide scrollbar */
-  }
-
-  .trip-col {
-    display: flex;              /* make inner columns horizontal too */
-    flex-direction: column;     /* stack steps inside each col */
-    flex: 0 0 auto;             /* prevent shrinking */
-    gap: 16px;                  /* spacing between steps */
-    scroll-snap-align: start;   /* optional snap for each col */
-  }
-
-  .trip-step {
-    min-width: 180px;           /* mobile width */
-    max-width: 220px;
-    flex: 0 0 auto;             /* don’t shrink */
-    scroll-snap-align: start;   /* snap each step into view */
-  }
-}
-
-    /* ===== TRIP PLANNER VIDEO HERO (ADDED) ===== */
+/* TRIP PLANNER VIDEO HERO */
 .video-hero {
   position: relative;
   overflow: hidden;
   border-radius: 30px;
-  min-height: 450px;  /* ensures section is visible even if video hasn't loaded yet */
+  min-height: 550px;
 }
 
 /* Full background video */
@@ -875,7 +848,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.35);
   z-index: -1;
 }
 
@@ -890,10 +863,36 @@ html, body {
   padding: 40px 20px;
 }
 
+/* MOBILE */
 @media (max-width: 768px) {
   .planner-video,
   .video-overlay {
     display: none;
+  }
+  .trip-columns {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .trip-columns::-webkit-scrollbar {
+    display: none;
+  }
+  .trip-col {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    gap: 16px;
+    scroll-snap-align: start;
+  }
+  .trip-step {
+    min-width: 180px;
+    max-width: 220px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 }
 
