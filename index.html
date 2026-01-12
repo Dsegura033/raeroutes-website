@@ -864,15 +864,21 @@ a {
   }
 
   /* Step cards stacked vertically */
-  .trip-columns {
-    flex-direction: column;
-    gap: 20px;
-    max-width: 90%;
-    margin: 0 auto 20px auto;
-    background: linear-gradient(135deg, rgba(123,93,255,0.15), rgba(180,150,255,0.1)); /* soft aura behind cards */
-    padding: 20px;
-    border-radius: 20px;
-  }
+.trip-columns {
+  flex-direction: column;
+  gap: 20px;
+  max-width: 90%;
+  margin: 0 auto 20px auto;
+
+  /* Soft dreamy background behind cards */
+  background: linear-gradient(
+    135deg, 
+    rgba(123, 93, 255, 0.05),  /* soft purple */
+    rgba(180, 150, 255, 0.05)  /* soft blue */
+  );
+  padding: 15px;      /* small padding around cards */
+  border-radius: 20px;
+}
 
   .trip-col {
     display: contents;
