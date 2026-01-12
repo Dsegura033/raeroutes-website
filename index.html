@@ -711,38 +711,38 @@ a {
 /* ===== PLAN YOUR TRIP SECTION ===== */
 .trip-process {
   position: relative;
-  text-align: center;
-  margin: 0 auto 80px auto;
-  padding: 0;
-  border-radius: 0; /* full width, no rounding for the header */
   overflow: hidden;
-  background: none; /* let video show fully */
+  text-align: center;
+  margin: 120px auto 0 auto;
+  padding: 0;
 }
 
 /* ===== VIDEO HEADER ===== */
 .video-container {
-  position: relative;
+  position: relative;   /* text can sit on top */
   width: 100%;
-  height: 60vh; /* fills most of viewport height, adjust as needed */
-  max-height: 700px; /* optional cap */
+  max-width: 900px;     /* content width */
+  margin: 0 auto;       /* center video */
+  border-radius: 20px;
   overflow: hidden;
+  aspect-ratio: 16 / 9;
   z-index: 0;
 }
 
 .planner-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* cover container without stretching */
+  object-fit: cover;   /* cover container */
 }
 
 .video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35); /* subtle overlay for readability */
-  z-index: 1;
+  background: rgba(0,0,0,0.35);
+  z-index: 1;          /* overlay for readability */
 }
 
-/* Content grid sits over video */
+/* ===== TEXT OVER VIDEO ===== */
 .trip-grid {
   position: absolute;
   top: 50%;
@@ -780,42 +780,104 @@ a {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
-/* Step cards */
+/* ===== STEP CARDS BELOW VIDEO ===== */
 .trip-columns {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px; /* spacing below video */
+  margin: 40px auto 0 auto;  /* spacing below video */
+  padding: 0 20px;
+}
+
+/* Step cards styling */
+.trip-step {
+  background: rgba(123, 93, 255, 0.9);
+  color: #fff;
+  border-radius: 18px;
+  padding: 18px 22px;
+  min-width: 200px;
+  max-width: 250px;
+  text-align: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 25px rgba(123, 93, 255, 0.45), 0 6px 25px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.trip-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 40px rgba(123, 93, 255, 0.6), 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.trip-step .step-text {
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Buttons */
+.trip-process .button {
+  background: #7b5dff;
+  color: #fff;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(123,93,255,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trip-process .button:hover {
+  background: #684ae0;
+  box-shadow: 0 0 30px rgba(123,93,255,0.6);
+  transform: translateY(-3px);
 }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
   .video-container {
-    height: 40vh; /* smaller header on mobile */
+    max-height: 300px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .planner-video {
+    object-fit: cover;
   }
 
   .trip-grid {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0 20px;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    padding: 20px;
   }
 
   .trip-intro {
     padding: 20px 25px;
     font-size: 0.95rem;
     max-width: 90%;
+    margin-bottom: 30px;
   }
 
   .trip-columns {
     flex-direction: column;
     gap: 20px;
     max-width: 90%;
-    padding: 20px;
+    margin: 0 auto 20px auto;
+    padding: 15px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(123, 93, 255, 0.05), rgba(180, 150, 255, 0.05));
+  }
+
+  .trip-col {
+    display: contents;
+  }
+
+  .trip-step {
+    width: 100%;
+    max-width: 100%;
+    min-width: auto;
+    flex: none;
   }
 }
 
