@@ -835,13 +835,10 @@ a {
   margin: 0 auto;
 }
 
-/* ===== MOBILE: PLAN YOUR TRIP SECTION ===== */
+
 @media (max-width: 768px) {
 
-  /* Full-section video */
- @media (max-width: 768px) {
-
-  /* Full-section video */
+  /* Full-section video stays behind everything */
   .video-container {
     display: block;
     position: absolute;
@@ -870,9 +867,9 @@ a {
     z-index: -1;
   }
 
-  /* Section height */
+  /* Section height for mobile */
   .trip-process {
-    min-height: 650px;
+    min-height: auto; /* let it expand naturally with stacked content */
     padding: 40px 20px;
   }
 
@@ -884,35 +881,28 @@ a {
     margin-bottom: 30px;
   }
 
-  /* Make each step card individually scrollable */
+  /* Stack all step cards vertically */
   .trip-columns {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 24px;               /* space between each card */
-    padding: 0 20px 20px 20px; /* left/right padding for peeking cards */
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory; 
-    scroll-padding-left: 20px; 
+    flex-direction: column;
+    gap: 20px; /* space between each step */
+    max-width: 90%;
+    margin: 0 auto 20px auto;
   }
 
-  .trip-columns::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Each step card is now scrollable directly */
-  .trip-step {
-    min-width: 220px;   /* card width */
-    max-width: 240px;
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-  }
-
-  /* Remove column wrapping, treat each card as direct child */
   .trip-col {
-    display: contents;  /* flattens the DOM for scroll purposes */
+    display: contents; /* remove the column wrapper effect */
+  }
+
+  .trip-step {
+    width: 100%; /* fill available width */
+    min-width: auto;
+    max-width: 100%;
+    flex: none;
+    scroll-snap-align: none; /* no snap needed */
   }
 }
+
 
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
