@@ -710,31 +710,30 @@ a {
 
 /* ===== PLAN YOUR TRIP SECTION ===== */
 .trip-process {
-  position: relative;
   margin: 120px auto;
   padding: 0 20px;
   max-width: 1200px;
 }
 
-/* Two-column layout */
+/* Two-column layout for desktop */
 .trip-two-columns {
   display: flex;
   gap: 40px;
   align-items: flex-start;
 }
 
-/* LEFT COLUMN: Video + Text */
+/* LEFT COLUMN: video + overlay text */
 .trip-video-column {
-  flex: 1.1; /* slightly bigger than right column */
+  flex: 1.2; /* larger than right column */
   position: relative;
 }
 
 .video-container {
   width: 100%;
   aspect-ratio: 16/9;
+  position: relative;
   border-radius: 20px;
   overflow: hidden;
-  position: relative;
 }
 
 .planner-video {
@@ -746,56 +745,46 @@ a {
 .video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.25);
   z-index: 1;
 }
 
 /* Text overlay on video */
-.trip-grid {
+.trip-intro-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 20px;
+}
+
+.trip-intro-overlay h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+}
+
+.trip-intro-overlay p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+}
+
+/* RIGHT COLUMN: Steps + button */
+.trip-steps-column {
+  flex: 0.8;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 20px;
 }
 
-.trip-intro {
-  background: rgba(0,0,0,0.35);
-  color: #fff;
-  padding: 30px 40px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.trip-intro h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.6rem;
-  color: #f4c2ff;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-}
-
-.trip-intro p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  color: #fff;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-}
-
-/* RIGHT COLUMN: Steps + Button */
-.trip-steps-column {
-  flex: 0.9;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-/* Horizontal scroll for desktop steps */
+/* Steps horizontal scroll with 2x2 grid */
 .trip-columns {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   overflow-x: auto;
   padding-bottom: 10px;
@@ -806,36 +795,23 @@ a {
   display: none;
 }
 
-.trip-col {
-  display: flex;
-  gap: 20px;
-  scroll-snap-align: start;
-}
-
-/* Step cards */
 .trip-step {
-  background: rgba(123, 93, 255, 0.9);
+  background: rgba(123, 93, 255, 0.25);
+  backdrop-filter: blur(6px);
   color: #fff;
   border-radius: 18px;
   padding: 18px 22px;
   min-width: 220px;
-  max-width: 260px;
   text-align: center;
-  box-shadow: 0 0 25px rgba(123, 93, 255, 0.45), 0 6px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 0 25px rgba(123,93,255,0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .trip-step:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 40px rgba(123, 93, 255, 0.6), 0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 0 40px rgba(123,93,255,0.35);
 }
 
-.trip-step .step-text {
-  font-weight: 500;
-  font-family: 'Poppins', sans-serif;
-}
-
-/* Button */
 .button.plan-btn {
   background: #7b5dff;
   color: #fff;
@@ -843,14 +819,15 @@ a {
   padding: 14px 36px;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 0 20px rgba(123,93,255,0.5);
+  text-align: center;
+  box-shadow: 0 0 20px rgba(123,93,255,0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button.plan-btn:hover {
   background: #684ae0;
   transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(123,93,255,0.6);
+  box-shadow: 0 0 30px rgba(123,93,255,0.5);
 }
 
 /* ===== MOBILE ===== */
@@ -868,24 +845,22 @@ a {
     width: 100%;
   }
 
-  /* stacked steps for mobile */
+  /* stacked steps in mobile, two per row if possible */
   .trip-columns {
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    overflow: visible;
     padding: 0;
   }
 
-  .trip-col {
-    flex-direction: column;
-    gap: 20px;
+  .trip-step {
+    min-width: auto;
   }
 
-  .trip-grid {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 0 20px;
+  .trip-intro-overlay {
+    width: 90%;
+    padding: 15px;
   }
 }
 
@@ -1533,38 +1508,31 @@ h2, h3, h4, p {
         </video>
         <div class="video-overlay"></div>
 
-        <div class="trip-grid">
-          <div class="trip-intro">
-            <h2>Plan Your Trip</h2>
-            <p>Share your dream trip and I’ll craft the perfect route tailored just for you.</p>
-          </div>
+        <div class="trip-intro-overlay">
+          <h2>Plan Your Trip</h2>
+          <p>Share your dream trip and I’ll craft the perfect route tailored just for you.</p>
         </div>
       </div>
     </div>
 
-    <!-- RIGHT: Steps + Button -->
+    <!-- RIGHT: Step cards + Button -->
     <div class="trip-steps-column">
       <div class="trip-columns">
-        <div class="trip-col">
-          <div class="trip-step">
-            <span class="step-num">1</span>
-            <p>✨ Tell me your vision</p>
-          </div>
-          <div class="trip-step">
-            <span class="step-num">2</span>
-            <p>🔍 I research and curate your options</p>
-          </div>
+        <div class="trip-step">
+          <span class="step-num">1</span>
+          <p>✨ Tell me your vision</p>
         </div>
-
-        <div class="trip-col">
-          <div class="trip-step">
-            <span class="step-num">3</span>
-            <p>📝 You review and refine your trip</p>
-          </div>
-          <div class="trip-step">
-            <span class="step-num">4</span>
-            <p>✈️ Book & go (stress-free)</p>
-          </div>
+        <div class="trip-step">
+          <span class="step-num">2</span>
+          <p>🔍 I research and curate your options</p>
+        </div>
+        <div class="trip-step">
+          <span class="step-num">3</span>
+          <p>📝 You review and refine your trip</p>
+        </div>
+        <div class="trip-step">
+          <span class="step-num">4</span>
+          <p>✈️ Book & go (stress-free)</p>
         </div>
       </div>
 
@@ -1575,6 +1543,7 @@ h2, h3, h4, p {
 
   </div>
 </section>
+
 
 <!-- SERVICES & GIFTING SECTION -->
 <section class="services-gifting" id="services">
