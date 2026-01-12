@@ -718,12 +718,13 @@ html, body {
 .trip-process {
   padding: 90px 20px;
   text-align: center;
-  background: linear-gradient(135deg, #f7f2ff, #ece4ff);
   border-radius: 30px;
   margin: 80px auto;
   position: relative;
   overflow: hidden;
+  background: none; /* remove gradient to let video show */
 }
+
 
 /* HEADING */
 .trip-process h2 {
@@ -889,14 +890,13 @@ html, body {
   padding: 40px 20px;
 }
 
-
-/* Optional: hide video on mobile for performance */
 @media (max-width: 768px) {
   .planner-video,
   .video-overlay {
     display: none;
   }
 }
+
 
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
