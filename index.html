@@ -715,18 +715,17 @@ a {
   padding: 100px 20px;
   text-align: center;
   margin: 120px auto 80px auto; /* separates from hero above */
-  min-height: auto; /* auto to fit content */
+  min-height: auto;
   border-radius: 20px;
   background: rgba(245,245,245,0.1); /* soft grayish aura */
 }
 
-/* VIDEO HERO (desktop only) */
+/* ===== VIDEO BACKGROUND ===== */
 .video-container {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  max-height: 520px;              /* 🔹 prevents desktop upscaling */
+  aspect-ratio: 16 / 9;           /* 🔹 locks proportions */
   z-index: -2;
   overflow: hidden;
   border-radius: 20px;
@@ -735,15 +734,12 @@ a {
 .planner-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;            /* 🔹 prevents blur */
 }
 
 .video-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0,0,0,0.35);
   z-index: -1;
 }
@@ -761,7 +757,7 @@ a {
 
 /* Intro text box */
 .trip-intro {
-  background: rgba(0,0,0,0.35); /* dark overlay for readability */
+  background: rgba(0,0,0,0.35);
   color: #fff;
   padding: 30px 40px;
   border-radius: 20px;
@@ -771,7 +767,7 @@ a {
 }
 
 .trip-process h2 {
-  color: #f4c2ff; /* soft lavender/pink pop */
+  color: #f4c2ff;
   font-size: 2.6rem;
   font-family: 'Playfair Display', serif;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
@@ -786,7 +782,7 @@ a {
 
 /* Step cards */
 .trip-step {
-  background: rgba(123, 93, 255, 0.9); /* site purple */
+  background: rgba(123, 93, 255, 0.9);
   color: #fff;
   border-radius: 18px;
   padding: 18px 22px;
@@ -794,13 +790,17 @@ a {
   max-width: 250px;
   text-align: center;
   flex-shrink: 0;
-  box-shadow: 0 0 25px rgba(123, 93, 255, 0.45), 0 6px 25px rgba(0,0,0,0.2); /* aura glow effect */
+  box-shadow: 
+    0 0 25px rgba(123, 93, 255, 0.45),
+    0 6px 25px rgba(0,0,0,0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .trip-step:hover {
   transform: translateY(-4px);
-  box-shadow: 0 0 40px rgba(123, 93, 255, 0.6), 0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: 
+    0 0 40px rgba(123, 93, 255, 0.6),
+    0 10px 25px rgba(0,0,0,0.25);
 }
 
 .trip-step .step-text {
@@ -835,10 +835,11 @@ a {
   margin: 0 auto;
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
   .video-container {
-    max-height: 300px;
+    max-height: 300px;            /* 🔹 smaller, sharper on mobile */
     aspect-ratio: 16 / 9;
   }
 
@@ -846,20 +847,12 @@ a {
     object-fit: contain;
   }
 
-  .video-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    z-index: -1;
-  }
-
-  /* Section height for mobile */
+  /* Section spacing */
   .trip-process {
-    min-height: auto; /* let it expand naturally with stacked content */
     padding: 40px 20px;
   }
 
-  /* Intro text adjustments */
+  /* Intro text */
   .trip-intro {
     padding: 20px 25px;
     font-size: 0.95rem;
@@ -867,28 +860,25 @@ a {
     margin-bottom: 30px;
   }
 
-  /* Stack all step cards vertically */
+  /* Stack steps vertically */
   .trip-columns {
-    display: flex;
     flex-direction: column;
-    gap: 20px; /* space between each step */
+    gap: 20px;
     max-width: 90%;
     margin: 0 auto 20px auto;
   }
 
   .trip-col {
-    display: contents; /* remove the column wrapper effect */
+    display: contents;
   }
 
   .trip-step {
-    width: 100%; /* fill available width */
-    min-width: auto;
+    width: 100%;
     max-width: 100%;
+    min-width: auto;
     flex: none;
-    scroll-snap-align: none; /* no snap needed */
   }
 }
-
 
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
