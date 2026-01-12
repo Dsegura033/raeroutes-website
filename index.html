@@ -866,14 +866,15 @@ a {
   }
 
   /* horizontal scroll for steps */
-  .trip-columns {
+ .trip-columns {
     flex-wrap: nowrap;
     overflow-x: auto;
-    gap: 16px;
-    padding-bottom: 12px;
+    gap: 24px; /* bigger gap between steps for clarity */
+    padding-bottom: 16px;
+    padding-left: 16px;  /* optional start padding */
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    margin-top: 20px;
+    scroll-snap-type: x mandatory; /* snap each step into view */
+    scroll-padding-left: 16px;     /* smooth start for snapping */
   }
 
   .trip-columns::-webkit-scrollbar {
@@ -884,16 +885,17 @@ a {
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
-    gap: 16px;
+    gap: 24px; /* bigger gap between stacked steps */
     scroll-snap-align: start;
   }
 
   .trip-step {
-    min-width: 180px;
-    max-width: 220px;
+    min-width: 220px; /* slightly bigger for readability */
+    max-width: 260px;
     flex: 0 0 auto;
     scroll-snap-align: start;
   }
+}
 
   /* intro text adjustments */
   .trip-intro {
