@@ -724,13 +724,15 @@ a {
 
 /* LEFT COLUMN: video + overlay text */
 .trip-video-column {
-  flex: 1.2; /* larger than right column */
+  flex: 1.5; /* make video bigger */
   position: relative;
+  min-width: 500px; /* ensures video is large on desktop */
+  height: 500px;    /* fixed desktop height */
 }
 
 .video-container {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
   position: relative;
   border-radius: 20px;
   overflow: hidden;
@@ -761,6 +763,7 @@ a {
   padding: 20px;
   background: rgba(0,0,0,0.35);
   border-radius: 20px;
+  max-width: 90%;
 }
 
 .trip-intro-overlay h2 {
@@ -775,20 +778,19 @@ a {
 
 /* RIGHT COLUMN: Steps + button */
 .trip-steps-column {
-  flex: 0.8;
+  flex: 1; /* adjust width */
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Steps horizontal scroll with 2x2 grid */
+/* Steps horizontal scroll for desktop */
 .trip-columns {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;            /* horizontal scroll */
   gap: 20px;
   overflow-x: auto;
-  padding-bottom: 10px;
   scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
 }
 
 .trip-columns::-webkit-scrollbar {
@@ -805,6 +807,7 @@ a {
   text-align: center;
   box-shadow: 0 0 25px rgba(123,93,255,0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  scroll-snap-align: start;
 }
 
 .trip-step:hover {
@@ -839,6 +842,8 @@ a {
 
   .trip-video-column {
     width: 100%;
+    height: auto;
+    aspect-ratio: 16/9; /* keeps video proportional */
   }
 
   .trip-steps-column {
@@ -858,6 +863,7 @@ a {
     min-width: auto;
   }
 
+  /* overlay text fits inside mobile video */
   .trip-intro-overlay {
     width: 90%;
     padding: 15px;
