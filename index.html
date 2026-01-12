@@ -712,29 +712,30 @@ a {
 .trip-process {
   position: relative;
   overflow: hidden;
-  padding: 100px 20px;
   text-align: center;
-  margin: 120px auto 80px auto; /* separates from hero above */
-  min-height: auto;
+  margin: 120px auto 80px auto;
+  padding: 100px 20px;
   border-radius: 20px;
-  background: rgba(245,245,245,0.1); /* soft grayish aura */
+  min-height: auto;
+
+  /* MOBILE & fallback background for cards */
+  background: linear-gradient(135deg, rgba(123,93,255,0.15), rgba(180,150,255,0.1));
 }
 
-/* ===== VIDEO BACKGROUND ===== */
+/* ===== VIDEO BACKGROUND (DESKTOP) ===== */
 .video-container {
   position: absolute;
   inset: 0;
-  max-height: 520px;              /* 🔹 prevents desktop upscaling */
-  aspect-ratio: 16 / 9;           /* 🔹 locks proportions */
+  width: 100%;
+  height: 100%;
   z-index: -2;
   overflow: hidden;
-  border-radius: 20px;
 }
 
 .planner-video {
   width: 100%;
   height: 100%;
-  object-fit: contain;            /* 🔹 prevents blur */
+  object-fit: cover; /* full-screen cinematic */
 }
 
 .video-overlay {
@@ -757,7 +758,7 @@ a {
 
 /* Intro text box */
 .trip-intro {
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.35); 
   color: #fff;
   padding: 30px 40px;
   border-radius: 20px;
@@ -838,18 +839,19 @@ a {
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
 
+  /* Shrink video to header size */
   .video-container {
-    max-height: 300px;            /* 🔹 smaller, sharper on mobile */
+    max-height: 300px;
     aspect-ratio: 16 / 9;
   }
 
   .planner-video {
-    object-fit: contain;
+    object-fit: cover; /* fits nicely behind text */
   }
 
-  /* Section spacing */
+  /* Section spacing for mobile */
   .trip-process {
-    padding: 40px 20px;
+    padding: 60px 20px 40px 20px;
   }
 
   /* Intro text */
@@ -858,14 +860,18 @@ a {
     font-size: 0.95rem;
     max-width: 90%;
     margin-bottom: 30px;
+    background: rgba(0,0,0,0.35); /* keeps text readable over video */
   }
 
-  /* Stack steps vertically */
+  /* Step cards stacked vertically */
   .trip-columns {
     flex-direction: column;
     gap: 20px;
     max-width: 90%;
     margin: 0 auto 20px auto;
+    background: linear-gradient(135deg, rgba(123,93,255,0.15), rgba(180,150,255,0.1)); /* soft aura behind cards */
+    padding: 20px;
+    border-radius: 20px;
   }
 
   .trip-col {
@@ -879,6 +885,7 @@ a {
     flex: none;
   }
 }
+
 
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
@@ -1505,7 +1512,7 @@ h2, h3, h4, p {
   <!-- Background Video -->
   <div class="video-container">
     <video id="planner-video" class="planner-video" autoplay muted loop playsinline>
-      <source src="newyorkvlog.mp4" type="video/mp4">
+      <source src="newyorkvlog2.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
   </div>
