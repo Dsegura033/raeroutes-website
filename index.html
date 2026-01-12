@@ -826,42 +826,33 @@ html, body {
 .video-hero {
   position: relative;
   overflow: hidden;
-  border-radius: 30px;
+  border-radius: 20px; /* smaller curve for a “panel” feel */
+  max-width: 650px;
+  margin: 0 auto; /* center the video */
   min-height: 550px;
 }
 
-/* Full background video */
 .planner-video {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 20px;
   z-index: -2;
 }
 
-/* Dark overlay to keep text readable */
-.video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.35);
-  z-index: -1;
+.trip-step {
+  background: rgba(123, 93, 255, 0.85); /* semi-transparent purple */
+  color: #fff; /* readable on purple */
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
-/* Ensure section content stays above video */
-.video-hero .trip-grid {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  padding: 40px 20px;
+.trip-intro {
+  background: rgba(0,0,0,0.25);
+  padding: 20px 30px;
+  border-radius: 20px;
 }
+
 
 /* MOBILE */
 @media (max-width: 768px) {
