@@ -708,10 +708,10 @@ a {
 }
 
 
-/* ===== PLAN YOUR TRIP ===== */
+/* ===== PLAN YOUR TRIP SECTION ===== */
 .trip-process {
   position: relative;
-  margin: 120px auto 0 auto;
+  margin: 120px auto;
   padding: 0 20px;
   max-width: 1200px;
 }
@@ -719,18 +719,16 @@ a {
 /* Two-column layout */
 .trip-two-columns {
   display: flex;
-  align-items: flex-start;
   gap: 40px;
-  width: 100%;
+  align-items: flex-start;
 }
 
-/* LEFT: Video column */
+/* LEFT COLUMN: Video + Text */
 .trip-video-column {
-  flex: 1;
+  flex: 1.1; /* slightly bigger than right column */
   position: relative;
 }
 
-/* Video container */
 .video-container {
   width: 100%;
   aspect-ratio: 16/9;
@@ -752,7 +750,7 @@ a {
   z-index: 1;
 }
 
-/* Text over video */
+/* Text overlay on video */
 .trip-grid {
   position: absolute;
   top: 50%;
@@ -773,44 +771,55 @@ a {
   text-align: center;
 }
 
-.trip-process h2 {
-  color: #f4c2ff;
-  font-size: 2.6rem;
+.trip-intro h2 {
   font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  color: #f4c2ff;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
-.trip-process p {
-  color: #fff;
+.trip-intro p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.1rem;
+  color: #fff;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
-/* RIGHT: Steps column */
+/* RIGHT COLUMN: Steps + Button */
 .trip-steps-column {
-  flex: 1;
+  flex: 0.9;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 30px;
 }
 
+/* Horizontal scroll for desktop steps */
 .trip-columns {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
-  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
 }
 
+.trip-columns::-webkit-scrollbar {
+  display: none;
+}
+
+.trip-col {
+  display: flex;
+  gap: 20px;
+  scroll-snap-align: start;
+}
+
+/* Step cards */
 .trip-step {
   background: rgba(123, 93, 255, 0.9);
   color: #fff;
   border-radius: 18px;
   padding: 18px 22px;
-  min-width: 200px;
-  max-width: 250px;
+  min-width: 220px;
+  max-width: 260px;
   text-align: center;
   box-shadow: 0 0 25px rgba(123, 93, 255, 0.45), 0 6px 25px rgba(0,0,0,0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -826,27 +835,29 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
-.button {
+/* Button */
+.button.plan-btn {
   background: #7b5dff;
   color: #fff;
   border-radius: 50px;
   padding: 14px 36px;
   font-weight: 600;
-  box-shadow: 0 0 20px rgba(123,93,255,0.5);
   text-decoration: none;
+  box-shadow: 0 0 20px rgba(123,93,255,0.5);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.button:hover {
+.button.plan-btn:hover {
   background: #684ae0;
-  box-shadow: 0 0 30px rgba(123,93,255,0.6);
   transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(123,93,255,0.6);
 }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .trip-two-columns {
     flex-direction: column;
+    gap: 20px;
   }
 
   .trip-video-column {
@@ -855,10 +866,16 @@ a {
 
   .trip-steps-column {
     width: 100%;
-    align-items: center;
   }
 
+  /* stacked steps for mobile */
   .trip-columns {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .trip-col {
     flex-direction: column;
     gap: 20px;
   }
@@ -871,6 +888,7 @@ a {
     padding: 0 20px;
   }
 }
+
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
