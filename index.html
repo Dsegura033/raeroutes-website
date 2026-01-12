@@ -835,8 +835,10 @@ a {
   margin: 0 auto;
 }
 
+/* ===== MOBILE: PLAN YOUR TRIP SECTION ===== */
 @media (max-width: 768px) {
-  /* full-section video */
+
+  /* Full-section video */
   .video-container {
     display: block;
     position: absolute;
@@ -865,39 +867,13 @@ a {
     z-index: -1;
   }
 
-  /* horizontal scroll for steps */
- .trip-columns {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 24px; /* bigger gap between steps for clarity */
-    padding-bottom: 16px;
-    padding-left: 16px;  /* optional start padding */
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory; /* snap each step into view */
-    scroll-padding-left: 16px;     /* smooth start for snapping */
+  /* Adjust section height for breathing room */
+  .trip-process {
+    min-height: 650px;   /* taller for mobile hero + scrollable cards */
+    padding: 40px 20px;
   }
 
-  .trip-columns::-webkit-scrollbar {
-    display: none;
-  }
-
-  .trip-col {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 auto;
-    gap: 24px; /* bigger gap between stacked steps */
-    scroll-snap-align: start;
-  }
-
-  .trip-step {
-    min-width: 220px; /* slightly bigger for readability */
-    max-width: 260px;
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-  }
-}
-
-  /* intro text adjustments */
+  /* Intro text adjustments */
   .trip-intro {
     padding: 20px 25px;
     font-size: 0.95rem;
@@ -905,10 +881,36 @@ a {
     margin-bottom: 30px;
   }
 
-  /* section height for mobile */
-  .trip-process {
-    min-height: 500px; /* adjust as needed for full section video */
-    padding: 40px 20px;
+  /* Horizontal scroll for step cards */
+  .trip-columns {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 32px; /* dramatic spacing */
+    padding: 20px 20px 20px 20px; /* gives room on sides */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory; /* snap cards into view */
+    scroll-padding-left: 20px;     /* smooth start snap */
+  }
+
+  .trip-columns::-webkit-scrollbar {
+    display: none; /* hide scrollbar */
+  }
+
+  /* Each column */
+  .trip-col {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    gap: 32px; /* stacked spacing */
+    scroll-snap-align: start;
+  }
+
+  /* Step cards */
+  .trip-step {
+    min-width: 220px;  /* bigger for readability */
+    max-width: 240px;  /* peek effect so user sees more to scroll */
+    flex: 0 0 auto;
+    scroll-snap-align: start;
   }
 }
 
