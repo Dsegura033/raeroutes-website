@@ -852,7 +852,8 @@ html, body {
 .video-hero {
   position: relative;
   overflow: hidden;
-  border-radius: 30px; /* matches your existing rounded style */
+  border-radius: 30px;
+  min-height: 450px;  /* ensures section is visible even if video hasn't loaded yet */
 }
 
 /* Full background video */
@@ -863,7 +864,7 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2; /* stays behind your gradient + sparkles */
+  z-index: -2;
 }
 
 /* Dark overlay to keep text readable */
@@ -873,7 +874,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.45); /* adjust darkness here */
+  background: rgba(0,0,0,0.45);
   z-index: -1;
 }
 
@@ -881,7 +882,13 @@ html, body {
 .video-hero .trip-grid {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px 20px;
 }
+
 
 /* Optional: hide video on mobile for performance */
 @media (max-width: 768px) {
@@ -1487,8 +1494,8 @@ h2, h3, h4, p {
 <section class="trip-process video-hero" id="planner">
 
   <!-- Background Video -->
-  <video class="planner-video" autoplay muted loop playsinline>
-   <source src="sunsetdrivevid.mp4" type="video/mp4">
+  <video id="planner-video" class="planner-video" autoplay muted loop playsinline>
+    <source src="sunsetdrivevid.mp4" type="video/mp4">
   </video>
 
   <!-- Dark overlay so text stays readable -->
@@ -1529,6 +1536,7 @@ h2, h3, h4, p {
     </a>
   </div>
 </section>
+
 
 <!-- SERVICES & GIFTING SECTION -->
 <section class="services-gifting" id="services">
@@ -1689,6 +1697,20 @@ h2, h3, h4, p {
   }, { threshold: 0.2 });
   whyCards.forEach(card => observer.observe(card));
 </script>
+  
+  <script>
+  // ===== Trip Planner Video Loop (Optional 15-second reset) =====
+  const plannerVideo = document.getElementById('planner-video');
+
+  // Only add this if you need strict 15-second loops
+  if (plannerVideo) {
+    setInterval(() => {
+      plannerVideo.currentTime = 0;
+      plannerVideo.play();
+    }, 15000); // 15000ms = 15 seconds
+  }
+</script>
+
 
 <!-- Lottie player (keep if used elsewhere) -->
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
