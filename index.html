@@ -896,50 +896,60 @@ a {
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #4e32a8, #7c5cff); /* lighter, dreamy aura gradient */
+  background: linear-gradient(
+    135deg,
+    rgba(220,210,255,0.15),
+    rgba(200,230,255,0.1)
+  ); /* soft gray-purple-blue aura */
   border-radius: 24px;
   text-align: center;
   position: relative;
-  color: #fff;
+  color: #f4eaff; /* soft lavender-white text for readability */
 }
 
+/* Section Heading */
 .services-gifting h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  color: #f4c2ff; /* soft lavender */
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+  color: #e9d6ff; /* gentle lavender pop */
+  text-shadow: 0 0 6px rgba(200,220,255,0.3);
   margin-bottom: 12px;
 }
 
+/* Section Paragraph */
 .services-gifting p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.05rem;
-  color: #e6dbff;
+  color: #f4eaff; /* soft text over light aura background */
   margin-bottom: 50px;
 }
 
-/* ===== CARDS FLEX CONTAINER (DESKTOP + MOBILE HORIZONTAL SCROLL) ===== */
+/* ===== CARDS FLEX CONTAINER (HORIZONTAL SCROLL DESKTOP & MOBILE) ===== */
 .service-cards {
   display: flex;
   gap: 24px;
-  flex-wrap: nowrap;        /* horizontal scroll */
+  flex-wrap: nowrap;           /* horizontal scroll */
   justify-content: flex-start;
-  overflow-x: auto;         /* enable scroll */
+  overflow-x: auto;
   padding-bottom: 16px;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
 }
 
 .service-cards::-webkit-scrollbar {
-  display: none;            /* hide scrollbar on all screens */
+  display: none;               /* hide scrollbar on all screens */
 }
 
 /* ===== EACH CARD ===== */
 .service-card {
-  background: linear-gradient(135deg, rgba(142,110,255,0.8), rgba(123,93,255,0.8));
+  background: linear-gradient(
+    135deg,
+    rgba(210,200,255,0.25),
+    rgba(190,220,255,0.2)
+  ); /* soft dreamy purple-blue */
   border-radius: 20px;
   padding: 25px 20px;
-  box-shadow: 0 8px 25px rgba(123,93,255,0.35);
+  box-shadow: 0 6px 20px rgba(210,200,255,0.2); /* subtle glow */
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
@@ -952,8 +962,8 @@ a {
 
 /* CARD HOVER EFFECT */
 .service-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 12px 35px rgba(123,93,255,0.5);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(210,200,255,0.25);
 }
 
 /* EMOJI / ICON */
@@ -968,15 +978,16 @@ a {
 .service-card h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  color: #f4c2ff;
+  color: #e9d6ff;
   margin-bottom: 8px;
+  text-shadow: 0 0 4px rgba(200,220,255,0.2);
 }
 
 /* CARD TEXT */
 .service-card p {
   font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
-  color: #e6dbff;
+  color: #f4eaff;
   line-height: 1.4;
   text-align: center;
 }
@@ -985,18 +996,18 @@ a {
 .service-card .button {
   padding: 12px 28px;
   border-radius: 50px;
-  background: #9c7eff;
-  color: white;
+  background: rgba(180,160,255,0.3); /* soft pastel button */
+  color: #f4eaff;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 6px 15px rgba(123,93,255,0.5);
+  box-shadow: 0 4px 12px rgba(180,160,255,0.2);
   transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 .service-card .button:hover {
-  background: #7b5dff;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(123,93,255,0.6);
+  background: rgba(160,140,255,0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(180,160,255,0.25);
 }
 
 /* MOBILE ADJUSTMENTS */
@@ -1012,7 +1023,6 @@ a {
     max-width: 260px;
   }
 }
-
 
     /* ===== ABOUT SECTION ===== */
 .about-section {
