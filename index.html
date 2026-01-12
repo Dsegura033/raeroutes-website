@@ -708,19 +708,20 @@ a {
 }
 
 
-/* ===== PLAN YOUR TRIP SECTION HERO FIXED ===== */
+/* ===== PLAN YOUR TRIP SECTION (NORMAL SECTION WITH VIDEO) ===== */
 .trip-process {
   position: relative;
   overflow: hidden;
   padding: 80px 20px;
   text-align: center;
-  margin: 0 auto 80px auto;
-  min-height: 600px; /* desktop hero height */
-  border-radius: 0;   /* full-width hero style */
-  background: none;
+  margin: 80px auto;      /* space above and below section */
+  min-height: 600px;      /* section height for desktop */
+  border-radius: 20px;    /* soft rounded boxes for a panel feel */
+  background: none;       /* let video show */
+  z-index: 1;             /* keep above video */
 }
 
-/* VIDEO HERO */
+/* VIDEO BACKGROUND */
 .video-hero {
   position: absolute;
   top: 0;
@@ -728,7 +729,8 @@ a {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: -2;
+  z-index: 0;              /* behind content */
+  border-radius: 20px;     /* matches section rounding */
 }
 
 .planner-video {
@@ -737,17 +739,19 @@ a {
   object-fit: cover;
 }
 
+/* LIGHT OVERLAY */
 .video-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.35);
-  z-index: -1;
+  background: rgba(50,50,50,0.25);  /* soft gray look */
+  z-index: 1;                        /* behind text */
+  border-radius: 20px;
 }
 
-/* Content grid sits above video */
+/* CONTENT GRID ABOVE VIDEO */
 .trip-grid {
   position: relative;
   z-index: 2;
@@ -755,35 +759,40 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  padding-top: 40px;   /* space from top of hero */
-  padding-bottom: 40px; /* space below content */
+  padding: 40px 20px;
 }
 
-/* INTRO TEXT */
+/* INTRO TEXT BOX */
 .trip-intro {
-  background: rgba(0,0,0,0.5);
+  background: rgba(230,230,230,0.6);  /* soft gray panel */
   padding: 30px 40px;
   border-radius: 20px;
   max-width: 600px;
   margin-bottom: 40px;
+  color: #333;
+  text-shadow: none;
 }
 
 .trip-process h2 {
-  color: #fff;
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+  color: #222;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 12px;
 }
 
 .trip-process p {
-  color: #f5f5f5;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  color: #444;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.05rem;
+  margin-bottom: 40px;
 }
 
 /* STEP CARDS */
 .trip-step {
-  background: linear-gradient(135deg, rgba(123,93,255,0.9), rgba(95,65,210,0.9));
+  background: rgba(123,93,255,0.85); /* purple but readable */
   color: #fff;
   border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
   padding: 18px 22px;
   border-radius: 18px;
   text-align: center;
@@ -799,7 +808,6 @@ a {
 }
 
 .trip-step .step-text {
-  color: #fff;
   font-weight: 500;
 }
 
@@ -834,7 +842,7 @@ a {
 @media (max-width: 768px) {
   .planner-video,
   .video-overlay {
-    display: none; /* hide video on mobile for readability */
+    display: none; /* hide video on mobile */
   }
 
   .trip-columns {
@@ -864,6 +872,7 @@ a {
     max-width: 220px;
   }
 }
+
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
