@@ -708,41 +708,51 @@ a {
 }
 
 
-/* ===== PLAN YOUR TRIP SECTION ===== */
+/* ===== PLAN YOUR TRIP ===== */
 .trip-process {
   position: relative;
-  overflow: hidden;
-  text-align: center;
   margin: 120px auto 0 auto;
-  padding: 0;
+  padding: 0 20px;
+  max-width: 1200px;
 }
 
-/* ===== VIDEO HEADER ===== */
-.video-container {
-  position: relative;   /* text can sit on top */
+/* Two-column layout */
+.trip-two-columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
   width: 100%;
-  max-width: 900px;     /* content width */
-  margin: 0 auto;       /* center video */
+}
+
+/* LEFT: Video column */
+.trip-video-column {
+  flex: 1;
+  position: relative;
+}
+
+/* Video container */
+.video-container {
+  width: 100%;
+  aspect-ratio: 16/9;
   border-radius: 20px;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
-  z-index: 0;
+  position: relative;
 }
 
 .planner-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* cover container */
+  object-fit: cover;
 }
 
 .video-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.35);
-  z-index: 1;          /* overlay for readability */
+  z-index: 1;
 }
 
-/* ===== TEXT OVER VIDEO ===== */
+/* Text over video */
 .trip-grid {
   position: absolute;
   top: 50%;
@@ -752,18 +762,15 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-  padding: 0 20px;
+  gap: 20px;
 }
 
-/* Intro text box */
 .trip-intro {
   background: rgba(0,0,0,0.35);
   color: #fff;
   padding: 30px 40px;
   border-radius: 20px;
-  max-width: 600px;
-  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+  text-align: center;
 }
 
 .trip-process h2 {
@@ -780,18 +787,23 @@ a {
   text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
-/* ===== STEP CARDS BELOW VIDEO ===== */
+/* RIGHT: Steps column */
+.trip-steps-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
 .trip-columns {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  max-width: 900px;
-  margin: 40px auto 0 auto;  /* spacing below video */
-  padding: 0 20px;
+  width: 100%;
 }
 
-/* Step cards styling */
 .trip-step {
   background: rgba(123, 93, 255, 0.9);
   color: #fff;
@@ -800,7 +812,6 @@ a {
   min-width: 200px;
   max-width: 250px;
   text-align: center;
-  flex-shrink: 0;
   box-shadow: 0 0 25px rgba(123, 93, 255, 0.45), 0 6px 25px rgba(0,0,0,0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -815,18 +826,18 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Buttons */
-.trip-process .button {
+.button {
   background: #7b5dff;
   color: #fff;
   border-radius: 50px;
   padding: 14px 36px;
   font-weight: 600;
   box-shadow: 0 0 20px rgba(123,93,255,0.5);
+  text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.trip-process .button:hover {
+.button:hover {
   background: #684ae0;
   box-shadow: 0 0 30px rgba(123,93,255,0.6);
   transform: translateY(-3px);
@@ -834,53 +845,32 @@ a {
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
-
-  .video-container {
-    max-height: 300px;
-    aspect-ratio: 16 / 9;
+  .trip-two-columns {
+    flex-direction: column;
   }
 
-  .planner-video {
-    object-fit: cover;
+  .trip-video-column {
+    width: 100%;
   }
 
-  .trip-grid {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    padding: 20px;
-  }
-
-  .trip-intro {
-    padding: 20px 25px;
-    font-size: 0.95rem;
-    max-width: 90%;
-    margin-bottom: 30px;
+  .trip-steps-column {
+    width: 100%;
+    align-items: center;
   }
 
   .trip-columns {
     flex-direction: column;
     gap: 20px;
-    max-width: 90%;
-    margin: 0 auto 20px auto;
-    padding: 15px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(123, 93, 255, 0.05), rgba(180, 150, 255, 0.05));
   }
 
-  .trip-col {
-    display: contents;
-  }
-
-  .trip-step {
-    width: 100%;
-    max-width: 100%;
-    min-width: auto;
-    flex: none;
+  .trip-grid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px;
   }
 }
-
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
@@ -1515,47 +1505,56 @@ h2, h3, h4, p {
 <!-- TRIP PLANNER SECTION -->
 <section class="trip-process" id="planner">
 
-  <!-- Background Video -->
-  <div class="video-container">
-    <video id="planner-video" class="planner-video" autoplay muted loop playsinline>
-      <source src="newyorkvlog2.mp4" type="video/mp4">
-    </video>
-    <div class="video-overlay"></div>
-  </div>
+  <div class="trip-two-columns">
 
-  <div class="trip-grid">
-    <div class="trip-intro">
-      <h2>Plan Your Trip</h2>
-      <p>Share your dream trip and I’ll craft the perfect route tailored just for you.</p>
-    </div>
+    <!-- LEFT: Video + Text -->
+    <div class="trip-video-column">
+      <div class="video-container">
+        <video id="planner-video" class="planner-video" autoplay muted loop playsinline>
+          <source src="newyorkvlog2.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
 
-    <div class="trip-columns">
-      <div class="trip-col">
-        <div class="trip-step">
-          <span class="step-num">1</span>
-          <p>✨ Tell me your vision</p>
-        </div>
-        <div class="trip-step">
-          <span class="step-num">2</span>
-          <p>🔍 I research and curate your options</p>
-        </div>
-      </div>
-
-      <div class="trip-col">
-        <div class="trip-step">
-          <span class="step-num">3</span>
-          <p>📝 You review and refine your trip</p>
-        </div>
-        <div class="trip-step">
-          <span class="step-num">4</span>
-          <p>✈️ Book & go (stress-free)</p>
+        <div class="trip-grid">
+          <div class="trip-intro">
+            <h2>Plan Your Trip</h2>
+            <p>Share your dream trip and I’ll craft the perfect route tailored just for you.</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <a href="https://lnk.bio/RaeRoutes" target="_blank" class="button plan-btn">
-      Start Planning
-    </a>
+    <!-- RIGHT: Steps + Button -->
+    <div class="trip-steps-column">
+      <div class="trip-columns">
+        <div class="trip-col">
+          <div class="trip-step">
+            <span class="step-num">1</span>
+            <p>✨ Tell me your vision</p>
+          </div>
+          <div class="trip-step">
+            <span class="step-num">2</span>
+            <p>🔍 I research and curate your options</p>
+          </div>
+        </div>
+
+        <div class="trip-col">
+          <div class="trip-step">
+            <span class="step-num">3</span>
+            <p>📝 You review and refine your trip</p>
+          </div>
+          <div class="trip-step">
+            <span class="step-num">4</span>
+            <p>✈️ Book & go (stress-free)</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://lnk.bio/RaeRoutes" target="_blank" class="button plan-btn">
+        Start Planning
+      </a>
+    </div>
+
   </div>
 </section>
 
