@@ -708,29 +708,28 @@ a {
 }
 
 
-/* ===== PLAN YOUR TRIP SECTION (NORMAL SECTION WITH VIDEO) ===== */
+/* ===== PLAN YOUR TRIP SECTION ===== */
 .trip-process {
   position: relative;
   overflow: hidden;
-  padding: 80px 20px;
+  padding: 100px 20px;
   text-align: center;
-  margin: 80px auto;      /* space above and below section */
-  min-height: 600px;      /* section height for desktop */
-  border-radius: 20px;    /* soft rounded boxes for a panel feel */
-  background: none;       /* let video show */
-  z-index: 1;             /* keep above video */
+  margin: 80px auto; /* space from top hero */
+  min-height: 600px;
+  border-radius: 20px; /* optional rounded panel look */
+  background: none;
 }
 
-/* VIDEO BACKGROUND */
-.video-hero {
+/* VIDEO CONTAINER (fills section, but not absolute to page) */
+.video-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -2;
   overflow: hidden;
-  z-index: 0;              /* behind content */
-  border-radius: 20px;     /* matches section rounding */
+  border-radius: 20px;
 }
 
 .planner-video {
@@ -739,19 +738,17 @@ a {
   object-fit: cover;
 }
 
-/* LIGHT OVERLAY */
 .video-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(50,50,50,0.25);  /* soft gray look */
-  z-index: 1;                        /* behind text */
-  border-radius: 20px;
+  background: rgba(0,0,0,0.35);
+  z-index: -1;
 }
 
-/* CONTENT GRID ABOVE VIDEO */
+/* Content grid sits above video */
 .trip-grid {
   position: relative;
   z-index: 2;
@@ -762,43 +759,28 @@ a {
   padding: 40px 20px;
 }
 
-/* INTRO TEXT BOX */
+/* Intro text box */
 .trip-intro {
-  background: rgba(230,230,230,0.6);  /* soft gray panel */
+  background: rgba(255,255,255,0.1); /* transparent gray overlay */
+  color: #fff;
   padding: 30px 40px;
   border-radius: 20px;
   max-width: 600px;
   margin-bottom: 40px;
-  color: #333;
-  text-shadow: none;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
-.trip-process h2 {
-  color: #222;
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
-  margin-bottom: 12px;
-}
-
-.trip-process p {
-  color: #444;
-  font-family: "Poppins", sans-serif;
-  font-size: 1.05rem;
-  margin-bottom: 40px;
-}
-
-/* STEP CARDS */
+/* Step cards */
 .trip-step {
-  background: rgba(123,93,255,0.85); /* purple but readable */
+  background: rgba(123, 93, 255, 0.85); /* readable purple */
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  border-radius: 16px;
   padding: 18px 22px;
-  border-radius: 18px;
-  text-align: center;
-  flex-shrink: 0;
   min-width: 200px;
   max-width: 250px;
+  text-align: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -807,11 +789,12 @@ a {
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
+/* Step text */
 .trip-step .step-text {
   font-weight: 500;
 }
 
-/* BUTTON */
+/* Buttons */
 .trip-process .button {
   background: #7b5dff;
   color: white;
@@ -828,7 +811,7 @@ a {
   transform: translateY(-3px);
 }
 
-/* FLEX LAYOUT */
+/* Columns layout */
 .trip-columns {
   display: flex;
   flex-wrap: wrap;
@@ -840,25 +823,19 @@ a {
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .planner-video,
-  .video-overlay {
-    display: none; /* hide video on mobile */
+  .video-container {
+    display: none; /* hide video for mobile */
   }
-
   .trip-columns {
-    display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 16px;
     padding-bottom: 12px;
-    -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
   }
-
   .trip-columns::-webkit-scrollbar {
     display: none;
   }
-
   .trip-col {
     display: flex;
     flex-direction: column;
@@ -866,14 +843,11 @@ a {
     gap: 16px;
     scroll-snap-align: start;
   }
-
   .trip-step {
     min-width: 180px;
     max-width: 220px;
   }
 }
-
-
 
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
@@ -1468,15 +1442,15 @@ h2, h3, h4, p {
 
 
 <!-- TRIP PLANNER SECTION -->
-<section class="trip-process video-hero" id="planner">
+<section class="trip-process" id="planner">
 
   <!-- Background Video -->
-  <video id="planner-video" class="planner-video" autoplay muted loop playsinline>
-    <source src="sunsetdrivevid.mp4" type="video/mp4">
-  </video>
-
-  <!-- Dark overlay so text stays readable -->
-  <div class="video-overlay"></div>
+  <div class="video-container">
+    <video id="planner-video" class="planner-video" autoplay muted loop playsinline>
+      <source src="sunsetdrivevid.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
 
   <div class="trip-grid">
     <div class="trip-intro">
@@ -1513,7 +1487,6 @@ h2, h3, h4, p {
     </a>
   </div>
 </section>
-
 
 <!-- SERVICES & GIFTING SECTION -->
 <section class="services-gifting" id="services">
