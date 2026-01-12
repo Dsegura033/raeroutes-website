@@ -714,13 +714,13 @@ a {
   overflow: hidden;
   padding: 100px 20px;
   text-align: center;
-  margin: 80px auto; /* space from top hero */
-  min-height: 600px;
-  border-radius: 20px; /* optional rounded panel look */
-  background: none;
+  margin: 120px auto 80px auto; /* separates from hero above */
+  min-height: auto; /* auto to fit content */
+  border-radius: 20px;
+  background: rgba(245,245,245,0.1); /* soft grayish aura */
 }
 
-/* VIDEO CONTAINER (fills section, but not absolute to page) */
+/* VIDEO HERO (desktop only) */
 .video-container {
   position: absolute;
   top: 0;
@@ -761,53 +761,67 @@ a {
 
 /* Intro text box */
 .trip-intro {
-  background: rgba(255,255,255,0.1); /* transparent gray overlay */
+  background: rgba(0,0,0,0.35); /* dark overlay for readability */
   color: #fff;
   padding: 30px 40px;
   border-radius: 20px;
   max-width: 600px;
   margin-bottom: 40px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+}
+
+.trip-process h2 {
+  color: #f4c2ff; /* soft lavender/pink pop */
+  font-size: 2.6rem;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+.trip-process p {
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
 }
 
 /* Step cards */
 .trip-step {
-  background: rgba(123, 93, 255, 0.85); /* readable purple */
+  background: rgba(123, 93, 255, 0.9); /* site purple */
   color: #fff;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 18px 22px;
   min-width: 200px;
   max-width: 250px;
   text-align: center;
   flex-shrink: 0;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 0 25px rgba(123, 93, 255, 0.45), 0 6px 25px rgba(0,0,0,0.2); /* aura glow effect */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .trip-step:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 0 40px rgba(123, 93, 255, 0.6), 0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* Step text */
 .trip-step .step-text {
   font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Buttons */
 .trip-process .button {
   background: #7b5dff;
-  color: white;
+  color: #fff;
   border-radius: 50px;
   padding: 14px 36px;
   font-weight: 600;
-  box-shadow: 0 6px 15px rgba(123,93,255,0.5);
+  box-shadow: 0 0 20px rgba(123,93,255,0.5);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .trip-process .button:hover {
   background: #684ae0;
-  box-shadow: 0 10px 25px rgba(123,93,255,0.6);
+  box-shadow: 0 0 30px rgba(123,93,255,0.6);
   transform: translateY(-3px);
 }
 
@@ -826,6 +840,7 @@ a {
   .video-container {
     display: none; /* hide video for mobile */
   }
+
   .trip-columns {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -833,9 +848,11 @@ a {
     padding-bottom: 12px;
     scroll-snap-type: x mandatory;
   }
+
   .trip-columns::-webkit-scrollbar {
     display: none;
   }
+
   .trip-col {
     display: flex;
     flex-direction: column;
@@ -843,11 +860,13 @@ a {
     gap: 16px;
     scroll-snap-align: start;
   }
+
   .trip-step {
     min-width: 180px;
     max-width: 220px;
   }
 }
+
 
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
