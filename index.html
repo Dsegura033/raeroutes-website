@@ -896,7 +896,7 @@ a {
 /* ===== SERVICES & GIFTING SECTION ===== */
 .services-gifting {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #3b1e7a, #6a4bbf); /* lighter, dreamy aura gradient */
+  background: linear-gradient(135deg, #4e32a8, #7c5cff); /* lighter, dreamy aura gradient */
   border-radius: 24px;
   text-align: center;
   position: relative;
@@ -906,7 +906,7 @@ a {
 .services-gifting h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  color: #f4c2ff; /* soft lavender/pink pop */
+  color: #f4c2ff; /* soft lavender */
   text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
   margin-bottom: 12px;
 }
@@ -914,29 +914,29 @@ a {
 .services-gifting p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.05rem;
-  color: #e3d6ff; /* soft text over darker gradient */
+  color: #e6dbff;
   margin-bottom: 50px;
 }
 
-/* ===== CARDS FLEX CONTAINER ===== */
+/* ===== CARDS FLEX CONTAINER (DESKTOP + MOBILE HORIZONTAL SCROLL) ===== */
 .service-cards {
   display: flex;
   gap: 24px;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap;        /* horizontal scroll */
   justify-content: flex-start;
-  overflow-x: auto;
+  overflow-x: auto;         /* enable scroll */
   padding-bottom: 16px;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
 }
 
 .service-cards::-webkit-scrollbar {
-  display: none;
+  display: none;            /* hide scrollbar on all screens */
 }
 
 /* ===== EACH CARD ===== */
 .service-card {
-  background: linear-gradient(135deg, rgba(142,110,255,0.85), rgba(123,93,255,0.85)); /* lighter gradient */
+  background: linear-gradient(135deg, rgba(142,110,255,0.8), rgba(123,93,255,0.8));
   border-radius: 20px;
   padding: 25px 20px;
   box-shadow: 0 8px 25px rgba(123,93,255,0.35);
@@ -976,7 +976,7 @@ a {
 .service-card p {
   font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
-  color: #e7dbff;
+  color: #e6dbff;
   line-height: 1.4;
   text-align: center;
 }
@@ -985,7 +985,7 @@ a {
 .service-card .button {
   padding: 12px 28px;
   border-radius: 50px;
-  background: #8e6eff;
+  background: #9c7eff;
   color: white;
   font-weight: 600;
   text-decoration: none;
@@ -1012,6 +1012,7 @@ a {
     max-width: 260px;
   }
 }
+
 
     /* ===== ABOUT SECTION ===== */
 .about-section {
