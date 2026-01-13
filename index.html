@@ -866,21 +866,21 @@ a {
   padding: 80px 20px;
   background: linear-gradient(
     135deg,
-    rgba(220,210,255,0.15),
-    rgba(200,230,255,0.1)
+    rgba(220, 210, 255, 0.15),
+    rgba(200, 230, 255, 0.1)
   ); /* soft gray-purple-blue aura */
   border-radius: 24px;
   text-align: center;
   position: relative;
-  color: #f4eaff; /* soft lavender-white text for readability */
+  color: #000000; /* black text for readability */
 }
 
 /* Section Heading */
 .services-gifting h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  color: #e9d6ff; /* gentle lavender pop */
-  text-shadow: 0 0 6px rgba(200,220,255,0.3);
+  color: #000000; /* black heading */
+  text-shadow: none; /* remove glow for clean look */
   margin-bottom: 12px;
 }
 
@@ -888,7 +888,7 @@ a {
 .services-gifting p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.05rem;
-  color: #f4eaff; /* soft text over light aura background */
+  color: #000000; /* black paragraph text */
   margin-bottom: 50px;
 }
 
@@ -912,12 +912,12 @@ a {
 .service-card {
   background: linear-gradient(
     135deg,
-    rgba(210,200,255,0.25),
-    rgba(190,220,255,0.2)
-  ); /* soft dreamy purple-blue */
+    rgba(160, 190, 255, 0.3),  /* soft blue */
+    rgba(200, 180, 255, 0.25)  /* light purple */
+  ); 
   border-radius: 20px;
   padding: 25px 20px;
-  box-shadow: 0 6px 20px rgba(210,200,255,0.2); /* subtle glow */
+  box-shadow: 0 6px 20px rgba(160, 190, 255, 0.2); /* subtle blue-purple glow */
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
@@ -931,7 +931,7 @@ a {
 /* CARD HOVER EFFECT */
 .service-card:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(210,200,255,0.25);
+  box-shadow: 0 10px 30px rgba(160, 190, 255, 0.25);
 }
 
 /* EMOJI / ICON */
@@ -946,16 +946,16 @@ a {
 .service-card h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  color: #e9d6ff;
+  color: #2b2b2b; /* dark title */
   margin-bottom: 8px;
-  text-shadow: 0 0 4px rgba(200,220,255,0.2);
+  text-shadow: none;
 }
 
 /* CARD TEXT */
 .service-card p {
   font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
-  color: #f4eaff;
+  color: #2b2b2b; /* dark text for readability */
   line-height: 1.4;
   text-align: center;
 }
@@ -964,18 +964,18 @@ a {
 .service-card .button {
   padding: 12px 28px;
   border-radius: 50px;
-  background: rgba(180,160,255,0.3); /* soft pastel button */
-  color: #f4eaff;
+  background: rgba(150, 170, 255, 0.3); /* soft blue-purple button */
+  color: #000000; /* black button text */
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(180,160,255,0.2);
+  box-shadow: 0 4px 12px rgba(150, 170, 255, 0.2);
   transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 .service-card .button:hover {
-  background: rgba(160,140,255,0.35);
+  background: rgba(140, 150, 255, 0.35);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(180,160,255,0.25);
+  box-shadow: 0 8px 20px rgba(150, 170, 255, 0.25);
 }
 
 /* MOBILE ADJUSTMENTS */
@@ -991,6 +991,7 @@ a {
     max-width: 260px;
   }
 }
+
 
     /* ===== ABOUT SECTION ===== */
 .about-section {
