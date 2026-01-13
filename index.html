@@ -715,19 +715,24 @@ a {
   max-width: 1200px;
 }
 
-/* Two-column layout for desktop */
+.trip-process h2 {
+  color: #0f0f1f;
+  text-shadow: 0 2px 12px rgba(123, 93, 255, 0.25);
+}
+
+/* ===== DESKTOP DEFAULT ===== */
+
 .trip-two-columns {
   display: flex;
   gap: 40px;
   align-items: flex-start;
 }
 
-/* LEFT COLUMN: video + overlay text */
+/* Video column */
 .trip-video-column {
-  flex: 1.5; /* make video bigger */
+  flex: 1.5;
+  aspect-ratio: 4 / 5;
   position: relative;
-  min-width: 500px; /* ensures video is large on desktop */
-  height: 500px;    /* fixed desktop height */
 }
 
 .video-container {
@@ -751,7 +756,7 @@ a {
   z-index: 1;
 }
 
-/* Text overlay on video */
+/* Text overlay */
 .trip-intro-overlay {
   position: absolute;
   top: 50%;
@@ -776,38 +781,30 @@ a {
   font-size: 1.1rem;
 }
 
-/* RIGHT COLUMN: Steps + button */
+/* Steps column */
 .trip-steps-column {
-  flex: 1; /* adjust width */
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Steps horizontal scroll for desktop */
+/* Steps grid (desktop) */
 .trip-columns {
-  display: flex;            /* horizontal scroll */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-}
-
-.trip-columns::-webkit-scrollbar {
-  display: none;
 }
 
 .trip-step {
   background: rgba(123, 93, 255, 0.25);
   backdrop-filter: blur(6px);
-  color: #fff;
+  color: #1f1f2e;
   border-radius: 18px;
   padding: 18px 22px;
-  min-width: 220px;
   text-align: center;
   box-shadow: 0 0 25px rgba(123,93,255,0.2);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  scroll-snap-align: start;
 }
 
 .trip-step:hover {
@@ -815,6 +812,7 @@ a {
   box-shadow: 0 0 40px rgba(123,93,255,0.35);
 }
 
+/* Button */
 .button.plan-btn {
   background: #7b5dff;
   color: #fff;
@@ -841,35 +839,19 @@ a {
   }
 
   .trip-video-column {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9; /* keeps video proportional */
+    aspect-ratio: 16 / 9;
   }
 
-  .trip-steps-column {
-    width: 100%;
-  }
-
-  /* stacked steps in mobile, two per row if possible */
   .trip-columns {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 15px;
-    overflow: visible;
-    padding: 0;
   }
 
-  .trip-step {
-    min-width: auto;
-  }
-
-  /* overlay text fits inside mobile video */
   .trip-intro-overlay {
     width: 90%;
     padding: 15px;
   }
 }
-
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
