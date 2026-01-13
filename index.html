@@ -710,13 +710,13 @@ a {
 
 /* ===== PLAN YOUR TRIP SECTION ===== */
 .trip-process {
-  margin: 120px auto;
+  margin: 80px auto; /* reduced white space */
   padding: 0 20px;
   max-width: 1200px;
 }
 
 .trip-process h2 {
-  color: #0f0f1f;
+  color: #ffffff; /* Plan Your Trip text = white */
   text-shadow: 0 2px 12px rgba(123, 93, 255, 0.25);
 }
 
@@ -725,16 +725,18 @@ a {
 .trip-two-columns {
   display: flex;
   gap: 40px;
-  align-items: flex-start;
+  align-items: center; /* centers boxes vertically next to video */
 }
 
-/* Video column */
+/* Video column — reverted to original sizing */
 .trip-video-column {
   flex: 1.5;
-  aspect-ratio: 4 / 5;
   position: relative;
+  min-width: 500px;
+  height: 500px;
 }
 
+/* Video container */
 .video-container {
   width: 100%;
   height: 100%;
@@ -794,6 +796,7 @@ a {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  justify-items: center; /* prevents crowded / top-heavy feel */
 }
 
 .trip-step {
@@ -839,7 +842,10 @@ a {
   }
 
   .trip-video-column {
+    width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
+    min-width: unset;
   }
 
   .trip-columns {
@@ -852,6 +858,7 @@ a {
     padding: 15px;
   }
 }
+
 
 
 /* ===== SERVICES & GIFTING SECTION ===== */
