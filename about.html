@@ -262,13 +262,17 @@ header nav a:hover {
 /* Grid */
 .diaries-grid {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;  /* 🔑 prevent wrapping for mobile horizontal scroll */
     justify-content: center;
     gap: 40px;
+    overflow-x: auto;   /* 🔑 horizontal scroll on mobile */
+    padding-bottom: 10px; /* small padding for scroll space */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
 }
 
 /* Scrapbook card */
 .diary-card {
+    flex: 0 0 auto;  /* 🔑 keep each card from shrinking */
     width: 340px;
     aspect-ratio: 3 / 5;
     background: rgba(255,255,255,0.9);
@@ -323,7 +327,7 @@ header nav a:hover {
     border-radius: 6px;
     box-shadow: 0 4px 10px rgba(90,75,170,0.35);
     z-index: 1;               /* BELOW iframe */
-    pointer-events: none;    /* 🔑 FACEBOOK FIX */
+    pointer-events: none;     /* 🔑 ensure clicks pass through to iframe */
     backdrop-filter: blur(1px);
 }
 
@@ -344,8 +348,8 @@ header nav a:hover {
 /* Mobile */
 @media (max-width: 768px) {
     .diary-card {
-        width: 90%;
-        max-width: 360px;
+        width: 340px;        /* keep same width as desktop */
+        flex: 0 0 auto;      /* prevent shrinking in scroll */
     }
 }
 
