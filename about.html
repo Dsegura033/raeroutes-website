@@ -436,6 +436,70 @@ footer {
         height: 180px;
     }
 }
+  /* ===== SCRAPBOOK STYLE & ANIMATIONS ===== */
+
+/* Scrapbook border & tilt effect for about sections */
+.about-text, .about-image, .core-video, .about-story {
+    border: 2px dashed rgba(181,160,255,0.5);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    position: relative;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Slight alternating tilt for sections */
+.about-image {
+    transform: rotate(1deg);
+}
+
+.core-video {
+    transform: rotate(-1deg);
+}
+
+.about-story {
+    transform: rotate(0.5deg);
+}
+
+/* Hover pop effect */
+.about-text:hover, .about-image:hover, .core-video:hover, .about-story:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Subtle sparkle animation inside sections */
+@keyframes sparkle {
+    0% {background-position: 0 0;}
+    100% {background-position: 200px 200px;}
+}
+
+.about-text::before,
+.about-image::before,
+.core-video::before,
+.about-story::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: url('sparkles.png') repeat;
+    opacity: 0.15;
+    animation: sparkle 60s linear infinite;
+    border-radius: inherit;
+}
+
+/* Fade in when in view */
+.about-text.in-view,
+.about-image img.in-view,
+.core-video.in-view,
+.about-story.in-view {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0);
+    transition: all 0.8s ease-out;
+}
+
 </style>
 
 </head>
