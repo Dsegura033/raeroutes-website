@@ -259,27 +259,39 @@ header nav a:hover {
     margin-bottom: 40px;
 }
 
-/* Grid */
+/* Horizontal scroll container */
 .diaries-grid {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 40px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 20px 10px 40px;
+    scroll-snap-type: x mandatory;
 }
 
-/* Scrapbook card */
+/* Hide scrollbar but keep scroll */
+.diaries-grid::-webkit-scrollbar {
+    display: none;
+}
+.diaries-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Scrapbook card — FIXED SIZE */
 .diary-card {
+    flex: 0 0 auto;
     width: 340px;
-    height: 560px; /* IMPORTANT: fixed height for FB mobile */
-    background: rgba(255,255,255,0.92);
+    height: 560px;
+    background: rgba(255,255,255,0.9);
     border: 2px dashed rgba(181,160,255,0.6);
     border-radius: 22px;
     padding: 14px;
     position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.12);
     transform: rotate(-1deg);
-    transition: all 0.3s ease;
-    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: center;
 }
 
 /* Alternate tilt */
@@ -293,19 +305,17 @@ header nav a:hover {
     box-shadow: 0 16px 35px rgba(0,0,0,0.18);
 }
 
-/* Video wrapper (CRITICAL) */
+/* Video wrapper — DO NOT RESPONSIVE SCALE */
 .video-wrapper {
     width: 100%;
     height: 100%;
     border-radius: 14px;
     overflow: hidden;
-    position: relative;
+    background: #000;
 }
 
-/* Facebook iframe */
+/* Facebook iframe — LOCK SIZE */
 .video-wrapper iframe {
-    position: absolute;
-    inset: 0;
     width: 100%;
     height: 100%;
     border: none;
