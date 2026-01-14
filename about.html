@@ -16,7 +16,7 @@ body {
     background: #f8f7fc;
     color: #333;
     line-height: 1.6;
-    overflow-x: hidden; /* prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
 /* ===== HEADER ===== */
@@ -35,11 +35,8 @@ header {
     transition: all 0.3s ease;
 }
 
-header:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-}
+header:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
 
-/* Logo */
 header .logo a {
     font-family: 'Playfair Display', serif;
     font-size: 28px;
@@ -49,12 +46,8 @@ header .logo a {
     align-items: center;
 }
 
-header .logo img {
-    height: 50px;
-    margin-right: 12px;
-}
+header .logo img { height: 50px; margin-right: 12px; }
 
-/* Main Navigation */
 header nav {
     display: flex;
     gap: 30px;
@@ -67,11 +60,10 @@ header nav a {
     font-size: 18px;
     padding: 10px 20px;
     border-radius: 12px;
-    transition: all 0.3s ease;
     position: relative;
+    transition: all 0.3s ease;
 }
 
-/* Hover underline and gradient */
 header nav a::after {
     content: '';
     position: absolute;
@@ -84,10 +76,7 @@ header nav a::after {
     transition: width 0.3s ease;
 }
 
-header nav a:hover::after {
-    width: 100%;
-}
-
+header nav a:hover::after { width: 100%; }
 header nav a:hover {
     color: #fff;
     background: linear-gradient(90deg, #b5a0ff, #8e78e5);
@@ -95,21 +84,9 @@ header nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* Hamburger menu (mobile) */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 22px;
-    cursor: pointer;
-}
-
-.hamburger span {
-    height: 4px;
-    background: #5a4baa;
-    border-radius: 2px;
-}
+/* Hamburger menu */
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; cursor: pointer; }
+.hamburger span { height: 4px; background: #5a4baa; border-radius: 2px; }
 
 /* ===== ABOUT PAGE ===== */
 .about-page {
@@ -118,7 +95,6 @@ header nav a:hover {
     overflow: hidden;
 }
 
-/* Main heading */
 .about-page h1 {
     font-family: 'Poppins', sans-serif;
     color: #4a3f9e;
@@ -139,7 +115,6 @@ header nav a:hover {
     align-items: flex-start;
 }
 
-/* Text block */
 .about-text {
     max-width: 600px;
     font-size: 18px;
@@ -151,11 +126,7 @@ header nav a:hover {
     text-align: center;
 }
 
-.about-text p {
-    margin-bottom: 20px;
-}
-
-/* CTA Button - Start Your Journey */
+.about-text p { margin-bottom: 20px; }
 .about-text .button {
     display: inline-block;
     padding: 16px 50px;
@@ -165,18 +136,13 @@ header nav a:hover {
     font-weight: 700;
     font-size: 18px;
     text-decoration: none;
-    text-align: center;
     margin: 20px auto 0;
     transition: all 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.about-text .button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
+.about-text .button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
 
-/* Image block */
 .about-image img {
     max-width: 320px;
     border-radius: 20px;
@@ -186,7 +152,7 @@ header nav a:hover {
     transition: all 0.8s ease-out;
 }
 
-/* ===== CORE VIDEO SECTION ===== */
+/* ===== CORE VIDEO ===== */
 .core-video {
     padding: 80px 20px;
     text-align: center;
@@ -229,27 +195,10 @@ header nav a:hover {
     pointer-events: none;
 }
 
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-.core-video .video-placeholder video {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    object-fit: cover;
-    z-index: 1;
-    position: relative;
-}
-
-.core-video .video-caption {
-    margin-top: 15px;
-    font-weight: 600;
-    font-size: 18px;
-    color: #5a4baa;
-    text-align: center;
-}
+.core-video .video-placeholder video { width: 100%; height: 100%; border-radius: 20px; object-fit: cover; z-index: 1; position: relative; }
+.core-video .video-caption { margin-top: 15px; font-weight: 600; font-size: 18px; color: #5a4baa; text-align: center; }
 
 /* ===== ABOUT STORY ===== */
 .about-story p {
@@ -262,109 +211,16 @@ header nav a:hover {
     color: #4c4c4c;
 }
 
-/* ===== RESPONSIVE / MOBILE ===== */
-@media screen and (max-width: 768px) {
-    /* Header adjustments */
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 15px 20px;
-    }
-
-    /* Hide nav by default on mobile */
-    header nav {
-        display: none;
-        flex-direction: column;
-        gap: 15px;
-        position: absolute;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        background: #fff;
-        padding: 20px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        z-index: 999;
-    }
-
-    header nav.show {
-        display: flex;
-    }
-
-    /* Show hamburger */
-    .hamburger {
-        display: flex;
-    }
-
-    /* About content adjustments */
-    .about-content {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-
-    .about-image img {
-        max-width: 90%;
-    }
-
-    .about-page h1 {
-        font-size: 36px;
-    }
-
-    .about-text {
-        font-size: 16px;
-    }
-
-    .about-text .button {
-        padding: 12px 30px;
-        font-size: 16px;
-    }
-
-    /* Core Video adjustments */
-    .core-video h2 {
-        font-size: 32px;
-        margin-bottom: 15px;
-    }
-
-    .core-video .video-placeholder {
-        width: 95%;
-        height: 280px;
-    }
-
-    .core-video .video-caption {
-        font-size: 16px;
-        margin-top: 10px;
-    }
-}
-
 /* ===== TRAVEL DIARIES ===== */
 .travel-diaries {
-    padding: 80px 0 60px;
-    background: #f5f3fc;
+    padding: 80px 20px 60px;
     text-align: center;
 }
 
-.travel-diaries h2 {
-    font-family: 'Poppins', sans-serif;
-    color: #4a3f9e;
-    font-size: 36px;
-    margin-bottom: 15px;
-}
+.travel-diaries h2 { font-family: 'Poppins', sans-serif; color: #4a3f9e; font-size: 36px; margin-bottom: 15px; }
+.travel-diaries p { font-size: 18px; color: #5a4baa; margin-bottom: 40px; }
 
-.travel-diaries p {
-    font-size: 18px;
-    color: #5a4baa;
-    margin-bottom: 40px;
-}
-
-/* Diaries grid */
-.diaries-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
+.diaries-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
 
 .diary-card {
     width: 280px;
@@ -380,66 +236,35 @@ header nav a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.diary-card:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+/* Scrapbook effect on diary cards */
+.diary-card {
+    border: 2px dashed rgba(181,160,255,0.5);
+    padding: 15px;
+    position: relative;
+    background: rgba(255,255,255,0.85);
+    transform: rotate(-1deg);
 }
+
+.diary-card:nth-child(even) { transform: rotate(1deg); }
+.diary-card:hover { transform: rotate(0deg) scale(1.02); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
 
 /* ===== FOOTER ===== */
-footer {
-    padding: 50px 20px;
-    background: #f0eef8;
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-}
-
+footer { padding: 50px 20px; background: #f0eef8; text-align: center; font-size: 14px; color: #555; }
 
 /* ===== SCROLL ANIMATIONS ===== */
 .about-page h1.in-view,
 .about-text.in-view,
-.about-image img.in-view {
+.about-image img.in-view,
+.core-video.in-view,
+.about-story.in-view,
+.diary-card.in-view {
     opacity: 1;
-    transform: translateY(0);
+    transform: rotate(0deg) translateY(0);
+    transition: all 0.8s ease-out;
 }
 
-/* ===== RESPONSIVE ===== */
-@media screen and (max-width: 1024px) {
-    .about-content {
-        flex-direction: column;
-        align-items: center;
-    }
-    .about-image img {
-        max-width: 80%;
-    }
-    .core-video .video-placeholder {
-        height: 350px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .about-page h1 {
-        font-size: 32px;
-    }
-    .core-video h2 {
-        font-size: 28px;
-    }
-    .about-text, .about-story p, .travel-diaries p {
-        font-size: 16px;
-    }
-    .about-text .button {
-        padding: 12px 30px;
-        font-size: 16px;
-    }
-    .diary-card {
-        width: 90%;
-        height: 180px;
-    }
-}
-  /* ===== SCRAPBOOK STYLE & ANIMATIONS ===== */
-
-/* Scrapbook border & tilt effect for about sections */
-.about-text, .about-image, .core-video, .about-story {
+/* ===== SCRAPBOOK EFFECTS ===== */
+.about-text, .about-image, .core-video, .about-story, .diary-card {
     border: 2px dashed rgba(181,160,255,0.5);
     border-radius: 15px;
     padding: 20px;
@@ -451,38 +276,26 @@ footer {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Slight alternating tilt for sections */
-.about-image {
-    transform: rotate(1deg);
-}
+.about-image { transform: rotate(1deg); }
+.core-video { transform: rotate(-1deg); }
+.about-story { transform: rotate(0.5deg); }
+.diary-card:nth-child(even) { transform: rotate(1deg); }
 
-.core-video {
-    transform: rotate(-1deg);
-}
-
-.about-story {
-    transform: rotate(0.5deg);
-}
-
-/* Hover pop effect */
-.about-text:hover, .about-image:hover, .core-video:hover, .about-story:hover {
+.about-text:hover, .about-image:hover, .core-video:hover, .about-story:hover, .diary-card:hover {
     transform: rotate(0deg) scale(1.02);
     box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
-/* Subtle sparkle animation inside sections */
+/* Sparkle animation */
 @keyframes sparkle {
     0% {background-position: 0 0;}
     100% {background-position: 200px 200px;}
 }
 
-.about-text::before,
-.about-image::before,
-.core-video::before,
-.about-story::before {
+.about-text::before, .about-image::before, .core-video::before, .about-story::before, .diary-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top:0; left:0; right:0; bottom:0;
     pointer-events: none;
     background: url('sparkles.png') repeat;
     opacity: 0.15;
@@ -490,15 +303,33 @@ footer {
     border-radius: inherit;
 }
 
-/* Fade in when in view */
-.about-text.in-view,
-.about-image img.in-view,
-.core-video.in-view,
-.about-story.in-view {
-    opacity: 1;
-    transform: rotate(0deg) translateY(0);
-    transition: all 0.8s ease-out;
+/* ===== RESPONSIVE / MOBILE ===== */
+@media screen and (max-width: 1024px) {
+    .about-content { flex-direction: column; align-items: center; }
+    .about-image img { max-width: 80%; }
+    .core-video .video-placeholder { height: 350px; }
 }
+
+@media screen and (max-width: 768px) {
+    header { flex-direction: row; justify-content: space-between; padding: 15px 20px; }
+    header nav { display: none; flex-direction: column; gap: 15px; position: absolute; top: 65px; left: 0; width: 100%; background: #fff; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 999; }
+    header nav.show { display: flex; }
+    .hamburger { display: flex; }
+
+    .about-content { flex-direction: column; align-items: center; gap: 30px; }
+    .about-image img { max-width: 90%; }
+    .about-page h1 { font-size: 36px; }
+    .about-text { font-size: 16px; }
+    .about-text .button { padding: 12px 30px; font-size: 16px; }
+
+    .core-video h2 { font-size: 32px; margin-bottom: 15px; }
+    .core-video .video-placeholder { width: 95%; height: 280px; }
+    .core-video .video-caption { font-size: 16px; margin-top: 10px; }
+
+    .diary-card { width: 90%; height: 180px; }
+    .about-text, .about-story p, .travel-diaries p { font-size: 16px; }
+}
+
 
 </style>
 
