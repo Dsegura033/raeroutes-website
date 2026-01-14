@@ -866,13 +866,14 @@ a {
   padding: 80px 20px;
   background: linear-gradient(
     135deg,
-    rgba(170, 150, 230, 0.45),  /* richer lavender top */
-    rgba(120, 100, 190, 0.40)   /* deeper soft purple bottom */
+    rgba(145, 95, 240, 0.75), /* top rich purple */
+    rgba(120, 80, 200, 0.75)  /* deeper purple bottom */
   );
   border-radius: 24px;
   text-align: center;
   color: #000;
-  position: relative; /* needed for overlays */
+  position: relative; /* needed for glow and sparkles */
+  overflow: hidden;   /* contain sparkles */
 }
 
 /* Heading */
@@ -897,23 +898,38 @@ a {
   inset: 0;
   background: radial-gradient(
     circle at top center,
-    rgba(255, 255, 255, 0.20),  /* soft top glow */
+    rgba(255, 255, 255, 0.20), /* soft top glow */
     transparent 70%
   );
   pointer-events: none;
   border-radius: 24px;
 }
 
-/* Optional Sparkle Overlay */
+/* ===============================
+   Animated Sparkles
+================================ */
 .services-gifting::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('https://i.ibb.co/5xqQk1S/sparkles.png'); /* subtle sparkle PNG */
-  background-repeat: repeat;
-  opacity: 0.06;
   pointer-events: none;
   border-radius: 24px;
+  box-shadow: 
+    20px 40px #fff, 60px 80px #e0c0ff, 120px 60px #c0a0ff,
+    180px 90px #fff, 220px 120px #e0c0ff, 250px 50px #c0a0ff,
+    300px 90px #fff, 350px 30px #e0c0ff, 400px 70px #c0a0ff;
+  animation: sparkle 3s infinite linear;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.2);
+  }
 }
 
 /* ===============================
