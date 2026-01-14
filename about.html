@@ -350,40 +350,6 @@ header nav a:hover {
 }
 
 
-/* ===== SCRAPBOOK TAPE EFFECT ===== */
-.diary-card::before,
-.diary-card::after {
-    content: "";
-    position: absolute;
-    width: 90px;
-    height: 28px;
-    background: rgba(181,160,255,0.55);
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(90,75,170,0.35);
-    z-index: 5;
-}
-
-.diary-card::before {
-    top: -12px;
-    left: 18px;
-    transform: rotate(-8deg);
-}
-
-.diary-card::after {
-    bottom: -12px;
-    right: 18px;
-    transform: rotate(6deg);
-}
-
-/* ===== MOBILE FIX ===== */
-@media (max-width: 768px) {
-    .diary-card {
-        width: 100%;
-        max-width: 360px;
-        height: 560px; /* DO NOT REMOVE — fixes FB mobile bug */
-    }
-}
-
 /* ===== FOOTER ===== */
 footer { padding: 50px 20px; background: #f0eef8; text-align: center; font-size: 14px; color: #555; }
 
