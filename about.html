@@ -262,32 +262,30 @@ header nav a:hover {
 /* Grid - horizontal scroll on mobile, normal on desktop */
 .diaries-grid {
     display: flex;
-    flex-wrap: nowrap;               /* horizontal scroll for mobile */
-    justify-content: center;          /* center on desktop */
+    flex-wrap: nowrap;               
+    justify-content: center;          
     gap: 40px;
-    overflow-x: auto;                /* mobile scroll */
+    overflow-x: auto;                
     padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
-    scroll-snap-type: x mandatory;   /* snap cards when scrolling */
+    -webkit-overflow-scrolling: touch; 
+    scroll-snap-type: x mandatory;   
     position: relative;
 }
 
 /* Scrapbook card */
 .diary-card {
-    flex: 0 0 auto;                  /* prevents shrinking on mobile */
+    flex: 0 0 auto;                  
     width: 340px;
     aspect-ratio: 3 / 5;
     background: rgba(255,255,255,0.9);
     border: 2px dashed rgba(181,160,255,0.6);
     border-radius: 22px;
-    padding: 14px;
     position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.12);
     transform: rotate(-1deg);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
-    scroll-snap-align: start;       /* snap each card to start */
-    cursor: pointer;                 /* indicates clickable */
+    scroll-snap-align: start;
 }
 
 /* Alternate tilt */
@@ -301,33 +299,36 @@ header nav a:hover {
     box-shadow: 0 16px 35px rgba(0,0,0,0.18);
 }
 
-/* Video wrapper with cover image */
-.video-wrapper {
+/* Video link wrapper */
+.video-link {
+    display: block;
     width: 100%;
     height: 100%;
-    border-radius: 14px;
-    overflow: hidden;
     position: relative;
-    z-index: 2;
-    background-size: cover;          /* cover image fills wrapper */
-    background-position: center;
 }
 
-/* Play button overlay */
-.video-wrapper::after {
-    content: "▶";                    /* simple play icon */
+/* Image covers the card */
+.video-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 22px;
+    display: block;
+}
+
+/* Play overlay */
+.play-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 48px;
-    color: rgba(255,255,255,0.9);
-    text-shadow: 0 0 10px rgba(0,0,0,0.6);
-    pointer-events: none;           /* clicks pass through to link */
-    z-index: 3;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 0 12px rgba(0,0,0,0.6);
+    pointer-events: none;
 }
 
-/* Scrapbook tape */
+/* ===== SCRAPBOOK TAPE EFFECT ===== */
 .diary-card::before,
 .diary-card::after {
     content: "";
@@ -337,19 +338,27 @@ header nav a:hover {
     background: rgba(181,160,255,0.55);
     border-radius: 6px;
     box-shadow: 0 4px 10px rgba(90,75,170,0.35);
-    z-index: 1;               /* below cover image */
+    z-index: 1;
     pointer-events: none;
     backdrop-filter: blur(1px);
 }
 
-.diary-card::before { top: -12px; left: 18px; transform: rotate(-8deg); }
-.diary-card::after { bottom: -12px; right: 18px; transform: rotate(6deg); }
+.diary-card::before {
+    top: -12px;
+    left: 18px;
+    transform: rotate(-8deg);
+}
+
+.diary-card::after {
+    bottom: -12px;
+    right: 18px;
+    transform: rotate(6deg);
+}
 
 /* Mobile */
 @media (max-width: 768px) {
     .diary-card {
-        width: 340px;        /* same width on mobile */
-        flex: 0 0 auto;      /* prevent shrinking in scroll */
+        width: 280px;
     }
 }
 
@@ -543,28 +552,30 @@ footer { padding: 50px 20px; background: #f0eef8; text-align: center; font-size:
 
     <!-- Video 1 -->
     <div class="diary-card">
-      <a href="https://www.facebook.com/61579193352296/videos/1183307170442172/" target="_blank" class="video-wrapper">
+      <a href="https://www.facebook.com/61579193352296/videos/1183307170442172/" target="_blank" class="video-link">
         <img src="hometwonvlog.png" alt="Travel Diary 1 Cover">
+        <div class="play-overlay">▶</div>
       </a>
     </div>
 
     <!-- Video 2 -->
     <div class="diary-card">
-      <a href="https://www.facebook.com/61579193352296/videos/1197916335291336/" target="_blank" class="video-wrapper">
+      <a href="https://www.facebook.com/61579193352296/videos/1197916335291336/" target="_blank" class="video-link">
         <img src="weekendvlogpic.png" alt="Travel Diary 2 Cover">
+        <div class="play-overlay">▶</div>
       </a>
     </div>
 
     <!-- Video 3 -->
     <div class="diary-card">
-      <a href="https://www.facebook.com/61579193352296/videos/1382027573300490/" target="_blank" class="video-wrapper">
+      <a href="https://www.facebook.com/61579193352296/videos/1382027573300490/" target="_blank" class="video-link">
         <img src="firstvidpic.png" alt="Travel Diary 3 Cover">
+        <div class="play-overlay">▶</div>
       </a>
     </div>
 
   </div>
 </section>
-
 
   <!-- FOOTER -->
   <footer>
