@@ -267,7 +267,7 @@ header nav a:hover {
     gap: 40px;
 }
 
-/* Scrapbook card (VERTICAL) */
+/* Scrapbook card */
 .diary-card {
     width: 340px;
     aspect-ratio: 3 / 5;
@@ -278,7 +278,7 @@ header nav a:hover {
     position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.12);
     transform: rotate(-1deg);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
 }
 
@@ -299,22 +299,19 @@ header nav a:hover {
     height: 100%;
     border-radius: 14px;
     overflow: hidden;
+    position: relative;
+    z-index: 2;
 }
 
-/* Facebook iframe */
+/* Facebook iframe (CRITICAL FIX) */
 .video-wrapper iframe {
     width: 100%;
     height: 100%;
     border: none;
+    position: relative;
+    z-index: 3;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .diary-card {
-        width: 90%;
-        max-width: 360px;
-    }
-}
 /* ===== SCRAPBOOK TAPE EFFECT ===== */
 .diary-card::before,
 .diary-card::after {
@@ -325,7 +322,9 @@ header nav a:hover {
     background: rgba(181,160,255,0.55);
     border-radius: 6px;
     box-shadow: 0 4px 10px rgba(90,75,170,0.35);
-    z-index: 5;
+    z-index: 1;               /* BELOW iframe */
+    pointer-events: none;    /* 🔑 FACEBOOK FIX */
+    backdrop-filter: blur(1px);
 }
 
 /* Top-left tape */
@@ -342,11 +341,14 @@ header nav a:hover {
     transform: rotate(6deg);
 }
 
-/* Subtle texture illusion */
-.diary-card::before,
-.diary-card::after {
-    backdrop-filter: blur(1px);
+/* Mobile */
+@media (max-width: 768px) {
+    .diary-card {
+        width: 90%;
+        max-width: 360px;
+    }
 }
+
 
 /* ===== FOOTER ===== */
 footer { padding: 50px 20px; background: #f0eef8; text-align: center; font-size: 14px; color: #555; }
@@ -529,48 +531,56 @@ footer { padding: 50px 20px; background: #f0eef8; text-align: center; font-size:
   </div>
 </section>
 
- <section class="travel-diaries">
+<section class="travel-diaries">
   <h2>Travel Diaries</h2>
-  <p>Explore trips, vlogs, and behind the scenes moments from RaeRoutes.</p>
+  <p>Explore trips, vlogs, and behind-the-scenes moments from RaeRoutes.</p>
 
   <div class="diaries-grid">
 
+    <!-- Video 1 -->
     <div class="diary-card">
       <div class="video-wrapper">
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61579193352296%2Fvideos%2F1183307170442172%2F&show_text=false&t=0"
+        <iframe
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61579193352296%2Fvideos%2F1183307170442172%2F&show_text=false"
+          loading="lazy"
+          scrolling="no"
+          frameborder="0"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          allowfullscreen>
+          allowfullscreen="true">
         </iframe>
       </div>
     </div>
 
+    <!-- Video 2 -->
     <div class="diary-card">
       <div class="video-wrapper">
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61579193352296%2Fvideos%2F1197916335291336%2F&show_text=false&t=0"
+        <iframe
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61579193352296%2Fvideos%2F1197916335291336%2F&show_text=false"
+          loading="lazy"
+          scrolling="no"
+          frameborder="0"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          allowfullscreen>
+          allowfullscreen="true">
         </iframe>
       </div>
     </div>
 
+    <!-- Video 3 -->
     <div class="diary-card">
       <div class="video-wrapper">
-        <iframe 
-          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61579193352296%2Fvideos%2F1382027573300490%2F&show_text=false&t=0"
+        <iframe
+          src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61579193352296%2Fvideos%2F1382027573300490%2F&show_text=false"
+          loading="lazy"
+          scrolling="no"
+          frameborder="0"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          allowfullscreen>
+          allowfullscreen="true">
         </iframe>
       </div>
     </div>
 
   </div>
 </section>
-
-
-    </div>
-  </section>
 
   <!-- FOOTER -->
   <footer>
