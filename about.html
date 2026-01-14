@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 <style>
- /* ===== GLOBAL BODY ===== */
+/* ===== GLOBAL BODY ===== */
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -18,12 +18,11 @@ body {
     line-height: 1.6;
 }
 
-/* ===== HEADER & NAV ===== */
 /* ===== HEADER ===== */
 header {
     padding: 20px 40px;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,6 +31,11 @@ header {
     z-index: 1000;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+header:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 /* Logo */
@@ -50,32 +54,28 @@ header .logo img {
 }
 
 /* Main Navigation */
-nav.main-nav {
+header nav {
     display: flex;
-    justify-content: center;
-    gap: 35px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    flex-wrap: wrap;
+    gap: 30px;
 }
 
-/* Links */
-nav.main-nav a {
+header nav a {
     text-decoration: none;
     color: #5a4baa;
-    padding: 10px 18px;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 20px;
     border-radius: 12px;
     transition: all 0.3s ease;
     position: relative;
 }
 
-/* Hover effect */
-nav.main-nav a::after {
+/* Hover underline and gradient */
+header nav a::after {
     content: '';
     position: absolute;
-    left: 0;
     bottom: -4px;
+    left: 0;
     width: 0%;
     height: 3px;
     background: linear-gradient(90deg, #b5a0ff, #8e78e5);
@@ -83,53 +83,41 @@ nav.main-nav a::after {
     transition: width 0.3s ease;
 }
 
-nav.main-nav a:hover::after {
+header nav a:hover::after {
     width: 100%;
 }
 
-nav.main-nav a:hover {
+header nav a:hover {
     color: #fff;
     background: linear-gradient(90deg, #b5a0ff, #8e78e5);
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-    nav.main-nav {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 10px;
-    }
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-/* ===== ABOUT PAGE SECTION ===== */
+/* ===== ABOUT PAGE ===== */
 .about-page {
     padding: 100px 20px;
-    background: linear-gradient(135deg, #f3f0ff 0%, #e0d9ff 100%);
+    background: linear-gradient(135deg, #f3f0ff, #e0d9ff);
     overflow: hidden;
 }
 
+/* Main heading */
 .about-page h1 {
     font-family: 'Poppins', sans-serif;
     color: #4a3f9e;
     text-align: center;
-    font-size: 42px;
-    margin-bottom: 50px;
+    font-size: 44px;
+    margin-bottom: 60px;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.8s ease-out;
 }
 
-/* Content layout */
+/* About content layout */
 .about-content {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 50px;
     justify-content: center;
     align-items: flex-start;
 }
@@ -137,8 +125,8 @@ nav.main-nav a:hover {
 /* Text block */
 .about-text {
     max-width: 600px;
-    color: #4c4c4c;
     font-size: 18px;
+    color: #4c4c4c;
     line-height: 1.8;
     opacity: 0;
     transform: translateY(20px);
@@ -149,7 +137,7 @@ nav.main-nav a:hover {
     margin-bottom: 20px;
 }
 
-/* Gradient CTA button */
+/* CTA Button */
 .about-text .button {
     display: inline-block;
     padding: 16px 50px;
@@ -159,7 +147,7 @@ nav.main-nav a:hover {
     font-weight: 600;
     font-size: 18px;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .about-text .button:hover {
@@ -169,15 +157,117 @@ nav.main-nav a:hover {
 
 /* Image block */
 .about-image img {
-    max-width: 300px;
+    max-width: 320px;
     border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.8s ease-out;
 }
 
-/* ===== Scroll Animation ===== */
+/* ===== CORE VIDEO SECTION ===== */
+.core-video {
+    text-align: center;
+    margin: 80px 0 60px;
+}
+
+.core-video h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #4a3f9e;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.core-video .video-placeholder {
+    width: 80%;
+    max-width: 800px;
+    height: 450px;
+    background: rgba(200,180,255,0.2);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4a3f9e;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0 auto;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.core-video .video-caption {
+    margin-top: 15px;
+    font-style: italic;
+    color: #5a4baa;
+}
+
+/* ===== ABOUT STORY ===== */
+.about-story p {
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #4c4c4c;
+}
+
+/* ===== TRAVEL DIARIES ===== */
+.travel-diaries {
+    padding: 80px 0 60px;
+    background: #f5f3fc;
+    text-align: center;
+}
+
+.travel-diaries h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #4a3f9e;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.travel-diaries p {
+    font-size: 18px;
+    color: #5a4baa;
+    margin-bottom: 40px;
+}
+
+/* Diaries grid */
+.diaries-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.diary-card {
+    width: 280px;
+    height: 180px;
+    background: rgba(181,160,255,0.2);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a3f9e;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.diary-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    padding: 50px 20px;
+    background: #f0eef8;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
 .about-page h1.in-view,
 .about-text.in-view,
 .about-image img.in-view {
@@ -185,18 +275,8 @@ nav.main-nav a:hover {
     transform: translateY(0);
 }
 
-/* ===== FOOTER ===== */
-footer {
-    padding: 40px;
-    background: #f0eef8;
-    text-align: center;
-    margin-top: 60px;
-    font-size: 14px;
-    color: #555;
-}
-
 /* ===== RESPONSIVE ===== */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .about-content {
         flex-direction: column;
         align-items: center;
@@ -204,18 +284,32 @@ footer {
     .about-image img {
         max-width: 80%;
     }
+    .core-video .video-placeholder {
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .about-page h1 {
         font-size: 32px;
     }
-    .about-text {
+    .core-video h2 {
+        font-size: 28px;
+    }
+    .about-text, .about-story p, .travel-diaries p {
         font-size: 16px;
     }
     .about-text .button {
         padding: 12px 30px;
         font-size: 16px;
     }
+    .diary-card {
+        width: 90%;
+        height: 180px;
+    }
 }
 </style>
+
 </head>
 
 <body>
@@ -242,6 +336,7 @@ footer {
     <div class="container">
       <h1>About RaeRoutes</h1>
 
+      <!-- Intro Text + Image -->
       <div class="about-content">
         <div class="about-text">
           <p>Hi, I’m Damonyca, the heart and mind behind RaeRoutes. Travel has always been more than just seeing new places for me; it’s a way to connect with the world, discover moments of quiet reflection, and create memories that linger long after the trip ends.</p>
@@ -249,30 +344,65 @@ footer {
           <p>When I first went to school, I didn’t know how I’d use my degree. But as life unfolded, I realized that every step, every experience, had quietly guided me to exactly where I’m meant to be,  helping others experience the joy and magic of thoughtful travel.</p>
 
           <p>I’ve always had a deep love for exploring new destinations, whether it’s wandering through charming city streets, feeling the ocean breeze on a coastal adventure, or cozying up during a winter getaway. This love for travel is what fuels every part of RaeRoutes, and it’s why I pour care into each itinerary I create.</p>
-
-          <p>RaeRoutes was born out of a desire to make travel more meaningful, personal, and stress-free. I curate experiences for every type of traveler, whether it’s a weekend escape, a romantic getaway, a family adventure, or a special holiday journey. Every itinerary is designed to match your pace, style, and comfort, so you can fully enjoy the journey without the stress of planning.</p>
-
-          <p>I believe travel should feel comforting, intentional, and aligned with your life. Whether it’s a carefully crafted itinerary, a personalized travel voucher for a loved one, or guided support along the way, I’m here to help your dreams of exploration become reality.</p>
-
-          <p>Through RaeRoutes, I hope to inspire you to give yourself, or someone you love, the gift of going. Every trip is an opportunity to make memories, find joy in the small moments, and explore the world on your own terms.</p>
-          <p>Thanks for checking out the site!<br>
-Bright days ahead,<br>
-Damonyca</p>
-
-          <a href="index.html#services" class="button">Start Your Journey</a>
         </div>
 
         <div class="about-image">
-          <!-- Add your image here -->
           <img src="myselfie.JPG" alt="Damonyca, founder of RaeRoutes" title="Damonyca, founder of RaeRoutes">
         </div>
       </div>
+
+      <!-- Core Video Section -->
+      <section class="core-video">
+        <h2>Meet Me</h2>
+        <div class="video-placeholder">
+          <!-- Replace this with your Core Video embed or HTML5 video -->
+          <p>[Core Video Placeholder]</p>
+        </div>
+        <p class="video-caption">This is the story behind RaeRoutes.</p>
+      </section>
+
+      <!-- Story / Why RaeRoutes Exists -->
+      <div class="about-story">
+        <p>RaeRoutes was born out of a desire to make travel more meaningful, personal, and stress-free. I curate experiences for every type of traveler, whether it’s a weekend escape, a romantic getaway, a family adventure, or a special holiday journey. Every itinerary is designed to match your pace, style, and comfort, so you can fully enjoy the journey without the stress of planning.</p>
+
+        <p>I believe travel should feel comforting, intentional, and aligned with your life. Whether it’s a carefully crafted itinerary, a personalized travel voucher for a loved one, or guided support along the way, I’m here to help your dreams of exploration become reality.</p>
+
+        <p>Through RaeRoutes, I hope to inspire you to give yourself, or someone you love, the gift of going. Every trip is an opportunity to make memories, find joy in the small moments, and explore the world on your own terms.</p>
+
+        <p>Thanks for checking out the site!<br>
+        Bright days ahead,<br>
+        Damonyca</p>
+
+        <a href="index.html#services" class="button">Start Your Journey</a>
+      </div>
+
+      <!-- Travel Diaries Section -->
+      <section class="travel-diaries">
+        <h2>Travel Diaries</h2>
+        <p>Explore trips, vlogs, and behind-the-scenes moments from RaeRoutes.</p>
+        <div class="diaries-grid">
+          <!-- Placeholder for video/blog cards -->
+          <div class="diary-card">
+            <p>[Video/Blog Card Placeholder]</p>
+          </div>
+          <div class="diary-card">
+            <p>[Video/Blog Card Placeholder]</p>
+          </div>
+          <div class="diary-card">
+            <p>[Video/Blog Card Placeholder]</p>
+          </div>
+        </div>
+      </section>
+
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 RaeRoutes. Designed for Every Journey.</p>
   </footer>
+
+</body>
 <script>
 const aboutElements = document.querySelectorAll(
   '.about-page h1, .about-text, .about-image img'
