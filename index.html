@@ -859,130 +859,121 @@ a {
   }
 }
 
-/* SERVICES & GIFTING SECTION */
+/* ===============================
+   SERVICES & GIFTING SECTION
+================================ */
 .services-gifting {
   padding: 80px 20px;
   background: linear-gradient(
     135deg,
-    rgba(200, 220, 255, 0.2),  /* subtle soft blue */
-    rgba(210, 190, 255, 0.15)  /* soft purple aura */
-  ); 
+    rgba(200, 220, 255, 0.25),
+    rgba(210, 190, 255, 0.2)
+  );
   border-radius: 24px;
   text-align: center;
-  position: relative;
-  color: #000000; /* black text for readability */
+  color: #000;
 }
 
-/* Section Heading */
+/* Heading */
 .services-gifting h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  color: #000000; /* black heading */
-  text-shadow: none;
   margin-bottom: 12px;
 }
 
-/* Section Paragraph */
-.services-gifting p {
+/* Intro text */
+.services-gifting > p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.05rem;
-  color: #000000; /* black paragraph text */
-  margin-bottom: 50px;
+  max-width: 650px;
+  margin: 0 auto 50px;
 }
 
-/* ===== CARDS FLEX CONTAINER (HORIZONTAL SCROLL DESKTOP & MOBILE) ===== */
+/* ===============================
+   CARD CONTAINER
+================================ */
 .service-cards {
   display: flex;
   gap: 24px;
-  flex-wrap: nowrap;           /* horizontal scroll */
-  justify-content: center;     /* CENTER CARDS ON DESKTOP */
+  justify-content: center; /* desktop center */
   overflow-x: auto;
   padding-bottom: 16px;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
 }
 
 .service-cards::-webkit-scrollbar {
-  display: none;               /* hide scrollbar */
+  display: none;
 }
 
-/* ===== EACH CARD ===== */
+/* CARD */
 .service-card {
   background: linear-gradient(
     135deg,
-    rgba(160, 190, 255, 0.3),  /* soft blue */
-    rgba(200, 180, 255, 0.25)  /* light purple */
-  ); 
+    rgba(165, 195, 255, 0.35),
+    rgba(200, 180, 255, 0.3)
+  );
   border-radius: 20px;
   padding: 25px 20px;
-  box-shadow: 0 6px 20px rgba(160, 190, 255, 0.2); /* subtle blue-purple glow */
-  transition: transform 0.3s, box-shadow 0.3s;
+  min-width: 240px;
+  max-width: 300px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  min-width: 240px;
-  max-width: 300px;
-  scroll-snap-align: start;
+  gap: 14px;
+
+  box-shadow: 0 6px 18px rgba(150, 170, 255, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* CARD HOVER EFFECT */
 .service-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(160, 190, 255, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(150, 170, 255, 0.35);
 }
 
-/* EMOJI / ICON */
+/* Emoji */
 .service-card::before {
   content: attr(data-emoji);
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 10px;
+  font-size: 2.4rem;
 }
 
-/* CARD TITLE */
+/* Title */
 .service-card h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  color: #2b2b2b; /* dark title */
-  margin-bottom: 8px;
-  text-shadow: none;
+  color: #2b2b2b;
 }
 
-/* CARD TEXT */
+/* Text */
 .service-card p {
   font-family: 'Poppins', sans-serif;
   font-size: 0.95rem;
-  color: #2b2b2b; /* dark text for readability */
-  line-height: 1.4;
+  color: #2b2b2b;
   text-align: center;
+  line-height: 1.45;
 }
 
-/* BUTTON */
+/* Button */
 .service-card .button {
+  margin-top: 6px;
   padding: 12px 28px;
-  border-radius: 50px;
-  background: rgba(150, 170, 255, 0.3); /* soft blue-purple button */
-  color: #000000; /* black button text */
+  border-radius: 999px;
+  background: rgba(155, 165, 255, 0.45);
+  color: #000;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(150, 170, 255, 0.2);
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(150, 160, 255, 0.3);
 }
 
 .service-card .button:hover {
-  background: rgba(140, 150, 255, 0.35);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(150, 170, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(150, 160, 255, 0.4);
 }
 
-/* MOBILE ADJUSTMENTS */
+/*  MOBILE */
 @media (max-width: 768px) {
   .service-cards {
-    gap: 20px;
+    justify-content: flex-start;
     padding-left: 16px;
     padding-right: 16px;
-    justify-content: flex-start;  /* keep mobile unchanged */
   }
 
   .service-card {
@@ -990,6 +981,7 @@ a {
     max-width: 260px;
   }
 }
+
 
     /* ===== ABOUT SECTION ===== */
 .about-section {
