@@ -225,6 +225,14 @@ header nav a:hover {
     transition: all 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
     box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* subtle shadow */
 }
+  
+@media screen and (max-width: 768px) {
+    .about-text .button {
+        display: block;
+        width: 100%;
+        margin: 20px 0 0 0; /* top 20px, no side margins */
+    }
+}
 
 /* Hover / pop effect */
 .about-story .button:hover {
