@@ -908,27 +908,34 @@ a {
 /* ===============================
    Animated Sparkles
 ================================ */
-.services-gifting::before {
-  content: "";
+.services-gifting .sparkle {
   position: absolute;
-  inset: 0;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.6;
   pointer-events: none;
-  border-radius: 24px;
-  box-shadow: 
-    20px 40px #fff, 60px 80px #e0c0ff, 120px 60px #c0a0ff,
-    180px 90px #fff, 220px 120px #e0c0ff, 250px 50px #c0a0ff,
-    300px 90px #fff, 350px 30px #e0c0ff, 400px 70px #c0a0ff;
-  animation: sparkle 3s infinite linear;
+  animation: sparkleMove 3s infinite ease-in-out;
 }
 
-@keyframes sparkle {
+/* Random positions for multiple sparkles */
+.services-gifting .sparkle:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+.services-gifting .sparkle:nth-child(2) { top: 20%; left: 40%; animation-delay: 0.5s; }
+.services-gifting .sparkle:nth-child(3) { top: 35%; left: 70%; animation-delay: 1s; }
+.services-gifting .sparkle:nth-child(4) { top: 50%; left: 25%; animation-delay: 1.5s; }
+.services-gifting .sparkle:nth-child(5) { top: 65%; left: 60%; animation-delay: 2s; }
+.services-gifting .sparkle:nth-child(6) { top: 80%; left: 45%; animation-delay: 2.5s; }
+
+/* Animation keyframes */
+@keyframes sparkleMove {
   0%, 100% {
-    opacity: 0.6;
     transform: translateY(0) scale(1);
+    opacity: 0.6;
   }
   50% {
+    transform: translateY(-5px) scale(1.3);
     opacity: 1;
-    transform: translateY(-3px) scale(1.2);
   }
 }
 
@@ -1589,6 +1596,19 @@ h2, h3, h4, p {
 <section class="services-gifting" id="services">
     <h2>Services & Gifting</h2>
     <p>Discover ways to enhance your trip or surprise someone special.</p>
+  <!-- Sparkles -->
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
+  <span class="sparkle"></span>
 
     <div class="service-scroll">
       <div class="service-cards">
