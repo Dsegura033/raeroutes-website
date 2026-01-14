@@ -259,67 +259,43 @@ header nav a:hover {
     margin-bottom: 40px;
 }
 
-/* Horizontal scroll container */
+/* Horizontal scroll for mobile + desktop */
 .diaries-grid {
     display: flex;
     gap: 40px;
     justify-content: flex-start;
     overflow-x: auto;
-    padding: 20px 10px 40px;
-    scroll-snap-type: x mandatory;
+    padding: 20px 10px 30px;
 }
 
-/* Hide scrollbar but keep scroll */
+/* Hide scrollbar */
 .diaries-grid::-webkit-scrollbar {
     display: none;
 }
 .diaries-grid {
-    -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-/* Scrapbook card — FIXED SIZE */
+/* Scrapbook card */
 .diary-card {
     flex: 0 0 auto;
-    width: 340px;
-    height: 560px;
+    padding: 14px;
     background: rgba(255,255,255,0.9);
     border: 2px dashed rgba(181,160,255,0.6);
     border-radius: 22px;
-    padding: 14px;
-    position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.12);
     transform: rotate(-1deg);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    scroll-snap-align: center;
+    transition: transform 0.3s ease;
 }
 
-/* Alternate tilt */
 .diary-card:nth-child(even) {
     transform: rotate(1deg);
 }
 
-/* Hover */
 .diary-card:hover {
-    transform: rotate(0deg) scale(1.03);
-    box-shadow: 0 16px 35px rgba(0,0,0,0.18);
+    transform: rotate(0deg) scale(1.02);
 }
 
-/* Video wrapper — DO NOT RESPONSIVE SCALE */
-.video-wrapper {
-    width: 100%;
-    height: 100%;
-    border-radius: 14px;
-    overflow: hidden;
-    background: #000;
-}
-
-/* Facebook iframe — LOCK SIZE */
-.video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
 
 /* ===== SCRAPBOOK TAPE EFFECT ===== */
 .diary-card::before,
