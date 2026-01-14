@@ -16,6 +16,7 @@ body {
     background: #f8f7fc;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden; /* prevent horizontal scroll */
 }
 
 /* ===== HEADER ===== */
@@ -94,6 +95,22 @@ header nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
+/* Hamburger menu (mobile) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    height: 4px;
+    background: #5a4baa;
+    border-radius: 2px;
+}
+
 /* ===== ABOUT PAGE ===== */
 .about-page {
     padding: 100px 20px;
@@ -131,7 +148,7 @@ header nav a:hover {
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.8s ease-out;
-    text-align: center; /* center all text in about-text */
+    text-align: center;
 }
 
 .about-text p {
@@ -145,11 +162,11 @@ header nav a:hover {
     background: linear-gradient(90deg, #b5a0ff, #8e78e5);
     color: #fff;
     border-radius: 30px;
-    font-weight: 700; /* bolder */
+    font-weight: 700;
     font-size: 18px;
     text-decoration: none;
     text-align: center;
-    margin: 20px auto 0; /* center button */
+    margin: 20px auto 0;
     transition: all 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
@@ -172,7 +189,7 @@ header nav a:hover {
 /* ===== CORE VIDEO SECTION ===== */
 .core-video {
     padding: 80px 20px;
-    text-align: center; /* center everything */
+    text-align: center;
 }
 
 .core-video h2 {
@@ -199,7 +216,6 @@ header nav a:hover {
     background: radial-gradient(circle at center, rgba(181,160,255,0.2), transparent 70%);
 }
 
-/* Galaxy sparkle animation */
 .core-video .video-placeholder::before {
     content: '';
     position: absolute;
@@ -207,7 +223,7 @@ header nav a:hover {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: url('sparkles.png') repeat; /* optional sparkles image */
+    background: url('sparkles.png') repeat;
     background-size: contain;
     animation: spin 60s linear infinite;
     pointer-events: none;
@@ -218,7 +234,6 @@ header nav a:hover {
     to { transform: rotate(360deg); }
 }
 
-/* Video itself */
 .core-video .video-placeholder video {
     width: 100%;
     height: 100%;
@@ -228,13 +243,12 @@ header nav a:hover {
     position: relative;
 }
 
-/* Video caption */
 .core-video .video-caption {
     margin-top: 15px;
     font-weight: 600;
     font-size: 18px;
     color: #5a4baa;
-    text-align: center; /* center caption */
+    text-align: center;
 }
 
 /* ===== ABOUT STORY ===== */
@@ -248,33 +262,79 @@ header nav a:hover {
     color: #4c4c4c;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE / MOBILE ===== */
 @media screen and (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+
+    /* Hide nav by default on mobile */
+    header nav {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        z-index: 999;
+    }
+
+    header nav.show {
+        display: flex;
+    }
+
+    /* Show hamburger */
+    .hamburger {
+        display: flex;
+    }
+
+    /* About content adjustments */
     .about-content {
         flex-direction: column;
         align-items: center;
+        gap: 30px;
     }
+
     .about-image img {
-        max-width: 80%;
+        max-width: 90%;
     }
+
     .about-page h1 {
         font-size: 36px;
     }
-    .core-video h2 {
-        font-size: 36px;
-    }
+
     .about-text {
         font-size: 16px;
     }
+
     .about-text .button {
         padding: 12px 30px;
         font-size: 16px;
     }
-    .core-video .video-placeholder {
-        height: 300px;
+
+    /* Core Video adjustments */
+    .core-video h2 {
+        font-size: 32px;
+        margin-bottom: 15px;
     }
+
+    .core-video .video-placeholder {
+        width: 95%;
+        height: 280px;
+    }
+
     .core-video .video-caption {
         font-size: 16px;
+        margin-top: 10px;
     }
 }
 
@@ -382,69 +442,76 @@ footer {
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <a href="index.html">
-        <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
-        RaeRoutes
-      </a>
-    </div>
-    <nav>
-      <a href="index.html#home">Home</a>
-      <a href="index.html#collections">Collections</a>
-      <a href="index.html#planner">Trip Planner</a>
-      <a href="index.html#services">Services & Gifting</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </header>
-
-  <!-- ABOUT SECTION -->
-  <section class="about-page">
-    <div class="container">
-      <h1>About RaeRoutes</h1>
-
-      <!-- Intro Text + Image -->
-      <div class="about-content">
-        <div class="about-text">
-          <p>Hi, I’m Damonyca, the heart and mind behind RaeRoutes. Travel has always been more than just seeing new places for me; it’s a way to connect with the world, discover moments of quiet reflection, and create memories that linger long after the trip ends.</p>
-
-          <p>When I first went to school, I didn’t know how I’d use my degree. But as life unfolded, I realized that every step, every experience, had quietly guided me to exactly where I’m meant to be,  helping others experience the joy and magic of thoughtful travel.</p>
-
-          <p>I’ve always had a deep love for exploring new destinations, whether it’s wandering through charming city streets, feeling the ocean breeze on a coastal adventure, or cozying up during a winter getaway. This love for travel is what fuels every part of RaeRoutes, and it’s why I pour care into each itinerary I create.</p>
-        </div>
-
-        <div class="about-image">
-          <img src="myselfie.JPG" alt="Damonyca, founder of RaeRoutes" title="Damonyca, founder of RaeRoutes">
-        </div>
-      </div>
-
-     <!-- Core Video Section -->
-<section class="core-video">
-  <h2>"Me Core"</h2>
-  <div class="video-placeholder">
-    <video controls poster="video-poster.jpg">
-      <source src="mecore2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+ <!-- HEADER -->
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
+      RaeRoutes
+    </a>
   </div>
-        <p class="video-caption">Using a mix of own images & a few other online images that fit the owner of RaeRoutes Vibe .</p>
-      </section>
+  <nav>
+    <a href="index.html#home">Home</a>
+    <a href="index.html#collections">Collections</a>
+    <a href="index.html#planner">Trip Planner</a>
+    <a href="index.html#services">Services & Gifting</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
 
-      <!-- Story / Why RaeRoutes Exists -->
-      <div class="about-story">
-        <p>RaeRoutes was born out of a desire to make travel more meaningful, personal, and stress-free. I curate experiences for every type of traveler, whether it’s a weekend escape, a romantic getaway, a family adventure, or a special holiday journey. Every itinerary is designed to match your pace, style, and comfort, so you can fully enjoy the journey without the stress of planning.</p>
+<!-- ABOUT SECTION -->
+<section class="about-page">
+  <div class="container">
+    <h1>About RaeRoutes</h1>
 
-        <p>I believe travel should feel comforting, intentional, and aligned with your life. Whether it’s a carefully crafted itinerary, a personalized travel voucher for a loved one, or guided support along the way, I’m here to help your dreams of exploration become reality.</p>
+    <!-- Intro Text + Image -->
+    <div class="about-content">
+      <div class="about-text">
+        <p>Hi, I’m Damonyca, the heart and mind behind RaeRoutes. Travel has always been more than just seeing new places for me; it’s a way to connect with the world, discover moments of quiet reflection, and create memories that linger long after the trip ends.</p>
 
-        <p>Through RaeRoutes, I hope to inspire you to give yourself, or someone you love, the gift of going. Every trip is an opportunity to make memories, find joy in the small moments, and explore the world on your own terms.</p>
+        <p>When I first went to school, I didn’t know how I’d use my degree. But as life unfolded, I realized that every step, every experience, had quietly guided me to exactly where I’m meant to be, helping others experience the joy and magic of thoughtful travel.</p>
 
-        <p>Thanks for checking out the site!<br>
-        Bright days ahead,<br>
-        Damonyca</p>
-
-        <a href="index.html#services" class="button">Start Your Journey</a>
+        <p>I’ve always had a deep love for exploring new destinations, whether it’s wandering through charming city streets, feeling the ocean breeze on a coastal adventure, or cozying up during a winter getaway. This love for travel is what fuels every part of RaeRoutes, and it’s why I pour care into each itinerary I create.</p>
       </div>
+
+      <div class="about-image">
+        <img src="myselfie.JPG" alt="Damonyca, founder of RaeRoutes" title="Damonyca, founder of RaeRoutes">
+        <div class="about-image-caption">
+          Damonyca Segura<br>
+          Independent Travel Agent<br>
+          raeroutes@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Video Section -->
+    <section class="core-video">
+      <h2>"Me Core"</h2>
+      <div class="video-placeholder">
+        <video controls poster="video-poster.jpg">
+          <source src="mecore2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <p class="video-caption">Using a mix of own images & a few other online images that fit the owner of RaeRoutes Vibe.</p>
+    </section>
+
+    <!-- Story / Why RaeRoutes Exists -->
+    <div class="about-story">
+      <p>RaeRoutes was born out of a desire to make travel more meaningful, personal, and stress-free. I curate experiences for every type of traveler, whether it’s a weekend escape, a romantic getaway, a family adventure, or a special holiday journey. Every itinerary is designed to match your pace, style, and comfort, so you can fully enjoy the journey without the stress of planning.</p>
+
+      <p>I believe travel should feel comforting, intentional, and aligned with your life. Whether it’s a carefully crafted itinerary, a personalized travel voucher for a loved one, or guided support along the way, I’m here to help your dreams of exploration become reality.</p>
+
+      <p>Through RaeRoutes, I hope to inspire you to give yourself, or someone you love, the gift of going. Every trip is an opportunity to make memories, find joy in the small moments, and explore the world on your own terms.</p>
+
+      <p>Thanks for checking out the site!<br>
+      Bright days ahead,<br>
+      Damonyca</p>
+
+      <a href="index.html#services" class="button">Start Your Journey</a>
+    </div>
+  </div>
+</section>
 
       <!-- Travel Diaries Section -->
       <section class="travel-diaries">
@@ -488,6 +555,15 @@ const observerAbout = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 aboutElements.forEach(el => observerAbout.observe(el));
+</script>
+  <!-- MOBILE HAMBURGER SCRIPT -->
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('header nav');
+
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
 </script>
 
 </body>
