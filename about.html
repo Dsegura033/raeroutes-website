@@ -144,15 +144,17 @@ header nav a:hover {
     background: linear-gradient(90deg, #b5a0ff, #8e78e5);
     color: #fff;
     border-radius: 30px;
-    font-weight: 600;
+    font-weight: 700; /* bolder */
     font-size: 18px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    text-align: center;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .about-text .button:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 
 /* Image block */
@@ -163,6 +165,21 @@ header nav a:hover {
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.8s ease-out;
+}
+
+/* ===== CORE VIDEO SECTION ===== */
+.core-video {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.core-video h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #4a3f9e;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .core-video .video-placeholder {
@@ -209,6 +226,15 @@ header nav a:hover {
     position: relative;
 }
 
+/* Video caption */
+.core-video .video-caption {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #5a4baa;
+    text-align: center;
+}
+
 /* ===== ABOUT STORY ===== */
 .about-story p {
     margin-bottom: 20px;
@@ -219,6 +245,37 @@ header nav a:hover {
     line-height: 1.8;
     color: #4c4c4c;
 }
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-image img {
+        max-width: 80%;
+    }
+    .about-page h1 {
+        font-size: 36px;
+    }
+    .core-video h2 {
+        font-size: 36px;
+    }
+    .about-text {
+        font-size: 16px;
+    }
+    .about-text .button {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+    .core-video .video-placeholder {
+        height: 300px;
+    }
+    .core-video .video-caption {
+        font-size: 16px;
+    }
+}
+
 
 /* ===== TRAVEL DIARIES ===== */
 .travel-diaries {
