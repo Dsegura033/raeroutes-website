@@ -240,49 +240,114 @@ header nav a:hover {
     box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 
-/* ===== TRAVEL DIARIES (STABLE BASELINE) ===== */
-
+/* ===== TRAVEL DIARIES ===== */
 .travel-diaries {
-  padding: 80px 20px 60px;
-  text-align: center;
+    padding: 80px 20px 60px;
+    text-align: center;
 }
 
 .travel-diaries h2 {
-  font-family: 'Poppins', sans-serif;
-  color: #4a3f9e;
-  font-size: 36px;
-  margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+    color: #4a3f9e;
+    font-size: 36px;
+    margin-bottom: 15px;
 }
 
 .travel-diaries p {
-  font-size: 18px;
-  color: #5a4baa;
-  margin-bottom: 40px;
+    font-size: 18px;
+    color: #5a4baa;
+    margin-bottom: 40px;
 }
 
+/* Grid */
 .diaries-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
 }
 
+/* Scrapbook card */
 .diary-card {
-  width: 351px;
-  height: 476px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  overflow: hidden;
+    width: 340px;
+    aspect-ratio: 3 / 5;
+    background: rgba(255,255,255,0.9);
+    border: 2px dashed rgba(181,160,255,0.6);
+    border-radius: 22px;
+    padding: 14px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
-/* Facebook iframe — DO NOT RESPONSIVIZE */
-.diary-card iframe {
-  width: 351px;
-  height: 476px;
-  border: none;
+/* Alternate tilt */
+.diary-card:nth-child(even) {
+    transform: rotate(1deg);
 }
 
+/* Hover */
+.diary-card:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.18);
+}
+
+/* Video wrapper */
+.video-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+/* Facebook iframe (CRITICAL FIX) */
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+    z-index: 3;
+}
+
+/* ===== SCRAPBOOK TAPE EFFECT ===== */
+.diary-card::before,
+.diary-card::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 28px;
+    background: rgba(181,160,255,0.55);
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(90,75,170,0.35);
+    z-index: 1;               /* BELOW iframe */
+    pointer-events: none;    /* 🔑 FACEBOOK FIX */
+    backdrop-filter: blur(1px);
+}
+
+/* Top-left tape */
+.diary-card::before {
+    top: -12px;
+    left: 18px;
+    transform: rotate(-8deg);
+}
+
+/* Bottom-right tape */
+.diary-card::after {
+    bottom: -12px;
+    right: 18px;
+    transform: rotate(6deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .diary-card {
+        width: 90%;
+        max-width: 360px;
+    }
+}
 
 
 /* ===== SCRAPBOOK TAPE EFFECT ===== */
