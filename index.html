@@ -866,12 +866,13 @@ a {
   padding: 80px 20px;
   background: linear-gradient(
     135deg,
-    rgba(200, 220, 255, 0.25),
-    rgba(210, 190, 255, 0.2)
+    rgba(170, 150, 230, 0.45),  /* richer lavender top */
+    rgba(120, 100, 190, 0.40)   /* deeper soft purple bottom */
   );
   border-radius: 24px;
   text-align: center;
   color: #000;
+  position: relative; /* needed for overlays */
 }
 
 /* Heading */
@@ -888,19 +889,31 @@ a {
   max-width: 650px;
   margin: 0 auto 50px;
 }
-    
-  /*  Optional Glow Overlay */
+
+/* Optional Glow Overlay */
 .services-gifting::after {
   content: "";
   position: absolute;
-  inset: 0; /* covers the whole section */
+  inset: 0;
   background: radial-gradient(
     circle at top center,
-    rgba(255, 255, 255, 0.25), /* soft glow at top */
-    transparent 60%
+    rgba(255, 255, 255, 0.20),  /* soft top glow */
+    transparent 70%
   );
-  pointer-events: none;  /* so it doesn't block clicks */
-  border-radius: 24px;   /* matches the section radius */
+  pointer-events: none;
+  border-radius: 24px;
+}
+
+/* Optional Sparkle Overlay */
+.services-gifting::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://i.ibb.co/5xqQk1S/sparkles.png'); /* subtle sparkle PNG */
+  background-repeat: repeat;
+  opacity: 0.06;
+  pointer-events: none;
+  border-radius: 24px;
 }
 
 /* ===============================
@@ -920,6 +933,7 @@ a {
 
 /* CARD */
 .service-card {
+  position: relative; /* for card halo */
   background: linear-gradient(
     135deg,
     rgba(165, 195, 255, 0.35),
@@ -937,6 +951,16 @@ a {
 
   box-shadow: 0 6px 18px rgba(150, 170, 255, 0.25);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Soft card halo */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle, rgba(200, 180, 255, 0.15), transparent 70%);
+  border-radius: 22px;
+  z-index: -1;
 }
 
 .service-card:hover {
@@ -995,7 +1019,6 @@ a {
     max-width: 260px;
   }
 }
-
 
     /* ===== ABOUT SECTION ===== */
 .about-section {
