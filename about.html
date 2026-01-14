@@ -210,6 +210,27 @@ header nav a:hover {
     line-height: 1.8;
     color: #4c4c4c;
 }
+/* ===== CTA BUTTON - START YOUR JOURNEY ===== */
+.about-text .button {
+    display: inline-block;       /* makes it behave like a button */
+    padding: 16px 50px;          /* button size */
+    background: linear-gradient(90deg, #b5a0ff, #8e78e5); /* purple gradient */
+    color: #fff;                 /* text color white */
+    border-radius: 30px;         /* rounded edges */
+    font-weight: 700;            /* bold text */
+    font-size: 18px;             /* readable size */
+    text-decoration: none;       /* remove underline */
+    text-align: center;          /* center text */
+    margin: 20px auto 0;         /* center horizontally */
+    transition: all 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* subtle shadow */
+}
+
+/* Hover / pop effect */
+.about-text .button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
 
 /* ===== TRAVEL DIARIES ===== */
 .travel-diaries {
