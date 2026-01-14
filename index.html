@@ -707,14 +707,17 @@ a {
   z-index: 1;
 }
 
-
 /* PLAN YOUR TRIP SECTION  */
 .trip-process {
   margin: 80px auto; /* reduced white space */
-  padding: 0 20px;
+  padding: 80px 20px; /* added top/bottom padding so purple extends fully */
   max-width: 1200px;
-  background-color: #f3e8ff; /* soft light purple to match site colors */
+  background-color: #f3e8ff; /* solid soft purple */
+  border-radius: 20px; /* optional soft edges */
+  position: relative; /* ensures child elements layer properly */
+  overflow: hidden; /* prevents any inner overflow showing white */
 }
+
 
 .trip-process h2 {
   color: #ffffff; /* Plan Your Trip text = white */
