@@ -240,61 +240,49 @@ header nav a:hover {
     box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 
-/* ===== TRAVEL DIARIES ===== */
+/* ===== TRAVEL DIARIES (STABLE BASELINE) ===== */
+
 .travel-diaries {
-    padding: 80px 20px 60px;
-    text-align: center;
+  padding: 80px 20px 60px;
+  text-align: center;
 }
 
 .travel-diaries h2 {
-    font-family: 'Poppins', sans-serif;
-    color: #4a3f9e;
-    font-size: 36px;
-    margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+  color: #4a3f9e;
+  font-size: 36px;
+  margin-bottom: 15px;
 }
 
 .travel-diaries p {
-    font-size: 18px;
-    color: #5a4baa;
-    margin-bottom: 40px;
+  font-size: 18px;
+  color: #5a4baa;
+  margin-bottom: 40px;
 }
 
-/* Horizontal scroll for mobile + desktop */
 .diaries-grid {
-    display: flex;
-    gap: 40px;
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding: 20px 10px 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-/* Hide scrollbar */
-.diaries-grid::-webkit-scrollbar {
-    display: none;
-}
-.diaries-grid {
-    scrollbar-width: none;
-}
-
-/* Scrapbook card */
 .diary-card {
-    flex: 0 0 auto;
-    padding: 14px;
-    background: rgba(255,255,255,0.9);
-    border: 2px dashed rgba(181,160,255,0.6);
-    border-radius: 22px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-    transform: rotate(-1deg);
-    transition: transform 0.3s ease;
+  width: 351px;
+  height: 476px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  overflow: hidden;
 }
 
-.diary-card:nth-child(even) {
-    transform: rotate(1deg);
+/* Facebook iframe — DO NOT RESPONSIVIZE */
+.diary-card iframe {
+  width: 351px;
+  height: 476px;
+  border: none;
 }
 
-.diary-card:hover {
-    transform: rotate(0deg) scale(1.02);
-}
 
 
 /* ===== SCRAPBOOK TAPE EFFECT ===== */
