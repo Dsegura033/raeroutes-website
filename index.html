@@ -1888,6 +1888,8 @@ h2, h3, h4, p {
 
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
   // ===== Lightbox (medium popup on top) =====
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.querySelector('.lightbox-img');
@@ -1895,13 +1897,10 @@ h2, h3, h4, p {
 
   document.querySelectorAll('.collection-card img').forEach(img => {
     img.addEventListener('click', () => {
-      // Show lightbox on top of everything
       lightbox.style.display = 'flex';
       lightbox.style.zIndex = '1000';
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
-
-      // Medium popup size (larger but not full screen)
       lightboxImg.style.maxWidth = '85%';
       lightboxImg.style.maxHeight = '75vh';
     });
@@ -1913,7 +1912,6 @@ h2, h3, h4, p {
     lightboxImg.alt = '';
   };
 
-  // Close lightbox when clicking close button or outside image
   closeBtn.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', e => {
     if (e.target === lightbox) closeLightbox();
@@ -1966,85 +1964,74 @@ h2, h3, h4, p {
     });
   }, { threshold: 0.2 });
   whyCards.forEach(card => observer.observe(card));
-</script>
-  
-  <script>
+
+
   // ===== Trip Planner Video Loop (Optional 15-second reset) =====
   const plannerVideo = document.getElementById('planner-video');
-
-  // Only add this if you need strict 15-second loops
   if (plannerVideo) {
     setInterval(() => {
       plannerVideo.currentTime = 0;
       plannerVideo.play();
-    }, 15000); // 15000ms = 15 seconds
+    }, 15000);
   }
-</script>
-  <script>
-  // Modal elements
+
+
+  // ===== Footer PDF Modal =====
   const modal = document.getElementById("pdfModal");
-  const img = document.getElementById("pdfImage");
+  const pdfImg = document.getElementById("pdfImage");
   const external = document.getElementById("pdfExternal");
-  const closeBtn = document.querySelector(".pdf-close");
+  const pdfCloseBtn = document.querySelector(".pdf-close");
   const prevBtn = document.getElementById("prevPage");
   const nextBtn = document.getElementById("nextPage");
 
-  let currentImages = []; // Array of image URLs for current document
-  let currentIndex = 0;   // Current image index
+  let currentImages = [];
+  let currentIndex = 0;
 
-  // Open modal when clicking a footer resource button
   document.querySelectorAll(".footer-links button").forEach(btn => {
     btn.addEventListener("click", () => {
       currentImages = btn.getAttribute("data-images").split(",").map(i => i.trim());
       currentIndex = 0;
 
-      // Show first image
-      img.src = currentImages[currentIndex];
+      pdfImg.src = currentImages[currentIndex];
       external.href = currentImages[currentIndex];
 
-      // Show modal
       modal.classList.add("active");
 
-      // Show or hide navigation buttons
+      // Show/hide navigation buttons only if multiple images
       prevBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
       nextBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
     });
   });
 
-  // Close modal function
   function closeModal() {
     modal.classList.remove("active");
-    img.src = "";
+    pdfImg.src = "";
   }
 
-  // Close button click
-  closeBtn.addEventListener("click", closeModal);
+  pdfCloseBtn.addEventListener("click", closeModal);
 
-  // Click outside modal content closes modal
   modal.addEventListener("click", e => {
     if (e.target === modal) closeModal();
   });
 
-  // Navigate to previous image
   prevBtn.addEventListener("click", () => {
-    if(currentIndex > 0){
+    if (currentIndex > 0) {
       currentIndex--;
-      img.src = currentImages[currentIndex];
+      pdfImg.src = currentImages[currentIndex];
       external.href = currentImages[currentIndex];
     }
   });
 
-  // Navigate to next image
   nextBtn.addEventListener("click", () => {
-    if(currentIndex < currentImages.length - 1){
+    if (currentIndex < currentImages.length - 1) {
       currentIndex++;
-      img.src = currentImages[currentIndex];
+      pdfImg.src = currentImages[currentIndex];
       external.href = currentImages[currentIndex];
     }
   });
+
+});
 </script>
-
-
 
 <!-- Lottie player (keep if used elsewhere) -->
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
