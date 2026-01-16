@@ -1252,24 +1252,52 @@ a {
     box-shadow: 0 6px 18px rgba(123,93,255,0.35);
   }
 }
-/* ===== MOBILE QR FIX ===== */
+/* ===== CONTACT QR FIX — DESKTOP ===== */
+.qr-box {
+  width: 220px;           /* medium size for desktop */
+  padding: 18px;
+  margin: 0 auto 30px;    /* center with breathing room below */
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.qr-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+/* ===== CONTACT QR + PANEL — MOBILE ===== */
 @media (max-width: 850px) {
   .qr-box {
-    width: 180px;           /* smaller, fits mobile better */
-    padding: 16px;          /* slightly smaller padding */
-    margin: 0 auto 20px;    /* center and add spacing below */
+    width: 200px;          /* medium size on mobile */
+    padding: 16px;
+    margin: 0 auto 20px;   /* spacing below QR code */
+    border-radius: 16px;
   }
 
   .qr-box img {
-    width: 100%;            /* stays responsive */
+    width: 100%;
     height: auto;
-    border-radius: 16px;    /* keeps corners soft */
+    border-radius: 14px;
   }
 
   .contact-panel {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .contact-buttons {
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .contact-buttons .button {
+    padding: 14px 32px;    /* roomy but not oversized */
+    margin-right: 12px;
+    margin-bottom: 12px;
+    border-radius: 16px;
   }
 }
 
