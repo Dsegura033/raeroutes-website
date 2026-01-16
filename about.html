@@ -1061,20 +1061,47 @@ document.addEventListener("DOMContentLoaded", () => {
   const travelerButtons = document.querySelectorAll('.traveler-card .options button');
   const travelerResult = document.querySelector('.traveler-card .result');
 
-  const travelerDescriptions = {
-    "City Explorer": "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
-    "Coastal Relaxer": "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
-    "Adventure Seeker": "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
-    "Cozy & Chill": "You cherish quiet mornings and hygge vibes. Curling up or wandering quaint towns is your style."
-  };
+ const travelerDescriptions = {
+  "City Explorer": [
+    "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
+    "Skylines, museums, and late-night eats fuel your travel style. Cities make you feel alive.",
+    "You love discovering neighborhoods, local spots, and the rhythm of a city that never sleeps."
+  ],
+
+  "Coastal Relaxer": [
+    "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
+    "Salt air, slow mornings, and ocean views are your version of luxury.",
+    "You travel to unwind — sunshine, water, and doing absolutely nothing sound perfect."
+  ],
+
+  "Adventure Seeker": [
+    "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
+    "Your trips are powered by adrenaline, fresh air, and stories worth telling.",
+    "You’re happiest chasing views, pushing limits, and exploring off the beaten path."
+  ],
+
+  "Cozy & Chill": [
+    "You cherish quiet mornings and hygge vibes. Quaint towns and slow days suit you best.",
+    "Your perfect trip includes cozy cafés, scenic walks, and zero pressure.",
+    "You travel to feel calm, comfortable, and fully present — no rushing required."
+  ]
+};
 
   travelerButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const type = button.getAttribute('data-type');
-      travelerResult.innerHTML = `<strong>${type}</strong><br>${travelerDescriptions[type]}`;
-      travelerResult.style.display = 'block';
-    });
+  button.addEventListener('click', () => {
+    const type = button.getAttribute('data-type');
+    const descriptions = travelerDescriptions[type];
+
+    if (!descriptions) return;
+
+    const randomDescription =
+      descriptions[Math.floor(Math.random() * descriptions.length)];
+
+    travelerResult.innerHTML = `<strong>${type}</strong><br>${randomDescription}`;
+    travelerResult.style.display = 'block';
   });
+});
+
 
 
   // ===== Plan My Trip Wheel =====
