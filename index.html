@@ -568,7 +568,7 @@ a {
   font-size: 2.5rem;
   font-weight: 700;
   color: #4b3c9f;
-  margin-top: 0;        /* ADD THIS */
+  margin-top: 0;
   margin-bottom: 25px;
 }
 
@@ -606,10 +606,11 @@ a {
   z-index: 1;  /* ensure cards are above any background content */
 }
 
+/* ===== COLLECTION CARD IMAGES (BIGGER) ===== */
 .collection-card img {
   width: 100%;
-  height: 220px; /* desktop thumbnail */
-  max-height: 220px;
+  height: 260px; /* bigger thumbnail */
+  max-height: 260px;
   object-fit: cover;
   border-radius: 12px;
   cursor: pointer;
@@ -640,7 +641,7 @@ a {
   box-shadow: 0 12px 25px rgba(108, 83, 177, 0.25);
 }
 
-/* ===== LIGHTBOX / POPUP IMAGE (MEDIUM SIZE) ===== */
+/* ===== LIGHTBOX / POPUP IMAGE (MEDIUM-LARGE SIZE) ===== */
 .lightbox {
   display: none; /* hidden by default */
   position: fixed;
@@ -660,7 +661,8 @@ a {
 }
 
 .lightbox img {
-  width: 300px;      /* medium size, same as desktop card width */
+  width: 360px;      /* bigger popup image */
+  max-width: 90%;
   height: auto;
   object-fit: cover;
   border-radius: 12px;
@@ -670,12 +672,13 @@ a {
 /* ===== MOBILE ===== */
 @media (max-width: 1024px) {
   .collection-card img {
-    height: 220px; /* keep same thumbnail size on mobile */
-    max-height: 220px;
+    height: 260px; /* bigger thumbnail on mobile too */
+    max-height: 260px;
   }
 
   .lightbox img {
-    width: 220px; /* medium size same as desktop */
+    width: 320px; /* bigger popup on mobile */
+    max-width: 90%;
     height: auto;
   }
 }
@@ -697,6 +700,7 @@ a {
   position: relative;
   z-index: 1;
 }
+
 
 /* PLAN YOUR TRIP SECTION  */
 .trip-process {
