@@ -240,8 +240,18 @@ header nav a:hover {
     box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 .travel-playground {
-  padding: 80px 20px;
-  text-align: center;
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f3f0ff, #e0d9ff); /* soft lavender gradient */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+    background-blend-mode: overlay;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
 }
 
 .travel-playground h2 {
@@ -862,7 +872,7 @@ header nav a:hover {
         <p>Travel Partner: <span class="partner"></span></p>
       </div>
        <p class="fun-note" style="font-style:italic; color:#6c5a99; margin-top:10px;">
-    Your adventure might need some creativity — go with the flow! ✨
+    Your adventure might need some creativity, just go with the flow! ✨
   </p>
     </div>
 
