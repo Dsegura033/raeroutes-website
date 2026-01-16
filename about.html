@@ -240,12 +240,12 @@ header nav a:hover {
     box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
   
-/* ===== Main Route Room Background ===== */
+/* ===== THE ROUTE ROOM / INTERACTIVE TRAVEL HUB ===== */
 .route-room {
     padding: 80px 20px;
     text-align: center;
-    /* Updated gradient for a dreamy, non-white background */
-    background: linear-gradient(135deg, #e6e0ff, #d8caff); /* soft lavender-lilac */
+    /* Soft lavender-lilac gradient background with subtle radial highlights */
+    background: linear-gradient(135deg, #e6e0ff, #d8caff);
     background-image: 
         radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 40%),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
@@ -254,10 +254,9 @@ header nav a:hover {
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
     position: relative;
-    overflow: hidden;
 }
 
-/* Header & Tagline */
+/* ===== Header & Tagline ===== */
 .route-room-header h2 {
     font-family: 'Poppins', sans-serif;
     color: #4a3f9e;
@@ -272,12 +271,85 @@ header nav a:hover {
     font-style: italic;
 }
 
-/* Result / Trip Answer Styling */
+/* ===== Playground Cards Layout ===== */
+.playground-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* ===== Individual Cards ===== */
+.card {
+    flex: 0 0 350px;
+    background: rgba(217,200,255,0.9);
+    border: 2px dashed rgba(181,160,255,0.6);
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:nth-child(even) { transform: rotate(1deg); }
+
+.card:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.18);
+}
+
+/* ===== Sparkle Overlay ===== */
+.card::before {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    pointer-events: none;
+    background: url('sparkles.png') repeat;
+    opacity: 0.15;
+    animation: sparkle 60s linear infinite;
+    border-radius: inherit;
+}
+
+@keyframes sparkle {
+    0% { background-position: 0 0; }
+    100% { background-position: 200px 200px; }
+}
+
+/* ===== Card Headers & Buttons ===== */
+.card h3 {
+    font-size: 24px;
+    color: #5a4baa;
+    margin-bottom: 20px;
+}
+
+.card button {
+    display: inline-block;
+    margin: 10px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.card button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* ===== Result / Trip Answer Styling ===== */
 .result,
 .trip-result {
     margin-top: 25px;
     font-size: 18px;
-    color: #fff; /* changed to white for contrast */
+    color: #fff; /* white for contrast */
     background: linear-gradient(135deg, #b5a0ff, #8e78e5); /* soft purple gradient */
     padding: 18px;
     border-radius: 15px;
@@ -289,12 +361,19 @@ header nav a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover glow for results */
 .result:hover,
 .trip-result:hover {
     transform: scale(1.05);
     box-shadow: 0 12px 25px rgba(0,0,0,0.18);
 }
 
+/* ===== Fun Note Styling ===== */
+.fun-note {
+    font-style: italic;
+    color: #6c5a99;
+    margin-top: 10px;
+}
 
 
 /* ===== TRAVEL DIARIES ===== */
