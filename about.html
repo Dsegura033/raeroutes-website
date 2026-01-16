@@ -1032,50 +1032,55 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
   
-// ===== Traveler Quiz =====
-const travelerButtons = document.querySelectorAll('.traveler-card .options button');
-const travelerResult = document.querySelector('.traveler-card .result');
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-const travelerDescriptions = {
-  "City Explorer": "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
-  "Coastal Relaxer": "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
-  "Adventure Seeker": "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
-  "Cozy & Chill": "You cherish quiet mornings and hygge vibes. Curling up or wandering quaint towns is your style."
-};
+  // ===== Traveler Quiz =====
+  const travelerButtons = document.querySelectorAll('.traveler-card .options button');
+  const travelerResult = document.querySelector('.traveler-card .result');
 
-travelerButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const type = button.getAttribute('data-type');
-    travelerResult.innerHTML = `<strong>${type}</strong><br>${travelerDescriptions[type]}`;
-    travelerResult.style.display = 'block';
+  const travelerDescriptions = {
+    "City Explorer": "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
+    "Coastal Relaxer": "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
+    "Adventure Seeker": "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
+    "Cozy & Chill": "You cherish quiet mornings and hygge vibes. Curling up or wandering quaint towns is your style."
+  };
+
+  travelerButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const type = button.getAttribute('data-type');
+      travelerResult.innerHTML = `<strong>${type}</strong><br>${travelerDescriptions[type]}`;
+      travelerResult.style.display = 'block';
+    });
   });
+
+  // ===== Plan My Trip Wheel Spin =====
+  const spinBtn = document.getElementById('spinTrip');
+  const tripResult = document.querySelector('.trip-result');
+  const destEl = tripResult.querySelector('.destination');
+  const vibeEl = tripResult.querySelector('.vibe');
+  const partnerEl = tripResult.querySelector('.partner');
+
+  const destinations = ["Paris, France","Tulum, Mexico","Banff, Canada","Kyoto, Japan","Miami, Florida","New York City, USA","Sedona, Arizona","Santorini, Greece","Reykjavik, Iceland","Marrakech, Morocco"];
+  const vibes = ["Relaxed & Luxurious","Adventure & Nature","Romantic & Cozy","Urban & Vibrant","Family Fun","Cultural & Historic","Chill & Hygge"];
+  const partners = ["Partner 👫","Friends 👭","Family 👨‍👩‍👧","Solo ✈️","Pet 🐾","Adventure Buddy 🧗","Group Tour 🚌"];
+
+  spinBtn.addEventListener('click', () => {
+    tripResult.style.display = 'block';
+
+    // Spin effect
+    let i = 0;
+    const interval = setInterval(() => {
+      destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
+      vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
+      partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
+      i++;
+      if(i > 20) clearInterval(interval); // spins 20 times (~1 sec)
+    }, 50);
+  });
+
 });
-
-// ===== Plan My Trip Wheel Spin =====
-const spinBtn = document.getElementById('spinTrip');
-const tripResult = document.querySelector('.trip-result');
-const destEl = tripResult.querySelector('.destination');
-const vibeEl = tripResult.querySelector('.vibe');
-const partnerEl = tripResult.querySelector('.partner');
-
-const destinations = ["Paris, France","Tulum, Mexico","Banff, Canada","Kyoto, Japan","Miami, Florida","New York City, USA","Sedona, Arizona","Santorini, Greece","Reykjavik, Iceland","Marrakech, Morocco"];
-const vibes = ["Relaxed & Luxurious","Adventure & Nature","Romantic & Cozy","Urban & Vibrant","Family Fun","Cultural & Historic","Chill & Hygge"];
-const partners = ["Partner 👫","Friends 👭","Family 👨‍👩‍👧","Solo ✈️","Pet 🐾","Adventure Buddy 🧗","Group Tour 🚌"];
-
-spinBtn.addEventListener('click', () => {
-  tripResult.style.display = 'block';
-  
-  // Spin effect
-  let i = 0;
-  const interval = setInterval(() => {
-    destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
-    vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
-    partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
-    i++;
-    if(i > 20) clearInterval(interval); // spins 20 times (~1 sec)
-  }, 50);
-});
-
+</script>
 
 </body>
 </html>
