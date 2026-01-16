@@ -668,6 +668,32 @@ a {
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
+    /* ===== Lightbox Close Button ===== */
+.lightbox .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 32px;
+    color: #fff;
+    background: rgba(0,0,0,0.4);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    display: none; /* hidden by default */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1;
+    z-index: 1001;
+}
+
+/* Show the close button only when lightbox is active */
+.lightbox.active .close-btn {
+    display: flex;
+}
+
 
 /* ===== MOBILE ===== */
 @media (max-width: 1024px) {
