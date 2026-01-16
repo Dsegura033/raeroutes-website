@@ -640,17 +640,16 @@ a {
   box-shadow: 0 12px 25px rgba(108, 83, 177, 0.25);
 }
 
-/* ===== LIGHTBOX / POPUP IMAGE ===== */
+/* ===== LIGHTBOX / POPUP IMAGE (MEDIUM SIZE) ===== */
 .lightbox {
   display: none; /* hidden by default */
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh; /* full viewport */
-  background: rgba(0,0,0,0.85); /* semi-transparent overlay */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 9999;
-  padding: 20px;
+  padding: 0;
+  background: transparent; /* remove black overlay */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -661,34 +660,27 @@ a {
 }
 
 .lightbox img {
-  width: auto;
-  max-width: 90%;  /* almost full width */
+  width: 220px;      /* medium size, same as desktop card width */
   height: auto;
-  max-height: 90%; /* almost full height */
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
 /* ===== MOBILE ===== */
- @media (min-width: 1024px) {
-  .collection-card {
-    width: 220px;
+@media (max-width: 1024px) {
+  .collection-card img {
+    height: 220px; /* keep same thumbnail size on mobile */
+    max-height: 220px;
   }
 
   .lightbox img {
-    max-width: 90%; /* same as desktop lightbox */
-    max-height: 90%;
+    width: 220px; /* medium size same as desktop */
+    height: auto;
   }
 }
 
-/* ===== Desktop ===== */
-@media (min-width: 1024px) {
-  .collection-card {
-    width: 220px;
-  }
-}
-    /* ===== Lottie Animation Background ===== */
+/* ===== Lottie Animation Background ===== */
 .collections-section .collections-animation {
   position: absolute;   /* position it over the section */
   top: 0;
