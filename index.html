@@ -1932,10 +1932,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Mobile nav toggle =====
-  function toggleMenu() {
-    const mobileNav = document.getElementById("mobileNav");
-    mobileNav.classList.toggle("active");
-  }
+const hamburger = document.querySelector('.hamburger');
+const mobileNav = document.getElementById('mobileNav'); // make sure your <nav> has id="mobileNav"
+
+if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+        mobileNav.classList.toggle('active'); // toggles visibility
+    });
+}
+
 
   // ===== Intersection observers =====
   const createObserver = (selector) => {
