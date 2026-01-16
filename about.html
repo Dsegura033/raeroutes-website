@@ -233,12 +233,70 @@ header nav a:hover {
         margin: 20px 0 0 0; /* top 20px, no side margins */
     }
 }
+  
+  /*Interacive*/
 
 /* Hover / pop effect */
 .about-story .button:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
+  .travel-interactions {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f3f0ff, #e0d9ff);
+  text-align: center;
+  border-radius: 20px;
+  margin: 40px auto;
+}
+
+.travel-interactions h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #4a3f9e;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.travel-interactions h3 {
+  font-size: 28px;
+  color: #5a4baa;
+  margin-bottom: 20px;
+}
+
+.travel-interactions .options button,
+#generateTrip {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.travel-interactions .options button:hover,
+#generateTrip:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.travel-interactions .result,
+.travel-interactions .trip-result {
+  margin-top: 25px;
+  font-size: 18px;
+  color: #4c4c4c;
+  background: rgba(217,200,255,0.9);
+  padding: 20px;
+  border-radius: 15px;
+  display: inline-block;
+  max-width: 500px;
+  text-align: center;
+}
+
 
 /* ===== TRAVEL DIARIES ===== */
 .travel-diaries {
@@ -737,7 +795,36 @@ header nav a:hover {
       <a href="index.html#services" class="button">Start Your Journey</a>
     </div>
   </div>
+  
 </section>
+  <!-- ===== TRAVEL INTERACTIONS ===== -->
+<section class="travel-interactions">
+  <h2>Travel Playground</h2>
+
+  <!-- What Kind of Traveler Quiz -->
+  <div class="traveler-quiz">
+    <h3>What Kind of Traveler Are You?</h3>
+    <div class="options">
+      <button data-type="City Explorer">City Explorer</button>
+      <button data-type="Coastal Relaxer">Coastal Relaxer</button>
+      <button data-type="Adventure Seeker">Adventure Seeker</button>
+      <button data-type="Cozy & Chill">Cozy & Chill</button>
+    </div>
+    <div class="result" style="display:none;"></div>
+  </div>
+
+  <!-- Plan My Trip Generator -->
+  <div class="plan-my-trip">
+    <h3>Plan My Trip</h3>
+    <button id="generateTrip">Generate Trip</button>
+    <div class="trip-result" style="display:none;">
+      <p>Destination: <span class="destination"></span></p>
+      <p>Vibe: <span class="vibe"></span></p>
+      <p>Travel Partner: <span class="partner"></span></p>
+    </div>
+  </div>
+</section>
+
 
 <section class="travel-diaries">
   <h2>Travel Diaries</h2>
@@ -901,6 +988,59 @@ document.addEventListener("DOMContentLoaded", () => {
       external.href = currentImages[currentIndex];
     }
   });
+});
+  
+<script>
+  // ===== Traveler Quiz =====
+const travelerButtons = document.querySelectorAll('.traveler-quiz .options button');
+const travelerResult = document.querySelector('.traveler-quiz .result');
+
+const travelerDescriptions = {
+  "City Explorer": "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
+  "Coastal Relaxer": "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
+  "Adventure Seeker": "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
+  "Cozy & Chill": "You cherish quiet mornings and hygge vibes. Curling up or wandering quaint towns is your style."
+};
+
+travelerButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const type = button.getAttribute('data-type');
+    travelerResult.innerHTML = `<strong>${type}</strong><br>${travelerDescriptions[type]}`;
+    travelerResult.style.display = 'block';
+  });
+});
+
+// ===== Plan My Trip =====
+const generateBtn = document.getElementById('generateTrip');
+const tripResult = document.querySelector('.trip-result');
+const destinationEl = tripResult.querySelector('.destination');
+const vibeEl = tripResult.querySelector('.vibe');
+const partnerEl = tripResult.querySelector('.partner');
+
+const destinations = [
+  "Paris, France", "Tulum, Mexico", "Banff, Canada", "Kyoto, Japan",
+  "Miami, Florida", "New York City, USA", "Sedona, Arizona", "Santorini, Greece",
+  "Reykjavik, Iceland", "Marrakech, Morocco"
+];
+
+const vibes = [
+  "Relaxed & Luxurious", "Adventure & Nature", "Romantic & Cozy",
+  "Urban & Vibrant", "Family Fun", "Cultural & Historic", "Chill & Hygge"
+];
+
+const travelPartners = [
+  "Partner 👫", "Friends 👭", "Family 👨‍👩‍👧", "Solo ✈️", "Pet 🐾", "Adventure Buddy 🧗", "Group Tour 🚌"
+];
+
+generateBtn.addEventListener('click', () => {
+  const dest = destinations[Math.floor(Math.random() * destinations.length)];
+  const vibe = vibes[Math.floor(Math.random() * vibes.length)];
+  const partner = travelPartners[Math.floor(Math.random() * travelPartners.length)];
+
+  destinationEl.textContent = dest;
+  vibeEl.textContent = vibe;
+  partnerEl.textContent = partner;
+  tripResult.style.display = 'block';
 });
 </script>
 
