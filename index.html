@@ -642,12 +642,12 @@ a {
 
 /* ===== LIGHTBOX / POPUP IMAGE ===== */
 .lightbox {
-  display: none;
+  display: none; /* hidden by default */
   position: fixed;
-  top: 0; 
+  top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100vh; /* full viewport */
   background: rgba(0,0,0,0.85); /* semi-transparent overlay */
   z-index: 9999;
   padding: 20px;
@@ -662,27 +662,25 @@ a {
 
 .lightbox img {
   width: auto;
-  max-width: 95%;
+  max-width: 90%;  /* almost full width */
   height: auto;
-  max-height: 95vh;
+  max-height: 90%; /* almost full height */
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
-/* ===== MOBILE ADJUSTMENTS ===== */
-@media (max-width: 768px) {
-  .collection-card img {
-    height: 160px; /* thumbnail smaller on mobile */
-    max-height: 160px;
+/* ===== MOBILE ===== */
+ @media (min-width: 1024px) {
+  .collection-card {
+    width: 220px;
   }
 
   .lightbox img {
-    max-width: 95%;   /* fill almost full width */
-    max-height: 90vh; /* almost full height */
+    max-width: 90%; /* same as desktop lightbox */
+    max-height: 90%;
   }
 }
-
 
 /* ===== Desktop ===== */
 @media (min-width: 1024px) {
