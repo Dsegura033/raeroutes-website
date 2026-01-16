@@ -239,14 +239,17 @@ header nav a:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
-.travel-playground {
+  
+/* ===== Main Route Room Background ===== */
+.route-room {
     padding: 80px 20px;
     text-align: center;
-    background: linear-gradient(135deg, #f3f0ff, #e0d9ff); /* soft lavender gradient */
+    /* Updated gradient for a dreamy, non-white background */
+    background: linear-gradient(135deg, #e6e0ff, #d8caff); /* soft lavender-lilac */
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
     background-blend-mode: overlay;
     border-radius: 20px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
@@ -254,95 +257,44 @@ header nav a:hover {
     overflow: hidden;
 }
 
-.travel-playground h2 {
-  font-family: 'Poppins', sans-serif;
-  color: #4a3f9e;
-  font-size: 36px;
-  margin-bottom: 40px;
+/* Header & Tagline */
+.route-room-header h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #4a3f9e;
+    font-size: 36px;
+    margin-bottom: 10px;
 }
 
-.playground-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
+.route-room-tagline {
+    font-size: 18px;
+    color: #5a4baa;
+    margin-bottom: 40px;
+    font-style: italic;
 }
 
-.card {
-  flex: 0 0 350px;
-  background: rgba(217,200,255,0.9);
-  border: 2px dashed rgba(181,160,255,0.6);
-  border-radius: 20px;
-  padding: 25px;
-  position: relative;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  transform: rotate(-1deg);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-}
-
-.card:nth-child(even) { transform: rotate(1deg); }
-
-.card:hover {
-  transform: rotate(0deg) scale(1.03);
-  box-shadow: 0 16px 35px rgba(0,0,0,0.18);
-}
-
-/* Sparkle overlay */
-.card::before {
-  content: '';
-  position: absolute;
-  top:0; left:0; right:0; bottom:0;
-  pointer-events: none;
-  background: url('sparkles.png') repeat;
-  opacity: 0.15;
-  animation: sparkle 60s linear infinite;
-  border-radius: inherit;
-}
-
-@keyframes sparkle {
-  0% {background-position: 0 0;}
-  100% {background-position: 200px 200px;}
-}
-
-.card h3 {
-  font-size: 24px;
-  color: #5a4baa;
-  margin-bottom: 20px;
-}
-
-.card button {
-  display: inline-block;
-  margin: 10px;
-  padding: 14px 28px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-}
-
-.card button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
-
+/* Result / Trip Answer Styling */
 .result,
 .trip-result {
-  margin-top: 25px;
-  font-size: 18px;
-  color: #4c4c4c;
-  background: rgba(255,255,255,0.85);
-  padding: 18px;
-  border-radius: 15px;
-  display: inline-block;
-  max-width: 300px;
-  text-align: center;
+    margin-top: 25px;
+    font-size: 18px;
+    color: #fff; /* changed to white for contrast */
+    background: linear-gradient(135deg, #b5a0ff, #8e78e5); /* soft purple gradient */
+    padding: 18px;
+    border-radius: 15px;
+    display: inline-block;
+    max-width: 300px;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.result:hover,
+.trip-result:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+}
+
 
 
 /* ===== TRAVEL DIARIES ===== */
