@@ -1477,6 +1477,30 @@ h2, h3, h4, p {
   margin-bottom: 0 !important;
 }
 
+    /* Remove big bottom margin on footer */
+.rr-footer {
+  margin-top: 40px; /* reduce from 120px to 40px */
+  padding-bottom: 40px; /* ensure some breathing room */
+}
+
+/* Remove extra bottom margin/padding from last section */
+body > section:last-of-type {
+  margin-bottom: 0;
+  padding-bottom: 40px; /* adjust as needed */
+}
+
+/* Make sure body fits content exactly */
+html, body {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Optional: ensure hero doesn't overshoot */
+.hero {
+  min-height: 80vh; /* instead of 100vh if you want less space on short screens */
+}
+
 </style> 
 
 </head>
