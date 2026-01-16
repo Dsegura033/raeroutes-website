@@ -363,9 +363,200 @@ header nav a:hover {
     }
 }
 
-
 /* ===== FOOTER ===== */
-footer { padding: 50px 20px; background: #f0eef8; text-align: center; font-size: 14px; color: #555; }
+.rr-footer {
+  background: rgba(210, 200, 240, 0.6); /* soft purple with gray-blue undertones */
+  padding: 60px 25px;
+  text-align: center;
+  color: #444;
+  margin-top: 120px;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #6c5a99;
+  margin-bottom: 6px;
+}
+
+.footer-tagline {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.footer-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #6c5a99;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links button {
+  background: none;
+  border: none;
+  color: #6c5a99;
+  font-size: 0.95rem;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.footer-links button:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.footer-socials a {
+  color: #6c5a99;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* ===== PDF IMAGE MODAL ===== */
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 20, 60, 0.45);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pdf-modal.active {
+  display: flex;
+}
+
+.pdf-modal-content {
+  background: linear-gradient(135deg, #f8f4ff, #eceaf7);
+  width: 90%;
+  max-width: 760px;
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  position: relative;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdf-modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.pdf-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #6c5a99;
+}
+
+/* Navigation Buttons for Multi-Page PDFs */
+.pdf-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.pdf-nav button {
+  background: #6c5a99;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: 0.3s;
+}
+
+.pdf-nav button:hover {
+  opacity: 1;
+}
+
+/* ===== MOBILE FOOTER ADJUSTMENTS ===== */
+@media (max-width: 480px) {
+  .rr-footer {
+    border-radius: 18px 18px 0 0;
+    padding: 50px 20px;
+  }
+
+  .footer-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-links button {
+    font-size: 0.9rem;
+  }
+
+  .footer-socials {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .footer-socials a {
+    font-size: 0.9rem;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+  }
+
+  .pdf-modal-content {
+    max-height: 75vh;
+  }
+}
+
 
 /* ===== SCROLL ANIMATIONS ===== */
 .about-page h1.in-view,
