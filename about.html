@@ -579,9 +579,49 @@ footer { padding: 50px 20px; background: #f0eef8; text-align: center; font-size:
 </section>
 
   <!-- FOOTER -->
-  <footer>
-    <p>© 2025 RaeRoutes. Designed for Every Journey.</p>
-  </footer>
+ <footer class="rr-footer">
+  <div class="footer-content">
+
+    <!-- Brand -->
+    <h3 class="footer-title">RaeRoutes</h3>
+    <p class="footer-tagline">Designed for Every Journey.</p>
+
+    <!-- Resources / Image PDFs -->
+    <div class="footer-resources">
+      <h4 class="footer-subtitle">Before You Book</h4>
+      <ul class="footer-links">
+        <li><button data-images="policyupdated.PNG">Booking Policies</button></li>
+        <li><button data-images="whattoexpect.jpg">What to Expect When You Book</button></li>
+        <li><button data-images="importantnotice.jpg,updated2.png">Safety & Important Notice</button></li>
+      </ul>
+    </div>
+
+    <!-- Socials / Contact -->
+    <div class="footer-socials">
+      <a href="mailto:raeroutes13@gmail.com">Email</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Copy -->
+    <p class="footer-copy">© 2025 RaeRoutes. All Rights Reserved.</p>
+
+  </div>
+</footer>
+
+<!-- Image Modal (for later JS) -->
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-modal-content">
+    <button class="pdf-close">&times;</button>
+    <a id="pdfExternal" href="#" target="_blank">
+      <img id="pdfImage" src="" alt="Document Preview">
+    </a>
+    <div class="pdf-nav">
+      <button id="prevPage">&lt;</button>
+      <button id="nextPage">&gt;</button>
+    </div>
+  </div>
+</div>
+
 
 </body>
 <script>
