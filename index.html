@@ -1736,9 +1736,9 @@ html, body {
 </section>
 
 <!-- Lightbox overlay for medium-size preview -->
-<div id="lightbox" class="lightbox">
-    <span class="close">&times;</span>
-    <img class="lightbox-img" src="" alt="">
+<div class="lightbox" id="lightbox">
+  <button class="close-btn" id="closeLightbox">&times;</button>
+  <img src="" alt="Collection Image">
 </div>
 
 
@@ -1943,30 +1943,27 @@ html, body {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== Lightbox (medium popup on top) =====
+  // ===== Lightbox (medium-large popup on top) =====
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.querySelector('.lightbox-img');
   const closeBtn = document.querySelector('.lightbox .close');
 
   document.querySelectorAll('.collection-card img').forEach(img => {
     img.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
-      lightbox.style.zIndex = '1000';
+      lightbox.classList.add('active');
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
-      lightboxImg.style.maxWidth = '85%';
-      lightboxImg.style.maxHeight = '75vh';
     });
   });
 
   const closeLightbox = () => {
-    lightbox.style.display = 'none';
+    lightbox.classList.remove('active');
     lightboxImg.src = '';
     lightboxImg.alt = '';
   };
 
-  closeBtn.addEventListener('click', closeLightbox);
-  lightbox.addEventListener('click', e => {
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (lightbox) lightbox.addEventListener('click', e => {
     if (e.target === lightbox) closeLightbox();
   });
 
@@ -1983,15 +1980,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Mobile nav toggle =====
-const hamburger = document.querySelector('.hamburger');
-const mobileNav = document.getElementById('mobileNav'); // make sure your <nav> has id="mobileNav"
-
-if (hamburger && mobileNav) {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  if (hamburger && mobileNav) {
     hamburger.addEventListener('click', () => {
-        mobileNav.classList.toggle('active'); // toggles visibility
+      mobileNav.classList.toggle('active');
     });
-}
-
+  }
 
   // ===== Intersection observers =====
   const createObserver = (selector) => {
@@ -2023,7 +2018,6 @@ if (hamburger && mobileNav) {
   }, { threshold: 0.2 });
   whyCards.forEach(card => observer.observe(card));
 
-
   // ===== Trip Planner Video Loop (Optional 15-second reset) =====
   const plannerVideo = document.getElementById('planner-video');
   if (plannerVideo) {
@@ -2032,7 +2026,6 @@ if (hamburger && mobileNav) {
       plannerVideo.play();
     }, 15000);
   }
-
 
   // ===== Footer PDF Modal =====
   const modal = document.getElementById("pdfModal");
@@ -2055,32 +2048,26 @@ if (hamburger && mobileNav) {
 
       modal.classList.add("active");
 
-      // Show/hide navigation buttons only if multiple images
       prevBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
       nextBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
     });
   });
 
-  function closeModal() {
+  const closeModal = () => {
     modal.classList.remove("active");
     pdfImg.src = "";
-  }
+  };
 
-  pdfCloseBtn.addEventListener("click", closeModal);
-
-  modal.addEventListener("click", e => {
-    if (e.target === modal) closeModal();
-  });
-
-  prevBtn.addEventListener("click", () => {
+  if (pdfCloseBtn) pdfCloseBtn.addEventListener("click", closeModal);
+  if (modal) modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+  if (prevBtn) prevBtn.addEventListener("click", () => {
     if (currentIndex > 0) {
       currentIndex--;
       pdfImg.src = currentImages[currentIndex];
       external.href = currentImages[currentIndex];
     }
   });
-
-  nextBtn.addEventListener("click", () => {
+  if (nextBtn) nextBtn.addEventListener("click", () => {
     if (currentIndex < currentImages.length - 1) {
       currentIndex++;
       pdfImg.src = currentImages[currentIndex];
@@ -2088,8 +2075,91 @@ if (hamburger && mobileNav) {
     }
   });
 
+  // ===== Traveler Quiz =====
+  const travelerButtons = document.querySelectorAll('.traveler-card .options button');
+  const travelerResult = document.querySelector('.traveler-card .result');
+
+  const travelerDescriptions = {
+    "City Explorer": [
+      "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
+      "Skylines, museums, and late night eats fuel your travel style. Cities make you feel alive.",
+      "You love discovering neighborhoods, local spots, and the rhythm of a city that never sleeps."
+    ],
+    "Coastal Relaxer": [
+      "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
+      "Salt air, slow mornings, and ocean views are your version of luxury.",
+      "You travel to unwind — sunshine, water, and doing absolutely nothing sound perfect."
+    ],
+    "Adventure Seeker": [
+      "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
+      "Your trips are powered by adrenaline, fresh air, and stories worth telling.",
+      "You’re happiest chasing views, pushing limits, and exploring off the beaten path."
+    ],
+    "Cozy & Chill": [
+      "You cherish quiet mornings and hygge vibes. Quaint towns and slow days suit you best.",
+      "Your perfect trip includes cozy cafés, scenic walks, and zero pressure.",
+      "You travel to feel calm, comfortable, and fully present — no rushing required."
+    ]
+  };
+
+  travelerButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const type = button.getAttribute('data-type');
+      const descriptions = travelerDescriptions[type];
+      if (!descriptions) return;
+
+      const randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
+      travelerResult.innerHTML = `<strong>${type}</strong><br>${randomDescription}`;
+      travelerResult.style.display = 'block';
+    });
+  });
+
+  // ===== Plan My Trip Wheel =====
+  const spinBtn = document.getElementById('spinTrip');
+  const tripResult = document.querySelector('.trip-result');
+  const destEl = tripResult ? tripResult.querySelector('.destination') : null;
+  const vibeEl = tripResult ? tripResult.querySelector('.vibe') : null;
+  const partnerEl = tripResult ? tripResult.querySelector('.partner') : null;
+
+  const destinations = [
+    "New York City, NY","Miami, FL","Sedona, AZ","San Francisco, CA",
+    "Asheville, NC","Chicago, IL","Yellowstone, WY","Key West, FL",
+    "New Orleans, LA","Honolulu, HI","Austin, TX","Denver, CO",
+    "Napa Valley, CA","Boston, MA","Orlando, FL",
+    "Paris, France","Kyoto, Japan","Santorini, Greece","Reykjavik, Iceland",
+    "Marrakech, Morocco","Bali, Indonesia","Rome, Italy","Sydney, Australia",
+    "Tulum, Mexico","Cape Town, South Africa","Amsterdam, Netherlands",
+    "London, England","Prague, Czech Republic","Dubai, UAE","Bora Bora, French Polynesia"
+  ];
+
+  const vibes = [
+    "Relaxed & Luxurious","Adventure & Nature","Romantic & Cozy","Urban & Vibrant",
+    "Family Fun","Cultural & Historic","Chill & Hygge","Beach & Sun",
+    "Food & Culinary","Festival & Party","Roadtrip & Exploration","Wellness & Spa"
+  ];
+
+  const partners = [
+    "Partner 👫","Friends 👭","Family 👨‍👩‍👧","Solo ✈️","Pet 🐾",
+    "Adventure Buddy 🧗","Group Tour 🚌","Bestie Squad 👯","Parents / Relatives 👵👴","Co-worker / Work Retreat 💼"
+  ];
+
+  if (spinBtn && tripResult) {
+    spinBtn.addEventListener('click', () => {
+      tripResult.style.display = 'block';
+      let i = 0;
+      const interval = setInterval(() => {
+        destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
+        vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
+        partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
+        i++;
+        if(i > 20) clearInterval(interval);
+      }, 50);
+    });
+  }
+
 });
 </script>
+
 
 <!-- Lottie player (keep if used elsewhere) -->
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
