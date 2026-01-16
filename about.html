@@ -1037,10 +1037,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const vibeEl = tripResult.querySelector('.vibe');
   const partnerEl = tripResult.querySelector('.partner');
 
-  const destinations = ["Paris, France","Tulum, Mexico","Banff, Canada","Kyoto, Japan","Miami, Florida","New York City, USA","Sedona, Arizona","Santorini, Greece","Reykjavik, Iceland","Marrakech, Morocco"];
-  const vibes = ["Relaxed & Luxurious","Adventure & Nature","Romantic & Cozy","Urban & Vibrant","Family Fun","Cultural & Historic","Chill & Hygge"];
-  const partners = ["Partner 👫","Friends 👭","Family 👨‍👩‍👧","Solo ✈️","Pet 🐾","Adventure Buddy 🧗","Group Tour 🚌"];
+ // === Destinations ===
+  const destinations = [
+    // US
+    "New York City, NY", "Miami, FL", "Sedona, AZ", "San Francisco, CA",
+    "Asheville, NC", "Chicago, IL", "Yellowstone, WY", "Key West, FL",
+    "New Orleans, LA", "Honolulu, HI", "Austin, TX", "Denver, CO",
+    "Napa Valley, CA", "Boston, MA", "Orlando, FL",
+    // International
+    "Paris, France", "Kyoto, Japan", "Santorini, Greece", "Reykjavik, Iceland",
+    "Marrakech, Morocco", "Bali, Indonesia", "Rome, Italy", "Sydney, Australia",
+    "Tulum, Mexico", "Cape Town, South Africa", "Amsterdam, Netherlands",
+    "London, England", "Prague, Czech Republic", "Dubai, UAE", "Bora Bora, French Polynesia"
+  ];
 
+  // === Vibes / Trip Style ===
+  const vibes = [
+    "Relaxed & Luxurious", "Adventure & Nature", "Romantic & Cozy", "Urban & Vibrant",
+    "Family Fun", "Cultural & Historic", "Chill & Hygge", "Beach & Sun",
+    "Food & Culinary", "Festival & Party", "Roadtrip & Exploration", "Wellness & Spa"
+  ];
+
+  // === Travel Partner ===
+  const partners = [
+    "Partner 👫", "Friends 👭", "Family 👨‍👩‍👧", "Solo ✈️", "Pet 🐾",
+    "Adventure Buddy 🧗", "Group Tour 🚌", "Bestie Squad 👯", "Parents / Relatives 👵👴", "Co-worker / Work Retreat 💼"
+  ];
   if(spinBtn){
     spinBtn.addEventListener('click', () => {
       tripResult.style.display = 'block';
