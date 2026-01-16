@@ -948,35 +948,28 @@ header nav a:hover {
 
 </body>
 <script>
-const aboutElements = document.querySelectorAll(
-  '.about-page h1, .about-text, .about-image img'
-);
+document.addEventListener("DOMContentLoaded", () => {
 
-const observerAbout = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('in-view');
-      observerAbout.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
+  // ===== About Page Scroll Animations =====
+  const aboutElements = document.querySelectorAll('.about-page h1, .about-text, .about-image img');
+  const observerAbout = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        observerAbout.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  aboutElements.forEach(el => observerAbout.observe(el));
 
-aboutElements.forEach(el => observerAbout.observe(el));
-</script>
-  <!-- MOBILE HAMBURGER SCRIPT -->
-<script>
+
+  // ===== Hamburger Menu =====
   const hamburger = document.querySelector('.hamburger');
   const nav = document.querySelector('header nav');
+  if(hamburger && nav){
+    hamburger.addEventListener('click', () => nav.classList.toggle('show'));
+  }
 
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('show');
-  });
-  
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
- <script>
-document.addEventListener("DOMContentLoaded", () => {
   // ===== Footer PDF Modal =====
   const modal = document.getElementById("pdfModal");
   const pdfImg = document.getElementById("pdfImage");
@@ -995,10 +988,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       pdfImg.src = currentImages[currentIndex];
       external.href = currentImages[currentIndex];
-
       modal.classList.add("active");
 
-      // Show/hide navigation buttons only if multiple images
       prevBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
       nextBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
     });
@@ -1010,30 +1001,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   pdfCloseBtn.addEventListener("click", closeModal);
-
-  modal.addEventListener("click", e => {
-    if (e.target === modal) closeModal();
-  });
-
+  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
   prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      pdfImg.src = currentImages[currentIndex];
-      external.href = currentImages[currentIndex];
-    }
+    if (currentIndex > 0) { currentIndex--; pdfImg.src = currentImages[currentIndex]; external.href = currentImages[currentIndex]; }
+  });
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < currentImages.length - 1) { currentIndex++; pdfImg.src = currentImages[currentIndex]; external.href = currentImages[currentIndex]; }
   });
 
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < currentImages.length - 1) {
-      currentIndex++;
-      pdfImg.src = currentImages[currentIndex];
-      external.href = currentImages[currentIndex];
-    }
-  });
-});
-  
-<script>
-document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Traveler Quiz =====
   const travelerButtons = document.querySelectorAll('.traveler-card .options button');
@@ -1054,7 +1029,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ===== Plan My Trip Wheel Spin =====
+
+  // ===== Plan My Trip Wheel =====
   const spinBtn = document.getElementById('spinTrip');
   const tripResult = document.querySelector('.trip-result');
   const destEl = tripResult.querySelector('.destination');
@@ -1065,22 +1041,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const vibes = ["Relaxed & Luxurious","Adventure & Nature","Romantic & Cozy","Urban & Vibrant","Family Fun","Cultural & Historic","Chill & Hygge"];
   const partners = ["Partner 👫","Friends 👭","Family 👨‍👩‍👧","Solo ✈️","Pet 🐾","Adventure Buddy 🧗","Group Tour 🚌"];
 
-  spinBtn.addEventListener('click', () => {
-    tripResult.style.display = 'block';
-
-    // Spin effect
-    let i = 0;
-    const interval = setInterval(() => {
-      destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
-      vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
-      partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
-      i++;
-      if(i > 20) clearInterval(interval); // spins 20 times (~1 sec)
-    }, 50);
-  });
+  if(spinBtn){
+    spinBtn.addEventListener('click', () => {
+      tripResult.style.display = 'block';
+      let i = 0;
+      const interval = setInterval(() => {
+        destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
+        vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
+        partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
+        i++;
+        if(i > 20) clearInterval(interval);
+      }, 50);
+    });
+  }
 
 });
 </script>
+
 
 </body>
 </html>
