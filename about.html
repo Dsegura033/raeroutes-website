@@ -233,40 +233,78 @@ header nav a:hover {
         margin: 20px 0 0 0; /* top 20px, no side margins */
     }
 }
-  
-  /*Interacive*/
 
 /* Hover / pop effect */
 .about-story .button:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
-  .travel-interactions {
+.travel-playground {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #f3f0ff, #e0d9ff);
   text-align: center;
-  border-radius: 20px;
-  margin: 40px auto;
 }
 
-.travel-interactions h2 {
+.travel-playground h2 {
   font-family: 'Poppins', sans-serif;
   color: #4a3f9e;
   font-size: 36px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
-.travel-interactions h3 {
-  font-size: 28px;
+.playground-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.card {
+  flex: 0 0 350px;
+  background: rgba(217,200,255,0.9);
+  border: 2px dashed rgba(181,160,255,0.6);
+  border-radius: 20px;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.card:nth-child(even) { transform: rotate(1deg); }
+
+.card:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.18);
+}
+
+/* Sparkle overlay */
+.card::before {
+  content: '';
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  pointer-events: none;
+  background: url('sparkles.png') repeat;
+  opacity: 0.15;
+  animation: sparkle 60s linear infinite;
+  border-radius: inherit;
+}
+
+@keyframes sparkle {
+  0% {background-position: 0 0;}
+  100% {background-position: 200px 200px;}
+}
+
+.card h3 {
+  font-size: 24px;
   color: #5a4baa;
   margin-bottom: 20px;
 }
 
-.travel-interactions .options button,
-#generateTrip {
+.card button {
   display: inline-block;
   margin: 10px;
-  padding: 14px 30px;
+  padding: 14px 28px;
   font-size: 16px;
   font-weight: 600;
   border-radius: 25px;
@@ -274,26 +312,25 @@ header nav a:hover {
   cursor: pointer;
   background: linear-gradient(90deg, #b5a0ff, #8e78e5);
   color: #fff;
-  transition: all 0.3s ease;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
 }
 
-.travel-interactions .options button:hover,
-#generateTrip:hover {
+.card button:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 12px 25px rgba(0,0,0,0.2);
 }
 
-.travel-interactions .result,
-.travel-interactions .trip-result {
+.result,
+.trip-result {
   margin-top: 25px;
   font-size: 18px;
   color: #4c4c4c;
-  background: rgba(217,200,255,0.9);
-  padding: 20px;
+  background: rgba(255,255,255,0.85);
+  padding: 18px;
   border-radius: 15px;
   display: inline-block;
-  max-width: 500px;
+  max-width: 300px;
   text-align: center;
 }
 
@@ -797,33 +834,38 @@ header nav a:hover {
   </div>
   
 </section>
-  <!-- ===== TRAVEL INTERACTIONS ===== -->
-<section class="travel-interactions">
+<!-- ===== TRAVEL INTERACTIONS / TRAVEL PLAYGROUND ===== -->
+<section class="travel-playground">
   <h2>Travel Playground</h2>
 
-  <!-- What Kind of Traveler Quiz -->
-  <div class="traveler-quiz">
-    <h3>What Kind of Traveler Are You?</h3>
-    <div class="options">
-      <button data-type="City Explorer">City Explorer</button>
-      <button data-type="Coastal Relaxer">Coastal Relaxer</button>
-      <button data-type="Adventure Seeker">Adventure Seeker</button>
-      <button data-type="Cozy & Chill">Cozy & Chill</button>
-    </div>
-    <div class="result" style="display:none;"></div>
-  </div>
+  <div class="playground-cards">
 
-  <!-- Plan My Trip Generator -->
-  <div class="plan-my-trip">
-    <h3>Plan My Trip</h3>
-    <button id="generateTrip">Generate Trip</button>
-    <div class="trip-result" style="display:none;">
-      <p>Destination: <span class="destination"></span></p>
-      <p>Vibe: <span class="vibe"></span></p>
-      <p>Travel Partner: <span class="partner"></span></p>
+    <!-- What Kind of Traveler -->
+    <div class="card traveler-card">
+      <h3>What Kind of Traveler Are You?</h3>
+      <div class="options">
+        <button data-type="City Explorer">🏙️ City Explorer</button>
+        <button data-type="Coastal Relaxer">🏖️ Coastal Relaxer</button>
+        <button data-type="Adventure Seeker">⛰️ Adventure Seeker</button>
+        <button data-type="Cozy & Chill">☕ Cozy & Chill</button>
+      </div>
+      <div class="result" style="display:none;"></div>
     </div>
+
+    <!-- Plan My Trip -->
+    <div class="card plan-card">
+      <h3>Plan My Trip</h3>
+      <button id="spinTrip">🎲 Spin the Wheel!</button>
+      <div class="trip-result" style="display:none;">
+        <p>Destination: <span class="destination"></span></p>
+        <p>Vibe: <span class="vibe"></span></p>
+        <p>Travel Partner: <span class="partner"></span></p>
+      </div>
+    </div>
+
   </div>
 </section>
+
 
 
 <section class="travel-diaries">
@@ -990,10 +1032,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
   
-<script>
-  // ===== Traveler Quiz =====
-const travelerButtons = document.querySelectorAll('.traveler-quiz .options button');
-const travelerResult = document.querySelector('.traveler-quiz .result');
+// ===== Traveler Quiz =====
+const travelerButtons = document.querySelectorAll('.traveler-card .options button');
+const travelerResult = document.querySelector('.traveler-card .result');
 
 const travelerDescriptions = {
   "City Explorer": "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
@@ -1010,39 +1051,31 @@ travelerButtons.forEach(button => {
   });
 });
 
-// ===== Plan My Trip =====
-const generateBtn = document.getElementById('generateTrip');
+// ===== Plan My Trip Wheel Spin =====
+const spinBtn = document.getElementById('spinTrip');
 const tripResult = document.querySelector('.trip-result');
-const destinationEl = tripResult.querySelector('.destination');
+const destEl = tripResult.querySelector('.destination');
 const vibeEl = tripResult.querySelector('.vibe');
 const partnerEl = tripResult.querySelector('.partner');
 
-const destinations = [
-  "Paris, France", "Tulum, Mexico", "Banff, Canada", "Kyoto, Japan",
-  "Miami, Florida", "New York City, USA", "Sedona, Arizona", "Santorini, Greece",
-  "Reykjavik, Iceland", "Marrakech, Morocco"
-];
+const destinations = ["Paris, France","Tulum, Mexico","Banff, Canada","Kyoto, Japan","Miami, Florida","New York City, USA","Sedona, Arizona","Santorini, Greece","Reykjavik, Iceland","Marrakech, Morocco"];
+const vibes = ["Relaxed & Luxurious","Adventure & Nature","Romantic & Cozy","Urban & Vibrant","Family Fun","Cultural & Historic","Chill & Hygge"];
+const partners = ["Partner 👫","Friends 👭","Family 👨‍👩‍👧","Solo ✈️","Pet 🐾","Adventure Buddy 🧗","Group Tour 🚌"];
 
-const vibes = [
-  "Relaxed & Luxurious", "Adventure & Nature", "Romantic & Cozy",
-  "Urban & Vibrant", "Family Fun", "Cultural & Historic", "Chill & Hygge"
-];
-
-const travelPartners = [
-  "Partner 👫", "Friends 👭", "Family 👨‍👩‍👧", "Solo ✈️", "Pet 🐾", "Adventure Buddy 🧗", "Group Tour 🚌"
-];
-
-generateBtn.addEventListener('click', () => {
-  const dest = destinations[Math.floor(Math.random() * destinations.length)];
-  const vibe = vibes[Math.floor(Math.random() * vibes.length)];
-  const partner = travelPartners[Math.floor(Math.random() * travelPartners.length)];
-
-  destinationEl.textContent = dest;
-  vibeEl.textContent = vibe;
-  partnerEl.textContent = partner;
+spinBtn.addEventListener('click', () => {
   tripResult.style.display = 'block';
+  
+  // Spin effect
+  let i = 0;
+  const interval = setInterval(() => {
+    destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
+    vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
+    partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
+    i++;
+    if(i > 20) clearInterval(interval); // spins 20 times (~1 sec)
+  }, 50);
 });
-</script>
+
 
 </body>
 </html>
