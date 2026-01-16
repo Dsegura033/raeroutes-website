@@ -365,7 +365,7 @@ header nav a:hover {
 
 /* ===== FOOTER ===== */
 .rr-footer {
-  background: rgba(210, 200, 240, 0.6); /* soft purple with gray-blue undertones */
+  background: rgba(210, 200, 240, 0.6);
   padding: 60px 25px;
   text-align: center;
   color: #444;
@@ -480,6 +480,9 @@ header nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* ✅ allow scrolling for desktop */
+  overflow-y: auto;
 }
 
 .pdf-modal-content img {
@@ -840,7 +843,10 @@ aboutElements.forEach(el => observerAbout.observe(el));
     nav.classList.toggle('show');
   });
   
- // ===== Footer PDF Modal =====
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ===== Footer PDF Modal =====
   const modal = document.getElementById("pdfModal");
   const pdfImg = document.getElementById("pdfImage");
   const external = document.getElementById("pdfExternal");
@@ -896,8 +902,6 @@ aboutElements.forEach(el => observerAbout.observe(el));
 
 });
 </script>
-
-
 
 </body>
 </html>
