@@ -839,7 +839,65 @@ aboutElements.forEach(el => observerAbout.observe(el));
   hamburger.addEventListener('click', () => {
     nav.classList.toggle('show');
   });
+  
+ // ===== Footer PDF Modal =====
+  const modal = document.getElementById("pdfModal");
+  const pdfImg = document.getElementById("pdfImage");
+  const external = document.getElementById("pdfExternal");
+  const pdfCloseBtn = document.querySelector(".pdf-close");
+  const prevBtn = document.getElementById("prevPage");
+  const nextBtn = document.getElementById("nextPage");
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  document.querySelectorAll(".footer-links button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentImages = btn.getAttribute("data-images").split(",").map(i => i.trim());
+      currentIndex = 0;
+
+      pdfImg.src = currentImages[currentIndex];
+      external.href = currentImages[currentIndex];
+
+      modal.classList.add("active");
+
+      // Show/hide navigation buttons only if multiple images
+      prevBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
+      nextBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove("active");
+    pdfImg.src = "";
+  }
+
+  pdfCloseBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", e => {
+    if (e.target === modal) closeModal();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      pdfImg.src = currentImages[currentIndex];
+      external.href = currentImages[currentIndex];
+    }
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (currentIndex < currentImages.length - 1) {
+      currentIndex++;
+      pdfImg.src = currentImages[currentIndex];
+      external.href = currentImages[currentIndex];
+    }
+  });
+
+});
 </script>
+
+
 
 </body>
 </html>
