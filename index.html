@@ -1166,79 +1166,47 @@ a {
   }
 }
 
-/* ===== CONTACT SPLIT SECTION ===== */
+/* ===============================
+   CONTACT SPLIT SECTION
+================================ */
 .contact-split {
-  background: linear-gradient(135deg, #f8eaff, #f2dfff); /* very light, soft purple matching site */
-  color: #1a1a1a; /* dark text for readability */
-  box-shadow: 0 6px 20px rgba(108, 83, 177, 0.1);
+  background: linear-gradient(
+    135deg,
+    #f5efff, /* top soft purple */
+    #e8dbff  /* bottom soft purple */
+  );
+  color: #1a1a1a;
+  box-shadow: 0 6px 20px rgba(108, 83, 177, 0.08);
   border-radius: 32px;
   padding: 60px 20px;
 }
 
-/* DESKTOP (side by side) */
-.scroll-wrap {
-  display: flex;
-  gap: 40px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-}
-
-.contact-panel {
-  flex: 1;
-}
-
-.qr-box {
-  background: #fff;
-  padding: 20px;
-  width: 240px;
-  border-radius: 20px;
-  margin: 0 auto;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-
-.qr-box img {
-  width: 100%;
-  border-radius: 12px;
-}
-
-.contact-right h2 {
-  color: #7b5dff; /* medium purple that pops on light background */
-  margin-bottom: 16px;
-}
-
-.contact-right p {
-  color: #5e3ca3; /* readable dark purple */
-  margin-bottom: 24px;
-}
-
-/* Buttons with breathing room */
+/* Contact buttons with breathing room */
 .contact-buttons .button {
   display: inline-block;
-  background: #d9b3ff; /* soft, light purple button to match site */
+  background: #b8a3ff; /* light purple matching site palette */
   color: #fff;
-  padding: 16px 32px; /* roomy inside the button */
-  border-radius: 16px;
+  padding: 16px 36px; /* plenty of breathing room */
+  border-radius: 50px;
   font-weight: 600;
   font-size: 16px;
   text-decoration: none;
-  margin-right: 16px; /* spacing between multiple buttons */
+  margin-right: 16px;
   transition: all 0.3s ease;
 }
 
 .contact-buttons .button:hover {
-  background: #c292ff; /* slightly darker for hover effect */
+  background: #a788ff; /* hover slightly darker */
   transform: translateY(-2px);
 }
-
-/* MOBILE */
+    /* ===== MOBILE CONTACT FIX ===== */
 @media (max-width: 850px) {
   .scroll-wrap {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding: 20px 0;
-    gap: 0;
+    gap: 16px; /* small gap between panels */
   }
 
   .contact-panel {
@@ -1248,21 +1216,43 @@ a {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    text-align: center;
   }
 
   .contact-right {
     text-align: center;
+    margin-top: 20px;
   }
 
   .contact-buttons {
+    display: flex;
+    flex-wrap: wrap;       /* wrap buttons nicely */
     justify-content: center;
+    gap: 12px;             /* spacing between buttons */
+    margin-top: 20px;
   }
 
   .contact-buttons .button {
-    margin-right: 12px;
-    margin-bottom: 12px;
+    flex: 1 1 auto;       /* let buttons stretch if needed */
+    min-width: 140px;     /* prevent them from being too tiny */
+    max-width: 240px;     /* prevents huge stretched buttons */
+    padding: 14px 28px;   /* comfy inside padding */
+    font-size: 16px;
+    border-radius: 50px;  /* matches desktop style */
+    background: #b8a3ff;  /* soft site purple */
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(123,93,255,0.25);
+    transition: all 0.3s ease;
+  }
+
+  .contact-buttons .button:hover {
+    background: #a788ff; /* hover slightly darker */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(123,93,255,0.35);
   }
 }
+
 
 /* ===== FOOTER ===== */
 .rr-footer {
