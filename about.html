@@ -998,27 +998,43 @@ header nav a:hover {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ===== About Page Scroll Animations =====
-  const aboutElements = document.querySelectorAll('.about-page h1, .about-text, .about-image img');
-  const observerAbout = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        observerAbout.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  aboutElements.forEach(el => observerAbout.observe(el));
+  /* ===============================
+     ABOUT PAGE SCROLL ANIMATIONS
+  =============================== */
+  const aboutElements = document.querySelectorAll(
+    '.about-page h1, .about-text, .about-image img'
+  );
 
+  if (aboutElements.length) {
+    const observerAbout = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observerAbout.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
 
-  // ===== Hamburger Menu =====
-  const hamburger = document.querySelector('.hamburger');
-  const nav = document.querySelector('header nav');
-  if(hamburger && nav){
-    hamburger.addEventListener('click', () => nav.classList.toggle('show'));
+    aboutElements.forEach(el => observerAbout.observe(el));
   }
 
-  // ===== Footer PDF Modal =====
+
+  /* ===============================
+     HAMBURGER MENU
+  =============================== */
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('header nav');
+
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+  }
+
+
+  /* ===============================
+     FOOTER PDF MODAL
+  =============================== */
   const modal = document.getElementById("pdfModal");
   const pdfImg = document.getElementById("pdfImage");
   const external = document.getElementById("pdfExternal");
@@ -1031,7 +1047,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".footer-links button").forEach(btn => {
     btn.addEventListener("click", () => {
-      currentImages = btn.getAttribute("data-images").split(",").map(i => i.trim());
+      const images = btn.getAttribute("data-images");
+      if (!images) return;
+
+      currentImages = images.split(",").map(i => i.trim());
       currentIndex = 0;
 
       pdfImg.src = currentImages[currentIndex];
@@ -1048,106 +1067,118 @@ document.addEventListener("DOMContentLoaded", () => {
     pdfImg.src = "";
   }
 
-  pdfCloseBtn.addEventListener("click", closeModal);
-  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
-  prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) { currentIndex--; pdfImg.src = currentImages[currentIndex]; external.href = currentImages[currentIndex]; }
-  });
-  nextBtn.addEventListener("click", () => {
-    if (currentIndex < currentImages.length - 1) { currentIndex++; pdfImg.src = currentImages[currentIndex]; external.href = currentImages[currentIndex]; }
+  if (pdfCloseBtn) pdfCloseBtn.addEventListener("click", closeModal);
+  if (modal) modal.addEventListener("click", e => {
+    if (e.target === modal) closeModal();
   });
 
+  if (prevBtn) prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      pdfImg.src = currentImages[currentIndex];
+      external.href = currentImages[currentIndex];
+    }
+  });
 
-  // ===== Traveler Quiz =====
-  const travelerButtons = document.querySelectorAll('.traveler-card .options button');
-  const travelerResult = document.querySelector('.traveler-card .result');
+  if (nextBtn) nextBtn.addEventListener("click", () => {
+    if (currentIndex < currentImages.length - 1) {
+      currentIndex++;
+      pdfImg.src = currentImages[currentIndex];
+      external.href = currentImages[currentIndex];
+    }
+  });
 
- const travelerDescriptions = {
-  "City Explorer": [
-    "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
-    "Skylines, museums, and late night eats fuel your travel style. Cities make you feel alive.",
-    "You love discovering neighborhoods, local spots, and the rhythm of a city that never sleeps."
-  ],
 
-  "Coastal Relaxer": [
-    "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
-    "Salt air, slow mornings, and ocean views are your version of luxury.",
-    "You travel to unwind  sunshine, water, and doing absolutely nothing sound perfect."
-  ],
+  /* ===============================
+     TRAVELER QUIZ
+  =============================== */
+  const travelerButtons = document.querySelectorAll(
+    '.traveler-card .options button'
+  );
+  const travelerResult = document.querySelector(
+    '.traveler-card .result'
+  );
 
-  "Adventure Seeker": [
-    "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
-    "Your trips are powered by adrenaline, fresh air, and stories worth telling.",
-    "You’re happiest chasing views, pushing limits, and exploring off the beaten path."
-  ],
-
-  "Cozy & Chill": [
-    "You cherish quiet mornings and hygge vibes. Quaint towns and slow days suit you best.",
-    "Your perfect trip includes cozy cafés, scenic walks, and zero pressure.",
-    "You travel to feel calm, comfortable, and fully present no rushing required."
-  ]
-};
+  const travelerDescriptions = {
+    "City Explorer": [
+      "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
+      "Skylines, museums, and late-night eats fuel your travel style.",
+      "You love discovering neighborhoods and the rhythm of a city that never sleeps."
+    ],
+    "Coastal Relaxer": [
+      "Your soul finds calm in waves and golden sands.",
+      "Salt air, slow mornings, and ocean views are your version of luxury.",
+      "You travel to unwind—sunshine and water are all you need."
+    ],
+    "Adventure Seeker": [
+      "You crave thrills, hikes, and the unknown.",
+      "Your trips are powered by adrenaline and fresh air.",
+      "You’re happiest chasing views and pushing limits."
+    ],
+    "Cozy & Chill": [
+      "You cherish quiet mornings and hygge vibes.",
+      "Your perfect trip includes cozy cafés and slow days.",
+      "You travel to feel calm, comfortable, and present."
+    ]
+  };
 
   travelerButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const type = button.getAttribute('data-type');
-    const descriptions = travelerDescriptions[type];
+    button.addEventListener('click', () => {
+      const type = button.dataset.type;
+      const descriptions = travelerDescriptions[type];
+      if (!descriptions || !travelerResult) return;
 
-    if (!descriptions) return;
+      const random =
+        descriptions[Math.floor(Math.random() * descriptions.length)];
 
-    const randomDescription =
-      descriptions[Math.floor(Math.random() * descriptions.length)];
-
-    travelerResult.innerHTML = `<strong>${type}</strong><br>${randomDescription}`;
-    travelerResult.style.display = 'block';
+      travelerResult.innerHTML = `<strong>${type}</strong><br>${random}`;
+      travelerResult.style.display = 'block';
+    });
   });
-});
 
 
-
-  // ===== Plan My Trip Wheel =====
+  /* ===============================
+     PLAN MY TRIP WHEEL
+  =============================== */
   const spinBtn = document.getElementById('spinTrip');
   const tripResult = document.querySelector('.trip-result');
-  const destEl = tripResult.querySelector('.destination');
-  const vibeEl = tripResult.querySelector('.vibe');
-  const partnerEl = tripResult.querySelector('.partner');
 
- // === Destinations ===
-  const destinations = [
-    // US
-    "New York City, NY", "Miami, FL", "Sedona, AZ", "San Francisco, CA",
-    "Asheville, NC", "Chicago, IL", "Yellowstone, WY", "Key West, FL",
-    "New Orleans, LA", "Honolulu, HI", "Austin, TX", "Denver, CO",
-    "Napa Valley, CA", "Boston, MA", "Orlando, FL",
-    // International
-    "Paris, France", "Kyoto, Japan", "Santorini, Greece", "Reykjavik, Iceland",
-    "Marrakech, Morocco", "Bali, Indonesia", "Rome, Italy", "Sydney, Australia",
-    "Tulum, Mexico", "Cape Town, South Africa", "Amsterdam, Netherlands",
-    "London, England", "Prague, Czech Republic", "Dubai, UAE", "Bora Bora, French Polynesia"
-  ];
+  if (spinBtn && tripResult) {
+    const destEl = tripResult.querySelector('.destination');
+    const vibeEl = tripResult.querySelector('.vibe');
+    const partnerEl = tripResult.querySelector('.partner');
 
-  // === Vibes / Trip Style ===
-  const vibes = [
-    "Relaxed & Luxurious", "Adventure & Nature", "Romantic & Cozy", "Urban & Vibrant",
-    "Family Fun", "Cultural & Historic", "Chill & Hygge", "Beach & Sun",
-    "Food & Culinary", "Festival & Party", "Roadtrip & Exploration", "Wellness & Spa"
-  ];
+    const destinations = [
+      "New York City, NY", "Miami, FL", "Sedona, AZ", "San Francisco, CA",
+      "Asheville, NC", "Chicago, IL", "Honolulu, HI",
+      "Paris, France", "Kyoto, Japan", "Santorini, Greece",
+      "Bali, Indonesia", "Rome, Italy", "London, England"
+    ];
 
-  // === Travel Partner ===
-  const partners = [
-    "Partner 👫", "Friends 👭", "Family 👨‍👩‍👧", "Solo ✈️", "Pet 🐾",
-    "Adventure Buddy 🧗", "Group Tour 🚌", "Bestie Squad 👯", "Parents / Relatives 👵👴", "Co-worker / Work Retreat 💼"
-  ];
-  if(spinBtn){
+    const vibes = [
+      "Relaxed & Luxurious", "Adventure & Nature", "Romantic & Cozy",
+      "Urban & Vibrant", "Chill & Hygge", "Beach & Sun"
+    ];
+
+    const partners = [
+      "Partner 👫", "Friends 👭", "Family 👨‍👩‍👧",
+      "Solo ✈️", "Bestie Squad 👯"
+    ];
+
     spinBtn.addEventListener('click', () => {
       tripResult.style.display = 'block';
       let i = 0;
+
       const interval = setInterval(() => {
-        destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
-        vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
-        partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
+        destEl.textContent =
+          destinations[Math.floor(Math.random() * destinations.length)];
+        vibeEl.textContent =
+          vibes[Math.floor(Math.random() * vibes.length)];
+        partnerEl.textContent =
+          partners[Math.floor(Math.random() * partners.length)];
+
         i++;
-        if(i > 20) clearInterval(interval);
+        if (i > 20) clearInterval(interval);
       }, 50);
     });
   }
