@@ -642,17 +642,15 @@ a {
 
 /* ===== LIGHTBOX / POPUP IMAGE ===== */
 .lightbox {
-  display: none; /* hidden by default */
+  display: none;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 90%;
-  max-height: 90vh;   /* fill most of the viewport */
-  background: rgba(0,0,0,0.8);
+  top: 0; 
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85); /* semi-transparent overlay */
   z-index: 9999;
-  padding: 15px;
-  border-radius: 16px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -663,26 +661,28 @@ a {
 }
 
 .lightbox img {
-  width: auto;        /* scales naturally */
-  max-width: 100%;
+  width: auto;
+  max-width: 95%;
   height: auto;
-  max-height: 90vh;   /* never exceed viewport height */
+  max-height: 95vh;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
-    
-/* Mobile */
+
+/* ===== MOBILE ADJUSTMENTS ===== */
 @media (max-width: 768px) {
   .collection-card img {
-    height: 180px; /* thumbnail smaller for mobile */
-    max-height: 180px;
+    height: 160px; /* thumbnail smaller on mobile */
+    max-height: 160px;
   }
 
   .lightbox img {
-    max-height: 80vh; /* slightly smaller for mobile screens */
+    max-width: 95%;   /* fill almost full width */
+    max-height: 90vh; /* almost full height */
   }
 }
+
 
 /* ===== Desktop ===== */
 @media (min-width: 1024px) {
