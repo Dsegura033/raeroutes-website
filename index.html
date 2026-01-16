@@ -1252,6 +1252,26 @@ a {
     box-shadow: 0 6px 18px rgba(123,93,255,0.35);
   }
 }
+/* ===== MOBILE QR FIX ===== */
+@media (max-width: 850px) {
+  .qr-box {
+    width: 180px;           /* smaller, fits mobile better */
+    padding: 16px;          /* slightly smaller padding */
+    margin: 0 auto 20px;    /* center and add spacing below */
+  }
+
+  .qr-box img {
+    width: 100%;            /* stays responsive */
+    height: auto;
+    border-radius: 16px;    /* keeps corners soft */
+  }
+
+  .contact-panel {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
 
 
 /* ===== FOOTER ===== */
