@@ -245,15 +245,15 @@ header nav a:hover {
     padding: 80px 20px;
     text-align: center;
 
-    /* Soft lavender-lilac gradient background with subtle radial highlights */
-    background: linear-gradient(135deg, #e6e0ff, #d8caff);
+    /* Main background gradient */
+    background: linear-gradient(135deg, #d8c3ff 0%, #a07eff 100%);
+    
+    /* Optional subtle radial highlights for extra “sparkle” */
     background-image: 
         radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.12) 0%, transparent 40%),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
     background-blend-mode: overlay;
-
-    /* Ensure gradient covers whole section even if parent is white */
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -262,9 +262,9 @@ header nav a:hover {
     position: relative;
     overflow: hidden;
 
-    /* Prevent section collapse revealing white behind */
-    min-height: 600px; /* adjust as needed */
+    min-height: 800px; /* make it tall enough so gradient is visible */
 }
+
 
 /* ===== Header & Tagline ===== */
 .route-room-header h2 {
