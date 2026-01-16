@@ -608,7 +608,8 @@ a {
 
 .collection-card img {
   width: 100%;
-  height: 150px;
+  height: 220px; /* bigger for desktop */
+  max-height: 220px;
   object-fit: cover;
   border-radius: 12px;
   cursor: pointer;
@@ -658,11 +659,11 @@ a {
 
 
 .lightbox-img {
-  max-width: 85%;
-  max-height: 75vh;
-  border-radius: 8px;
+  max-width: 90%;
+  max-height: 80vh; /* responsive height for mobile and desktop */
   object-fit: contain;
 }
+
 
 .lightbox .close {
   position: absolute;
@@ -674,13 +675,11 @@ a {
   z-index: 1001;
 }
 
-/* ===== Mobile ===== */
+/* Mobile */
 @media (max-width: 768px) {
-  .collection-card {
-    width: 180px;
-  }
   .collection-card img {
-    height: 130px;
+    height: 180px;
+    max-height: 180px;
   }
 }
 
@@ -710,15 +709,14 @@ a {
 
 /* PLAN YOUR TRIP SECTION  */
 .trip-process {
-  margin: 80px auto; /* reduced white space */
-  padding: 80px 20px; /* added top/bottom padding so purple extends fully */
+  margin: 40px auto;       /* smaller vertical spacing around the section */
+  padding: 60px 20px;      /* still gives the purple background enough height */
   max-width: 1200px;
-  background-color: #f3e8ff; /* solid soft purple */
-  border-radius: 20px; /* optional soft edges */
-  position: relative; /* ensures child elements layer properly */
-  overflow: hidden; /* prevents any inner overflow showing white */
+  background-color: #f3e8ff;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
 }
-
 
 .trip-process h2 {
   color: #ffffff; /* Plan Your Trip text = white */
@@ -1170,12 +1168,9 @@ a {
 
 /* ===== CONTACT SPLIT SECTION ===== */
 .contact-split {
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #fdfaff, #ece6ff);
-  border-radius: 32px;
-  margin: 80px auto;
-  max-width: 1100px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, #d6b0ff, #a376ff); /* vibrant purple gradient */
+  color: #fff; /* text pops on dark background */
+  box-shadow: 0 8px 28px rgba(108, 83, 177, 0.3);
 }
 
 /* DESKTOP (side by side normally) */
@@ -1207,38 +1202,18 @@ a {
   border-radius: 12px;
 }
 
-/* Right side text */
 .contact-right h2 {
-  font-size: 2.2rem;
-  color: #4b3f72;
-  margin-bottom: 10px;
+  color: #fff;
 }
-
 .contact-right p {
-  font-size: 1.1rem;
-  color: #5a4f7d;
-  margin-bottom: 20px;
+  color: #f3e8ff;
 }
-
-.contact-buttons {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
 .button {
-  background: #6a5acd;
-  color: white;
-  padding: 12px 26px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
+  background: #fff; /* invert button for contrast */
+  color: #6a5acd;
 }
-
 .button:hover {
-  background: #5848b3;
-  transform: translateY(-3px);
+  background: #e0ccff;
 }
 
 /* ===== MOBILE: horizontal scroll panels ===== */
