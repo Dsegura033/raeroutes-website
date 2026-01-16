@@ -550,12 +550,11 @@ a {
 
 
 
-
 /* ===== COLLECTIONS SECTION ===== */
 .collections-section {
   position: relative;
-  padding: 20px 0;          /* minimal top/bottom padding */
-  margin: 0;                 /* remove extra margin */
+  padding: 20px 0;
+  margin: 0;
   text-align: center;
   background: linear-gradient(135deg, #f4f0ff, #e7ddff);
   border-radius: 20px;
@@ -589,7 +588,7 @@ a {
 
 /* ===== Collection Cards ===== */
 .collection-card {
-  flex: 0 0 auto; /* no stacking */
+  flex: 0 0 auto;
   width: 220px;
   padding: 10px;
   text-align: center;
@@ -601,19 +600,24 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 320px;
+  height: auto; /* Allow full text to show */
   scroll-snap-align: start;
-  z-index: 1;  /* ensure cards are above any background content */
+  cursor: pointer; /* clickable card */
+  z-index: 1;
 }
 
-/* ===== COLLECTION CARD IMAGES (BIGGER) ===== */
+.collection-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(108, 83, 177, 0.25);
+}
+
+/* ===== COLLECTION CARD IMAGES ===== */
 .collection-card img {
   width: 100%;
-  height: 260px; /* bigger thumbnail */
-  max-height: 260px;
+  height: auto; /* allow full image aspect ratio */
   object-fit: cover;
   border-radius: 12px;
-  cursor: pointer;
+  margin-bottom: 10px;
   transition: transform 0.2s;
 }
 
@@ -636,24 +640,22 @@ a {
   color: #1a1a1a;
 }
 
-.collection-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(108, 83, 177, 0.25);
-}
-
-/* ===== LIGHTBOX / POPUP IMAGE (MEDIUM-LARGE SIZE) ===== */
+/* ===== LIGHTBOX ===== */
 .lightbox {
-  display: none; /* hidden by default */
+  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background: rgba(0,0,0,0.8);
+  padding: 10px;
+  border-radius: 12px;
   z-index: 9999;
-  padding: 0;
-  background: transparent; /* remove black overlay */
-  display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .lightbox.active {
@@ -661,49 +663,40 @@ a {
 }
 
 .lightbox img {
-  width: 360px;      /* bigger popup image */
-  max-width: 90%;
+  width: 100%;
   height: auto;
-  object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  display: block;
 }
-    /* ===== Lightbox Close Button ===== */
+
+/* ===== Lightbox Close Button ===== */
 .lightbox .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 32px;
-    color: #fff;
-    background: rgba(0,0,0,0.4);
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-    display: none; /* hidden by default */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    line-height: 1;
-    z-index: 1001;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 32px;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
 }
-
-/* Show the close button only when lightbox is active */
-.lightbox.active .close-btn {
-    display: flex;
-}
-
 
 /* ===== MOBILE ===== */
 @media (max-width: 1024px) {
   .collection-card img {
-    height: 260px; /* bigger thumbnail on mobile too */
-    max-height: 260px;
+    height: auto; /* let image resize */
+    max-height: none;
   }
 
   .lightbox img {
-    width: 320px; /* bigger popup on mobile */
+    width: 90%;
     max-width: 90%;
     height: auto;
   }
@@ -711,13 +704,13 @@ a {
 
 /* ===== Lottie Animation Background ===== */
 .collections-section .collections-animation {
-  position: absolute;   /* position it over the section */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;           /* behind content */
-  pointer-events: none; /* clicks go through */
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Ensure section content is above the animation */
@@ -726,7 +719,6 @@ a {
   position: relative;
   z-index: 1;
 }
-
 
 /* PLAN YOUR TRIP SECTION  */
 .trip-process {
@@ -1723,37 +1715,37 @@ html, body {
     <h2>RaeRoutes Travel Collections</h2>
 
     <div class="collections">
-        <div class="collection-card">
+        <div class="collection-card" data-image="citycollection.png">
             <img src="citycollection.png" alt="City Collection">
             <h3>City Collection</h3>
             <p>Discover the best city getaways in the U.S.</p>
         </div>
 
-        <div class="collection-card">
+        <div class="collection-card" data-image="Thecoastalcollection.png">
             <img src="Thecoastalcollection.png" alt="Coastal Collection">
             <h3>Coastal Collection</h3>
             <p>Relax by the ocean and enjoy coastal vibes.</p>
         </div>
 
-        <div class="collection-card">
+        <div class="collection-card" data-image="romanticescapescollection.png">
             <img src="romanticescapescollection.png" alt="Romantic Collection">
             <h3>Romantic Collection</h3>
             <p>Perfect escapes for couples and romantic adventures.</p>
         </div>
 
-        <div class="collection-card">
+        <div class="collection-card" data-image="familyfuncollection.png">
             <img src="familyfuncollection.png" alt="Family Fun Collection">
             <h3>Family Fun Collection</h3>
             <p>Memorable trips for the whole family.</p>
         </div>
 
-        <div class="collection-card">
+        <div class="collection-card" data-image="adventurecollection.png">
             <img src="adventurecollection.png" alt="Adventure Collection">
             <h3>Adventure Collection</h3>
             <p>Made for the ones who chase fresh air, big views, and a little adrenaline.</p>
         </div>
 
-        <div class="collection-card">
+        <div class="collection-card" data-image="winterwonderland.png">
             <img src="winterwonderland.png" alt="Winter Wonderland Collection">
             <h3>Winter Wonderland Collection</h3>
             <p>Perfect winter holiday destinations.</p>
@@ -1761,11 +1753,12 @@ html, body {
     </div>
 </section>
 
-<!-- Lightbox overlay for medium-size preview -->
+<!-- Lightbox overlay for viewing full-size image -->
 <div class="lightbox" id="lightbox">
   <button class="close-btn" id="closeLightbox">&times;</button>
-  <img src="" alt="Collection Image">
+  <img src="" alt="Collection Image" id="lightboxImage">
 </div>
+
 
 
 <!-- TRIP PLANNER SECTION -->
@@ -1971,14 +1964,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Lightbox (medium-large popup on top) =====
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.querySelector('.lightbox-img');
-  const closeBtn = document.querySelector('.lightbox .close');
+  const lightboxImg = lightbox.querySelector('img');
+  const closeBtn = lightbox.querySelector('.close-btn');
 
-  document.querySelectorAll('.collection-card img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightbox.classList.add('active');
+  // Make entire collection card clickable
+  document.querySelectorAll('.collection-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const img = card.querySelector('img');
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
     });
   });
 
