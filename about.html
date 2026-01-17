@@ -91,17 +91,23 @@ header nav a:hover {
 .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; cursor: pointer; }
 .hamburger span { height: 4px; background: #5a4baa; border-radius: 2px; }
   
-/*theme song*/
+/* ===== Theme Song Player ===== */
 .theme-song-player {
   text-align: center;
   margin: 20px auto 40px;
 }
 
+.theme-song-player p {
+  font-weight: 500;
+  color: #7a5fa3;
+  margin-bottom: 12px;
+}
+
 #playPauseBtn {
-  display: inline-flex;          /* inline-flex keeps button centered in page */
-  align-items: center;           /* vertically align text + bars */
-  justify-content: center;       /* horizontally center text + bars */
-  gap: 10px;                     /* space between text and bars */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   padding: 10px 25px;
   font-size: 16px;
   font-weight: 600;
@@ -134,7 +140,7 @@ header nav a:hover {
   background: rgba(255,255,255,0.7);
   border-radius: 2px;
   animation: bounce 1s infinite;
-  animation-play-state: paused; /* start paused */
+  animation-play-state: paused; /* paused by default */
 }
 
 .audio-bars span:nth-child(2) { animation-delay: 0.2s; }
@@ -144,6 +150,7 @@ header nav a:hover {
   0%, 100% { height: 6px; opacity: 0.7; }
   50% { height: 14px; opacity: 1; }
 }
+
 
 
 
@@ -897,22 +904,23 @@ header nav a:hover {
     <h1>Behind RaeRoutes</h1>
     
  
-  <div class="theme-song-player">
-  <p>🎵 Set the Mood</p>
+ <div class="theme-song-player">
+  <p>🎵 Set the Mood; Play & Pause, You Are In Control!</p>
+  
   <button id="playPauseBtn">
-    Play
+    A Beat by Drevski
     <span class="audio-bars">
       <span></span>
       <span></span>
       <span></span>
     </span>
   </button>
+  
   <audio id="themeSong">
     <source src="FieldsNormal.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 </div>
-
 
 
     <!-- Intro Text + Image -->
@@ -1084,20 +1092,27 @@ header nav a:hover {
 
 </body>
   
-  <script>
-const themeSong = document.getElementById('themeSong');
-const playPauseBtn = document.getElementById('playPauseBtn');
-const audioBars = document.querySelectorAll('.audio-bars span');
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const playBtn = document.getElementById('playPauseBtn');
+  const themeSong = document.getElementById('themeSong');
+  const bars = document.querySelectorAll('.audio-bars span');
 
-playPauseBtn.addEventListener('click', () => {
-  if (themeSong.paused) {
-    themeSong.play();
-    playPauseBtn.childNodes[0].textContent = "Now Playing: A Beat by Drevski";
-    audioBars.forEach(bar => bar.style.animationPlayState = 'running');
-  } else {
-    themeSong.pause();
-    playPauseBtn.childNodes[0].textContent = "Play";
-    audioBars.forEach(bar => bar.style.animationPlayState = 'paused');
+  if (playBtn && themeSong) {
+    playBtn.addEventListener('click', () => {
+      if (themeSong.paused) {
+        themeSong.play();
+        themeSong.loop = true;
+
+        // Animate bars
+        bars.forEach(bar => bar.style.animationPlayState = 'running');
+      } else {
+        themeSong.pause();
+
+        // Pause bars animation
+        bars.forEach(bar => bar.style.animationPlayState = 'paused');
+      }
+    });
   }
 });
   </script>
