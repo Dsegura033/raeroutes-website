@@ -204,29 +204,31 @@ a {
 /* ===== MEDIA QUERIES ===== */
 @media (max-width: 1024px) {
   .desktop-nav { display: none; }
+  .nav-search-container { display: none; } /* hide desktop search on mobile */
   .hamburger { display: block; }
 
   /* Center the logo on mobile */
   .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative; /* changed from absolute to prevent overlap */
+    left: auto;
+    transform: none;
   }
 
-  /* Mobile search below logo */
+  /* Mobile search inside hamburger nav only */
   .search-section-mobile {
-    display: flex;
-    justify-content: center;
-    padding: 12px 20px;
+    display: none; /* hide standalone mobile search */
   }
 
   .search-container-mobile {
     display: flex;
+    justify-content: center;
     gap: 6px;
+    width: 80%;
+    margin-bottom: 20px; /* spacing before nav links */
   }
 
   .search-container-mobile input {
-    width: 65%;
+    flex: 1;
     padding: 8px 12px;
     border-radius: 20px;
     border: 2px solid #b5a0ff;
@@ -247,6 +249,7 @@ a {
     padding: 8px 14px;
     cursor: pointer;
     font-size: 13px;
+    margin-left: 6px;
   }
 
   .search-container-mobile button:hover {
@@ -254,14 +257,13 @@ a {
     transform: translateY(-1px);
   }
 }
-    
 
 /* Mobile nav overlay active */
 .mobile-nav.active {
   display: flex;
 }
     
-    /* ===== HIGHLIGHT SEARCH RESULTS ===== */
+/* ===== HIGHLIGHT SEARCH RESULTS ===== */
 .highlight {
   background-color: rgba(181, 160, 255, 0.35); /* light purple highlight */
   border-radius: 6px;
@@ -273,7 +275,6 @@ a {
 html {
   scroll-behavior: smooth;
 }
-
 
 /* ===== DESKTOP HEADER REDESIGN ===== */
 @media (min-width: 1025px) {
@@ -315,7 +316,6 @@ html {
     flex: none;
   }
 }
-
 
 
 /* ===== HERO SECTION ===== */
@@ -1741,19 +1741,19 @@ html, body {
 
 <header class="header-container">
 
-  <!-- HAMBURGER (LEFT) -->
-  <div class="hamburger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-  </div>
+<!-- HAMBURGER (LEFT) -->
+<div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
 
-  <!-- LOGO (CENTERED) -->
-  <div class="logo">
-      <a href="#home">
-          <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
-      </a>
-  </div>
+<!-- LOGO (CENTERED) -->
+<div class="logo">
+    <a href="#home">
+        <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
+    </a>
+</div>
 
 <!-- DESKTOP NAV -->
 <nav class="desktop-nav">
@@ -1773,6 +1773,12 @@ html, body {
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
+    <!-- Mobile Search moved INSIDE mobile nav -->
+    <div class="search-container-mobile">
+        <input type="text" id="siteSearchMobile" placeholder="Search Services & Collections..." />
+        <button id="searchBtnMobile">🔍</button>
+    </div>
+
     <a href="#home">Home</a>
     <a href="#collections">Collections</a>
     <a href="#planner">Trip Planner</a>
@@ -1780,16 +1786,6 @@ html, body {
     <a href="#services">Services & Gifting</a>
     <a href="#contact">Contact</a>
 </div>
-
-<!-- Mobile Search Section (below header) -->
-<section class="search-section-mobile">
-    <div class="search-container-mobile">
-        <input type="text" id="siteSearchMobile" placeholder="Search Services & Collections..." />
-        <button id="searchBtnMobile">🔍</button>
-    </div>
-</section>
-
-</header>
 
 
 <!-- HERO SECTION -->
@@ -2243,28 +2239,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== DESKTOP NAV SEARCH (in-page search) =====
-  const searchInput = document.querySelector('.nav-search-container input');
-  const searchBtn = document.querySelector('.nav-search-container button');
+  // ===== DESKTOP & MOBILE SEARCH (in-page search for whole document) =====
+  const searchInputs = [
+    document.querySelector('.nav-search-container input'), // desktop
+    document.getElementById('siteSearchMobile')           // mobile
+  ];
+  const searchBtns = [
+    document.querySelector('.nav-search-container button'), // desktop
+    document.getElementById('searchBtnMobile')             // mobile
+  ];
 
-  if(searchBtn && searchInput){
-    searchBtn.addEventListener('click', () => {
-      const query = searchInput.value.trim().toLowerCase();
-      if(!query) return;
+  searchInputs.forEach((input, index) => {
+    const btn = searchBtns[index];
+    if (!input || !btn) return;
+
+    const performSearch = (query) => {
+      if (!query) return;
 
       // Remove old highlights
-      document.querySelectorAll('.highlight').forEach(el => {
-        el.classList.remove('highlight');
-      });
+      document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
 
-      // Search elements
-      const searchableElements = document.querySelectorAll(
-        'h2, h3, p, .collection-card, .testimonial-card, .service-card'
-      );
+      // Search all text in document except scripts/styles/noscript
+      const searchableElements = document.querySelectorAll('body *:not(script):not(style):not(noscript)');
 
       let found = false;
       searchableElements.forEach(el => {
-        if(el.textContent.toLowerCase().includes(query)){
+        if(el.textContent.toLowerCase().includes(query.toLowerCase())){
           el.classList.add('highlight');
           if(!found){
             el.scrollIntoView({behavior: "smooth", block: "center"});
@@ -2276,15 +2276,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if(!found){
         alert("No matches found!");
       }
-    });
+    };
+
+    // Click search button
+    btn.addEventListener('click', () => performSearch(input.value.trim()));
 
     // Trigger search on Enter key
-    searchInput.addEventListener('keypress', (e) => {
+    input.addEventListener('keypress', (e) => {
       if(e.key === 'Enter'){
-        searchBtn.click();
+        performSearch(input.value.trim());
       }
     });
-  }
+  });
 
   // ===== Intersection observers =====
   const createObserver = (selector) => {
@@ -2479,6 +2482,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 }); // end DOMContentLoaded
 </script>
+
 
 
 
