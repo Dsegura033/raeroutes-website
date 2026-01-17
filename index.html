@@ -1074,12 +1074,15 @@ a {
   color: #666;
 }
 
+/* Scroll container tweaks */
 .testimonial-scroll {
   display: flex;
   gap: 24px;
   overflow-x: auto;
   padding: 10px 5px 30px;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity; /* smoother snapping */
+  scroll-behavior: smooth; /* soft auto-scroll */
+  -webkit-overflow-scrolling: touch; /* mobile smooth scroll */
   scrollbar-width: thin;
   scrollbar-color: rgba(160, 130, 210, 0.6) transparent;
 }
@@ -1095,17 +1098,25 @@ a {
   background: transparent;
 }
 
+/* Testimonial cards with soft purple background */
 .testimonial-card {
   min-width: 280px;
   max-width: 320px;
   scroll-snap-align: center;
   flex-shrink: 0;
-  background: #fff;
+  background: rgba(210, 200, 240, 0.3); /* soft light purple */
   padding: 28px;
   border-radius: 22px;
   box-shadow: 0 12px 30px rgba(140, 110, 190, 0.18);
   border: 1px solid rgba(190, 170, 230, 0.5);
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Optional hover effect for cards */
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 35px rgba(140, 110, 190, 0.25);
 }
 
 .quote-icon {
@@ -1126,6 +1137,7 @@ a {
   font-size: 14px;
   color: #7a5fa3;
 }
+
 
     /* ===== ABOUT SECTION ===== */
 .about-section {
