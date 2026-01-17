@@ -93,13 +93,18 @@ header nav a:hover {
   
 /*theme song*/
 .theme-song-player {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   margin: 20px auto 40px;
 }
 
-.theme-song-player button {
+.theme-song-player p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #5a4baa;
+  margin-bottom: 10px;
+}
+
+#playPauseBtn {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -116,16 +121,16 @@ header nav a:hover {
   overflow: hidden;
 }
 
-.theme-song-player button:hover {
+#playPauseBtn:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Audio Bars */
+/* Mini Audio Bars */
 .audio-bars {
   display: flex;
   align-items: flex-end;
-  gap: 2px;
+  gap: 3px;
   height: 16px;
 }
 
@@ -145,6 +150,7 @@ header nav a:hover {
   0%, 100% { height: 6px; opacity: 0.7; }
   50% { height: 14px; opacity: 1; }
 }
+
 
 /* ===== ABOUT PAGE ===== */
 .about-page {
@@ -895,14 +901,23 @@ header nav a:hover {
   <div class="container">
     <h1>Behind RaeRoutes</h1>
     
-   <div class="theme-song-player">
+ 
+  <div class="theme-song-player">
   <p>🎵 Set the Mood</p>
-  <button id="playPauseBtn">Play</button>
+  <button id="playPauseBtn">
+    Play
+    <span class="audio-bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
   <audio id="themeSong">
     <source src="FieldsNormal.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 </div>
+
 
 
     <!-- Intro Text + Image -->
@@ -1075,16 +1090,19 @@ header nav a:hover {
 </body>
   
   <script>
- const themeSong = document.getElementById('themeSong');
+const themeSong = document.getElementById('themeSong');
 const playPauseBtn = document.getElementById('playPauseBtn');
+const audioBars = document.querySelectorAll('.audio-bars span');
 
 playPauseBtn.addEventListener('click', () => {
   if (themeSong.paused) {
     themeSong.play();
-    playPauseBtn.textContent = "Now Playing: A Beat by Drevski";
+    playPauseBtn.childNodes[0].textContent = "Now Playing: A Beat by Drevski";
+    audioBars.forEach(bar => bar.style.animationPlayState = 'running');
   } else {
     themeSong.pause();
-    playPauseBtn.textContent = "Play";
+    playPauseBtn.childNodes[0].textContent = "Play";
+    audioBars.forEach(bar => bar.style.animationPlayState = 'paused');
   }
 });
   </script>
