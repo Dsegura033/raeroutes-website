@@ -60,9 +60,8 @@ a {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  border-bottom: 1px solid rgba(210, 200, 240, 0.5); /* matches header color slightly */
+  border-bottom: 1px solid rgba(210, 200, 240, 0.5);
 }
-
 
 /* ===== LOGO ===== */
 .logo {
@@ -116,47 +115,6 @@ a {
   transition: all 0.3s ease;
 }
 
-/* ===== DESKTOP NAV SEARCH ===== */
-.nav-search-container {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px; /* slightly bigger gap so it doesn't look cramped */
-  margin-left: 12px; /* keep spacing from last nav link */
-}
-
-.nav-search-container input {
-  padding: 5px 12px; /* slightly more padding for easier click */
-  border-radius: 20px;
-  border: 2px solid #b5a0ff;
-  font-size: 13px;
-  outline: none;
-  width: 150px; /* slightly wider but still compact */
-  background: linear-gradient(135deg, #fff, #f7f7f7);
-  transition: all 0.3s ease;
-}
-
-.nav-search-container input:focus {
-  border-color: #8e78e5;
-  box-shadow: 0 2px 8px rgba(140,110,190,0.25);
-}
-
-.nav-search-container button {
-  border: none;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #b5a0ff, #8e78e5);
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 5px 12px; /* slightly more padding */
-  font-size: 12px;
-  transition: all 0.2s ease;
-}
-
-.nav-search-container button:hover {
-  background: linear-gradient(135deg, #cdb4ff, #b5e3ff);
-  transform: translateY(-1px);
-}
-
 /* ===== MOBILE NAV ===== */
 .mobile-nav {
   display: none;
@@ -204,57 +162,13 @@ a {
 /* ===== MEDIA QUERIES ===== */
 @media (max-width: 1024px) {
   .desktop-nav { display: none; }
-  .nav-search-container { display: none; } /* hide desktop search on mobile */
   .hamburger { display: block; }
 
   /* Center the logo on mobile */
   .logo {
-    position: relative; /* changed from absolute to prevent overlap */
+    position: relative;
     left: auto;
     transform: none;
-  }
-
-  /* Mobile search inside hamburger nav only */
-  .search-section-mobile {
-    display: none; /* hide standalone mobile search */
-  }
-
-  .search-container-mobile {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    width: 80%;
-    margin-bottom: 20px; /* spacing before nav links */
-  }
-
-  .search-container-mobile input {
-    flex: 1;
-    padding: 8px 12px;
-    border-radius: 20px;
-    border: 2px solid #b5a0ff;
-    font-size: 14px;
-    background: linear-gradient(135deg, #fff, #f7f7f7);
-  }
-
-  .search-container-mobile input:focus {
-    border-color: #8e78e5;
-    box-shadow: 0 2px 8px rgba(140,110,190,0.25);
-  }
-
-  .search-container-mobile button {
-    border-radius: 20px;
-    background: linear-gradient(135deg, #b5a0ff, #8e78e5);
-    color: #fff;
-    font-weight: 500;
-    padding: 8px 14px;
-    cursor: pointer;
-    font-size: 13px;
-    margin-left: 6px;
-  }
-
-  .search-container-mobile button:hover {
-    background: linear-gradient(135deg, #cdb4ff, #b5e3ff);
-    transform: translateY(-1px);
   }
 }
 
@@ -262,24 +176,14 @@ a {
 .mobile-nav.active {
   display: flex;
 }
-    
-/* ===== HIGHLIGHT SEARCH RESULTS ===== */
-.highlight {
-  background-color: rgba(181, 160, 255, 0.35); /* light purple highlight */
-  border-radius: 6px;
-  transition: background 0.3s ease;
-  padding: 2px 4px; /* optional: small padding to make text readable */
-}
 
-/* Optional: smooth scroll behavior for search */
+/* Optional: smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
 /* ===== DESKTOP HEADER REDESIGN ===== */
 @media (min-width: 1025px) {
-
-  /* Make header stack vertically */
   .header-container {
     display: flex;
     flex-direction: column;
@@ -288,14 +192,12 @@ html {
     padding: 16px 0 6px 0;
   }
 
-  /* Center the logo */
   .logo {
     order: 1;
     text-align: center;
     width: 100%;
   }
 
-  /* Style the nav bar under the logo */
   .desktop-nav {
     order: 2;
     margin-top: 10px;
@@ -305,13 +207,6 @@ html {
     width: 100%;
   }
 
-  /* Place desktop search nicely under nav */
-  .nav-search-container {
-    order: 3; /* keeps search under nav, still inline in flex column */
-    margin-top: 12px; /* small breathing room */
-  }
-
-  /* Remove the spacing used for horizontal header layout */
   .header-container > * {
     flex: none;
   }
@@ -1741,51 +1636,42 @@ html, body {
 
 <header class="header-container">
 
-<!-- HAMBURGER (LEFT) -->
-<div class="hamburger" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
+  <!-- HAMBURGER (LEFT, MOBILE ONLY) -->
+  <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
 
-<!-- LOGO (CENTERED) -->
-<div class="logo">
-    <a href="#home">
-        <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
-    </a>
-</div>
+  <!-- LOGO (CENTERED) -->
+  <div class="logo">
+      <a href="#home">
+          <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
+      </a>
+  </div>
 
-<!-- DESKTOP NAV -->
-<nav class="desktop-nav">
-    <a href="#home">Home</a>
-    <a href="#collections">Collections</a>
-    <a href="#planner">Trip Planner</a>
-    <a href="#about">About</a>
-    <a href="#services">Services & Gifting</a>
-    <a href="#contact">Contact</a>
+  <!-- DESKTOP NAV -->
+  <nav class="desktop-nav">
+      <a href="#home">Home</a>
+      <a href="#collections">Collections</a>
+      <a href="#planner">Trip Planner</a>
+      <a href="#about">About</a>
+      <a href="#services">Services & Gifting</a>
+      <a href="#contact">Contact</a>
+  </nav>
 
-    <!-- Desktop Search -->
-    <div class="nav-search-container">
-        <input type="text" id="siteSearchDesktop" placeholder="Search Services & Collections..." />
-        <button id="searchBtnDesktop">🔍</button>
-    </div>
-</nav>
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+      <a href="#home">Home</a>
+      <a href="#collections">Collections</a>
+      <a href="#planner">Trip Planner</a>
+      <a href="#about">About</a>
+      <a href="#services">Services & Gifting</a>
+      <a href="#contact">Contact</a>
+  </div>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-    <!-- Mobile Search moved INSIDE mobile nav -->
-    <div class="search-container-mobile">
-        <input type="text" id="siteSearchMobile" placeholder="Search Services & Collections..." />
-        <button id="searchBtnMobile">🔍</button>
-    </div>
+</header>
 
-    <a href="#home">Home</a>
-    <a href="#collections">Collections</a>
-    <a href="#planner">Trip Planner</a>
-    <a href="#about">About</a>
-    <a href="#services">Services & Gifting</a>
-    <a href="#contact">Contact</a>
-</div>
 
 
 <!-- HERO SECTION -->
