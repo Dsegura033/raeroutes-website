@@ -254,11 +254,26 @@ a {
     transform: translateY(-1px);
   }
 }
+    
 
 /* Mobile nav overlay active */
 .mobile-nav.active {
   display: flex;
 }
+    
+    /* ===== HIGHLIGHT SEARCH RESULTS ===== */
+.highlight {
+  background-color: rgba(181, 160, 255, 0.35); /* light purple highlight */
+  border-radius: 6px;
+  transition: background 0.3s ease;
+  padding: 2px 4px; /* optional: small padding to make text readable */
+}
+
+/* Optional: smooth scroll behavior for search */
+html {
+  scroll-behavior: smooth;
+}
+
 
 /* ===== DESKTOP HEADER REDESIGN ===== */
 @media (min-width: 1025px) {
@@ -2187,7 +2202,6 @@ html, body {
   </div>
 </div>
 
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -2229,22 +2243,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== DESKTOP NAV SEARCH =====
+  // ===== DESKTOP NAV SEARCH (in-page search) =====
   const searchInput = document.querySelector('.nav-search-container input');
   const searchBtn = document.querySelector('.nav-search-container button');
 
-  if (searchBtn && searchInput) {
+  if(searchBtn && searchInput){
     searchBtn.addEventListener('click', () => {
-      const query = searchInput.value.trim();
-      if (query) {
-        // Example: Redirect to Google search for now
-        window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+      const query = searchInput.value.trim().toLowerCase();
+      if(!query) return;
+
+      // Remove old highlights
+      document.querySelectorAll('.highlight').forEach(el => {
+        el.classList.remove('highlight');
+      });
+
+      // Search elements
+      const searchableElements = document.querySelectorAll(
+        'h2, h3, p, .collection-card, .testimonial-card, .service-card'
+      );
+
+      let found = false;
+      searchableElements.forEach(el => {
+        if(el.textContent.toLowerCase().includes(query)){
+          el.classList.add('highlight');
+          if(!found){
+            el.scrollIntoView({behavior: "smooth", block: "center"});
+            found = true;
+          }
+        }
+      });
+
+      if(!found){
+        alert("No matches found!");
       }
     });
 
-    // Optional: trigger search on Enter key
+    // Trigger search on Enter key
     searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
+      if(e.key === 'Enter'){
         searchBtn.click();
       }
     });
@@ -2272,7 +2308,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const scrollContainer = document.getElementById('testimonialScroll');
   if (scrollContainer) {
     let scrollAmount = 0;
-    let scrollDirection = 1; // 1 = right, -1 = left
+    let scrollDirection = 1;
     const scrollSpeed = 0.5;
 
     function autoScrollTestimonials() {
