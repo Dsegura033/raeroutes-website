@@ -1059,6 +1059,44 @@ a {
   }
 }
 
+    /* Testimonials */
+    
+    .testimonials {
+  padding: 90px 25px;
+  text-align: center;
+}
+
+.testimonial-subtext {
+  max-width: 620px;
+  margin: 12px auto 45px;
+  color: #666;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.75);
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.testimonial-card .author {
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+}
+
 
     /* ===== ABOUT SECTION ===== */
 .about-section {
@@ -1863,6 +1901,39 @@ html, body {
 
         </div>
     </div>
+</section>
+  
+/* Testimonials */ 
+  <section class="testimonials">
+  <h2>What Travelers Are Saying</h2>
+  <p class="testimonial-subtext">
+    Feedback shared by real RaeRoute's clients.
+  </p>
+
+  <div class="testimonial-grid">
+
+    <div class="testimonial-card">
+      <p class="quote">
+        “RaeRoutes has helped me find such good deals and Damonyca makes the process so easy and quick.”
+      </p>
+      <span class="author">— Trip Planning Client</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="quote">
+        “Thank you so much for helping, I feel all boujie haha!.”
+      </p>
+      <span class="author">— Trip Planner Client"</span>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="quote">
+        “Thank you, it was all very good, we had lots of fun!.”
+      </p>
+      <span class="author">— Weekend getaway Planner</span>
+    </div>
+
+  </div>
 </section>
 
 <!--About me section -->
