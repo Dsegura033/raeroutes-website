@@ -388,10 +388,11 @@ header nav a:hover {
 
 /* ===== TRAVEL DIARIES ===== */
 .travel-diaries {
-    padding: 80px 20px 60px;
+    padding: 80px 20px 20px; /* reduce bottom padding from 60px → 20px */
     text-align: center;
     background-color: #f3e8ff; /* soft light purple for the section */
 }
+
 
 .travel-diaries h2 {
     font-family: 'Poppins', sans-serif;
@@ -421,8 +422,9 @@ header nav a:hover {
 
 /* Scrapbook card */
 .diary-card {
-    flex: 0 0 auto;                  
+    flex: 0 0 auto;
     width: 340px;
+    max-height: calc(100vh - 200px); /* optional: prevent cards from forcing extra section height */
     aspect-ratio: 3 / 5;
     background: rgba(255,255,255,0.9);
     border: 2px dashed rgba(181,160,255,0.6);
@@ -433,7 +435,9 @@ header nav a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     scroll-snap-align: start;
+    margin-bottom: 0; /* make sure no extra margin added */
 }
+
 
 /* Alternate tilt */
 .diary-card:nth-child(even) {
@@ -508,17 +512,17 @@ header nav a:hover {
         width: 280px;
     }
 }
-
 /* ===== FOOTER ===== */
 .rr-footer {
   background: rgba(210, 200, 240, 0.6);
   padding: 60px 25px;
   text-align: center;
   color: #444;
-  margin-top: 120px;
+  margin-top: 0; /* remove extra space */
   border-radius: 24px 24px 0 0;
   box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.05);
 }
+
 
 .footer-content {
   max-width: 800px;
