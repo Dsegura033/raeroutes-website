@@ -1059,15 +1059,13 @@ a {
   }
 }
 
-/* Testimonials*/  
-    .testimonials {
+/* ===== Testimonials ===== */
+.testimonials {
   padding: 90px 25px 60px;
   text-align: center;
-  background: linear-gradient(
-    180deg,
-    rgba(225, 215, 245, 0.35),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(180deg, rgba(225, 215, 245, 0.35), rgba(255, 255, 255, 0));
+  position: relative; /* isolates from other sections */
+  z-index: 1;
 }
 
 .testimonial-subtext {
@@ -2081,12 +2079,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Lightbox (medium-large popup on top) =====
   const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
-  const closeBtn = lightbox.querySelector('.close-btn');
+  const lightboxImg = lightbox ? lightbox.querySelector('img') : null;
+  const closeBtn = lightbox ? lightbox.querySelector('.close-btn') : null;
 
-  // Make entire collection card clickable
   document.querySelectorAll('.collection-card').forEach(card => {
     card.addEventListener('click', () => {
+      if (!lightboxImg || !lightbox) return;
       const img = card.querySelector('img');
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
@@ -2095,26 +2093,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const closeLightbox = () => {
+    if (!lightbox || !lightboxImg) return;
     lightbox.classList.remove('active');
     lightboxImg.src = '';
     lightboxImg.alt = '';
   };
 
   if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-  if (lightbox) lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  // ===== Auto-scroll testimonials =====
-  const track = document.querySelector('.testimonial-track');
-  if (track) {
-    let scrollAmount = 0;
-    function autoScroll() {
-      scrollAmount++;
-      if (scrollAmount >= track.scrollWidth - track.clientWidth) scrollAmount = 0;
-      track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-    }
-    setInterval(autoScroll, 20);
+  if (lightbox) {
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
   }
 
   // ===== Mobile nav toggle =====
@@ -2144,38 +2133,39 @@ document.addEventListener("DOMContentLoaded", () => {
   createObserver('.about-section h2, .about-section p, .about-section .about-btn');
   createObserver('.contact-cta h2, .contact-cta p, .contact-cta .qr-code img, .contact-cta .button');
 
-  <!-- ===================== AUTO-SCROLL JS ===================== -->
-<script>
-const scrollContainer = document.getElementById('testimonialScroll');
-let scrollAmount = 0;
-let scrollDirection = 1; // 1 = right, -1 = left
-const scrollSpeed = 0.5; // adjust for faster/slower
+  // ===== Auto-scroll Testimonials =====
+  const scrollContainer = document.getElementById('testimonialScroll');
+  if (scrollContainer) {
+    let scrollAmount = 0;
+    let scrollDirection = 1; // 1 = right, -1 = left
+    const scrollSpeed = 0.5;
 
-function autoScrollTestimonials() {
-  const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-  scrollAmount += scrollDirection * scrollSpeed;
-  if(scrollAmount >= maxScroll || scrollAmount <= 0) scrollDirection *= -1;
-  scrollContainer.scrollLeft = scrollAmount;
-  requestAnimationFrame(autoScrollTestimonials);
-}
+    function autoScrollTestimonials() {
+      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      scrollAmount += scrollDirection * scrollSpeed;
+      if(scrollAmount >= maxScroll || scrollAmount <= 0) scrollDirection *= -1;
+      scrollContainer.scrollLeft = scrollAmount;
+      requestAnimationFrame(autoScrollTestimonials);
+    }
 
-// Start auto-scroll
-autoScrollTestimonials();
-</script>
+    autoScrollTestimonials();
+  }
 
   // ===== Why Cards Animation =====
   const whyCards = document.querySelectorAll('.why-card');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  whyCards.forEach(card => observer.observe(card));
+  if (whyCards.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    whyCards.forEach(card => observer.observe(card));
+  }
 
-  // ===== Trip Planner Video Loop (Optional 15-second reset) =====
+  // ===== Trip Planner Video Loop =====
   const plannerVideo = document.getElementById('planner-video');
   if (plannerVideo) {
     setInterval(() => {
@@ -2200,19 +2190,19 @@ autoScrollTestimonials();
       currentImages = btn.getAttribute("data-images").split(",").map(i => i.trim());
       currentIndex = 0;
 
-      pdfImg.src = currentImages[currentIndex];
-      external.href = currentImages[currentIndex];
+      if(pdfImg) pdfImg.src = currentImages[currentIndex];
+      if(external) external.href = currentImages[currentIndex];
 
-      modal.classList.add("active");
+      if(modal) modal.classList.add("active");
 
-      prevBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
-      nextBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
+      if(prevBtn) prevBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
+      if(nextBtn) nextBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
     });
   });
 
   const closeModal = () => {
-    modal.classList.remove("active");
-    pdfImg.src = "";
+    if(modal) modal.classList.remove("active");
+    if(pdfImg) pdfImg.src = "";
   };
 
   if (pdfCloseBtn) pdfCloseBtn.addEventListener("click", closeModal);
@@ -2220,15 +2210,15 @@ autoScrollTestimonials();
   if (prevBtn) prevBtn.addEventListener("click", () => {
     if (currentIndex > 0) {
       currentIndex--;
-      pdfImg.src = currentImages[currentIndex];
-      external.href = currentImages[currentIndex];
+      if(pdfImg) pdfImg.src = currentImages[currentIndex];
+      if(external) external.href = currentImages[currentIndex];
     }
   });
   if (nextBtn) nextBtn.addEventListener("click", () => {
     if (currentIndex < currentImages.length - 1) {
       currentIndex++;
-      pdfImg.src = currentImages[currentIndex];
-      external.href = currentImages[currentIndex];
+      if(pdfImg) pdfImg.src = currentImages[currentIndex];
+      if(external) external.href = currentImages[currentIndex];
     }
   });
 
@@ -2245,7 +2235,7 @@ autoScrollTestimonials();
     "Coastal Relaxer": [
       "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
       "Salt air, slow mornings, and ocean views are your version of luxury.",
-      "You travel to unwind — sunshine, water, and doing absolutely nothing sound perfect."
+      "You travel to unwind sunshine, water, and doing absolutely nothing sound perfect."
     ],
     "Adventure Seeker": [
       "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
@@ -2266,8 +2256,10 @@ autoScrollTestimonials();
       if (!descriptions) return;
 
       const randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
-      travelerResult.innerHTML = `<strong>${type}</strong><br>${randomDescription}`;
-      travelerResult.style.display = 'block';
+      if(travelerResult){
+        travelerResult.innerHTML = `<strong>${type}</strong><br>${randomDescription}`;
+        travelerResult.style.display = 'block';
+      }
     });
   });
 
@@ -2305,17 +2297,18 @@ autoScrollTestimonials();
       tripResult.style.display = 'block';
       let i = 0;
       const interval = setInterval(() => {
-        destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
-        vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
-        partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
+        if(destEl) destEl.textContent = destinations[Math.floor(Math.random() * destinations.length)];
+        if(vibeEl) vibeEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
+        if(partnerEl) partnerEl.textContent = partners[Math.floor(Math.random() * partners.length)];
         i++;
         if(i > 20) clearInterval(interval);
       }, 50);
     });
   }
 
-});
+}); // end DOMContentLoaded
 </script>
+
 
 
 <!-- Lottie player (keep if used elsewhere) -->
