@@ -92,29 +92,17 @@ header nav a:hover {
 .hamburger span { height: 4px; background: #5a4baa; border-radius: 2px; }
   
 /*theme song*/
- .theme-song-player {
-  display: flex;              /* use flexbox for easy centering */
-  flex-direction: column;     /* stack p + button vertically */
-  align-items: center;        /* horizontal centering */
-  justify-content: center;    /* vertical alignment inside container */
-  margin: 20px auto 40px;     /* top/bottom spacing, auto horizontal */
-  padding: 15px 25px;
-  background: rgba(245, 240, 255, 0.2); /* subtle lilac overlay */
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  max-width: 320px;           /* optional: keeps container compact */
-  text-align: center;
-}
-
-.theme-song-player p {
-  margin: 0 0 10px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #5a4baa;
+.theme-song-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto 40px;
 }
 
 .theme-song-player button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 10px 25px;
   font-size: 16px;
   font-weight: 600;
@@ -133,23 +121,30 @@ header nav a:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-.theme-song-player button.playing::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0; left: 0;
-  border-radius: 25px;
-  box-shadow: 0 0 15px rgba(181, 160, 255, 0.7);
-  animation: pulse 1.2s infinite;
+/* Audio Bars */
+.audio-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
 }
 
-@keyframes pulse {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.05); opacity: 0.3; }
-  100% { transform: scale(0.9); opacity: 0.7; }
+.audio-bars span {
+  width: 4px;
+  height: 6px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+  animation: bounce 1s infinite;
+  animation-play-state: paused; /* start paused */
 }
 
+.audio-bars span:nth-child(2) { animation-delay: 0.2s; }
+.audio-bars span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 100% { height: 6px; opacity: 0.7; }
+  50% { height: 14px; opacity: 1; }
+}
 
 /* ===== ABOUT PAGE ===== */
 .about-page {
@@ -900,7 +895,7 @@ header nav a:hover {
   <div class="container">
     <h1>Behind RaeRoutes</h1>
     
-    <div class="theme-song-player">
+   <div class="theme-song-player">
   <p>🎵 Set the Mood</p>
   <button id="playPauseBtn">Play</button>
   <audio id="themeSong">
@@ -908,6 +903,7 @@ header nav a:hover {
     Your browser does not support the audio element.
   </audio>
 </div>
+
 
     <!-- Intro Text + Image -->
     <div class="about-content">
@@ -1077,19 +1073,18 @@ header nav a:hover {
 
 
 </body>
+  
   <script>
-  const themeSong = document.getElementById('themeSong');
+ const themeSong = document.getElementById('themeSong');
 const playPauseBtn = document.getElementById('playPauseBtn');
 
 playPauseBtn.addEventListener('click', () => {
   if (themeSong.paused) {
     themeSong.play();
-    playPauseBtn.textContent = 'Pause';
-    playPauseBtn.classList.add('playing');
+    playPauseBtn.textContent = "Now Playing: A Beat by Drevski";
   } else {
     themeSong.pause();
-    playPauseBtn.textContent = 'Play';
-    playPauseBtn.classList.remove('playing');
+    playPauseBtn.textContent = "Play";
   }
 });
   </script>
