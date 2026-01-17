@@ -1059,11 +1059,15 @@ a {
   }
 }
 
-    /* Testimonials */
-    
+/* Testimonials*/  
     .testimonials {
-  padding: 90px 25px;
+  padding: 90px 25px 60px;
   text-align: center;
+  background: linear-gradient(
+    180deg,
+    rgba(225, 215, 245, 0.35),
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .testimonial-subtext {
@@ -1072,17 +1076,45 @@ a {
   color: #666;
 }
 
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+.testimonial-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 10px 5px 30px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(160, 130, 210, 0.6) transparent;
+}
+
+.testimonial-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.testimonial-scroll::-webkit-scrollbar-thumb {
+  background: rgba(160, 130, 210, 0.6);
+  border-radius: 10px;
+}
+.testimonial-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.75);
+  min-width: 280px;
+  max-width: 320px;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  background: #fff;
   padding: 28px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(140, 110, 190, 0.18);
+  border: 1px solid rgba(190, 170, 230, 0.5);
+  position: relative;
+}
+
+.quote-icon {
+  font-size: 40px;
+  color: rgba(160, 130, 210, 0.6);
+  display: block;
+  margin-bottom: 10px;
 }
 
 .testimonial-card .quote {
@@ -1094,9 +1126,8 @@ a {
 .testimonial-card .author {
   font-weight: 600;
   font-size: 14px;
-  color: #555;
+  color: #7a5fa3;
 }
-
 
     /* ===== ABOUT SECTION ===== */
 .about-section {
@@ -1903,38 +1934,40 @@ html, body {
     </div>
 </section>
   
-/* Testimonials */ 
-  <section class="testimonials">
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="testimonials">
   <h2>What Travelers Are Saying</h2>
   <p class="testimonial-subtext">
-    Feedback shared by real RaeRoute's clients.
+    Feedback shared by real RaeRoutes clients.
   </p>
 
-  <div class="testimonial-grid">
-
+  <div class="testimonial-scroll" id="testimonialScroll">
     <div class="testimonial-card">
+      <span class="quote-icon">“</span>
       <p class="quote">
-        “RaeRoutes has helped me find such good deals and Damonyca makes the process so easy and quick.”
+        RaeRoutes has helped me find such good deals and Damonyca makes the process so easy and quick.
       </p>
       <span class="author">— Trip Planning Client</span>
     </div>
 
     <div class="testimonial-card">
+      <span class="quote-icon">“</span>
       <p class="quote">
-        “Thank you so much for helping, I feel all boujie haha!.”
+        Thank you so much for helping, I feel all boujie haha!
       </p>
-      <span class="author">— Trip Planner Client"</span>
+      <span class="author">— Trip Planner Client</span>
     </div>
 
     <div class="testimonial-card">
+      <span class="quote-icon">“</span>
       <p class="quote">
-        “Thank you, it was all very good, we had lots of fun!.”
+        Thank you, it was all very good, we had lots of fun!
       </p>
-      <span class="author">— Weekend getaway Planner</span>
+      <span class="author">— Weekend Getaway Planner</span>
     </div>
-
   </div>
 </section>
+
 
 <!--About me section -->
 <section id="about" class="about-section">
@@ -2110,6 +2143,25 @@ document.addEventListener("DOMContentLoaded", () => {
   createObserver('.services-gifting h2, .services-gifting p, .service-card');
   createObserver('.about-section h2, .about-section p, .about-section .about-btn');
   createObserver('.contact-cta h2, .contact-cta p, .contact-cta .qr-code img, .contact-cta .button');
+
+  <!-- ===================== AUTO-SCROLL JS ===================== -->
+<script>
+const scrollContainer = document.getElementById('testimonialScroll');
+let scrollAmount = 0;
+let scrollDirection = 1; // 1 = right, -1 = left
+const scrollSpeed = 0.5; // adjust for faster/slower
+
+function autoScrollTestimonials() {
+  const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+  scrollAmount += scrollDirection * scrollSpeed;
+  if(scrollAmount >= maxScroll || scrollAmount <= 0) scrollDirection *= -1;
+  scrollContainer.scrollLeft = scrollAmount;
+  requestAnimationFrame(autoScrollTestimonials);
+}
+
+// Start auto-scroll
+autoScrollTestimonials();
+</script>
 
   // ===== Why Cards Animation =====
   const whyCards = document.querySelectorAll('.why-card');
