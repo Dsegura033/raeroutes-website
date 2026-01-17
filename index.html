@@ -2239,54 +2239,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== DESKTOP & MOBILE SEARCH (in-page search for whole document) =====
-  const searchPairs = [
-    {
-      input: document.getElementById('siteSearchDesktop'),
-      button: document.getElementById('searchBtnDesktop')
-    },
-    {
-      input: document.getElementById('siteSearchMobile'),
-      button: document.getElementById('searchBtnMobile')
-    }
-  ];
-
-  searchPairs.forEach(pair => {
-    const { input, button } = pair;
-    if (!input || !button) return;
-
-    const performSearch = (query) => {
-      if (!query) return;
-
-      // Remove old highlights
-      document.querySelectorAll('.highlight').forEach(el => el.classList.remove('highlight'));
-
-      // Search all visible text
-      const searchableElements = document.querySelectorAll('body *:not(script):not(style):not(noscript)');
-
-      let found = false;
-      searchableElements.forEach(el => {
-        if (el.textContent.toLowerCase().includes(query.toLowerCase())) {
-          el.classList.add('highlight');
-          if (!found) {
-            el.scrollIntoView({ behavior: "smooth", block: "center" });
-            found = true;
-          }
-        }
-      });
-
-      if (!found) alert("No matches found!");
-    };
-
-    // Search on button click
-    button.addEventListener('click', () => performSearch(input.value.trim()));
-
-    // Search on Enter key
-    input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') performSearch(input.value.trim());
-    });
-  });
-
   // ===== Intersection observers =====
   const createObserver = (selector) => {
     const elements = document.querySelectorAll(selector);
