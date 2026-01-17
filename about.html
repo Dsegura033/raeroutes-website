@@ -97,17 +97,11 @@ header nav a:hover {
   margin: 20px auto 40px;
 }
 
-.theme-song-player p {
-  font-size: 18px;
-  font-weight: 600;
-  color: #5a4baa;
-  margin-bottom: 10px;
-}
-
 #playPauseBtn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: inline-flex;          /* inline-flex keeps button centered in page */
+  align-items: center;           /* vertically align text + bars */
+  justify-content: center;       /* horizontally center text + bars */
+  gap: 10px;                     /* space between text and bars */
   padding: 10px 25px;
   font-size: 16px;
   font-weight: 600;
@@ -150,6 +144,7 @@ header nav a:hover {
   0%, 100% { height: 6px; opacity: 0.7; }
   50% { height: 14px; opacity: 1; }
 }
+
 
 
 /* ===== ABOUT PAGE ===== */
