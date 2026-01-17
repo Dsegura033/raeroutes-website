@@ -92,15 +92,19 @@ header nav a:hover {
 .hamburger span { height: 4px; background: #5a4baa; border-radius: 2px; }
   
 /*theme song*/
-  .theme-song-player {
-  text-align: center;
-  margin: 20px auto 40px;
+ .theme-song-player {
+  display: flex;              /* use flexbox for easy centering */
+  flex-direction: column;     /* stack p + button vertically */
+  align-items: center;        /* horizontal centering */
+  justify-content: center;    /* vertical alignment inside container */
+  margin: 20px auto 40px;     /* top/bottom spacing, auto horizontal */
   padding: 15px 25px;
   background: rgba(245, 240, 255, 0.2); /* subtle lilac overlay */
   border-radius: 20px;
-  display: inline-block;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
+  max-width: 320px;           /* optional: keeps container compact */
+  text-align: center;
 }
 
 .theme-song-player p {
