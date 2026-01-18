@@ -1507,21 +1507,24 @@ html {
 
 /* ===== FOOTER ===== */
 .rr-footer {
-  background: rgba(210, 200, 240, 0.6); /* soft purple */
-  padding: 60px 25px 40px 25px;         /* top 60px, bottom 40px */
+  background: rgba(210, 200, 240, 0.6);
+  padding: 60px 25px 40px 25px;
   text-align: center;
   color: #444;
-  margin: 0;                             /* remove any top margin */
+  margin: 0;                  /* remove gap above footer */
   border-radius: 24px 24px 0 0;
   box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.05);
 
-  display: flex;        /* new */
-  justify-content: center; /* center content horizontally */
-  flex-direction: column;  /* stack content vertically */
-  align-items: center;      /* center content */
-  width: 100%;              /* make sure footer spans full viewport */
-  box-sizing: border-box;   /* include padding in width */
+  width: 100vw;               /* span full viewport width */
+  position: relative;
+  left: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* center content horizontally */
 }
+
 
 .footer-content {
   max-width: 800px;
