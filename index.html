@@ -1503,15 +1503,13 @@ html {
 }
 
 
-/* ===============================
-   FOOTER FIXED
-================================ */
+/* ===== FOOTER ===== */
 .rr-footer {
-  background: rgba(210, 200, 240, 0.6);
-  padding: 60px 25px;
+  background: rgba(210, 200, 240, 0.6); /* soft purple with gray-blue undertones */
+  padding: 60px 25px 40px 25px; /* keep top padding, reduce bottom */
   text-align: center;
   color: #444;
-  margin-top: 0;       /* remove extra gap above footer */
+  margin-top: 40px; /* reduced gap between contact and footer */
   border-radius: 24px 24px 0 0;
   box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.05);
 }
@@ -1594,7 +1592,80 @@ html {
   margin-top: 10px;
 }
 
-/* ===== MOBILE FOOTER ===== */
+/* ===== PDF IMAGE MODAL ===== */
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 20, 60, 0.45);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pdf-modal.active {
+  display: flex;
+}
+
+.pdf-modal-content {
+  background: linear-gradient(135deg, #f8f4ff, #eceaf7);
+  width: 90%;
+  max-width: 760px;
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  position: relative;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.pdf-modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.pdf-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #6c5a99;
+}
+
+/* Navigation Buttons for Multi-Page PDFs */
+.pdf-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.pdf-nav button {
+  background: #6c5a99;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: 0.3s;
+}
+
+.pdf-nav button:hover {
+  opacity: 1;
+}
+
+/* ===== MOBILE FOOTER ADJUSTMENTS ===== */
 @media (max-width: 480px) {
   .rr-footer {
     border-radius: 18px 18px 0 0;
@@ -1621,24 +1692,12 @@ html {
   .footer-copy {
     font-size: 0.8rem;
   }
+
+  .pdf-modal-content {
+    max-height: 75vh;
+  }
 }
 
-/* ===== REMOVE ANY EXTRA BODY / SECTION SPACING ===== */
-html, body {
-  overflow-x: hidden;   /* prevent horizontal scroll globally */
-  margin: 0;
-  padding: 0;
-}
-
-section {
-  margin: 0;
-  padding: 0;
-}
-
-body > section:last-of-type {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
 
 </style> 
 
