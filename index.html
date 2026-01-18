@@ -868,9 +868,9 @@ html {
 .trip-two-columns {
   display: flex;
   gap: 40px;
-  align-items: center;
-  justify-content: space-between; /* fills full width */
-  flex-wrap: wrap;                /* prevents overflow if window is smaller */
+  align-items: flex-start;   /* align steps to top of video */
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 /* Video column — reverted to original sizing */
 .trip-video-column {
@@ -931,7 +931,7 @@ html {
   flex: 1 1 35%;   /* flexible: grows and shrinks, ~35% width */
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   min-width: 300px;
 }
 
