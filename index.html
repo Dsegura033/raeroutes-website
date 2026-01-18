@@ -720,11 +720,11 @@ html {
   z-index: 1;
 }
 
-   /* WEEKLY TRAVEL PACKAGES */
+ /* WEEKLY TRAVEL PACKAGES */
 .weekly-packages {
   padding: 60px 20px;
   text-align: center;
-  background: linear-gradient(135deg,rgba(200, 190, 240, 0.35), rgba(180, 160, 220, 0.35);
+  background: linear-gradient(135deg, rgba(200, 190, 240, 0.35), rgba(180, 160, 220, 0.35));
   border-radius: 24px;
   margin: 60px 0;
   color: #fff;
@@ -733,12 +733,13 @@ html {
 .weekly-packages h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: #b5a0ff; /* header purple */
 }
 
 .weekly-packages p {
   margin-bottom: 40px;
   font-size: 1rem;
-  color: #fff;
+  color: #000; /* black subtext for readability */
 }
 
 .packages-grid {
@@ -768,7 +769,7 @@ html {
   width: 100%;
   padding: 20px;
   text-align: left;
-  z-index: 2; /* make sure text is on top */
+  z-index: 2; /* text on top */
 }
 
 /* Black semi-transparent box behind text */
@@ -781,13 +782,25 @@ html {
   height: 100%;
   background: rgba(0,0,0,0.45); /* semi-transparent black behind text */
   z-index: 1; /* behind text */
-  border-radius: 0 0 16px 16px; /* matches card border radius at bottom */
+  border-radius: 0 0 16px 16px; /* matches card border radius */
 }
 
-.package-overlay h3,
+/* Package name (white for readability) */
+.package-overlay h3 {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+/* Package description text */
 .package-overlay p {
   position: relative;
-  z-index: 2; /* make text appear on top */
+  z-index: 2;
+  color: #fff;
+  font-size: 0.95rem;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
@@ -795,7 +808,7 @@ html {
   display: flex;
   gap: 10px;
   position: relative;
-  z-index: 2; /* make sure buttons are on top too */
+  z-index: 2;
 }
 
 .package-buttons .button {
@@ -826,6 +839,7 @@ html {
     flex: 0 0 auto;
   }
 }
+
 
 
 /* PLAN YOUR TRIP SECTION  */
