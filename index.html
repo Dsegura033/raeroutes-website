@@ -1417,44 +1417,50 @@ html {
   box-shadow: 0 6px 20px rgba(108, 83, 177, 0.08);
   border-radius: 32px;
   padding: 60px 20px;
-  margin: 0 auto;          /* center the whole section horizontally */
-  display: flex;           
-  justify-content: center;  /* center panels within section */
+  margin: 0;              /* remove auto centering to use full width */
+  display: flex;
+  justify-content: center;
   align-items: flex-start;
   gap: 40px;
+  overflow-x: auto;        /* allow horizontal scroll if needed */
+  scroll-snap-type: x mandatory;
   flex-wrap: nowrap;
-  max-width: 1200px;       /* limits section width on large screens */
+  width: 100%;             /* take full container width */
   box-sizing: border-box;
+}
+
+/* Hide scrollbar for clean look */
+.contact-split::-webkit-scrollbar {
+  display: none;
 }
 
 /* Wraps the two panels */
 .scroll-wrap {
   display: flex;
-  flex-wrap: nowrap;       
+  flex-wrap: nowrap;
   gap: 40px;
-  justify-content: center;  /* centers panels inside wrapper */
   width: 100%;
+  justify-content: flex-start; /* panels start from left */
 }
 
 /* Each panel */
 .contact-panel {
-  flex: 1 1 50%;           
-  margin: 0;
-  padding: 0;
+  flex: 0 0 auto;           /* prevents shrinking */
+  width: 500px;             /* desktop width for each panel */
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items: center;      /* center content inside each panel */
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;  /* snap scrolling for smooth UX */
 }
 
-/* QR panel adjustments for desktop */
+/* QR panel adjustments */
 .qr-box {
-  width: 220px;           
+  width: 220px;
   padding: 18px;
-  margin: 0;               
+  margin: 0 auto;          /* center inside panel */
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  align-self: center;      /* center QR vertically relative to panel */
 }
 
 .qr-box img {
@@ -1473,7 +1479,7 @@ html {
   font-weight: 600;
   font-size: 16px;
   text-decoration: none;
-  margin-right: 16px;
+  margin: 10px 8px 0 0;
   transition: all 0.3s ease;
 }
 
@@ -1487,6 +1493,7 @@ html {
   .contact-split {
     flex-direction: column;
     padding: 40px 20px;
+    gap: 20px;
   }
 
   .scroll-wrap {
@@ -1497,6 +1504,7 @@ html {
 
   .contact-panel {
     flex: 0 0 80%;
+    width: auto;            /* scale with container */
     align-items: center;
     text-align: center;
   }
@@ -1516,19 +1524,19 @@ html {
 
   .contact-buttons .button {
     padding: 14px 32px;
-    margin-right: 12px;
-    margin-bottom: 12px;
+    margin: 0;
     border-radius: 16px;
   }
 }
 
+
 /* ===== FOOTER ===== */
 .rr-footer {
-  background: rgba(210, 200, 240, 0.6); /* soft purple with gray-blue undertones */
+  background: rgba(210, 200, 240, 0.6);
   padding: 60px 25px;
   text-align: center;
   color: #444;
-  margin-top: 120px;
+  margin-top: 40px;       /* reduced gap between contact and footer */
   border-radius: 24px 24px 0 0;
   box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.05);
 }
