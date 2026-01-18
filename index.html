@@ -272,27 +272,40 @@ html {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start; /* start scrolling from left */
   gap: 3rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* always side by side */
+  overflow-x: auto; /* enable horizontal scroll on mobile/tablet */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+}
+
+.intro-wrapper::-webkit-scrollbar {
+  display: none; /* hide scrollbar */
 }
 
 .intro-image {
-  flex: 1;
-  min-width: 300px;
+  flex: 0 0 auto; /* fixed width for scrollable panels */
+  scroll-snap-align: start;
+  width: 80vw;    /* mobile width */
+  max-width: 400px;
+  min-width: 250px;
 }
 
 .intro-image img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 20px;
   display: block;
 }
 
 .intro-text {
-  flex: 1;
-  min-width: 300px;
+  flex: 0 0 auto;  /* fixed width for scrollable panels */
+  scroll-snap-align: start;
+  width: 80vw;      /* mobile width */
+  max-width: 400px;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -316,24 +329,21 @@ html {
   max-width: 600px;
 }
 
-/* ===== DESKTOP ===== */
+/* ===== DESKTOP (≥781px) ===== */
 @media (min-width: 781px) {
   .intro-wrapper {
-    flex-direction: row; /* text and image side by side */
+    flex-direction: row; /* side by side */
     gap: 2rem;
     align-items: center;
     justify-content: space-between;
-    overflow: visible;   /* no horizontal scroll on desktop */
+    overflow: visible;   /* no scroll on desktop */
   }
 
-  .intro-text {
-    order: 0; /* text first */
-    flex: 1;
-  }
-
+  .intro-text,
   .intro-image {
-    order: 1; /* image second */
-    flex: 1;
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 300px;
   }
 
   .intro-image img {
@@ -344,34 +354,11 @@ html {
 /* ===== MOBILE / TABLET (≤780px) ===== */
 @media (max-width: 780px) {
   .intro-wrapper {
-    flex-direction: row;
     gap: 1rem;
     padding: 10px 15px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-  }
-
-  /* hide scrollbar */
-  .intro-wrapper::-webkit-scrollbar {
-    display: none;
-  }
-
-  .intro-text,
-  .intro-image {
-    flex: 0 0 auto;         /* prevent shrinking */
-    scroll-snap-align: start;
-    width: 80vw;             /* 80% of viewport width */
-    max-width: 350px;
-    min-width: 200px;
-  }
-
-  .intro-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
   }
 }
+
 
 
 /* ===== WHY RAEROUTES SECTION ===== */
