@@ -720,6 +720,86 @@ html {
   z-index: 1;
 }
 
+    /* WEEKLY TRAVEL PACKAGES */
+.weekly-packages {
+  padding: 60px 20px;
+  text-align: center;
+  background: rgba(245, 240, 255, 0.6);
+  border-radius: 24px;
+  margin: 60px 0;
+}
+
+.weekly-packages h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.weekly-packages p {
+  margin-bottom: 40px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.package-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.package-card img {
+  width: 100%;
+  display: block;
+  height: 250px;
+  object-fit: cover;
+}
+
+.package-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(30, 20, 60, 0.65);
+  color: #fff;
+  padding: 20px;
+  text-align: left;
+}
+
+.package-overlay h3 {
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+}
+
+.package-overlay p {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.package-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.package-buttons .button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  background: #b5a0ff;
+  transition: background 0.3s;
+}
+
+.package-buttons .button:hover {
+  background: #8f77e2;
+}
+
+
 /* PLAN YOUR TRIP SECTION  */
 .trip-process {
   margin: 40px auto;       /* smaller vertical spacing around the section */
@@ -1837,6 +1917,68 @@ html, body {
   <img src="" alt="Collection Image" id="lightboxImage">
 </div>
 
+  
+<!-- WEEKLY TRAVEL PACKAGES SECTION -->
+<section id="weekly-packages" class="weekly-packages">
+  <h2>Weekly Travel Packages</h2>
+  <p>Pre-built trips you can explore and book through RaeRoutes.</p>
+
+  <div class="packages-grid">
+
+    <!-- Package 1 -->
+    <div class="package-card">
+      <img src="SiestaKey.PNG" alt="Siesta Key, Florida">
+      <div class="package-overlay">
+        <h3>Siesta Key, Florida</h3>
+        <p>6 Adults • Feb 5–8 • 3 Nights • Villa</p>
+        <div class="package-buttons">
+          <a href="https://www.facebook.com/share/p/1BTUoAtyd2/" target="_blank" class="button view-btn">View Package Details</a>
+          <a href="#contact" class="button request-btn">Request This Package</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package 2 -->
+    <div class="package-card">
+      <img src="cancun.PNG" alt="Cancun, Mexico">
+      <div class="package-overlay">
+        <h3>Cancun, Mexico</h3>
+        <p>2 Adults • Mar 16–21 • 5 Nights • All-Inclusive Oceanfront Suite</p>
+        <div class="package-buttons">
+          <a href="https://www.facebook.com/share/p/1A5wNavbJX/" target="_blank" class="button view-btn">View Package Details</a>
+          <a href="#contact" class="button request-btn">Request This Package</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package 3 -->
+    <div class="package-card">
+      <img src="newyork.PNG" alt="New York, New York">
+      <div class="package-overlay">
+        <h3>New York, New York</h3>
+        <p>2 Adults • Jan 14–18 • 4 Nights • Queen Bed w/ City View</p>
+        <div class="package-buttons">
+          <a href="https://www.facebook.com/share/p/1Ah2E3TKSm/" target="_blank" class="button view-btn">View Package Details</a>
+          <a href="#contact" class="button request-btn">Request This Package</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package 4 -->
+    <div class="package-card">
+      <img src="carnival.PNG" alt="Galveston, Texas Cruise">
+      <div class="package-overlay">
+        <h3>Galveston, Texas – Closed Loop Cruise</h3>
+        <p>2 Adults • Mar 5–9 • 4 Nights • Balcony View, All-Inclusive</p>
+        <div class="package-buttons">
+          <a href="https://www.facebook.com/share/p/1Af37jd5NQ/" target="_blank" class="button view-btn">View Package Details</a>
+          <a href="#contact" class="button request-btn">Request This Package</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 <!-- TRIP PLANNER SECTION -->
