@@ -764,21 +764,17 @@ html {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(30, 20, 60, 0.65);
+  background: rgba(30, 20, 60, 0.85); /* darker for readability */
   color: #fff;
   padding: 20px;
   text-align: left;
 }
 
-.package-overlay h3 {
-  margin: 0 0 5px;
-  font-size: 1.2rem;
+.package-overlay h3,
+.package-overlay p {
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* subtle shadow to make text pop */
 }
 
-.package-overlay p {
-  font-size: 0.9rem;
-  margin-bottom: 10px;
-}
 
 .package-buttons {
   display: flex;
