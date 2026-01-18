@@ -1387,60 +1387,52 @@ html {
 }
 
 /* ===============================
-   CONTACT SPLIT SECTION
+   CONTACT SPLIT SECTION FIXED
 ================================ */
 .contact-split {
-  background: linear-gradient(
-    135deg,
-    #f5efff, /* top soft purple */
-    #e8dbff  /* bottom soft purple */
-  );
+  background: linear-gradient(135deg, #f5efff, #e8dbff);
   color: #1a1a1a;
   box-shadow: 0 6px 20px rgba(108, 83, 177, 0.08);
   border-radius: 32px;
   padding: 60px 20px;
-  margin: 0;              /* remove auto centering to use full width */
+  margin: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 40px;
-  overflow-x: auto;        /* allow horizontal scroll if needed */
+  overflow-x: auto;        /* horizontal scroll if needed */
   scroll-snap-type: x mandatory;
   flex-wrap: nowrap;
-  width: 100%;             /* take full container width */
+  width: 100%;
   box-sizing: border-box;
 }
 
-/* Hide scrollbar for clean look */
 .contact-split::-webkit-scrollbar {
-  display: none;
+  display: none; /* hide scrollbar */
 }
 
-/* Wraps the two panels */
 .scroll-wrap {
   display: flex;
   flex-wrap: nowrap;
   gap: 40px;
+  justify-content: flex-start;
   width: 100%;
-  justify-content: flex-start; /* panels start from left */
 }
 
-/* Each panel */
 .contact-panel {
-  flex: 0 0 auto;           /* prevents shrinking */
-  width: 500px;             /* desktop width for each panel */
+  flex: 0 0 auto;     /* prevent shrinking */
+  width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  scroll-snap-align: start;  /* snap scrolling for smooth UX */
+  scroll-snap-align: start;
 }
 
-/* QR panel adjustments */
 .qr-box {
   width: 220px;
   padding: 18px;
-  margin: 0 auto;          /* center inside panel */
+  margin: 0 auto;
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
@@ -1451,7 +1443,6 @@ html {
   border-radius: 16px;
 }
 
-/* Buttons */
 .contact-buttons .button {
   display: inline-block;
   background: #b8a3ff;
@@ -1470,12 +1461,12 @@ html {
   transform: translateY(-2px);
 }
 
-/* ===== MOBILE ===== */
+/* ===== MOBILE / TABLET ===== */
 @media (max-width: 850px) {
   .contact-split {
-    flex-direction: column;
+    flex-direction: row; /* keep side by side for scroll */
     padding: 40px 20px;
-    gap: 20px;
+    gap: 16px;
   }
 
   .scroll-wrap {
@@ -1485,8 +1476,8 @@ html {
   }
 
   .contact-panel {
-    flex: 0 0 80%;
-    width: auto;            /* scale with container */
+    flex: 0 0 80%;    /* responsive width */
+    width: auto;
     align-items: center;
     text-align: center;
   }
@@ -1512,13 +1503,15 @@ html {
 }
 
 
-/* ===== FOOTER ===== */
+/* ===============================
+   FOOTER FIXED
+================================ */
 .rr-footer {
   background: rgba(210, 200, 240, 0.6);
   padding: 60px 25px;
   text-align: center;
   color: #444;
-  margin-top: 40px;       /* reduced gap between contact and footer */
+  margin-top: 0;       /* remove extra gap above footer */
   border-radius: 24px 24px 0 0;
   box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.05);
 }
@@ -1601,80 +1594,7 @@ html {
   margin-top: 10px;
 }
 
-/* ===== PDF IMAGE MODAL ===== */
-.pdf-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(30, 20, 60, 0.45);
-  backdrop-filter: blur(6px);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.pdf-modal.active {
-  display: flex;
-}
-
-.pdf-modal-content {
-  background: linear-gradient(135deg, #f8f4ff, #eceaf7);
-  width: 90%;
-  max-width: 760px;
-  max-height: 80vh;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-  position: relative;
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-}
-
-.pdf-modal-content img {
-  width: 100%;
-  height: auto;
-  border-radius: 14px;
-  object-fit: contain;
-}
-
-.pdf-close {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: #6c5a99;
-}
-
-/* Navigation Buttons for Multi-Page PDFs */
-.pdf-nav {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.pdf-nav button {
-  background: #6c5a99;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  opacity: 0.85;
-  transition: 0.3s;
-}
-
-.pdf-nav button:hover {
-  opacity: 1;
-}
-
-/* ===== MOBILE FOOTER ADJUSTMENTS ===== */
+/* ===== MOBILE FOOTER ===== */
 @media (max-width: 480px) {
   .rr-footer {
     border-radius: 18px 18px 0 0;
@@ -1701,41 +1621,23 @@ html {
   .footer-copy {
     font-size: 0.8rem;
   }
-
-  .pdf-modal-content {
-    max-height: 75vh;
-  }
 }
 
-    
-    /* ===== FIX SECTION WHITE SPACES ===== */
+/* ===== REMOVE ANY EXTRA BODY / SECTION SPACING ===== */
+html, body {
+  overflow-x: hidden;   /* prevent horizontal scroll globally */
+  margin: 0;
+  padding: 0;
+}
+
 section {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+  margin: 0;
+  padding: 0;
 }
 
-h2, h3, h4, p {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-    /* Remove big bottom margin on footer */
-.rr-footer {
-  margin-top: 40px; /* reduce from 120px to 40px */
-  padding-bottom: 40px; /* ensure some breathing room */
-}
-
-/* Remove extra bottom margin/padding from last section */
 body > section:last-of-type {
   margin-bottom: 0;
-  padding-bottom: 40px; /* adjust as needed */
-}
-
-/* Make sure body fits content exactly */
-html, body {
-  height: auto;
-  min-height: 100%;
-  overflow-x: hidden;
+  padding-bottom: 0;
 }
 
 /* Optional: ensure hero doesn't overshoot */
