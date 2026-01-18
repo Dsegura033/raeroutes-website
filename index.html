@@ -844,13 +844,15 @@ html {
 
 /* PLAN YOUR TRIP SECTION  */
 .trip-process {
-  margin: 40px auto;       /* smaller vertical spacing around the section */
-  padding: 60px 20px;      /* still gives the purple background enough height */
-  max-width: 1200px;
+  margin: 40px auto;
+  padding: 60px 20px;
+  width: 100%;       /* full width of viewport */
+  max-width: 1400px; /* optional: lets it expand on large screens */
   background: linear-gradient(135deg, rgba(200, 190, 240, 0.35), rgba(180, 160, 220, 0.35));
   border-radius: 20px;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box; /* ensures padding doesn't cause extra space */
 }
 
 .trip-process h2 {
@@ -863,14 +865,14 @@ html {
 .trip-two-columns {
   display: flex;
   gap: 40px;
-  align-items: center; /* centers boxes vertically next to video */
+  align-items: center;
+  justify-content: space-between; /* fills full width */
+  flex-wrap: wrap;                /* prevents overflow if window is smaller */
 }
-
 /* Video column — reverted to original sizing */
 .trip-video-column {
-  flex: 1.5;
-  position: relative;
-  min-width: 500px;
+  flex: 1 1 60%;   /* flexible: grows and shrinks, takes ~60% of width */
+  min-width: 400px; /* prevents video from getting too small */
   height: 500px;
 }
 
@@ -923,10 +925,11 @@ html {
 
 /* Steps column */
 .trip-steps-column {
-  flex: 1;
+  flex: 1 1 35%;   /* flexible: grows and shrinks, ~35% width */
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 300px;
 }
 
 /* Steps grid (desktop) */
