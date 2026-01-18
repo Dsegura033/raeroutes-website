@@ -314,49 +314,70 @@ html {
   max-width: 600px;
 }
     /* ===== INTRO SECTION ORDER FIX ===== */
+
+/* DESKTOP: keep horizontal layout */
 @media (min-width: 781px) {
   .intro-wrapper {
-    flex-direction: row; /* keep desktop horizontal */
+    display: flex;
+    flex-direction: row; /* text and image side by side */
+    gap: 2rem;           /* optional spacing */
+    align-items: center;
+    justify-content: space-between;
   }
 
   .intro-text {
     order: 0; /* text first */
+    flex: 1;
   }
 
   .intro-image {
     order: 1; /* image second */
+    flex: 1;
+  }
+
+  .intro-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px; /* matches desktop look */
+    display: block;
   }
 }
 
-/* MOBILE: keep side-by-side, text left, image right */
+/* MOBILE: improved horizontal scroll / flexible widths */
 @media (max-width: 780px) {
   .intro-wrapper {
-    flex-direction: row; /* side by side */
+    display: flex;
+    flex-direction: row;       /* side by side */
     gap: 1rem;
     padding: 10px 20px;
-    justify-content: center;
-    flex-wrap: nowrap;
-    overflow-x: auto;       /* optional if content overflows */
-    scroll-snap-type: x mandatory; /* optional */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
   }
 
+  /* hide scrollbar for cleaner look */
   .intro-wrapper::-webkit-scrollbar {
     display: none;
   }
 
-  .intro-text {
-    order: 0;      /* text first */
-    width: 250px;  /* adjust as needed */
+  /* text & image now flexible, not fixed */
+  .intro-text,
+  .intro-image {
+    flex: 0 0 auto;           /* prevents shrinking */
+    scroll-snap-align: start;
+    width: 80vw;               /* 80% of viewport width */
+    max-width: 350px;          /* optional cap */
+    min-width: 200px;          /* optional minimum */
   }
 
-  .intro-image {
-    order: 1;      /* image second */
-    width: 250px;  /* adjust as needed */
+  /* ensure image scales properly */
+  .intro-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
   }
 }
-
-
-
 
 /* ===== WHY RAEROUTES SECTION ===== */
 .why-raeroutes {
