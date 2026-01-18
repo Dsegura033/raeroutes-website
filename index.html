@@ -127,14 +127,15 @@ a {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* change from center to flex-start */
   align-items: center;
   gap: 20px;
-  text-align: center;
-  padding-top: 100px;
-  overflow-y: auto;
+  padding-top: 60px;           /* reduce top padding */
+  overflow-y: auto;            /* scrollable */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
   z-index: 1000;
 }
+
 
 .mobile-nav a {
   display: block;
@@ -1729,6 +1730,7 @@ html {
   <nav class="desktop-nav">
       <a href="#home">Home</a>
       <a href="#collections">Collections</a>
+      <a href="#weekly-packages">Weekly Travel Packages</a>
       <a href="#planner">Trip Planner</a>
       <a href="#about">About</a>
       <a href="#services">Services & Gifting</a>
@@ -1739,6 +1741,7 @@ html {
   <div class="mobile-nav" id="mobileNav">
       <a href="#home">Home</a>
       <a href="#collections">Collections</a>
+      <a href="#weekly-packages">Weekly Travel Packages</a>
       <a href="#planner">Trip Planner</a>
       <a href="#about">About</a>
       <a href="#services">Services & Gifting</a>
