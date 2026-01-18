@@ -720,14 +720,14 @@ html {
   z-index: 1;
 }
 
-    /* WEEKLY TRAVEL PACKAGES */
+   /* WEEKLY TRAVEL PACKAGES */
 .weekly-packages {
   padding: 60px 20px;
   text-align: center;
-  background: linear-gradient(135deg, #b5a0ff, #8f77e2, #6e6f9e);
+  background: linear-gradient(135deg, #d8caff, #c2b3f0, #b5a0ff); /* lighter purple gradient */
   border-radius: 24px;
   margin: 60px 0;
-  color: #fff; /* ensures headings are visible */
+  color: #fff;
 }
 
 .weekly-packages h2 {
@@ -738,7 +738,7 @@ html {
 .weekly-packages p {
   margin-bottom: 40px;
   font-size: 1rem;
-  color: #555;
+  color: #fff;
 }
 
 .packages-grid {
@@ -761,25 +761,41 @@ html {
   object-fit: cover;
 }
 
+/* Overlay for text only */
 .package-overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 20px;
-  background: rgba(30, 20, 60, 0.65); /* more transparent */
-  color: #fff;
   text-align: left;
+  z-index: 2; /* make sure text is on top */
+}
+
+/* Black semi-transparent box behind text */
+.package-overlay::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45); /* semi-transparent black behind text */
+  z-index: 1; /* behind text */
+  border-radius: 0 0 16px 16px; /* matches card border radius at bottom */
 }
 
 .package-overlay h3,
 .package-overlay p {
+  position: relative;
+  z-index: 2; /* make text appear on top */
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
-
 
 .package-buttons {
   display: flex;
   gap: 10px;
+  position: relative;
+  z-index: 2; /* make sure buttons are on top too */
 }
 
 .package-buttons .button {
@@ -795,7 +811,8 @@ html {
 .package-buttons .button:hover {
   background: #8f77e2;
 }
-    
+
+/* MOBILE: horizontal scroll */
 @media (max-width: 768px) {
   .packages-grid {
     display: flex;
@@ -805,8 +822,8 @@ html {
   }
 
   .package-card {
-    min-width: 250px; /* controls visible card size */
-    flex: 0 0 auto;   /* prevents stretching */
+    min-width: 250px;
+    flex: 0 0 auto;
   }
 }
 
