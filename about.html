@@ -1260,7 +1260,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-  </script>
+</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -1452,7 +1452,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-  const modal = document.getElementById('brainrotModal');
+
+// ===============================
+// BRAIN ROT MODAL (THEME SONG PAUSES ONLY FOR BRAIN ROT)
+// ===============================
+const modal = document.getElementById('brainrotModal');
 const iframe = document.getElementById('brainrotFrame');
 const closeBtn = document.querySelector('.modal .close');
 const themeSong = document.getElementById('themeSong');
@@ -1462,7 +1466,8 @@ document.querySelectorAll('.brainrot-thumb').forEach(thumb => {
     const videoUrl = thumb.dataset.youtube;
     iframe.src = videoUrl + "?autoplay=1"; // autoplay when opened
     modal.style.display = 'flex';
-    // Pause theme song
+    
+    // Pause theme song ONLY for Brain Rot videos
     if (!themeSong.paused) themeSong.pause();
   });
 });
@@ -1479,11 +1484,11 @@ modal.addEventListener('click', (e) => {
   if(e.target === modal) {
     modal.style.display = 'none';
     iframe.src = "";
-    themeSong.play();
+    themeSong.play(); // resume theme song
   }
 });
-
 </script>
+
 
 </body>
 </html>
