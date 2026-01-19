@@ -277,21 +277,28 @@ header nav a:hover {
     pointer-events: none;
 }
   
-  /* ===== MOBILE ADJUSTMENTS ONLY ===== */
+/* ===== MOBILE ADJUSTMENTS ONLY ===== */
 @media (max-width: 600px) {
     .core-video .video-placeholder {
-        width: 95%;            /* almost full width on mobile */
-        max-width: 800px;      /* same max as desktop */
-        height: auto;          /* let height adjust naturally */
-        aspect-ratio: 16/9;    /* maintain video ratio */
-        margin: 0 auto;        /* center it */
+        width: 100%;           /* fill mobile screen width */
+        max-width: none;       /* remove desktop cap */
+        min-height: 300px;     /* make it taller */
+        aspect-ratio: auto;    /* allow natural height scaling */
+        margin: 0 auto;        /* center */
+    }
+
+    .core-video .video-placeholder video {
+        width: 100%;           /* fill container */
+        height: 100%;
+        object-fit: cover;     /* maintain crop style */
     }
 
     .core-video .video-caption {
-        font-size: 16px;       /* slightly smaller for mobile */
-        margin-top: 10px;      /* spacing under video */
+        font-size: 16px;       /* slightly smaller text for mobile */
+        margin-top: 10px;
     }
 }
+
 
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
