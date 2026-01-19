@@ -978,12 +978,12 @@ html {
   transform: translateY(-3px);
   box-shadow: 0 0 30px rgba(123,93,255,0.5);
 }
-
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .trip-two-columns {
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
+    align-items: center;
   }
 
   .trip-video-column {
@@ -993,20 +993,22 @@ html {
     min-width: unset;
   }
 
+  /* FORCE CLEAN CENTERED STACK */
   .trip-columns {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    justify-content: center;
     width: 100%;
   }
 
   .trip-steps-column {
     align-items: center;
+    width: 100%;
   }
 
   .trip-step {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px; /* keeps cards from stretching */
   }
 
   .trip-intro-overlay {
@@ -1014,6 +1016,7 @@ html {
     padding: 15px;
   }
 }
+
 
 /* ===== PLAN YOUR TRIP: ALIGN STEPS CLOSER TO VIDEO ===== */
 @media (min-width: 1025px) {
