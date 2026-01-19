@@ -996,6 +996,17 @@ html {
   .trip-columns {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 15px;
+    justify-items: center;
+    width: 100%;
+  }
+
+  .trip-steps-column {
+    align-items: center;
+  }
+
+  .trip-step {
+    width: 100%;
+    max-width: 320px;
   }
 
   .trip-intro-overlay {
@@ -1003,18 +1014,20 @@ html {
     padding: 15px;
   }
 }
-    /* ===== PLAN YOUR TRIP: ALIGN STEPS CLOSER TO VIDEO ===== */
+
+/* ===== PLAN YOUR TRIP: ALIGN STEPS CLOSER TO VIDEO ===== */
 @media (min-width: 1025px) {
   .trip-two-columns {
-    justify-content: flex-start; /* aligns video and steps more naturally */
-    gap: 30px;                   /* reduce gap slightly */
+    justify-content: flex-start;
+    gap: 30px;
   }
 
   .trip-steps-column {
-    flex: 0 0 auto;               /* prevents column from stretching too far */
-    max-width: 400px;             /* adjust so it’s closer to video */
+    flex: 0 0 auto;
+    max-width: 400px;
   }
 }
+
 
 
 /* ===============================
