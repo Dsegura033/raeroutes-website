@@ -995,14 +995,14 @@ html {
 
   /* CLEAN 2x2 GRID ON MOBILE */
   .trip-columns {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;                 /* more breathing room */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    gap: 16px;                             /* space between cards */
     justify-content: center;
-    max-width: 400px;          /* gives cards space */
+    max-width: 360px;                       /* smaller so 2 fit nicely */
     width: 100%;
     margin: 0 auto;
   }
-}
 
   .trip-steps-column {
     align-items: center;
@@ -1011,7 +1011,8 @@ html {
 
   .trip-step {
     width: 100%;
-    max-width: none; /* let grid control size */
+    max-width: 160px;    /* smaller cards for better fit */
+    padding: 16px 18px;  /* slightly smaller padding */
   }
 
   .trip-intro-overlay {
@@ -1019,6 +1020,7 @@ html {
     padding: 15px;
   }
 }
+
 
 /* ===== PLAN YOUR TRIP: ALIGN STEPS CLOSER TO VIDEO ===== */
 @media (min-width: 1025px) {
