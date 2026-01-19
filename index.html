@@ -1035,22 +1035,23 @@ html {
     max-width: 400px;
   }
 }
-    /* ===== DESKTOP ADJUSTMENT TO FIX SIDE MARGINS ===== */
+   /* ===== DESKTOP: GAP BETWEEN VIDEO & TEXT ===== */
 @media (min-width: 1025px) {
   .trip-two-columns {
-    justify-content: flex-start;  /* align left, no extra right margin */
-    gap: 40px;                    /* space between video & steps */
+    justify-content: flex-start; /* keeps columns left-aligned */
+    gap: 60px;                   /* increased gap between video & steps */
   }
 
   .trip-video-column {
-    max-width: 700px;             /* optional: control video width */
+    max-width: 700px;
   }
 
   .trip-steps-column {
     flex: 0 0 auto;
-    max-width: 400px;             /* keeps steps from stretching too far */
+    max-width: 400px;
   }
 }
+
 
 
 
