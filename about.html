@@ -51,9 +51,10 @@ header .logo a {
 
 header .logo img { height: 50px; margin-right: 12px; }
 
+/* ===== HEADER NAVIGATION ===== */
 header nav {
     display: flex;
-    gap: 30px;
+    gap: 30px; /* spacing between nav items */
 }
 
 header nav a {
@@ -79,7 +80,10 @@ header nav a::after {
     transition: width 0.3s ease;
 }
 
-header nav a:hover::after { width: 100%; }
+header nav a:hover::after { 
+    width: 100%; 
+}
+
 header nav a:hover {
     color: #fff;
     background: linear-gradient(90deg, #b5a0ff, #8e78e5);
@@ -87,9 +91,21 @@ header nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* Hamburger menu */
-.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; cursor: pointer; }
-.hamburger span { height: 4px; background: #5a4baa; border-radius: 2px; }
+/* Hamburger menu for mobile (unchanged) */
+.hamburger { 
+    display: none; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    width: 30px; 
+    height: 22px; 
+    cursor: pointer; 
+}
+
+.hamburger span { 
+    height: 4px; 
+    background: #5a4baa; 
+    border-radius: 2px; 
+}
   
 /* ===== Theme Song Player ===== */
 .theme-song-player {
@@ -984,12 +1000,15 @@ header nav a:hover {
       RaeRoutes
     </a>
   </div>
-  <nav>
+ <nav>
+    <!-- Home always links back to the homepage -->
     <a href="index.html#home">Home</a>
-    <a href="index.html#collections">Collections</a>
-    <a href="index.html#planner">Trip Planner</a>
-    <a href="index.html#services">Services & Gifting</a>
-    <a href="index.html#contact">Contact</a>
+
+    <!-- About Me page sections -->
+    <a href="#about-story">Why RaeRoutes Exists</a>
+    <a href="#route-room">The Route Room</a>
+    <a href="#travel-diaries">Travel Diaries</a>
+    <a href="#brain-rot-series">Brain Rot Series</a>
   </nav>
 </header>
 
