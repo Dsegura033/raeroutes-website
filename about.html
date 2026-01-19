@@ -276,20 +276,22 @@ header nav a:hover {
     animation: spin 60s linear infinite;
     pointer-events: none;
 }
+  
   /* ===== MOBILE ADJUSTMENTS ONLY ===== */
 @media (max-width: 600px) {
     .core-video .video-placeholder {
-        width: 100%;           /* fill the mobile screen width */
+        width: 95%;            /* almost full width on mobile */
+        max-width: 800px;      /* same max as desktop */
         height: auto;          /* let height adjust naturally */
-        aspect-ratio: 16/9;    /* maintain proper video ratio */
+        aspect-ratio: 16/9;    /* maintain video ratio */
+        margin: 0 auto;        /* center it */
     }
 
     .core-video .video-caption {
-        font-size: 16px;       /* slightly smaller text for mobile */
-        margin-top: 10px;      /* a bit of spacing under video */
+        font-size: 16px;       /* slightly smaller for mobile */
+        margin-top: 10px;      /* spacing under video */
     }
 }
-
 
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
