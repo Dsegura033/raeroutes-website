@@ -1168,7 +1168,7 @@ header nav a:hover {
 
   
 <!-- BRAIN ROT SERIES -->
-<section class="brain-rot-series" id="brain-rot-series">
+ <section class="brain-rot-series" id="brain-rot-series">
   <h2>Travel BrainRot</h2>
   <p>
     A peek into my weekly BrainRot series! No planning, no structure, just destinations. This series is unfiltered, unserious, and purely brain rot.
@@ -1178,7 +1178,8 @@ header nav a:hover {
     <!-- BrainRot Card 1 -->
     <div class="brainrot-card">
       <iframe 
-        src="https://www.youtube.com/embed/_TYbPiHSx2o" 
+        class="brainrot-video"
+        src="https://www.youtube.com/embed/_TYbPiHSx2o?rel=0&enablejsapi=1" 
         title="Episode 1" 
         frameborder="0" 
         allow="autoplay; encrypted-media" 
@@ -1186,6 +1187,11 @@ header nav a:hover {
       </iframe>
       <p>Episode 1: Trips I Don’t Take But Think About</p>
     </div>
+
+    <!-- Add more cards here -->
+  </div>
+</section>
+
 
     <!-- BrainRot Card 2 -->
     <!-- <div class="brainrot-card">
@@ -1461,13 +1467,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
   
-  <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const themeSong = document.getElementById('themeSong');
 
-  // Pause theme song when user clicks a BrainRot video
-  document.querySelectorAll('.brainrot-card iframe').forEach(iframe => {
-    iframe.addEventListener('click', () => {
+  // Pause theme song when user clicks a BrainRot card
+  document.querySelectorAll('.brainrot-card').forEach(card => {
+    card.addEventListener('click', () => {
       if(themeSong && !themeSong.paused) {
         themeSong.pause();
       }
@@ -1475,6 +1481,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
 
 
 </body>
