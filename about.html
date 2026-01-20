@@ -1537,21 +1537,8 @@ brainrotModal.addEventListener('click', (e) => {
     themeSong.play(); // resume theme song
   }
 });
-
-// Optional: make iframe responsive for mobile vertical videos
-window.addEventListener('resize', () => {
-  if (brainrotFrame) {
-    let width = Math.min(window.innerWidth * 0.9, 500); // max 500px
-    let height = width * 16 / 9; // default 16:9 ratio
-    if(window.innerWidth < 600) {
-      height = width * 9 / 16; // vertical videos on mobile
-    }
-    brainrotFrame.style.width = width + 'px';
-    brainrotFrame.style.height = height + 'px';
-  }
-});
-window.dispatchEvent(new Event('resize')); // initial sizing
 </script>
+
 
 
 </body>
