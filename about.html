@@ -1467,19 +1467,28 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
   
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const themeSong = document.getElementById('themeSong');
+<!-- Load YouTube Iframe API -->
+<script src="https://www.youtube.com/iframe_api"></script>
 
-  // Pause theme song when user clicks a BrainRot card
-  document.querySelectorAll('.brainrot-card').forEach(card => {
-    card.addEventListener('click', () => {
-      if(themeSong && !themeSong.paused) {
-        themeSong.pause();
+<script>
+let players = [];
+const themeSong = document.getElementById('themeSong');
+
+// Called by YouTube API when ready
+function onYouTubeIframeAPIReady() {
+  document.querySelectorAll('.brainrot-video').forEach((iframe, index) => {
+    players[index] = new YT.Player(iframe, {
+      events: {
+        'onStateChange': function(event) {
+          // Pause theme song when video starts
+          if(event.data === YT.PlayerState.PLAYING) {
+            if(themeSong && !themeSong.paused) themeSong.pause();
+          }
+        }
       }
     });
   });
-});
+}
 </script>
 
 
