@@ -1506,40 +1506,58 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===============================
 // BRAIN ROT MODAL (THEME SONG PAUSES ONLY FOR BRAIN ROT)
 // ===============================
-const brainrotModal = document.getElementById('brainrotModal');
-const brainrotFrame = document.getElementById('brainrotFrame');
-const brainrotClose = brainrotModal.querySelector('.close');
-const themeSong = document.getElementById('themeSong');
+document.addEventListener("DOMContentLoaded", () => {
+  const brainrotModal = document.getElementById('brainrotModal');
+  const brainrotFrame = document.getElementById('brainrotFrame');
+  const brainrotClose = brainrotModal.querySelector('.close');
+  const themeSong = document.getElementById('themeSong');
 
-document.querySelectorAll('.brainrot-thumb').forEach(thumb => {
-  thumb.addEventListener('click', () => {
-    const videoUrl = thumb.dataset.youtube.split("?")[0]; // remove old autoplay param
-    brainrotFrame.src = videoUrl + "?autoplay=1&rel=0"; // autoplay, no related videos
+  // Function to open modal
+  function openBrainrot(videoUrl) {
+    brainrotFrame.src = videoUrl + "?autoplay=1&rel=0&mute=0"; // autoplay
     brainrotModal.style.display = 'flex';
-    
-    // Pause theme song ONLY for Brain Rot videos
-    if (!themeSong.paused) themeSong.pause();
-  });
-});
+    if (themeSong && !themeSong.paused) themeSong.pause();
+    resizeIframe();
+  }
 
-// Close modal
-brainrotClose.addEventListener('click', () => {
-  brainrotModal.style.display = 'none';
-  brainrotFrame.src = ""; // stop video
-  themeSong.play(); // resume theme song
-});
-
-// Close modal if clicking outside the iframe
-brainrotModal.addEventListener('click', (e) => {
-  if(e.target === brainrotModal) {
+  // Function to close modal
+  function closeBrainrot() {
     brainrotModal.style.display = 'none';
     brainrotFrame.src = "";
-    themeSong.play(); // resume theme song
+    if (themeSong) themeSong.play();
   }
+
+  // Click on thumbnail
+  document.querySelectorAll('.brainrot-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const videoUrl = thumb.dataset.youtube.split("?")[0]; // remove old params
+      openBrainrot(videoUrl);
+    });
+  });
+
+  // Close button
+  brainrotClose.addEventListener('click', closeBrainrot);
+
+  // Close if clicking outside iframe
+  brainrotModal.addEventListener('click', (e) => {
+    if(e.target === brainrotModal) closeBrainrot();
+  });
+
+  // Responsive iframe
+  function resizeIframe() {
+    if (!brainrotFrame) return;
+    let width = Math.min(window.innerWidth * 0.95, 500); // max 500px
+    let height = width * 16 / 9; // 16:9 default
+    if(window.innerWidth < 600) {
+      height = width * 16 / 9; // mobile short vertical videos will scale nicely
+    }
+    brainrotFrame.style.width = width + "px";
+    brainrotFrame.style.height = height + "px";
+  }
+
+  window.addEventListener('resize', resizeIframe);
 });
 </script>
-
-
 
 </body>
 </html>
