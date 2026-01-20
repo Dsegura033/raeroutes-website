@@ -618,7 +618,7 @@ header nav a:hover {
 /* ===== brain rot series ===== */
 .brain-rot-series {
   padding: 60px 20px;
-  background: #e5dbff; /* soft light purple, gentle on the eyes */
+  background: #e5dbff;
   text-align: center;
 }
 
@@ -632,99 +632,26 @@ header nav a:hover {
 .brain-rot-series p {
   font-size: 18px;
   color: #5a4baa;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
-.brainrot-thumbnails {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-
-.brainrot-thumb {
+.brainrot-video-container {
   position: relative;
-  width: 320px; /* increased from 280px */
-  cursor: pointer;
-  border: 2px dashed rgba(181,160,255,0.6);
-  border-radius: 20px;
-  padding: 10px;
-  background: rgba(217,200,255,0.9);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  transform: rotate(-2deg);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.brainrot-thumb:hover {
-  transform: rotate(0deg) scale(1.06);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-}
-
-.brainrot-thumb img {
   width: 100%;
-  height: auto;
-  border-radius: 16px;
-  display: block;
+  max-width: 800px;  /* limits how wide it can get on large screens */
+  margin: 0 auto 20px auto;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
 }
 
-.brainrot-thumb p {
-  margin-top: 10px;
-  font-size: 16px;
-  color: #4a3f9e;
-  font-weight: 500;
-}
-
-.play-overlay {
+.brainrot-video-container iframe {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  color: white;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-  pointer-events: none;
-}
-
-/* ===== Modal ===== */
-.modal {
-  display: none;
-  position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.85);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  padding: 20px; /* for mobile spacing */
-}
-
-.modal iframe {
-  width: 90%;
-  max-width: 500px; /* bigger for desktop */
-  height: calc(90vw * 9 / 16); /* vertical video scale */
-  max-height: 800px; /* prevent super tall on big screens */
   border-radius: 12px;
 }
 
-/* Adjust modal iframe for small screens */
-@media (max-width: 600px) {
-  .modal iframe {
-    width: 95%;
-    height: calc(95vw * 9 / 16); /* scales nicely for mobile vertical Shorts */
-  }
-}
-
-.modal .close {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font-size: 36px;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}
 
 
   
@@ -1204,38 +1131,26 @@ header nav a:hover {
 </section>
 
   
- <!-- BRAIN ROT SERIES -->
+<!-- BRAIN ROT SERIES -->
 <section class="brain-rot-series" id="brain-rot-series">
   <h2>Travel BrainRot</h2>
   <p>
-    A peek into my weekly BrainRot series! No planning, no structure, just destinations, This series is unfiltered, unserious, and purely brain rot.
+    A peek into my weekly BrainRot series! No planning, no structure, just destinations. This series is unfiltered, unserious, and purely brain rot.
   </p>
 
-  <div class="brainrot-thumbnails">
-    <!-- BrainRot Video 1 -->
-    <div 
-      class="brainrot-thumb"
-      data-youtube="https://www.youtube.com/embed/_TYbPiHSx2o?autoplay=1&rel=0"
-    >
-      <img src="brainrot.jpg" alt="Travel BrainRot Episode 1">
-      <div class="play-overlay">▶</div>
-      <p>Episode 1: Trips I Don’t Take But Think About</p>
-    </div>
-
-    <!-- Add more BrainRot videos as needed -->
+  <div class="brainrot-video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/_TYbPiHSx2o" 
+      title="Travel BrainRot Episode 1"
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
   </div>
+
+  <p>Episode 1: Trips I Don’t Take But Think About</p>
 </section>
 
-<!-- Modal for playing YouTube videos -->
-<div id="brainrotModal" class="modal">
-  <span class="close">&times;</span>
-  <iframe
-    id="brainrotFrame"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
-</div>
 
 
   
@@ -1500,69 +1415,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
-
-
-<script>
-// ===============================
-// BRAIN ROT MODAL (THEME SONG PAUSES ONLY FOR BRAIN ROT)
-// ===============================
-<script>
-(() => {
-  const brainrotModal = document.getElementById('brainrotModal');
-  const brainrotFrame = document.getElementById('brainrotFrame');
-  const brainrotClose = brainrotModal.querySelector('.close');
-  const themeSong = document.getElementById('themeSong');
-
-  if (!brainrotModal || !brainrotFrame || !brainrotClose) return;
-
-  // Open modal
-  function openModal(videoUrl) {
-    brainrotFrame.src = videoUrl + "?autoplay=1&rel=0&mute=0";
-    brainrotModal.style.display = 'flex';
-    if (themeSong && !themeSong.paused) themeSong.pause();
-    resizeIframe();
-  }
-
-  // Close modal
-  function closeModal() {
-    brainrotFrame.src = "";
-    brainrotModal.style.display = 'none';
-    if (themeSong) themeSong.play();
-  }
-
-  // Resize iframe for desktop/mobile
-  function resizeIframe() {
-    let width = Math.min(window.innerWidth * 0.95, 500); // max width 500px
-    let height = width * 16 / 9; // default 16:9
-
-    // If vertical YouTube Shorts (roughly 9:16), scale height more on mobile
-    if(window.innerWidth < 600) {
-      height = width * 16 / 9; // vertical scales nicely
-    }
-
-    brainrotFrame.style.width = width + "px";
-    brainrotFrame.style.height = height + "px";
-  }
-
-  // Click on thumbnails
-  document.querySelectorAll('.brainrot-thumb').forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const videoUrl = thumb.dataset.youtube.split("?")[0];
-      openModal(videoUrl);
-    });
-  });
-
-  // Close modal click
-  brainrotClose.addEventListener('click', closeModal);
-
-  // Close if click outside iframe
-  brainrotModal.addEventListener('click', e => {
-    if (e.target === brainrotModal) closeModal();
-  });
-
-  // Resize on window change
-  window.addEventListener('resize', resizeIframe);
-})();
 </script>
 
 </body>
