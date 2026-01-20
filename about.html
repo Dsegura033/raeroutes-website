@@ -615,13 +615,12 @@ header nav a:hover {
     }
 }
 
-  /* ===== brain rot series ===== */
- .brain-rot-series {
+ /* ===== brain rot series ===== */
+.brain-rot-series {
   padding: 60px 20px;
   background: #e5dbff; /* soft light purple, gentle on the eyes */
   text-align: center;
 }
-
 
 .brain-rot-series h2 {
   font-family: 'Poppins', sans-serif;
@@ -639,44 +638,51 @@ header nav a:hover {
 .brainrot-thumbnails {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
   justify-content: center;
 }
 
 .brainrot-thumb {
   position: relative;
-  width: 250px;
+  width: 280px;
   cursor: pointer;
   border: 2px dashed rgba(181,160,255,0.6);
   border-radius: 20px;
   padding: 10px;
   background: rgba(217,200,255,0.9);
   box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  transition: transform 0.3s;
+  transform: rotate(-2deg);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .brainrot-thumb:hover {
-  transform: scale(1.05);
+  transform: rotate(0deg) scale(1.06);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
 .brainrot-thumb img {
   width: 100%;
+  height: auto;
   border-radius: 16px;
+  display: block;
 }
 
 .brainrot-thumb p {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 16px;
   color: #4a3f9e;
+  font-weight: 500;
 }
 
 .play-overlay {
   position: absolute;
-  top: 40%;
-  left: 40%;
-  font-size: 48px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
   color: white;
-  text-shadow: 1px 1px 5px black;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  pointer-events: none;
 }
 
 .modal {
@@ -1198,7 +1204,7 @@ header nav a:hover {
       class="brainrot-thumb"
       data-youtube="https://www.youtube.com/embed/InacwUdh6iA?autoplay=1&rel=0"
     >
-      <img src="brainrot-ep1.jpg" alt="Travel BrainRot Episode 1">
+      <img src="brainrot.jpg" alt="Travel BrainRot Episode 1">
       <div class="play-overlay">▶</div>
       <p>Episode 1: Trips I Don’t Take But Think About</p>
     </div>
