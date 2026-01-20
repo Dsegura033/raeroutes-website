@@ -1460,6 +1460,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+  
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const themeSong = document.getElementById('themeSong');
+
+  // Pause theme song when user clicks a BrainRot video
+  document.querySelectorAll('.brainrot-card iframe').forEach(iframe => {
+    iframe.addEventListener('click', () => {
+      if(themeSong && !themeSong.paused) {
+        themeSong.pause();
+      }
+    });
+  });
+});
+</script>
+
 
 </body>
 </html>
