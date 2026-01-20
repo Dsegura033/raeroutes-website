@@ -1506,57 +1506,63 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===============================
 // BRAIN ROT MODAL (THEME SONG PAUSES ONLY FOR BRAIN ROT)
 // ===============================
-document.addEventListener("DOMContentLoaded", () => {
+<script>
+(() => {
   const brainrotModal = document.getElementById('brainrotModal');
   const brainrotFrame = document.getElementById('brainrotFrame');
   const brainrotClose = brainrotModal.querySelector('.close');
   const themeSong = document.getElementById('themeSong');
 
-  // Function to open modal
-  function openBrainrot(videoUrl) {
-    brainrotFrame.src = videoUrl + "?autoplay=1&rel=0&mute=0"; // autoplay
+  if (!brainrotModal || !brainrotFrame || !brainrotClose) return;
+
+  // Open modal
+  function openModal(videoUrl) {
+    brainrotFrame.src = videoUrl + "?autoplay=1&rel=0&mute=0";
     brainrotModal.style.display = 'flex';
     if (themeSong && !themeSong.paused) themeSong.pause();
     resizeIframe();
   }
 
-  // Function to close modal
-  function closeBrainrot() {
-    brainrotModal.style.display = 'none';
+  // Close modal
+  function closeModal() {
     brainrotFrame.src = "";
+    brainrotModal.style.display = 'none';
     if (themeSong) themeSong.play();
   }
 
-  // Click on thumbnail
-  document.querySelectorAll('.brainrot-thumb').forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const videoUrl = thumb.dataset.youtube.split("?")[0]; // remove old params
-      openBrainrot(videoUrl);
-    });
-  });
-
-  // Close button
-  brainrotClose.addEventListener('click', closeBrainrot);
-
-  // Close if clicking outside iframe
-  brainrotModal.addEventListener('click', (e) => {
-    if(e.target === brainrotModal) closeBrainrot();
-  });
-
-  // Responsive iframe
+  // Resize iframe for desktop/mobile
   function resizeIframe() {
-    if (!brainrotFrame) return;
-    let width = Math.min(window.innerWidth * 0.95, 500); // max 500px
-    let height = width * 16 / 9; // 16:9 default
+    let width = Math.min(window.innerWidth * 0.95, 500); // max width 500px
+    let height = width * 16 / 9; // default 16:9
+
+    // If vertical YouTube Shorts (roughly 9:16), scale height more on mobile
     if(window.innerWidth < 600) {
-      height = width * 16 / 9; // mobile short vertical videos will scale nicely
+      height = width * 16 / 9; // vertical scales nicely
     }
+
     brainrotFrame.style.width = width + "px";
     brainrotFrame.style.height = height + "px";
   }
 
+  // Click on thumbnails
+  document.querySelectorAll('.brainrot-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const videoUrl = thumb.dataset.youtube.split("?")[0];
+      openModal(videoUrl);
+    });
+  });
+
+  // Close modal click
+  brainrotClose.addEventListener('click', closeModal);
+
+  // Close if click outside iframe
+  brainrotModal.addEventListener('click', e => {
+    if (e.target === brainrotModal) closeModal();
+  });
+
+  // Resize on window change
   window.addEventListener('resize', resizeIframe);
-});
+})();
 </script>
 
 </body>
