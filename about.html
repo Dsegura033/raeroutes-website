@@ -93,16 +93,26 @@ header nav a:hover {
 
 /* ===== HAMBURGER ICON ===== */
 .hamburger { 
-  display: none; /* hidden on desktop */
+  display: none; /* desktop hidden */
   flex-direction: column; 
   justify-content: space-between; 
-  width: 30px; 
-  height: 22px; 
-  cursor: pointer; 
-}
+  width: 42px;
+  height: 38px;
+  padding: 8px;
+  cursor: pointer;
 
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+  .hamburger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
 .hamburger span { 
-  height: 4px; 
+  height: 3px; 
   background: #5a4baa; 
   border-radius: 2px; 
 }
