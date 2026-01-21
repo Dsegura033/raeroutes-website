@@ -51,62 +51,103 @@ header .logo a {
 
 header .logo img { height: 50px; margin-right: 12px; }
 
-/* ===== HEADER NAVIGATION ===== */
+/* ===== HEADER NAVIGATION (DESKTOP DEFAULT) ===== */
 header nav {
-    display: flex;
-    gap: 30px; /* spacing between nav items */
+  display: flex;
+  gap: 30px; /* spacing between nav items */
 }
 
 header nav a {
-    text-decoration: none;
-    color: #5a4baa; /* main nav color */
-    font-weight: 600;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 12px;
-    position: relative;
-    transition: all 0.3s ease;
+  text-decoration: none;
+  color: #5a4baa; /* main nav color */
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
 header nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #b5a0ff, #8e78e5);
-    border-radius: 2px;
-    transition: width 0.3s ease;
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+  border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
 header nav a:hover::after { 
-    width: 100%; 
+  width: 100%; 
 }
 
 header nav a:hover {
-    color: #fff;
-    background: linear-gradient(90deg, #b5a0ff, #8e78e5);
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  color: #fff;
+  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* Hamburger menu for mobile (unchanged) */
+/* ===== HAMBURGER ICON ===== */
 .hamburger { 
-    display: none; 
-    flex-direction: column; 
-    justify-content: space-between; 
-    width: 30px; 
-    height: 22px; 
-    cursor: pointer; 
+  display: none; /* hidden on desktop */
+  flex-direction: column; 
+  justify-content: space-between; 
+  width: 30px; 
+  height: 22px; 
+  cursor: pointer; 
 }
 
 .hamburger span { 
-    height: 4px; 
-    background: #5a4baa; 
-    border-radius: 2px; 
+  height: 4px; 
+  background: #5a4baa; 
+  border-radius: 2px; 
 }
-  
+
+/* ===== MOBILE NAVIGATION ===== */
+@media (max-width: 768px) {
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* needed for absolute nav */
+  }
+
+  /* Show hamburger on mobile */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide nav by default on mobile */
+  header nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    gap: 16px;
+    z-index: 1000;
+  }
+
+  /* THIS matches your existing JS */
+  header nav.show {
+    display: flex;
+  }
+
+  header nav a {
+    font-size: 18px;
+    padding: 12px 16px;
+  }
+}
+
 /* ===== Theme Song Player ===== */
 .theme-song-player {
   text-align: center;
@@ -1006,15 +1047,22 @@ header nav a:hover {
     </a>
   </div>
  <nav>
-    <!-- Home always links back to the homepage -->
-    <a href="index.html#home">Home</a>
+  <!-- Home always links back to the homepage -->
+  <a href="index.html#home">Home</a>
 
-    <!-- About Me page sections -->
-    <a href="#about-story">Why RaeRoutes Exists</a>
-    <a href="#route-room">The Route Room</a>
-    <a href="#travel-diaries">Travel Diaries</a>
-    <a href="#brain-rot-series">Brain Rot Series</a>
-  </nav>
+  <!-- About Me page sections -->
+  <a href="#about-story">Why RaeRoutes Exists</a>
+  <a href="#route-room">The Route Room</a>
+  <a href="#travel-diaries">Travel Diaries</a>
+  <a href="#brain-rot-series">Brain Rot Series</a>
+</nav>
+
+<div class="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
 </header>
 
 <!-- ABOUT SECTION -->
