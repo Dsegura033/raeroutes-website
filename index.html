@@ -1450,10 +1450,10 @@ html {
   padding: 60px 20px;
   margin: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 40px;
-  overflow-x: auto;        /* horizontal scroll if needed */
+  overflow-x: hidden;        /* horizontal scroll if needed */
   scroll-snap-type: x mandatory;
   flex-wrap: nowrap;
   width: 100%;
@@ -1469,8 +1469,8 @@ html {
   display: flex;
   flex-wrap: nowrap;
   gap: 40px;
-  justify-content: center;
-  width: 100%;
+  justify-content: flex-start;
+  width: max-content;
   margin: 0 auto; /* ← THIS is the missing piece */
 }
 
