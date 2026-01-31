@@ -1225,6 +1225,23 @@ html {
 .service-card .button:hover {
   box-shadow: 0 8px 20px rgba(100, 60, 160, 0.5);
 }
+    
+    /* ===============================
+   BUTTON GROUP (for multiple buttons in a card)
+================================ */
+.button-group {
+  display: flex;        /* put buttons in a row */
+  gap: 12px;            /* space between buttons */
+  flex-wrap: wrap;      /* wrap buttons on smaller screens */
+  justify-content: center; /* center them inside the card */
+  margin-top: 8px;      /* optional spacing from text above */
+}
+
+.button-group .button {
+  flex: 1 1 auto;       /* optional: let buttons scale evenly */
+  min-width: 120px;     /* keep buttons from shrinking too small */
+}
+
 
 /*  MOBILE */
 @media (max-width: 768px) {
