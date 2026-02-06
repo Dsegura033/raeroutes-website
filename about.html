@@ -697,8 +697,8 @@ header nav a:hover {
 
 /* ===== Individual Card ===== */
 .brainrot-card {
-  width: 100%;
-  max-width: 700px; /* large video */
+  flex: 0 0 auto;
+  width: 680px;
   background: rgba(217,200,255,0.9);
   border: 2px dashed rgba(181,160,255,0.6);
   border-radius: 20px;
@@ -706,7 +706,9 @@ header nav a:hover {
   box-shadow: 0 12px 28px rgba(0,0,0,0.15);
   transform: rotate(-2deg);
   transition: transform 0.3s, box-shadow 0.3s;
+  scroll-snap-align: center;
 }
+
 
 .brainrot-card:hover {
   transform: rotate(0deg) scale(1.02);
@@ -728,15 +730,25 @@ header nav a:hover {
 
 /* ===== Responsive ===== */
 @media (max-width: 800px) {
+  .brainrot-card {
+    width: 85%;
+  }
+
   .brainrot-card iframe {
     height: 300px;
   }
 }
 
 @media (max-width: 500px) {
+  .brainrot-card {
+    width: 90%;
+  }
+
   .brainrot-card iframe {
     height: 220px;
   }
+}
+
 }
 
 
