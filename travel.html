@@ -6,7 +6,6 @@
 <title>Travel Guides | RaeRoutes</title>
 
 <style>
-
 /* ===== GLOBAL ===== */
 body {
   margin: 0;
@@ -90,14 +89,15 @@ li {
 
 /* ===== IMAGE PLACEHOLDER ===== */
 .guide-image {
-  margin: 35px 0;
+  margin: 25px 0;
   text-align: center;
 }
 
 .guide-image img {
-  width: 100%;
+  width: 70%; /* medium size */
+  max-width: 500px;
   border-radius: 22px;
-  box-shadow: 0 0 40px rgba(200,170,255,0.6);
+  box-shadow: 0 0 30px rgba(200,170,255,0.6);
   border: 1px solid rgba(200,170,255,0.3);
 }
 
@@ -108,6 +108,36 @@ li {
   border-radius: 25px;
   margin-top: 30px;
   box-shadow: 0 0 35px rgba(180,140,255,0.35);
+}
+
+/* ===== ROOM FLYER CARD ===== */
+.room-flyer-card {
+  text-align: center;
+  margin: 50px 0;
+  padding: 30px;
+  background: linear-gradient(145deg, #57409b, #6a53c3); /* medium purple highlight */
+  border-radius: 28px;
+  box-shadow: 0 0 45px rgba(200,170,255,0.4);
+  border: 1px solid rgba(200,170,255,0.2);
+}
+
+.room-flyer-card .flyer-image {
+  width: 70%; /* medium size */
+  max-width: 500px;
+  border-radius: 22px;
+  box-shadow: 0 0 35px rgba(200,170,255,0.6);
+  border: 1px solid rgba(200,170,255,0.3);
+  margin-bottom: 20px;
+}
+
+.room-flyer-card .flyer-content h3 {
+  color: #e0d4ff;
+  margin-bottom: 12px;
+}
+
+.room-flyer-card .flyer-content p {
+  color: #efeaff;
+  margin-bottom: 18px;
 }
 
 /* ===== CTA ===== */
@@ -136,6 +166,7 @@ li {
   box-shadow: 0 0 30px rgba(220,190,255,0.9);
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 600px) {
   .travel-wrapper {
     padding: 60px 18px;
@@ -144,8 +175,13 @@ li {
   .section-card {
     padding: 35px;
   }
-}
 
+  .guide-image img,
+  .room-flyer-card .flyer-image {
+    width: 90%; /* slightly larger on mobile for readability */
+    max-width: none;
+  }
+}
 </style>
 
 </head>
