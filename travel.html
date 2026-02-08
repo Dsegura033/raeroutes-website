@@ -5,48 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Travel Guides | RaeRoutes</title>
 
- <style>
-/* ===== GLOBAL ===== */
+<style>
+/* ===== GLOBAL BODY ===== */
 body {
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(135deg, #4b3a72, #5b4da0, #6b5bc8); /* lighter purples */
-  color: #efeaff;
-  line-height: 1.8;
+  padding: 0;
+  background: #f7f5ff; /* soft lavender page background */
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
+/* ===== TRAVEL WRAPPER ===== */
 .travel-wrapper {
   max-width: 950px;
   margin: 0 auto;
-  padding: 90px 25px;
+  padding: 60px 25px;
 }
 
 /* ===== HEADER ===== */
 .blog-header {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .blog-logo {
   width: 170px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   animation: softGlow 3s ease-in-out infinite;
 }
 
 @keyframes softGlow {
-  0% { filter: drop-shadow(0 0 6px rgba(220,190,255,0.5)); }
-  50% { filter: drop-shadow(0 0 22px rgba(240,210,255,0.9)); }
-  100% { filter: drop-shadow(0 0 6px rgba(220,190,255,0.5)); }
+  0% { filter: drop-shadow(0 0 6px rgba(181,160,255,0.3)); }
+  50% { filter: drop-shadow(0 0 22px rgba(181,160,255,0.6)); }
+  100% { filter: drop-shadow(0 0 6px rgba(181,160,255,0.3)); }
 }
 
 .blog-header h1 {
+  font-family: 'Playfair Display', serif;
   font-size: 32px;
   margin-bottom: 10px;
-  color: #f3eaff;
+  color: #4a3f9e; /* main site purple */
 }
 
 .blog-subtitle {
-  color: #d9ccff;
+  color: #5a4baa; /* softer purple */
   font-size: 16px;
   max-width: 600px;
   margin: 0 auto;
@@ -54,29 +58,29 @@ body {
 
 /* ===== SECTION CARD ===== */
 .section-card {
-  background: linear-gradient(145deg, #5a4ca0, #6c5bc8);
+  background: #f3f0ff; /* lighter lavender background */
   padding: 50px;
-  border-radius: 30px;
-  margin-bottom: 70px;
-  box-shadow: 0 0 45px rgba(220,190,255,0.25);
-  border: 1px solid rgba(220,190,255,0.2);
+  border-radius: 25px;
+  margin-bottom: 60px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+  border: 1px solid rgba(181,160,255,0.3);
 }
 
 h2 {
   margin-top: 0;
   font-size: 26px;
-  color: #f3eaff;
+  color: #4a3f9e;
 }
 
 h3 {
-  margin-top: 30px;
+  margin-top: 25px;
   font-size: 18px;
-  color: #e0d4ff;
+  color: #5a4baa;
 }
 
 p {
-  margin-bottom: 18px;
-  color: #efeaff;
+  margin-bottom: 16px;
+  color: #4c4c4c;
 }
 
 ul {
@@ -93,21 +97,21 @@ li {
   width: 70%;
   max-width: 500px;
   border-radius: 20px;
-  border: 3px solid rgba(240,210,255,0.3);
+  border: 2px solid rgba(181,160,255,0.4);
   padding: 8px;
-  box-shadow: 0 0 25px rgba(240,210,255,0.35);
-  background: rgba(80,50,150,0.1);
+  box-shadow: 0 8px 20px rgba(181,160,255,0.3);
+  background: rgba(245,242,255,0.4);
   display: inline-block;
   margin: 25px 0;
 }
 
 /* ===== ITINERARY CARD ===== */
 .itinerary-card {
-  background: linear-gradient(145deg, #6c5bc8, #7a6bdc);
-  padding: 40px;
+  background: #eae3ff; /* soft lavender */
+  padding: 35px;
   border-radius: 25px;
-  margin-top: 30px;
-  box-shadow: 0 0 35px rgba(220,190,255,0.25);
+  margin-top: 25px;
+  box-shadow: 0 8px 20px rgba(181,160,255,0.2);
 }
 
 /* ===== ROOM FLYER CARD ===== */
@@ -115,65 +119,62 @@ li {
   text-align: center;
   margin: 50px 0;
   padding: 30px;
-  background: linear-gradient(145deg, #6c5bc8, #7a6bdc);
-  border-radius: 28px;
-  box-shadow: 0 0 45px rgba(220,190,255,0.3);
-  border: 1px solid rgba(220,190,255,0.2);
+  background: #f3f0ff; /* soft lavender */
+  border-radius: 25px;
+  box-shadow: 0 12px 25px rgba(181,160,255,0.2);
+  border: 1px solid rgba(181,160,255,0.3);
 }
 
 .room-flyer-card .flyer-content h3 {
-  color: #e0d4ff;
+  color: #4a3f9e;
   margin-bottom: 12px;
 }
 
 .room-flyer-card .flyer-content p {
-  color: #efeaff;
+  color: #4c4c4c;
   margin-bottom: 18px;
 }
 
-/* ===== CTA ===== */
+/* ===== READY TO PLAN CTA ===== */
 .planning-section {
   text-align: center;
-  background: linear-gradient(145deg, #7a6bdc, #8a7ce0);
-  padding: 60px 40px;
-  border-radius: 40px;
-  box-shadow: 0 0 50px rgba(220,190,255,0.4);
+  background: #dcd2ff; /* soft lavender gradient */
+  padding: 50px 40px;
+  border-radius: 30px;
+  box-shadow: 0 12px 25px rgba(181,160,255,0.2);
 }
 
 .button {
   display: inline-block;
   margin-top: 25px;
   padding: 16px 40px;
-  background: linear-gradient(135deg, #d0c2ff, #e0d4ff);
-  color: #24183a;
-  font-weight: bold;
+  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+  color: #fff;
+  font-weight: 700;
   text-decoration: none;
-  border-radius: 45px;
-  transition: 0.3s ease;
+  border-radius: 30px;
+  transition: all 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 30px rgba(240,210,255,0.8);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 600px) {
-  .travel-wrapper {
-    padding: 60px 18px;
-  }
+@media (max-width: 768px) {
+  .travel-wrapper { padding: 50px 18px; }
 
   .guide-image img,
-  .room-flyer-card .flyer-image {
-    width: 90%;
-    max-width: none;
-  }
+  .room-flyer-card .flyer-image { width: 90%; max-width: none; }
 
-  .section-card {
-    padding: 35px;
-  }
+  .section-card { padding: 35px; }
+
+  .itinerary-card { padding: 25px; }
 }
+
 </style>
+
 
 </head>
 
