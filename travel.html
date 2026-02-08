@@ -204,6 +204,56 @@ li {
 
   .itinerary-card { padding: 25px; }
 }
+/* ===== FOOTER ===== */
+.travel-footer {
+  background: #e6dcff; /* same light lavender as sections */
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 2px solid rgba(160,130,250,0.3);
+  margin-top: 60px;
+}
+
+.travel-footer .footer-content p {
+  margin: 10px 0;
+  color: #4a3f9e;
+  font-weight: 500;
+}
+
+.travel-footer .social-links {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.travel-footer .social-links a {
+  color: #5a4baa;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(235,225,255,0.6);
+  box-shadow: 0 4px 12px rgba(160,130,250,0.2);
+  transition: all 0.3s ease;
+}
+
+.travel-footer .social-links a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(160,130,250,0.35);
+}
+
+@media (max-width: 600px) {
+  .travel-footer .social-links {
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .travel-footer .social-links a {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
 </style>
 
 </head>
@@ -307,6 +357,21 @@ li {
   </div> <!-- End collapsible content -->
 
 </div> <!-- End travel wrapper -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="travel-footer">
+  <div class="footer-content">
+    <p>Connect with RaeRoutes:</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=61579193352296" target="_blank">Facebook</a>
+      <a href="https://pin.it/2xbxo9lAy" target="_blank">Pinterest</a>
+      <a href="mailto:raeroutes13@gmail.com">Email</a>
+      <!-- Optional: add your website link -->
+      <a href="https://raeroutes.com" target="_blank">Website</a>
+    </div>
+    <p>&copy; 2026 RaeRoutes. All rights reserved.</p>
+  </div>
+</footer>
 
 <script>
 // Collapsible toggle
