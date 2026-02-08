@@ -564,27 +564,38 @@ header nav a:hover {
 .diaries-blog-btn {
   text-align: center;
   margin: 25px 0 35px 0;
-  display: block;
+  display: block; /* show the button */
 }
 
-}
-
+/* ===== LINK BUTTON STYLE ===== */
 .blog-link-btn {
   display: inline-block;
-  padding: 12px 30px;
+  padding: 14px 35px; /* a little bigger for tap-friendly mobile */
   border-radius: 28px;
   background: linear-gradient(135deg, #5e4b8b, #7a67b5);
   color: #f1eaff;
   text-decoration: none;
   font-weight: 500;
   letter-spacing: 0.5px;
+  text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 0 15px rgba(150,120,255,0.25);
 }
 
+/* hover effect */
 .blog-link-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 22px rgba(170,140,255,0.5);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .blog-link-btn {
+    padding: 12px 25px; /* smaller padding for small screens */
+    font-size: 16px;
+    width: 80%; /* full-ish width for easier tapping */
+    border-radius: 24px;
+  }
 }
 
 /* Grid - horizontal scroll on mobile, normal on desktop */
