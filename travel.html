@@ -46,11 +46,11 @@ body {
   font-family: 'Playfair Display', serif;
   font-size: 32px;
   margin-bottom: 10px;
-  color: #4a3f9e; /* main site purple */
+  color: #4a3f9e;
 }
 
 .blog-subtitle {
-  color: #5a4baa; /* secondary purple */
+  color: #5a4baa;
   font-size: 16px;
   max-width: 600px;
   margin: 0 auto;
@@ -58,7 +58,7 @@ body {
 
 /* ===== SECTION CARD ===== */
 .section-card {
-  background: #e6dcff; /* slightly darker lavender */
+  background: #e6dcff;
   padding: 50px;
   border-radius: 25px;
   margin-bottom: 60px;
@@ -107,7 +107,7 @@ li {
 
 /* ===== ITINERARY CARD ===== */
 .itinerary-card {
-  background: #dcd0ff; /* slightly richer lavender */
+  background: #dcd0ff;
   padding: 35px;
   border-radius: 25px;
   margin-top: 25px;
@@ -119,7 +119,7 @@ li {
   text-align: center;
   margin: 50px 0;
   padding: 30px;
-  background: #e6dcff; /* slightly darker lavender */
+  background: #e6dcff;
   border-radius: 25px;
   box-shadow: 0 12px 25px rgba(160,130,250,0.2);
   border: 1px solid rgba(160,130,250,0.3);
@@ -138,7 +138,7 @@ li {
 /* ===== READY TO PLAN CTA ===== */
 .planning-section {
   text-align: center;
-  background: #d4c4ff; /* slightly darker lavender gradient feel */
+  background: #d4c4ff;
   padding: 50px 40px;
   border-radius: 30px;
   box-shadow: 0 12px 25px rgba(160,130,250,0.2);
@@ -161,6 +161,38 @@ li {
   box-shadow: 0 12px 25px rgba(0,0,0,0.15);
 }
 
+/* ===== COLLAPSIBLE FUNCTIONALITY ===== */
+.collapsible-btn {
+  background: #b5a0ff;
+  color: #fff;
+  cursor: pointer;
+  padding: 16px 30px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.collapsible-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.collapsible-content {
+  display: none;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .travel-wrapper { padding: 50px 18px; }
@@ -174,10 +206,7 @@ li {
 }
 </style>
 
-
-
 </head>
-
 <body>
 
 <div class="travel-wrapper">
@@ -191,105 +220,109 @@ li {
     </p>
   </header>
 
- <!-- ===== VENICE ARTICLE ===== -->
+  <!-- ===== COLLAPSIBLE VENICE SPOTLIGHT ===== -->
+  <button type="button" class="collapsible-btn">February City Spotlight: Venice in February 🎭</button>
+  <div class="collapsible-content">
 
-<div class="section-card">
-  <h2>Venice in February: A Slow, Romantic Carnival Escape 🎭</h2>
+    <div class="section-card">
+      <h2>Venice in February: A Slow, Romantic Carnival Escape 🎭</h2>
+      <p>
+        Venice in February feels cinematic and intimate. The canals move quietly beneath soft winter skies, and Carnival season brings artistry and mystery to every piazza. Masks, velvet cloaks, candlelit dinners, and musicians echoing through narrow streets transform the city into something unforgettable.
+      </p>
+      <div class="guide-image">
+        <img src="carnivalcelebration2.jpg" alt="Venice canal during Carnival season">
+      </div>
+      <p>
+        While summer brings heavy crowds, February offers something slower and more intentional. You can wander freely, linger in cafés, and truly absorb the beauty of the architecture without feeling rushed.
+      </p>
+    </div>
 
-  <p>
-    Venice in February feels cinematic and intimate. The canals move quietly beneath soft winter skies, and Carnival season brings artistry and mystery to every piazza. Masks, velvet cloaks, candlelit dinners, and musicians echoing through narrow streets transform the city into something unforgettable.
-  </p>
+    <div class="section-card">
+      <h2>What Is Carnival in Venice?</h2>
+      <p>
+        Venice Carnival dates back to the 12th century and is known for elaborate masks and ornate costumes. Historically, masks allowed Venetians to celebrate freely across social classes. Today, Carnival includes public performances, parades, artistic displays, and elegant masquerade balls.
+      </p>
+      <div class="guide-image">
+        <img src="masks.jpg" alt="Traditional Venetian Carnival masks">
+      </div>
+    </div>
 
-  <!-- IMAGE PLACEHOLDER 1 -->
-  <div class="guide-image">
-    <img src="carnivalcelebration2.jpg" alt="Venice canal during Carnival season">
-  </div>
+    <div class="section-card">
+      <h2>Why Visit Venice in February?</h2>
+      <ul>
+        <li>🎭 Immersive cultural experience during Carnival</li>
+        <li>📸 Fewer tourists than peak summer season</li>
+        <li>☕ Cozy cafés and slower mornings</li>
+        <li>🛶 Romantic gondola rides through peaceful canals</li>
+        <li>🌫️ Moody winter atmosphere perfect for photography</li>
+      </ul>
+      <div class="guide-image">
+        <img src="st.square.PNG" alt="St Mark's Square during Carnival">
+      </div>
+    </div>
 
-  <p>
-    While summer brings heavy crowds, February offers something slower and more intentional. You can wander freely, linger in cafés, and truly absorb the beauty of the architecture without feeling rushed.
-  </p>
-</div>
+    <div class="section-card">
+      <h2>A 6-Day Itinerary for Two</h2>
+      <div class="itinerary-card">
+        <h3>Day 1: Arrival & Evening Canal Walk (Feb 23)</h3>
+        <p>Arrive in Venice and settle into your cozy canal side room. Take a gentle evening stroll along the quiet canals, and enjoy a candlelit dinner at a local trattoria while soaking in the soft winter light.</p>
 
-<div class="section-card">
-  <h2>What Is Carnival in Venice?</h2>
+        <h3>Day 2: St. Mark’s Square & Carnival Events (Feb 24)</h3>
+        <p>Visit iconic landmarks like St. Mark’s Basilica and the Doge’s Palace. Immerse yourselves in Carnival festivities—masked parades, street performers, and artisan stalls. Cap the day with a romantic sunset gondola ride.</p>
 
-  <p>
-    Venice Carnival dates back to the 12th century and is known for elaborate masks and ornate costumes. Historically, masks allowed Venetians to celebrate freely across social classes. Today, Carnival includes public performances, parades, artistic displays, and elegant masquerade balls.
-  </p>
+        <h3>Day 3: Murano & Burano Islands (Feb 25)</h3>
+        <p>Hop on a vaporetto to explore Murano, famous for its glassblowing studios, and Burano, known for its colorful streets and delicate lace. Enjoy a leisurely seafood lunch along the canals.</p>
 
-  <!-- IMAGE PLACEHOLDER 2 -->
-  <div class="guide-image">
-    <img src="masks.jpg" alt="Traditional Venetian Carnival masks">
-  </div>
-</div>
+        <h3>Day 4: Hidden Corners & Coffee Rituals (Feb 26)</h3>
+        <p>Wander quieter neighborhoods like Cannaregio and Dorsoduro. Discover hidden cafés, artisan shops, and peaceful canals perfect for photography or reflective moments. End the day with a warm evening aperitivo by the water.</p>
 
-<div class="section-card">
-  <h2>Why Visit Venice in February?</h2>
+        <h3>Day 5: Carnival Grand Ball & Nighttime Magic (Feb 27)</h3>
+        <p>Attend an elegant masquerade ball or a live evening concert (advance booking recommended). Optional nighttime gondola ride or stroll along the illuminated canals to experience Venice’s mystical atmosphere after dark.</p>
 
-  <ul>
-    <li>🎭 Immersive cultural experience during Carnival</li>
-    <li>📸 Fewer tourists than peak summer season</li>
-    <li>☕ Cozy cafés and slower mornings</li>
-    <li>🛶 Romantic gondola rides through peaceful canals</li>
-    <li>🌫️ Moody winter atmosphere perfect for photography</li>
-  </ul>
+        <h3>Day 6: Farewell & Leisurely Departure (Feb 28)</h3>
+        <p>Savor one last cappuccino by the canal, pick up souvenirs from local markets, and take a slow, scenic walk to your transport leaving Venice with lasting memories of romance and magic.</p>
+      </div>
+    </div>
 
-  <!-- ST. MARK'S SQUARE IMAGE -->
-  <div class="guide-image">
-    <img src="st.square.PNG" alt="St Mark's Square during Carnival">
-  </div>
-</div>
+    <!-- ===== ROOM FLYER ===== -->
+    <div class="room-flyer-card">
+      <img src="venice.jpg" alt="Cozy Canal-Side Room in Venice" class="flyer-image">
+      <div class="flyer-content">
+        <h3>Stay in a Cozy Room</h3>
+        <p>Breakfast included, steps from Carnival festivities. Terrace & jacuzzi for the perfect winter getaway.</p>
+      </div>
+    </div>
 
-<div class="section-card">
-  <h2>A 6-Day Itinerary for Two</h2>
+    <!-- ===== READY TO PLAN CTA ===== -->
+    <div class="planning-section">
+      <h2>Ready to Experience Venice?</h2>
+      <p>
+        If this kind of slow European escape speaks to you, RaeRoutes can design a seamless and intentional experience tailored to your travel style.
+      </p>
+      <a href="https://form.jotform.com/260254006996056" target="_blank" class="button">
+        Plan My Venice Experience
+      </a>
+    </div>
 
-  <div class="itinerary-card">
+  </div> <!-- End collapsible content -->
 
-    <h3>Day 1: Arrival & Evening Canal Walk (Feb 23)</h3>
-    <p>Arrive in Venice and settle into your cozy canal side room. Take a gentle evening stroll along the quiet canals, and enjoy a candlelit dinner at a local trattoria while soaking in the soft winter light.</p>
+</div> <!-- End travel wrapper -->
 
-    <h3>Day 2: St. Mark’s Square & Carnival Events (Feb 24)</h3>
-    <p>Visit iconic landmarks like St. Mark’s Basilica and the Doge’s Palace. Immerse yourselves in Carnival festivities—masked parades, street performers, and artisan stalls. Cap the day with a romantic sunset gondola ride.</p>
-
-    <h3>Day 3: Murano & Burano Islands (Feb 25)</h3>
-    <p>Hop on a vaporetto to explore Murano, famous for its glassblowing studios, and Burano, known for its colorful streets and delicate lace. Enjoy a leisurely seafood lunch along the canals.</p>
-
-    <h3>Day 4: Hidden Corners & Coffee Rituals (Feb 26)</h3>
-    <p>Wander quieter neighborhoods like Cannaregio and Dorsoduro. Discover hidden cafés, artisan shops, and peaceful canals perfect for photography or reflective moments. End the day with a warm evening aperitivo by the water.</p>
-
-    <h3>Day 5: Carnival Grand Ball & Nighttime Magic (Feb 27)</h3>
-    <p>Attend an elegant masquerade ball or a live evening concert (advance booking recommended). Optional nighttime gondola ride or stroll along the illuminated canals to experience Venice’s mystical atmosphere after dark.</p>
-
-    <h3>Day 6: Farewell & Leisurely Departure (Feb 28)</h3>
-    <p>Savor one last cappuccino by the canal, pick up souvenirs from local markets, and take a slow, scenic walk to your transport leaving Venice with lasting memories of romance and magic.</p>
-
-  </div>
-</div>
-
-
-<!-- ===== ROOM FLYER ===== -->
-<div class="room-flyer-card">
-  <img src="venice.jpg" alt="Cozy Canal-Side Room in Venice" class="flyer-image">
-  <div class="flyer-content">
-    <h3>Stay in a Cozy Room</h3>
-    <p>Breakfast included, steps from Carnival festivities. Terrace & jacuzzi for the perfect winter getaway.</p>
-    <!-- Button optional here, can hide since main CTA is below -->
-  </div>
-</div>
-
-<!-- ===== READY TO PLAN CTA ===== -->
-<div class="planning-section">
-  <h2>Ready to Experience Venice?</h2>
-  <p>
-    If this kind of slow European escape speaks to you, RaeRoutes can design a seamless and intentional experience tailored to your travel style.
-  </p>
-  <a href="https://form.jotform.com/260254006996056" target="_blank" class="button">
-    Plan My Venice Experience
-  </a>
-</div>
-
-
-</div>
+<script>
+// Collapsible toggle
+const collapsibles = document.querySelectorAll(".collapsible-btn");
+collapsibles.forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.classList.toggle("active");
+    const content = btn.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+});
+</script>
 
 </body>
 </html>
