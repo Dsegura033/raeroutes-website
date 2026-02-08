@@ -11,7 +11,7 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: linear-gradient(135deg, #24183a, #34235a, #4b3578);
+  background: linear-gradient(135deg, #35225a, #4b3578, #5c4899); /* lighter purples */
   color: #efeaff;
   line-height: 1.8;
 }
@@ -35,19 +35,19 @@ body {
 }
 
 @keyframes softGlow {
-  0% { filter: drop-shadow(0 0 6px rgba(170,140,255,0.4)); }
-  50% { filter: drop-shadow(0 0 22px rgba(170,140,255,0.9)); }
-  100% { filter: drop-shadow(0 0 6px rgba(170,140,255,0.4)); }
+  0% { filter: drop-shadow(0 0 6px rgba(200,170,255,0.5)); }
+  50% { filter: drop-shadow(0 0 22px rgba(220,190,255,1)); }
+  100% { filter: drop-shadow(0 0 6px rgba(200,170,255,0.5)); }
 }
 
 .blog-header h1 {
   font-size: 32px;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: #f3eaff; /* slightly lighter white */
 }
 
 .blog-subtitle {
-  color: #cfc3ff;
+  color: #d9ccff; /* lighter purple */
   font-size: 16px;
   max-width: 600px;
   margin: 0 auto;
@@ -55,29 +55,29 @@ body {
 
 /* ===== SECTION CARD ===== */
 .section-card {
-  background: linear-gradient(145deg, #2f1f4f, #3e2a66);
+  background: linear-gradient(145deg, #483277, #5c48a0); /* lighter gradient */
   padding: 50px;
   border-radius: 30px;
   margin-bottom: 70px;
-  box-shadow: 0 0 45px rgba(120,90,200,0.3);
-  border: 1px solid rgba(170,140,255,0.2);
+  box-shadow: 0 0 45px rgba(180,140,255,0.3);
+  border: 1px solid rgba(200,170,255,0.2);
 }
 
 h2 {
   margin-top: 0;
   font-size: 26px;
-  color: #ffffff;
+  color: #f3eaff; /* slightly lighter */
 }
 
 h3 {
   margin-top: 30px;
   font-size: 18px;
-  color: #d9d0ff;
+  color: #e0d4ff; /* lighter purple for subheadings */
 }
 
 p {
   margin-bottom: 18px;
-  color: #ebe6ff;
+  color: #efeaff;
 }
 
 ul {
@@ -97,33 +97,33 @@ li {
 .guide-image img {
   width: 100%;
   border-radius: 22px;
-  box-shadow: 0 0 40px rgba(170,140,255,0.6);
-  border: 1px solid rgba(170,140,255,0.3);
+  box-shadow: 0 0 40px rgba(200,170,255,0.6);
+  border: 1px solid rgba(200,170,255,0.3);
 }
 
 /* ===== ITINERARY CARD ===== */
 .itinerary-card {
-  background: linear-gradient(145deg, #3c2a63, #4d387c);
+  background: linear-gradient(145deg, #5a48a0, #6c5bbf); /* lighter gradient */
   padding: 40px;
   border-radius: 25px;
   margin-top: 30px;
-  box-shadow: 0 0 35px rgba(150,120,255,0.35);
+  box-shadow: 0 0 35px rgba(180,140,255,0.35);
 }
 
 /* ===== CTA ===== */
 .planning-section {
   text-align: center;
-  background: linear-gradient(145deg, #4c3a7c, #614bb0);
+  background: linear-gradient(145deg, #6b59bf, #7f6fd9); /* lighter, richer gradient */
   padding: 60px 40px;
   border-radius: 40px;
-  box-shadow: 0 0 50px rgba(170,140,255,0.6);
+  box-shadow: 0 0 50px rgba(200,170,255,0.6);
 }
 
 .button {
   display: inline-block;
   margin-top: 25px;
   padding: 16px 40px;
-  background: linear-gradient(135deg, #a88cff, #d0c2ff);
+  background: linear-gradient(135deg, #bda8ff, #e0d4ff); /* lighter gradient for button */
   color: #24183a;
   font-weight: bold;
   text-decoration: none;
@@ -133,7 +133,7 @@ li {
 
 .button:hover {
   transform: scale(1.06);
-  box-shadow: 0 0 30px rgba(200,180,255,0.9);
+  box-shadow: 0 0 30px rgba(220,190,255,0.9);
 }
 
 @media (max-width: 600px) {
@@ -147,6 +147,7 @@ li {
 }
 
 </style>
+
 </head>
 
 <body>
@@ -155,7 +156,7 @@ li {
 
   <!-- ===== HEADER ===== -->
   <header class="blog-header">
-    <img src="logo.png" alt="RaeRoutes Logo" class="blog-logo">
+    <img src="IMG_0224.PNG" alt="RaeRoutes Logo" class="blog-logo">
     <h1>Travel Guides & City Spotlights</h1>
     <p class="blog-subtitle">
       Thoughtful destinations. Slow itineraries. Intentional escapes.
