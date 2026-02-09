@@ -724,14 +724,19 @@ html {
   z-index: 1;
 }
 
-/* WEEKLY TRAVEL PACKAGES */
+/* ===============================
+   WEEKLY TRAVEL PACKAGES
+================================ */
+
 .weekly-packages {
   padding: 60px 20px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(200, 190, 240, 0.35), rgba(180, 160, 220, 0.35));
+  background: linear-gradient(
+    135deg,
+    rgba(200, 190, 240, 0.35),
+    rgba(180, 160, 220, 0.35)
+  );
   border-radius: 24px;
-  margin: 0;
-  color: #fff;
 }
 
 .weekly-packages h2 {
@@ -740,87 +745,70 @@ html {
   color: #4c3a84;
 }
 
-.weekly-packages p {
+.weekly-packages > p {
   margin-bottom: 40px;
   font-size: 1rem;
   color: #000;
 }
 
+/* GRID */
 .packages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px; /* more space between cards on desktop */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
 }
 
 /* CARD */
 .package-card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  background: #000; /* fallback behind image */
 }
 
+/* IMAGE */
 .package-card img {
   width: 100%;
-  display: block;
-  height: 280px; /* desktop image height */
+  height: 260px;
   object-fit: cover;
+  display: block;
 }
 
-/* TEXT OVERLAY */
+/* TEXT AREA — DESKTOP */
 .package-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  min-height: 45%;          /* 🔥 THIS is the key */
-  padding: 30px 28px;
-  display: flex;            /* 🔥 vertical spacing control */
-  flex-direction: column;
-  justify-content: flex-start;
+  position: relative;
+  padding: 28px;
   text-align: left;
-  z-index: 2;
-}
-    
-.package-overlay::before {
-  content: "";
-  position: absolute;
-  inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.75),
-    rgba(0,0,0,0.35)
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.65)
   );
-  z-index: 1;
-  border-radius: 0 0 16px 16px;
-}
-    
-.package-overlay h3 {
-  position: relative;
-  z-index: 2;
   color: #fff;
-  font-size: 1.35rem;
-  margin-bottom: 12px;
-  line-height: 1.35;
 }
 
+/* TITLE */
+.package-overlay h3 {
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* DESCRIPTION */
 .package-overlay p {
-  position: relative;
-  z-index: 2;
-  color: #fff;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 18px;
 }
 
-
+/* BUTTONS */
 .package-buttons {
-  margin-top: auto; /* 🔥 pushes buttons down */
   display: flex;
   gap: 12px;
-  position: relative;
-  z-index: 2;
+  margin-top: 10px;
 }
-
 
 .package-buttons .button {
   padding: 8px 14px;
@@ -829,15 +817,18 @@ html {
   text-decoration: none;
   color: #fff;
   background: #b5a0ff;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 .package-buttons .button:hover {
   background: #8f77e2;
 }
 
-/* MOBILE — unchanged */
+/* ===============================
+   MOBILE: OVERLAY ON IMAGE
+================================ */
 @media (max-width: 768px) {
+
   .packages-grid {
     display: flex;
     overflow-x: auto;
@@ -847,11 +838,23 @@ html {
 
   .package-card {
     min-width: 250px;
-    flex: 0 0 auto;
+    position: relative;
+  }
+
+  .package-card img {
+    height: 240px;
   }
 
   .package-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     padding: 14px;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.35)
+    );
   }
 
   .package-overlay h3 {
@@ -861,6 +864,7 @@ html {
   .package-overlay p {
     font-size: 0.8rem;
     line-height: 1.3;
+    margin-bottom: 10px;
   }
 
   .package-buttons .button {
@@ -868,6 +872,7 @@ html {
     padding: 5px 10px;
   }
 }
+
 
 
 
