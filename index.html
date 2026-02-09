@@ -763,7 +763,7 @@ html {
 .package-card img {
   width: 100%;
   display: block;
-  height: 260px;
+  height: 280px; /* desktop image height */
   object-fit: cover;
 }
 
@@ -772,53 +772,55 @@ html {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 28px; /* 👈 more breathing room */
+  min-height: 45%;          /* 🔥 THIS is the key */
+  padding: 30px 28px;
+  display: flex;            /* 🔥 vertical spacing control */
+  flex-direction: column;
+  justify-content: flex-start;
   text-align: left;
   z-index: 2;
 }
-
-/* Background behind text */
+    
 .package-overlay::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.35)
+  );
   z-index: 1;
   border-radius: 0 0 16px 16px;
 }
-
-/* TITLE */
+    
 .package-overlay h3 {
   position: relative;
   z-index: 2;
   color: #fff;
-  font-size: 1.3rem;
-  margin-bottom: 10px; /* 👈 space under title */
-  line-height: 1.3;
-  max-width: 90%;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+  line-height: 1.35;
 }
 
-/* DESCRIPTION */
 .package-overlay p {
   position: relative;
   z-index: 2;
   color: #fff;
   font-size: 1rem;
-  line-height: 1.55; /* 👈 BIG fix */
-  margin-bottom: 16px;
-  max-width: 92%;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
 
-/* BUTTONS */
+
 .package-buttons {
+  margin-top: auto; /* 🔥 pushes buttons down */
   display: flex;
   gap: 12px;
   position: relative;
   z-index: 2;
-  margin-top: 10px;
 }
+
 
 .package-buttons .button {
   padding: 8px 14px;
