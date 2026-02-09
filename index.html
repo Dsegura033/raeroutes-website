@@ -724,7 +724,7 @@ html {
   z-index: 1;
 }
 
- /* WEEKLY TRAVEL PACKAGES */
+/* WEEKLY TRAVEL PACKAGES */
 .weekly-packages {
   padding: 60px 20px;
   text-align: center;
@@ -737,21 +737,22 @@ html {
 .weekly-packages h2 {
   font-size: 2rem;
   margin-bottom: 10px;
- color: #4c3a84;
+  color: #4c3a84;
 }
 
 .weekly-packages p {
   margin-bottom: 40px;
   font-size: 1rem;
-  color: #000; /* black subtext for readability */
+  color: #000;
 }
 
 .packages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  gap: 40px; /* more space between cards on desktop */
 }
 
+/* CARD */
 .package-card {
   position: relative;
   border-radius: 16px;
@@ -762,63 +763,67 @@ html {
 .package-card img {
   width: 100%;
   display: block;
-  height: 250px;
+  height: 260px;
   object-fit: cover;
 }
 
-/* Overlay for text only */
+/* TEXT OVERLAY */
 .package-overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 20px;
+  padding: 28px; /* 👈 more breathing room */
   text-align: left;
-  z-index: 2; /* text on top */
+  z-index: 2;
 }
 
-/* Black semi-transparent box behind text */
+/* Background behind text */
 .package-overlay::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.45); /* semi-transparent black behind text */
-  z-index: 1; /* behind text */
-  border-radius: 0 0 16px 16px; /* matches card border radius */
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+  border-radius: 0 0 16px 16px;
 }
 
-/* Package name (white for readability) */
+/* TITLE */
 .package-overlay h3 {
   position: relative;
   z-index: 2;
   color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: 5px;
+  font-size: 1.3rem;
+  margin-bottom: 10px; /* 👈 space under title */
+  line-height: 1.3;
+  max-width: 90%;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
-/* Package description text */
+/* DESCRIPTION */
 .package-overlay p {
   position: relative;
   z-index: 2;
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.55; /* 👈 BIG fix */
+  margin-bottom: 16px;
+  max-width: 92%;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
 }
 
+/* BUTTONS */
 .package-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   position: relative;
   z-index: 2;
+  margin-top: 10px;
 }
 
 .package-buttons .button {
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 10px;
   text-decoration: none;
   color: #fff;
   background: #b5a0ff;
@@ -829,7 +834,7 @@ html {
   background: #8f77e2;
 }
 
-/* MOBILE: horizontal scroll */
+/* MOBILE — unchanged */
 @media (max-width: 768px) {
   .packages-grid {
     display: flex;
@@ -843,7 +848,6 @@ html {
     flex: 0 0 auto;
   }
 
-  /* 🔽 Mobile text sizing fixes */
   .package-overlay {
     padding: 14px;
   }
