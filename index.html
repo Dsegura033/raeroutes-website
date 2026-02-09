@@ -724,139 +724,83 @@ html {
   z-index: 1;
 }
 
-/* WEEKLY TRAVEL PACKAGES */
-.weekly-packages {
-  padding: 60px 20px;
-  text-align: center;
-  background: linear-gradient(
-    135deg,
-    rgba(200, 190, 240, 0.35),
-    rgba(180, 160, 220, 0.35)
-  );
-  border-radius: 24px;
-  margin: 0;
-}
-
-.weekly-packages h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #4c3a84;
-}
-
-.weekly-packages p {
-  margin-bottom: 40px;
-  font-size: 1rem;
-  color: #000;
-}
-
-/* GRID */
-.packages-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
 /* CARD */
 .package-card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-/* IMAGE */
+/* ALWAYS FULL WIDTH IMAGE */
 .package-card img {
   width: 100%;
-  height: 250px;
+  height: auto;
   object-fit: cover;
-  display: block;
 }
 
-/* TEXT OVERLAY */
+/* TEXT BLOCK BELOW IMAGE */
 .package-overlay {
-  position: absolute;
-  bottom: 0;
+  position: relative; /* no more absolute */
   width: 100%;
-  padding: 20px;
+  background: rgba(0,0,0,0.65);
+  padding: 24px;
   text-align: left;
-  z-index: 2;
-}
-
-/* BACKGROUND BEHIND TEXT */
-.package-overlay::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
-  z-index: 1;
+  color: #fff;
   border-radius: 0 0 16px 16px;
 }
 
-/* TITLE */
+/* TITLE + BODY */
 .package-overlay h3 {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 
-/* DESCRIPTION */
 .package-overlay p {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
 /* BUTTONS */
 .package-buttons {
   display: flex;
   gap: 10px;
-  position: relative;
-  z-index: 2;
-  margin-top: 10px;
 }
 
 .package-buttons .button {
-  padding: 6px 12px;
-  font-size: 0.85rem;
+  padding: 8px 14px;
+  font-size: 0.9rem;
   border-radius: 8px;
-  text-decoration: none;
-  color: #fff;
   background: #b5a0ff;
-  transition: background 0.3s;
+  color: #fff;
+  text-decoration: none;
 }
 
 .package-buttons .button:hover {
   background: #8f77e2;
 }
 
-/* MOBILE */
+/* MOBILE STAYS OVER IMAGE */
 @media (max-width: 768px) {
-  .packages-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding-bottom: 10px;
-  }
-
   .package-card {
     min-width: 250px;
     flex: 0 0 auto;
   }
 
   .package-overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.45);
     padding: 14px;
+    border-radius: 0;
   }
 
   .package-overlay h3 {
     font-size: 1rem;
   }
-
   .package-overlay p {
     font-size: 0.8rem;
     line-height: 1.3;
@@ -867,9 +811,6 @@ html {
     padding: 5px 10px;
   }
 }
-
-
-
 
 
 /* PLAN YOUR TRIP SECTION  */
