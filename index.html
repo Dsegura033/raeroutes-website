@@ -1275,6 +1275,100 @@ html {
   }
 }
 
+    
+    /* ===============================
+   BUSINESS TRAVEL SECTION
+================================ */
+.business-travel {
+  padding: 80px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(190, 180, 240, 0.35),
+    rgba(170, 155, 220, 0.35)
+  );
+  border-radius: 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.business-travel h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.3rem;
+  color: #4b3c9f;
+  margin-bottom: 10px;
+}
+
+.business-subtext {
+  max-width: 650px;
+  margin: 0 auto 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+/* Cards */
+.business-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+.business-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.business-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.9),
+    rgba(205,180,255,0.25)
+  );
+  border-radius: 20px;
+  padding: 28px 22px;
+  min-width: 240px;
+  max-width: 300px;
+  box-shadow: 0 6px 18px rgba(150, 170, 255, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.business-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(150, 170, 255, 0.35);
+}
+
+.business-card .emoji {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.business-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: #3e2f6c;
+  margin-bottom: 8px;
+}
+
+.business-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #2b2b2b;
+  line-height: 1.45;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .business-cards {
+    justify-content: flex-start;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+
 /* ===== Testimonials ===== */
 .testimonials {
   padding: 90px 25px 60px;
@@ -1859,6 +1953,7 @@ html {
       <a href="#planner">Trip Planner</a>
       <a href="#about">About</a>
       <a href="#services">Services & Gifting</a>
+      <a href="#business">Business Travel</a>
       <a href="#contact">Contact</a>
   </nav>
 
@@ -2241,6 +2336,52 @@ html {
         </div>
     </div>
 </section>
+
+  <!-- Business Travel Section -->
+  <section id="business" class="business-travel">
+  <div class="container">
+    <h2>Business Travel Support</h2>
+    <p class="business-subtext">
+      Thoughtful travel planning for professionals, teams, and growing businesses
+      without the overwhelm.
+    </p>
+
+    <div class="business-cards">
+      <div class="business-card">
+        <span class="emoji">✈️</span>
+        <h3>Flights & Scheduling</h3>
+        <p>Domestic, international, and multi city itineraries planned with precision.</p>
+      </div>
+
+      <div class="business-card">
+        <span class="emoji">🏨</span>
+        <h3>Hotel Coordination</h3>
+        <p>Comfortable, convenient stays aligned with your meetings and schedule.</p>
+      </div>
+
+      <div class="business-card">
+        <span class="emoji">👥</span>
+        <h3>Team & Group Travel</h3>
+        <p>Conference trips, retreats, and coordinated bookings made simple.</p>
+      </div>
+
+      <div class="business-card">
+        <span class="emoji">🔄</span>
+        <h3>Ongoing Support</h3>
+        <p>Help with changes, rebooking, and travel hiccups when they happen.</p>
+      </div>
+    </div>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpuIWkuV-4XRlQFMDe6cXIxVCBLlD_h_e-DGcLu4arl2TQeg/viewform?usp=header"
+   class="button plan-btn"
+   target="_blank"
+   rel="noopener noreferrer">
+  Request Business Travel Help
+</a>
+
+  </div>
+</section>
+
   
 <!-- ===================== TESTIMONIALS ===================== -->
 <section class="testimonials">
