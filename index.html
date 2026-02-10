@@ -901,41 +901,38 @@ html {
 
 
 
-/* PLAN YOUR TRIP SECTION  */
+/* ===== PLAN YOUR TRIP SECTION ===== */
 .trip-process {
-  margin: 0px auto;
+  margin: 0 auto;
   padding: 60px 20px;
-  width: 100%;       /* full width of viewport */
-  max-width: 1400px; /* optional: lets it expand on large screens */
+  width: 100%;
+  max-width: 1400px;
   background: linear-gradient(135deg, rgba(200, 190, 240, 0.35), rgba(180, 160, 220, 0.35));
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  box-sizing: border-box; /* ensures padding doesn't cause extra space */
+  box-sizing: border-box;
 }
 
 .trip-process h2 {
-  color: #ffffff; /* Plan Your Trip text = white */
+  color: #ffffff;
   text-shadow: 0 2px 12px rgba(123, 93, 255, 0.25);
 }
 
-/* ===== DESKTOP DEFAULT ===== */
-
+/* ===== UNIVERSAL STACKED LAYOUT FOR DESKTOP ===== */
 .trip-two-columns {
   display: flex;
-  gap: 40px;
-  align-items: flex-start;   /* align steps to top of video */
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-/* Video column — reverted to original sizing */
-.trip-video-column {
-  flex: 1 1 60%;   /* flexible: grows and shrinks, takes ~60% of width */
-  min-width: 400px; /* prevents video from getting too small */
-  height: 500px;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
 }
 
-/* Video container */
+.trip-video-column {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
 .video-container {
   width: 100%;
   height: 100%;
@@ -957,7 +954,6 @@ html {
   z-index: 1;
 }
 
-/* Text overlay */
 .trip-intro-overlay {
   position: absolute;
   top: 50%;
@@ -966,7 +962,7 @@ html {
   z-index: 2;
   text-align: center;
   color: #fff;
-  padding: 20px;
+  padding: 15px;
   background: rgba(0,0,0,0.35);
   border-radius: 20px;
   max-width: 90%;
@@ -984,19 +980,22 @@ html {
 
 /* Steps column */
 .trip-steps-column {
-  flex: 1 1 35%;   /* flexible: grows and shrinks, ~35% width */
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-width: 300px;
+  align-items: center;
+  width: 100%;
 }
 
-/* Steps grid (desktop) */
+/* Steps grid: 2x2 for all screens */
 .trip-columns {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  justify-items: center; /* prevents crowded / top-heavy feel */
+  gap: 16px;
+  justify-items: center;
+  max-width: 320px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .trip-step {
@@ -1004,9 +1003,11 @@ html {
   backdrop-filter: blur(6px);
   color: #1f1f2e;
   border-radius: 18px;
-  padding: 18px 22px;
+  padding: 14px 16px;
   text-align: center;
   box-shadow: 0 0 25px rgba(123,93,255,0.2);
+  width: 100%;
+  max-width: 140px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -1032,22 +1033,6 @@ html {
   background: #684ae0;
   transform: translateY(-3px);
   box-shadow: 0 0 30px rgba(123,93,255,0.5);
-}
-    /* ===== Desktop horizontal scroll for Plan Your Trip steps ===== */
-@media (min-width: 769px) and (max-width: 1400px) {
-  .trip-columns {
-    display: flex;
-    overflow-x: auto;
-    gap: 24px;
-    padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
-  }
-
-  .trip-step {
-    flex: 0 0 auto;           /* prevent shrinking */
-    scroll-snap-align: start;
-    min-width: 180px;          /* make cards bigger than current cramped view */
-  }
 }
 
 /* ===== MOBILE ===== */
@@ -1090,37 +1075,6 @@ html {
   .trip-intro-overlay {
     width: 90%;
     padding: 15px;
-  }
-}
-
-
-
-/* ===== PLAN YOUR TRIP: ALIGN STEPS CLOSER TO VIDEO ===== */
-@media (min-width: 1025px) {
-  .trip-two-columns {
-    justify-content: flex-start;
-    gap: 30px;
-  }
-
-  .trip-steps-column {
-    flex: 0 0 auto;
-    max-width: 400px;
-  }
-}
-   /* ===== DESKTOP: GAP BETWEEN VIDEO & TEXT ===== */
-@media (min-width: 1025px) {
-  .trip-two-columns {
-    justify-content: flex-start; /* keeps columns left-aligned */
-    gap: 60px;                   /* increased gap between video & steps */
-  }
-
-  .trip-video-column {
-    max-width: 700px;
-  }
-
-  .trip-steps-column {
-    flex: 0 0 auto;
-    max-width: 400px;
   }
 }
 
