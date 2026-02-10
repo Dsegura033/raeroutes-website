@@ -848,6 +848,23 @@ html {
 .package-buttons .button:hover {
   background: #8f77e2;
 }
+    /* ===== Desktop horizontal scroll for Weekly Travel Packages ===== */
+@media (min-width: 769px) {
+  .packages-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding-bottom: 10px; /* space below cards */
+    scroll-snap-type: x mandatory; /* smooth snap scrolling */
+  }
+
+  .package-card {
+    flex: 0 0 auto; /* prevent shrinking */
+    min-width: 300px; /* make cards bigger than mobile */
+    scroll-snap-align: start;
+  }
+}
+
 
 /* MOBILE: horizontal scroll */
 @media (max-width: 768px) {
