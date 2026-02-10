@@ -929,8 +929,9 @@ html {
 
 .trip-video-column {
   width: 100%;
+  max-width: 600px;      /* cap desktop video width */
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 9;   /* keep same ratio */
 }
 
 .video-container {
@@ -939,6 +940,7 @@ html {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
+  max-height: 400px;      /* optional: prevent it from getting too tall */
 }
 
 .planner-video {
@@ -2515,7 +2517,7 @@ html {
         <li><button data-images="policyupdated.PNG">Policies</button></li>
         <li><button data-images="whattoexpect.jpg">What to Expect When You Book</button></li>
         <li><button data-images="importantnotice.jpg,updated2.png">Safety & Important Notice</button></li>
-         <li><button data-images="businesstravel.png,updated2.png">Business Travel Importnat Notice</button></li>
+         <li><button data-images="businesstravel.png,updated2.png">Business Travel Important Notice</button></li>
       </ul>
     </div>
 
