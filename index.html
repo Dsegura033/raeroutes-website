@@ -692,6 +692,26 @@ html {
   z-index: 1001;
 }
 
+    /* ===== COLLECTIONS HORIZONTAL SCROLL (DESKTOP + MOBILE) ===== */
+.collections {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 20px 16px 32px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for clean look */
+.collections::-webkit-scrollbar {
+  display: none;
+}
+
+.collections {
+  scrollbar-width: none; /* Firefox */
+}
+
 /* ===== MOBILE ===== */
 @media (max-width: 1024px) {
   .collection-card img {
