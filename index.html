@@ -1033,6 +1033,23 @@ html {
   transform: translateY(-3px);
   box-shadow: 0 0 30px rgba(123,93,255,0.5);
 }
+    /* ===== Desktop horizontal scroll for Plan Your Trip steps ===== */
+@media (min-width: 769px) and (max-width: 1400px) {
+  .trip-columns {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .trip-step {
+    flex: 0 0 auto;           /* prevent shrinking */
+    scroll-snap-align: start;
+    min-width: 180px;          /* make cards bigger than current cramped view */
+  }
+}
+
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .trip-two-columns {
