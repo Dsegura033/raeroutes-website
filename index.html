@@ -901,204 +901,116 @@ html {
 
 
 
-/* ===== PLAN YOUR TRIP SECTION ===== */
-.trip-process {
-  margin: 0 auto;
-  padding: 24px 20px 40px;
-  width: 100%;
-  max-width: 1400px;
-  background: linear-gradient(135deg, rgba(200, 190, 240, 0.35), rgba(180, 160, 220, 0.35));
+/* ===== HOT DEALS SECTION ===== */
+.hot-deals {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f5f0ff, #e3d7ff);
   border-radius: 20px;
-  position: relative;
+  text-align: center;
   overflow: hidden;
-  box-sizing: border-box;
 }
 
-.trip-process h2 {
-  color: #ffffff;
-  text-shadow: 0 2px 12px rgba(123, 93, 255, 0.25);
+.hot-deals h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 12px;
 }
 
-/* ===== UNIVERSAL STACKED LAYOUT FOR DESKTOP ===== */
-.trip-two-columns {
+.hot-deals p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+/* Horizontal Scroll Container */
+.hot-deals-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scroll-behavior: smooth;
+}
+
+.hot-deals-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Deal Cards */
+.hot-deal-card {
+  flex: 0 0 280px; /* fixed width cards */
+  background: linear-gradient(135deg, rgba(181,160,255,0.3), rgba(217,200,255,0.3));
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
   display: flex;
   flex-direction: column;
-  gap: 24px;
   align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.trip-video-column {
-  width: 100%;
-  max-width: 600px;      /* cap desktop video width */
-  height: auto;
-  aspect-ratio: 16 / 9;   /* keep same ratio */
+.hot-deal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
 }
 
-.video-container {
+/* Deal Image */
+.deal-image {
   width: 100%;
-  height: 100%;
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  max-height: 400px;      /* optional: prevent it from getting too tall */
-}
-
-.planner-video {
-  width: 100%;
-  height: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
   object-fit: cover;
 }
 
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.25);
-  z-index: 1;
-}
-
-.trip-intro-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  text-align: center;
+/* Buttons */
+.hot-deal-card .button {
+  margin-top: 12px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: #8e78e5;
   color: #fff;
-  padding: 15px;
-  background: rgba(0,0,0,0.35);
-  border-radius: 20px;
-  max-width: 90%;
-}
-
-.trip-intro-overlay h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.6rem;
-}
-
-.trip-intro-overlay p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-}
-
-/* Steps column */
-.trip-steps-column {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-  width: 100%;
-}
-
-/* Steps grid: 2x2 for all screens */
-.trip-columns {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  justify-items: center;
-  max-width: 320px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.trip-step {
-  background: rgba(123, 93, 255, 0.25);
-  backdrop-filter: blur(6px);
-  color: #1f1f2e;
-  border-radius: 18px;
-  padding: 14px 16px;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(123,93,255,0.2);
-  width: 100%;
-  max-width: 140px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.trip-step:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 40px rgba(123,93,255,0.35);
-}
-
-/* Button */
-.button.plan-btn {
-  background: #7b5dff;
-  color: #fff;
-  border-radius: 50px;
-  padding: 14px 36px;
   font-weight: 600;
   text-decoration: none;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(123,93,255,0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 6px 16px rgba(100,60,160,0.3);
+  transition: all 0.3s ease;
 }
 
-.button.plan-btn:hover {
-  background: #684ae0;
-  transform: translateY(-3px);
-  box-shadow: 0 0 30px rgba(123,93,255,0.5);
+.hot-deal-card .button:hover {
+  box-shadow: 0 10px 24px rgba(100,60,160,0.4);
+  transform: translateY(-2px);
 }
 
-/* ===== MOBILE ===== */
+/* Hidden Card */
+.hot-deal-hidden {
+  display: none; /* hide until ready */
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
-  .trip-two-columns {
-    flex-direction: column;
-    gap: 24px;
-    align-items: center;
+  .hot-deals-scroll {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
-  .trip-video-column {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    min-width: unset;
-  }
-
-  /* CLEAN 2x2 GRID ON MOBILE */
-  .trip-columns {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
-    gap: 16px;                             /* space between cards */
-    justify-content: center;
-    max-width: 320px;                       /* smaller for better fit */
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .trip-steps-column {
-    align-items: center;
-    width: 100%;
-  }
-
-  .trip-step {
-    width: 100%;
-    max-width: 140px;   /* smaller boxes for mobile */
-    padding: 14px 16px; /* slightly smaller padding */
-  }
-
-  .trip-intro-overlay {
-    width: 90%;
-    padding: 15px;
+  .hot-deal-card {
+    flex: 0 0 220px;
   }
 }
-
-
-
-
 
 /* ===============================
-   SERVICES & GIFTING SECTION
+   SERVICES & GIFTING / INTERACTIVE HUB
 ================================ */
 .services-gifting {
   padding: 80px 20px;
   background: linear-gradient(
     135deg,
-    rgba(200, 190, 240, 0.35), /* soft lavender top */
-    rgba(180, 160, 220, 0.35)  /* slightly deeper lavender bottom */
+    rgba(200, 190, 240, 0.35),
+    rgba(180, 160, 220, 0.35)
   );
   border-radius: 24px;
   text-align: center;
   color: #000;
-  position: relative; /* needed for glow and sparkles */
-  overflow: hidden;   /* contain sparkles */
+  position: relative;
+  overflow: hidden;
 }
 
 /* Heading */
@@ -1123,7 +1035,7 @@ html {
   inset: 0;
   background: radial-gradient(
     circle at top center,
-    rgba(255, 255, 255, 0.15), /* soft top glow */
+    rgba(255, 255, 255, 0.15),
     transparent 70%
   );
   pointer-events: none;
@@ -1167,11 +1079,14 @@ html {
 /* ===============================
    CARD CONTAINER
 ================================ */
+.service-scroll {
+  overflow-x: auto;
+}
+
 .service-cards {
   display: flex;
   gap: 24px;
-  justify-content: center; /* desktop center */
-  overflow-x: auto;
+  justify-content: center;
   padding-bottom: 16px;
 }
 
@@ -1179,9 +1094,11 @@ html {
   display: none;
 }
 
-/* CARD */
+/* ===============================
+   CARD STYLE
+================================ */
 .service-card {
-  position: relative; /* for card halo */
+  position: relative;
   background: linear-gradient(
     135deg,
     rgba(165, 195, 255, 0.35),
@@ -1191,12 +1108,10 @@ html {
   padding: 25px 20px;
   min-width: 240px;
   max-width: 300px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
-
   box-shadow: 0 6px 18px rgba(150, 170, 255, 0.25);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -1238,13 +1153,13 @@ html {
   line-height: 1.45;
 }
 
-/* Button */
+/* Buttons */
 .service-card .button {
   margin-top: 6px;
   padding: 12px 28px;
   border-radius: 999px;
-  background: rgba(110, 70, 180, 0.85); /* deeper purple button */
-  color: #fff; /* white text matches site buttons */
+  background: rgba(110, 70, 180, 0.85);
+  color: #fff;
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(100, 60, 160, 0.4);
@@ -1253,25 +1168,58 @@ html {
 .service-card .button:hover {
   box-shadow: 0 8px 20px rgba(100, 60, 160, 0.5);
 }
-    
-    /* ===============================
-   BUTTON GROUP (for multiple buttons in a card)
-================================ */
+
+/* Button Group */
 .button-group {
-  display: flex;        /* put buttons in a row */
-  gap: 12px;            /* space between buttons */
-  flex-wrap: wrap;      /* wrap buttons on smaller screens */
-  justify-content: center; /* center them inside the card */
-  margin-top: 8px;      /* optional spacing from text above */
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
 }
 
 .button-group .button {
-  flex: 1 1 auto;       /* optional: let buttons scale evenly */
-  min-width: 120px;     /* keep buttons from shrinking too small */
+  flex: 1 1 auto;
+  min-width: 120px;
 }
 
+/* ===============================
+   INTERACTIVE HUB SPECIFIC
+================================ */
+.traveler-card .options button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(110, 70, 180, 0.85);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-/*  MOBILE */
+.traveler-card .options button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(100, 60, 160, 0.4);
+}
+
+.traveler-card .result,
+.trip-generator-card .trip-result {
+  margin-top: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #2b2b2b;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.trip-generator-card .fun-note {
+  font-style: italic;
+  color: #6c5a99;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
   .service-cards {
     justify-content: flex-start;
@@ -1284,189 +1232,103 @@ html {
     max-width: 260px;
   }
 }
-
     
-    /* ===============================
-   BUSINESS TRAVEL SECTION
-================================ */
-.business-travel {
-  padding: 80px 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(190, 180, 240, 0.35),
-    rgba(170, 155, 220, 0.35)
-  );
-  border-radius: 24px;
+   /* ===== Brain Rot Section ===== */
+.brain-rot-series {
+  padding: 60px 20px;
+  background: #e5dbff; /* soft light purple */
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
 
-.business-travel h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.3rem;
-  color: #4b3c9f;
+.brain-rot-series h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #4a3f9e;
+  font-size: 36px;
   margin-bottom: 10px;
 }
 
-.business-subtext {
-  max-width: 650px;
-  margin: 0 auto 50px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem;
-  color: #333;
+.brain-rot-series p {
+  font-size: 18px;
+  color: #5a4baa;
+  margin-bottom: 40px;
 }
 
-/* Cards */
-.business-cards {
+/* ===== Cards Container (Horizontal Scroll) ===== */
+.brainrot-cards {
   display: flex;
-  gap: 24px;
-  justify-content: center;
+  gap: 30px;
   overflow-x: auto;
-  padding-bottom: 16px;
+  padding: 20px 10px 40px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
-.business-cards::-webkit-scrollbar {
-  display: none;
+.brainrot-cards::-webkit-scrollbar {
+  height: 8px;
 }
 
-.business-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.9),
-    rgba(205,180,255,0.25)
-  );
-  border-radius: 20px;
-  padding: 28px 22px;
-  min-width: 240px;
-  max-width: 300px;
-  box-shadow: 0 6px 18px rgba(150, 170, 255, 0.25);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.business-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 26px rgba(150, 170, 255, 0.35);
-}
-
-.business-card .emoji {
-  font-size: 2.2rem;
-  display: block;
-  margin-bottom: 12px;
-}
-
-.business-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem;
-  color: #3e2f6c;
-  margin-bottom: 8px;
-}
-
-.business-card p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  color: #2b2b2b;
-  line-height: 1.45;
-}
-    
-.business-disclaimer {
-  margin-top: 12px;
-  font-size: 0.85rem;
-  color: #5a5a5a;
-  font-family: 'Poppins', sans-serif;
-  opacity: 0.85;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .business-cards {
-    justify-content: flex-start;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
-
-
-/* ===== Testimonials ===== */
-.testimonials {
-  padding: 90px 25px 60px;
-  text-align: center;
-  background: linear-gradient(135deg, #f2ecff 0%, #dcd2ff 100%);
-  position: relative; /* isolates from other sections */
-  z-index: 1;
-}
-
-.testimonial-subtext {
-  max-width: 620px;
-  margin: 12px auto 45px;
-  color: #666;
-}
-
-/* Scroll container tweaks */
-.testimonial-scroll {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  padding: 10px 5px 30px;
-  scroll-snap-type: x proximity; /* smoother snapping */
-  scroll-behavior: smooth; /* soft auto-scroll */
-  -webkit-overflow-scrolling: touch; /* mobile smooth scroll */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(160, 130, 210, 0.6) transparent;
-}
-
-.testimonial-scroll::-webkit-scrollbar {
-  height: 6px;
-}
-.testimonial-scroll::-webkit-scrollbar-thumb {
-  background: rgba(160, 130, 210, 0.6);
+.brainrot-cards::-webkit-scrollbar-thumb {
+  background: rgba(181,160,255,0.6);
   border-radius: 10px;
 }
-.testimonial-scroll::-webkit-scrollbar-track {
+
+.brainrot-cards::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Testimonial cards with soft purple background */
-.testimonial-card {
-  min-width: 280px;
-  max-width: 320px;
+/* ===== Individual Card ===== */
+.brainrot-card {
+  flex: 0 0 auto;
+  width: 680px;
+  background: rgba(217,200,255,0.9);
+  border: 2px dashed rgba(181,160,255,0.6);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+  transform: rotate(-2deg);
+  transition: transform 0.3s, box-shadow 0.3s;
   scroll-snap-align: center;
-  flex-shrink: 0;
-  background: rgba(210, 200, 240, 0.3); /* soft light purple */
-  padding: 28px;
-  border-radius: 22px;
-  box-shadow: 0 12px 30px rgba(140, 110, 190, 0.18);
-  border: 1px solid rgba(190, 170, 230, 0.5);
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Optional hover effect for cards */
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 35px rgba(140, 110, 190, 0.25);
+.brainrot-card:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
 }
 
-.quote-icon {
-  font-size: 40px;
-  color: rgba(160, 130, 210, 0.6);
-  display: block;
-  margin-bottom: 10px;
+.brainrot-card iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: 16px;
 }
 
-.testimonial-card .quote {
-  font-style: italic;
-  margin-bottom: 16px;
-  color: #444;
+.brainrot-card p {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #4a3f9e;
+  font-weight: 500;
 }
 
-.testimonial-card .author {
-  font-weight: 600;
-  font-size: 14px;
-  color: #7a5fa3;
+/* ===== Responsive ===== */
+@media (max-width: 800px) {
+  .brainrot-card {
+    width: 85%;
+  }
+
+  .brainrot-card iframe {
+    height: 300px;
+  }
 }
 
+@media (max-width: 500px) {
+  .brainrot-card {
+    width: 90%;
+  }
 
+  .brainrot-card iframe {
+    height: 220px;
+  }
+}
+  
     /* ===== ABOUT SECTION ===== */
 .about-section {
   padding: 80px 20px;
@@ -1964,29 +1826,28 @@ html {
   </div>
 
   <!-- DESKTOP NAV -->
-  <nav class="desktop-nav">
-      <a href="#hero">Home</a>
-      <a href="#collections">Collections</a>
-      <a href="#weekly-packages">Weekly Travel Packages</a>
-      <a href="#planner">Trip Planner</a>
-      <a href="#about">About</a>
-      <a href="#services">Services & Gifting</a>
-      <a href="#business">Business Travel</a>
-      <a href="#contact">Contact</a>
-  </nav>
+<nav class="desktop-nav">
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#planner">Mini Daydreams</a></li>
+    <li><a href="#hot-deals">Hot Deals</a></li>
+    <li><a href="#services">The Route Room</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav" id="mobileNav">
-      <a href="#hero">Home</a>
-      <a href="#collections">Collections</a>
-      <a href="#weekly-packages">Weekly Travel Packages</a>
-      <a href="#planner">Trip Planner</a>
-      <a href="#about">About</a>
-      <a href="#services">Services & Gifting</a>
-      <a href="#business">Business Travel</a>
-      <a href="#contact">Contact</a>
-  </div>
-
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#planner">Mini Daydreams</a></li>
+    <li><a href="#hot-deals">Hot Deals</a></li>
+    <li><a href="#services">The Route Room</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 </header>
 
 
@@ -1995,8 +1856,8 @@ html {
 <section class="hero">
     <video class="hero-video" src="websitevid.mp4" autoplay muted loop playsinline></video>
     <div class="hero-text">
-        <h1>Designed for Every Journey Big or Small</h1>
-        <p>Your next adventure starts with RaeRoutes.</p>
+        <h1>A World of Inspiration, wherever you are.</h1>
+        <p>Little escapes, Big ideas, and all the travel inspiration you need.</p>
     </div>
 </section>
   
@@ -2011,11 +1872,9 @@ html {
 
     <!-- RIGHT: TEXT -->
     <div class="intro-text">
-      <h2>Thoughtful, personalized travel for every adventure.</h2>
+      <h2>Travel Inspiration Made Simple.</h2>
       <p>
-        RaeRoutes curates experiences for every type of traveler.  
-        From weekend escapes to milestone trips, each journey is crafted  
-        with care, comfort, and intention.
+        RaeRoutes discovers travel ideas designed to inspire, whether you're planning your next trip, or just enjoying the daydream.
       </p>
     </div>
 
@@ -2025,7 +1884,7 @@ html {
 <!-- WHY RAEROUTES SECTION -->
 <section class="why-raeroutes">
     <div class="container">
-        <h2>Why Choose RaeRoutes?</h2>
+        <h2>What makes RaeRoutes feel different?</h2>
      
       <!-- Background floating sparkles -->
 <div class="collections-sparkles">
@@ -2056,8 +1915,8 @@ html {
                         style="width: 80px; height: 80px;">
                     </lottie-player>
                 </div>
-                <h3>Personalized Itineraries</h3>
-                <p>Each trip is designed to match your style, pace, and comfort.</p>
+                <h3>Mini Daydreams For Every Mood</h3>
+                <p>Creating travel ideas and short itineraries to spark your next adventures. No pressure, just inspo!</p>
             </div>
 
             <!-- Card 2: Stress-Free Planning -->
@@ -2072,8 +1931,8 @@ html {
                         style="width: 80px; height: 80px;">
                     </lottie-player>
                 </div>
-                <h3>Stress-Free Planning</h3>
-                <p>I handle all the research so you can simply enjoy your journey.</p>
+                <h3>Your Travel Playground </h3>
+                <p>Think of this as your cozy corner to scroll, explore, and discover trips you've heard or never thought of! .</p>
             </div>
 
             <!-- Card 3: Travel With Intention -->
@@ -2088,8 +1947,8 @@ html {
                         style="width: 80px; height: 80px;">
                     </lottie-player>
                 </div>
-                <h3>Travel With Intention</h3>
-                <p>Every adventure is crafted to feel meaningful, not rushed.</p>
+                <h3>Inspiration You Can Actually Use</h3>
+                <p>Quick getaways, dreamy escapes, see trips I'd plan myself, and ideas you can save for later!</p>
             </div>
 
         </div>
@@ -2107,57 +1966,56 @@ html {
         autoplay>
     </lottie-player>
 
-    <h2>RaeRoutes Travel Collections</h2>
+    <h2>Which Vibe Fits You?</h2>
 
     <div class="collections">
 
       <div class="collection-card" data-image="smartbudgetcollection.png">
     <img src="budget.png" alt="Smart Budget Collection">
-    <h3> (NEW) Smart Budget Collection</h3>
-    <p>Thoughtfully planned getaways that balance experience and value
-      proving you don’t have to overspend to travel beautifully.</p>
+    <h3>Smart Budget Collection</h3>
+    <p>Travel ideas without breaking the bank.</p>
 </div>
       
       <div class="collection-card" data-image="celebrationscollection.png">
     <img src="celebration.png" alt="Celebrations Collection">
-    <h3>(NEW) Celebrations Collection</h3>
-    <p>Honeymoons, anniversaries, birthdays, and “just because” moments.</p>
+    <h3>Celebrations Collection</h3>
+    <p>Trip ideas for life's special moments.</p>
 </div>
       
         <div class="collection-card" data-image="citycollection.png">
             <img src="citycollection.png" alt="City Collection">
             <h3>City Collection</h3>
-            <p>Discover the best city getaways in the U.S.</p>
+            <p>Ideas for urban adventures, daydreams, and weekend getaways.</p>
         </div>
 
         <div class="collection-card" data-image="Thecoastalcollection.png">
             <img src="Thecoastalcollection.png" alt="Coastal Collection">
             <h3>Coastal Collection</h3>
-            <p>Relax by the ocean and enjoy coastal vibes.</p>
+            <p>Beachy adventures designed for unwinding and exploring.</p>
         </div>
 
         <div class="collection-card" data-image="romanticescapescollection.png">
             <img src="romanticescapescollection.png" alt="Romantic Collection">
             <h3>Romantic Collection</h3>
-            <p>Perfect escapes for couples and romantic adventures.</p>
+            <p>Ideas for intimate trips and dreamy getaways.</p>
         </div>
 
         <div class="collection-card" data-image="familyfuncollection.png">
             <img src="familyfuncollection.png" alt="Family Fun Collection">
             <h3>Family Fun Collection</h3>
-            <p>Memorable trips for the whole family.</p>
+            <p>Family friendly escapes that's fun, memorable, and totally doable.</p>
         </div>
 
         <div class="collection-card" data-image="adventurecollection.png">
             <img src="adventurecollection.png" alt="Adventure Collection">
             <h3>Adventure Collection</h3>
-            <p>Made for the ones who chase fresh air, big views, and a little adrenaline.</p>
+            <p>Ideas for the ones who chase fresh air, big views, and a little adrenaline.</p>
         </div>
 
         <div class="collection-card" data-image="winterwonderland.png">
             <img src="winterwonderland.png" alt="Winter Wonderland Collection">
             <h3>Winter Wonderland Collection</h3>
-            <p>Perfect winter holiday destinations.</p>
+            <p>Ideas to make the most of the season, indoors or out.</p>
         </div>
     </div>
 </section>
@@ -2171,9 +2029,10 @@ html {
   
 <!-- WEEKLY TRAVEL PACKAGES SECTION -->
 <section id="weekly-packages" class="weekly-packages">
-  <h2>Weekly Travel Packages</h2>
-  <p>Pre-built trips you can explore and book through RaeRoutes.</p>
-  <p> Weekly package details are shared on facebook as a part of RaeRoutes experience.</p>
+  <h2>Mini Daydream Series </h2>
+  <p>Mini Journeys that spark imagination and curiosity.
+    Daydream details are shared on facebook as a part of RaeRoutes experience.</p>
+  
 
   <div class="packages-grid">
     
@@ -2181,335 +2040,173 @@ html {
     <div class="package-card">
       <img src="corpuschristi.png" alt="Corpus Christi, Texas">
       <div class="package-overlay">
-        <h3>Corpus Christi, Texas  </h3>
-        <p>2 Adults • June 3rd - 7th, 2026 • 4 Nights
-          • Entire Apartment
-           1 King Bed,
-           1 Bathroom
-       </p>
+        <h3>Mini Daydream Series 1 </h3>
+        <p> soft sunlight, calm lake views, cozy corners to get lost in for just a moment </p>
         <div class="package-buttons">
-          <a href="https://www.facebook.com/share/p/189GyjyjjC/" target="_blank" class="button view-btn">View Package Details</a>
-          <a href="#contact" class="button request-btn">Request This Package</a>
+          <a href="https://www.facebook.com/share/p/14ao5HcUHtN/" target="_blank" class="button view-btn">Explore More</a>
         </div>
       </div>
-    </div>
-    
-
-     <!-- Package 2 -->
-    <div class="package-card">
-      <img src="nashville.png" alt="Nashville, Tennessee ">
-      <div class="package-overlay">
-        <h3>Nashville, Tennessee </h3>
-        <p>6 Adults • May 28th - 31st, 2026 • 3 Nights
-          • Entire House
-           3 Bedrooms- various bed size,
-           2 Bathrooms 
-       </p>
-        <div class="package-buttons">
-          <a href="https://www.facebook.com/share/p/1bFbhLbTwZ/" target="_blank" class="button view-btn">View Package Details</a>
-          <a href="#contact" class="button request-btn">Request This Package</a>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Package 3 -->
-    <div class="package-card">
-      <img src="glamping.png" alt="Pagosa Springs, Colorado">
-      <div class="package-overlay">
-        <h3>Pagosa Springs, Colorado </h3>
-        <p>6 Adults • June 26th - 28th, 2026 • 2 Nights
-          • Three Rooms- 
-          Deluxe King Room(Mountain View) </p>
-        <div class="package-buttons">
-          <a href="https://www.facebook.com/share/p/18P4nUbFzj/" target="_blank" class="button view-btn">View Package Details</a>
-          <a href="#contact" class="button request-btn">Request This Package</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Package 4 -->
-    <div class="package-card">
-      <img src="st.lucia.png" alt="Marisule, St. Lucia">
-      <div class="package-overlay">
-        <h3>Marisule, St. Lucia🌴(Luxury Honeymoon Package)</h3>
-        <p>2 Adults • October 18th - 25th, 2026 • 7 Nights
-          • Water’s Edge Cottage with Pool (Breakfast Plan) </p>
-        <div class="package-buttons">
-          <a href="https://www.facebook.com/share/p/1Df4HRf2eV/" target="_blank" class="button view-btn">View Package Details</a>
-          <a href="#contact" class="button request-btn">Request This Package</a>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Package 5 -->
-    <div class="package-card">
-      <img src="pr.png" alt="San Juan, Puerto Rico">
-      <div class="package-overlay">
-        <h3>San Juan, Puerto Rico🌴</h3>
-        <p>2 Adults • May 5th - 10th, 2026 • 5 Nights
-          • Double Beach Wing- 1 King Bed With Balcony </p>
-        <div class="package-buttons">
-          <a href="https://www.facebook.com/share/p/1HWJbrY3Wg/" target="_blank" class="button view-btn">View Package Details</a>
-          <a href="#contact" class="button request-btn">Request This Package</a>
-        </div>
-      </div>
-    </div>
-
-     <!-- Package 6-->
-    <div class="package-card">
-      <img src="cali.png" alt="Escondido, California">
-      <div class="package-overlay">
-        <h3>Escondido, California🌊</h3>
-        <p>4 Travelers • May 27th - 31st, 2026 • 4 Nights • Entire House
-            4 Bedrooms- various bed size
-            3.5 Bathrooms </p>
-        <div class="package-buttons">
-          <a href="https://www.facebook.com/share/p/1D8sHVYkgg/" target="_blank" class="button view-btn">View Package Details</a>
-          <a href="#contact" class="button request-btn">Request This Package</a>
-        </div>
-      </div>
-    </div>
-
-     <!-- Package 7 -->
-    <div class="package-card">
-      <img src="dc.PNG" alt="Washington, DC">
-      <div class="package-overlay">
-        <h3>Washington, DC🌊</h3>
-        <p>2 Adults • April 22nd - 26th, 2026 • 4 Nights 
-          • Queen Bed, City View</p>
-        <div class="package-buttons">
-          <a href="https://www.facebook.com/share/p/1C9wA5zor5/" target="_blank" class="button view-btn">View Package Details</a>
-          <a href="#contact" class="button request-btn">Request This Package</a>
-        </div>
-      </div>
-    </div>
-    
-
-     <!-- Package 8 -->
-    <div class="package-card">
-      <img src="IMG_0224.PNG" alt="Cruise Package">
-      <div class="package-overlay">
-        <h3>Galveston, Texas departure- closed loop cruise 🚢 </h3>
-        <p>2 Adults • May 14th - 18th, 2026 • 4 Nights
-          • Balcony View: King Bed + Pull-Out Sofa 
-</p>
-        <div class="package-buttons">
-          <a href="https://www.facebook.com/share/p/18LT1Ef7R2/" target="_blank" class="button view-btn">View Package Details</a>
-          <a href="#contact" class="button request-btn">Request This Package</a>
-        </div>
-      </div>
-    </div>
-
-  
-
-  </div>
-</section>
-
-
-<!-- TRIP PLANNER SECTION -->
-<section class="trip-process" id="planner">
-
-  <div class="trip-two-columns">
-    <!-- LEFT: Video + Text -->
-    <div class="trip-video-column">
-      <div class="video-container">
-        <video id="planner-video" class="planner-video" autoplay muted loop playsinline>
-          <source src="newyorkvlog2.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-
-        <div class="trip-intro-overlay">
-          <h2>Plan Your Trip</h2>
-          <p>Share your dream trip and I’ll craft the perfect route tailored just for you.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT: Step cards + Button -->
-    <div class="trip-steps-column">
-      <div class="trip-columns">
-        <div class="trip-step">
-          <span class="step-num">1</span>
-          <p>✨ Tell me your vision</p>
-        </div>
-        <div class="trip-step">
-          <span class="step-num">2</span>
-          <p>🔍 I research and curate your options</p>
-        </div>
-        <div class="trip-step">
-          <span class="step-num">3</span>
-          <p>📝 You review and refine your trip</p>
-        </div>
-        <div class="trip-step">
-          <span class="step-num">4</span>
-          <p>✈️ Book & go (stress free) </p>
-        </div>
-      </div>
-
-      <a href="https://lnk.bio/RaeRoutes" target="_blank" class="button plan-btn">
-        Start Planning
-      </a>
     </div>
 
   </div>
 </section>
 
 
-<!-- SERVICES & GIFTING SECTION -->
+<!-- HOT DEALS SECTION -->
+<section class="hot-deals" id="hot-deals">
+  <h2>Hot Deals ✨</h2>
+  <p>Deals I found that might be worth checking out!</p>
+
+  <div class="hot-deals-scroll">
+    <!-- Placeholder Coming Soon Card -->
+    <div class="hot-deal-card">
+      <h3>Coming Soon ✨</h3>
+      <p>New handpicked deals ready for your next adventure are coming soon.</p>
+      <a href="#contact" class="button">I'm Interested</a>
+    </div>
+
+    <!-- Hidden Real Deal Card -->
+    <div class="hot-deal-card hot-deal-hidden">
+      <img src="carnival-flyer.jpg" alt="Carnival Deal Flyer" class="deal-image">
+      <h3>Carnival – Book Early, Save Big</h3>
+      <p>Early booking savings, up to $25 onboard credit, and 50% reduced deposit on select sailings.</p>
+      <p><strong>Book by:</strong> March 31st, 2026</p>
+      <a href="#contact" class="button">Interested?</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- SERVICES & GIFTING SECTION / INTERACTIVE HUB -->
 <section class="services-gifting" id="services">
-    <h2>Services & Gifting</h2>
-    <p>Discover ways to enhance your trip or surprise someone special.</p>
+    <h2>The Route Room</h2>
+    <p>Your interactive travel hub! Pick a vibe, explore your style, and discover what's waiting for you!</p>
 
     <!-- Sparkles -->
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
-    <span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span>
 
     <div class="service-scroll">
         <div class="service-cards">
             
-            <div class="service-card" data-emoji="🎁">
-                <h3>Travel Vouchers</h3>
-                <p>Gift a curated experience: perfect for birthdays, holidays, or special surprises.</p>
-                <a href="https://dsegura033.github.io/raeroutes-travel-html/" class="button">
-                Gift a Travel Voucher
-                </a>
+            <!-- Card 1: What Kind of Traveler -->
+            <div class="service-card traveler-card" data-emoji="🧳">
+                <h3>What Kind of Traveler Are You?</h3>
+                <div class="options">
+              <button data-type="The City Explorer">🏙️ The City Explorer</button>
+              <button data-type="The Coastal Relaxer">🏖️ The Coastal Relaxer</button>
+              <button data-type="The Adventure Seeker">⛰️ The Adventure Seeker</button>
+              <button data-type="The Cozy & Chill">☕ The Cozy & Chill</button>
+              <button data-type="The Smart Budget">💰 The Budgeter</button>
+              <button data-type="The Celebrations">🎉 The Celebration Planner</button>
+              <button data-type="The Romantic Escape">💖 The Romantic</button>
+              <button data-type="The Winter Wonderland">❄️ The Winter Lover</button>
+                </div>
+                <div class="result" style="display:none;"></div>
             </div>
-          
-          <div class="service-card" data-emoji="🎟️">
-               <h3>Experiences for Every Mood</h3>
-                <p>Shows, concerts, weekend adventures; tickets ready to pick your vibe and go!</p>
+
+            <!-- Card 2: Trip Generator -->
+            <div class="service-card trip-generator-card" data-emoji="✨">
+                <h3>Trip Generator</h3>
+                <button id="spinTrip">Generate My Trip 🎉</button>
+                <div class="trip-result" style="display:none;">
+                    <p>Destination: <span class="destination"></span></p>
+                    <p>Vibe: <span class="vibe"></span></p>
+                    <p>Travel Partner: <span class="partner"></span></p>
+                </div>
+                <p class="fun-note">
+                    Your adventure might need some creativity, just go with the flow! ✨
+                </p>
+            </div>
+
+            <!-- Card 3: Your Mood, Your Next Experience -->
+            <div class="service-card mood-card" data-emoji="🎯">
+                <h3>Your Mood, Your Next Experience</h3>
+                <p>Experiences for every vibe! Optional to book, impossible not to get inspired.</p>
                 <div class="button-group">
-                 <a href="https://damonycasegura.goldentickets.com" target="_blank" class="button">Browse Tickets</a>
-                 <a href="https://www.viator.com/?pid=P00011640&uid=U00716568&mcid=58086&currency=USD" target="_blank" class="button secondary">Find Experiences</a>
-           </div>
-           </div>
-
-
-          
-            <div class="service-card" data-emoji="🌐">
-                <h3>Explore Options on Your Own</h3>
-                <p>Ready to plan your next adventure? Browse personalized trips and ideas on my travel agent site.</p>
-                <a href="https://damonycasegura.inteletravel.com/booktravel.cfm" target="_blank" class="button">Explore Trips</a>
+                    <a href="https://damonycasegura.goldentickets.com" target="_blank" class="button">Get inspired</a>
+                    <a href="https://www.viator.com/?pid=P00011640&uid=U00716568&mcid=58086&currency=USD" target="_blank" class="button secondary">Plan Ideas</a>
+                </div>
             </div>
-          
-            <div class="service-card" data-emoji="🧭">
-                <h3>Guided Assistance</h3>
-                <p>Support and advice throughout your trip for a seamless experience.</p>
-                <a href="#contact" class="button">Learn More</a>
-            </div>
-
 
         </div>
     </div>
 </section>
 
-  <!-- Business Travel Section -->
-  <section id="business" class="business-travel">
-  <div class="container">
-    <h2>Business Travel Support</h2>
-    <p class="business-subtext">
-      Thoughtful travel planning for professionals, teams, and growing businesses
-      without the overwhelm.
-    </p>
-
-    <div class="business-cards">
-      <div class="business-card">
-        <span class="emoji">✈️</span>
-        <h3>Flights & Scheduling</h3>
-        <p>Domestic, international, and multi city itineraries planned with precision.</p>
-      </div>
-
-      <div class="business-card">
-        <span class="emoji">🏨</span>
-        <h3>Hotel Coordination</h3>
-        <p>Comfortable, convenient stays aligned with your meetings and schedule.</p>
-      </div>
-
-      <div class="business-card">
-        <span class="emoji">👥</span>
-        <h3>Team & Group Travel</h3>
-        <p>Conference trips, retreats, and coordinated bookings made simple.</p>
-      </div>
-
-      <div class="business-card">
-        <span class="emoji">🔄</span>
-        <h3>Ongoing Support</h3>
-        <p>Help with changes, rebooking, and travel hiccups when they happen.</p>
-      </div>
-    </div>
-
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpuIWkuV-4XRlQFMDe6cXIxVCBLlD_h_e-DGcLu4arl2TQeg/viewform?usp=header"
-   class="button plan-btn"
-   target="_blank"
-   rel="noopener noreferrer">
-  Request Business Travel Help
-</a>
-    <p class="business-disclaimer">
-  For business and professional travel inquiries only.
-</p>
-
-
-  </div>
-</section>
-
   
-<!-- ===================== TESTIMONIALS ===================== -->
-<section class="testimonials">
-  <h2>Feedback from Real Clients</h2>
-  <p class="testimonial-subtext">
-    Feedback shared by real RaeRoutes clients.
+  <!-- BRAIN ROT SERIES -->
+<section class="brain-rot-series" id="brain-rot-series">
+  <h2>Travel BrainRot</h2>
+  <p>
+    A peek into my BrainRot series! No planning, no structure, just destinations. 
+    This series is unfiltered, unserious, and purely brain rot.
   </p>
 
-  <div class="testimonial-scroll" id="testimonialScroll">
-    <div class="testimonial-card">
-      <span class="quote-icon">“</span>
-      <p class="quote">
-        RaeRoutes has helped me find such good deals and Damonyca makes the process so easy and quick.
-      </p>
-      <span class="author">— Trip Planning Client</span>
+  <div class="brainrot-cards">
+
+    <!-- BrainRot Card 4 -->
+<div class="brainrot-card">
+  <iframe 
+    class="brainrot-video"
+    src="https://www.youtube.com/embed/wuRzGBH4V-g"
+    title="Episode 4"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+  <p>Episode 4: Travel BrainRot – Mukbang Series</p>
+</div>
+    
+     <!-- BrainRot Card 3 -->
+    <div class="brainrot-card">
+      <iframe 
+        class="brainrot-video"
+        src="https://www.youtube.com/embed/acOXJ_VRJkc"
+        title="Episode 3"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <p>Episode 3: Travel BrainRot – Renaissance Art 🎨</p>
+    </div>
+    
+ <!-- BrainRot Card 2 -->
+    <div class="brainrot-card">
+      <iframe 
+        class="brainrot-video"
+        src="https://www.youtube.com/embed/sUEYgfjkoDs"
+        title="Episode 2"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <p>Episode 2: Trips I Don’t Take But Think About</p>
     </div>
 
-    <div class="testimonial-card">
-      <span class="quote-icon">“</span>
-      <p class="quote">
-        Thank you so much for helping, I feel all boujie haha!
-      </p>
-      <span class="author">— Trip Planner Client</span>
-    </div>
-
-    <div class="testimonial-card">
-      <span class="quote-icon">“</span>
-      <p class="quote">
-        Thank you, it was all very good, we had lots of fun!
-      </p>
-      <span class="author">— Weekend Getaway Planner</span>
+    <!-- BrainRot Card 1 -->
+    <div class="brainrot-card">
+      <iframe 
+        class="brainrot-video"
+        src="https://www.youtube.com/embed/5dWq9jmbLHk"
+        title="Episode 1"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <p>Episode 1: Trips I Don’t Take But Think About</p>
     </div>
   </div>
 </section>
-
-
+  
 <!--About me section -->
 <section id="about" class="about-section">
     <div class="about-card">
-        <h2>About Me</h2>
+        <h2>Who's behind RaeRoutes</h2>
         <!-- Sparkles -->
         <span class="sparkle"></span>
         <span class="sparkle"></span>
@@ -2532,11 +2229,9 @@ html {
         <span class="sparkle"></span>
 
         <p>
-            Hi! I'm Damonyca, the creator of RaeRoutes. I started this to share the joy of thoughtful travel 
-            and make exploring the world simpler and more magical for everyone.  
-            Think of this as your little travel hangout spot, where inspiration, ideas, and fun itineraries collide!
+           Get to know me, my story, and why travel is my favorite way to connect 
         </p>
-        <a href="about.html" class="about-btn">Peek Behind the Scenes →</a>
+        <a href="about.html" class="about-btn">Meet Me →</a>
     </div>
 </section>
 
@@ -2549,8 +2244,8 @@ html {
         <!-- Panel 1: Text + Buttons -->
         <div class="contact-panel">
             <div class="contact-right">
-                <h2>Ready to Plan Your Next Trip?</h2>
-                <p>Scan to quickly connect with RaeRoutes and plan your next getaway.</p>
+                <h2>Something catch your eye?</h2>
+                <p>Scan to quickly connect, I'm happy to chat about trips & ideas!.</p>
 
                 <div class="contact-buttons">
                     <a href="mailto:raeroutes13@gmail.com" class="button">Email Me</a>
@@ -2574,16 +2269,13 @@ html {
 
     <!-- Brand -->
     <h3 class="footer-title">RaeRoutes</h3>
-    <p class="footer-tagline">Designed for Every Journey.</p>
+    <p class="footer-tagline">Little escapes, Big ideas, and all the travel inspiration you need.</p>
 
     <!-- Resources / Image PDFs -->
     <div class="footer-resources">
-      <h4 class="footer-subtitle">Before You Book</h4>
+      <h4 class="footer-subtitle">Important Notice</h4>
       <ul class="footer-links">
-        <li><button data-images="policyupdated.PNG">Policies</button></li>
-        <li><button data-images="whattoexpect.jpg">What to Expect When You Book</button></li>
-        <li><button data-images="importantnotice.jpg,updated2.png">Safety & Important Notice</button></li>
-         <li><button data-images="businesstravel.png,updated2.png">Business Travel Important Notice</button></li>
+      <li><button data-images="importantnotice.jpg,updated2.png">Safety & Important Notice</button></li>
       </ul>
     </div>
 
@@ -2670,7 +2362,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   createObserver('.services-gifting h2, .services-gifting p, .service-card');
   createObserver('.about-section h2, .about-section p, .about-section .about-btn');
-  createObserver('.contact-cta h2, .contact-cta p, .contact-cta .qr-code img, .contact-cta .button');
+  createObserver('.contact-split h2, .contact-split p, .contact-split .contact-buttons a, .contact-split .qr-box img');
 
   // ===== Auto-scroll Testimonials =====
   const scrollContainer = document.getElementById('testimonialScroll');
@@ -2766,26 +2458,70 @@ document.addEventListener("DOMContentLoaded", () => {
   const travelerResult = document.querySelector('.traveler-card .result');
 
   const travelerDescriptions = {
-    "City Explorer": [
-      "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
-      "Skylines, museums, and late night eats fuel your travel style. Cities make you feel alive.",
-      "You love discovering neighborhoods, local spots, and the rhythm of a city that never sleeps."
-    ],
-    "Coastal Relaxer": [
-      "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
-      "Salt air, slow mornings, and ocean views are your version of luxury.",
-      "You travel to unwind sunshine, water, and doing absolutely nothing sound perfect."
-    ],
-    "Adventure Seeker": [
-      "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
-      "Your trips are powered by adrenaline, fresh air, and stories worth telling.",
-      "You’re happiest chasing views, pushing limits, and exploring off the beaten path."
-    ],
-    "Cozy & Chill": [
-      "You cherish quiet mornings and hygge vibes. Quaint towns and slow days suit you best.",
-      "Your perfect trip includes cozy cafés, scenic walks, and zero pressure.",
-      "You travel to feel calm, comfortable, and fully present no rushing required."
-    ]
+    "The City Explorer": [
+    "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
+    "Skylines, museums, and late night eats fuel your travel style. Cities make you feel alive.",
+    "You love discovering neighborhoods, local spots, and the rhythm of a city that never sleeps.",
+    "Every alley and corner holds a story you want to uncover.",
+    "You plan your trips around must-see landmarks and local secrets alike.",
+    "Vibrant streets, cultural hotspots, and late-night finds are your perfect escape."
+  ],
+  "The Coastal Relaxer": [
+    "Your soul finds calm in waves and golden sands. Beach sunsets are your reset.",
+    "Salt air, slow mornings, and ocean views are your version of luxury.",
+    "You travel to unwind: sunshine, water, and doing absolutely nothing sound perfect.",
+    "Sandy toes and beach breezes are the soundtrack to your ideal trip.",
+    "Your vacation mantra is 'relax, recharge, repeat.'",
+    "You seek destinations where the sea meets serenity at every turn."
+  ],
+  "The Adventure Seeker": [
+    "You crave thrills, hikes, and the unknown. Mountains and rivers are your playground!",
+    "Your trips are powered by adrenaline, fresh air, and stories worth telling.",
+    "You’re happiest chasing views, pushing limits, and exploring off the beaten path.",
+    "Every trail, peak, and rapid is an invitation for your next challenge.",
+    "You thrive on spontaneous adventures and unexpected detours.",
+    "Travel is your playground for heart-pounding memories and epic experiences."
+  ],
+  "The Cozy & Chill": [
+    "You cherish quiet mornings and hygge vibes. Quaint towns and slow days suit you best.",
+    "Your perfect trip includes cozy cafés, scenic walks, and zero pressure.",
+    "You travel to feel calm, comfortable, and fully present; no rushing required.",
+    "Soft blankets, warm drinks, and peaceful surroundings are your ideal.",
+    "You love slow-paced exploration, intimate corners, and charming hideaways.",
+    "Relaxation and comfort are the heart of every trip you plan."
+  ],
+  "The Smart Budget": [
+    "You love discovering amazing experiences without breaking the bank.",
+    "Your trips are clever, curated, and make every dollar count.",
+    "You enjoy travel that’s accessible, smart, and still full of memorable moments.",
+    "You hunt for deals and hidden gems like a pro.",
+    "Every trip is about maximizing fun without overspending.",
+    "Smart planning, clever choices, and unforgettable memories define your adventures."
+  ],
+  "The Celebrations": [
+    "You travel to honor life’s big moments with joy and style.",
+    "Birthdays, anniversaries, and milestones become unforgettable experiences.",
+    "You love planning trips that make memories shine bright for everyone involved.",
+    "Every trip is a party, every moment worth celebrating.",
+    "Your adventures are full of laughter, joy, and meaningful rituals.",
+    "You make milestones magical with personalized, memorable escapes."
+  ],
+  "The Romantic Escape": [
+    "You seek intimate, dreamy getaways with special someone(s).",
+    "Candlelit dinners, scenic walks, and private moments are your ideal.",
+    "Your trips are all about connection, romance, and unforgettable shared memories.",
+    "You love escapes that spark love, laughter, and lasting memories.",
+    "Scenic hideaways and cozy settings set the mood for your journeys.",
+    "Every moment is curated to bring hearts closer together."
+  ],
+  "The Winter Wonderland": [
+    "You embrace cozy, seasonal adventures both indoors and outdoors.",
+    "Snowy landscapes, warm drinks, and festive vibes are your comfort zone.",
+    "Your trips capture the magic of the season, from charming towns to winter activities.",
+    "You love destinations that sparkle with seasonal charm.",
+    "Every trip is a chance to embrace the cozy magic of winter.",
+    "From snowy peaks to festive streets, your wanderlust thrives in the cold season."
+  ]
   };
 
   travelerButtons.forEach(button => {
@@ -2811,24 +2547,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const destinations = [
     "New York City, NY","Miami, FL","Sedona, AZ","San Francisco, CA",
-    "Asheville, NC","Chicago, IL","Yellowstone, WY","Key West, FL",
-    "New Orleans, LA","Honolulu, HI","Austin, TX","Denver, CO",
-    "Napa Valley, CA","Boston, MA","Orlando, FL",
-    "Paris, France","Kyoto, Japan","Santorini, Greece","Reykjavik, Iceland",
-    "Marrakech, Morocco","Bali, Indonesia","Rome, Italy","Sydney, Australia",
-    "Tulum, Mexico","Cape Town, South Africa","Amsterdam, Netherlands",
-    "London, England","Prague, Czech Republic","Dubai, UAE","Bora Bora, French Polynesia"
+  "Asheville, NC","Chicago, IL","Yellowstone, WY","Key West, FL",
+  "New Orleans, LA","Honolulu, HI","Austin, TX","Denver, CO",
+  "Napa Valley, CA","Boston, MA","Orlando, FL",
+  "Paris, France","Kyoto, Japan","Santorini, Greece","Reykjavik, Iceland",
+  "Marrakech, Morocco","Bali, Indonesia","Rome, Italy","Sydney, Australia",
+  "Tulum, Mexico","Cape Town, South Africa","Amsterdam, Netherlands",
+  "London, England","Prague, Czech Republic","Bora Bora, French Polynesia",
+  "Barcelona, Spain","Lisbon, Portugal","Vancouver, Canada","Queenstown, New Zealand",
+  "Cinque Terre, Italy","Helsinki, Finland","Maui, HI","Buenos Aires, Argentina",
+  "Istanbul, Turkey","Edinburgh, Scotland","Seoul, South Korea","Patagonia, Chile"
   ];
 
   const vibes = [
-    "Relaxed & Luxurious","Adventure & Nature","Romantic & Cozy","Urban & Vibrant",
-    "Family Fun","Cultural & Historic","Chill & Hygge","Beach & Sun",
-    "Food & Culinary","Festival & Party","Roadtrip & Exploration","Wellness & Spa"
+  "Relaxed & Luxurious","Adventure & Nature","Romantic & Cozy","Urban & Vibrant",
+  "Family Fun","Cultural & Historic","Chill & Hygge","Beach & Sun",
+  "Food & Culinary","Festival & Party","Roadtrip & Exploration","Wellness & Spa",
+  "Snow & Winter Fun","Island Hopping","Art & Museums","Music & Live Shows",
+  "Hiking & Trails","Shopping & Style","Hidden Gems & Local Life","Sunset & Scenic Views"
   ];
 
   const partners = [
-    "Partner 👫","Friends 👭","Family 👨‍👩‍👧","Solo ✈️","Pet 🐾",
-    "Adventure Buddy 🧗","Group Tour 🚌","Bestie Squad 👯","Parents / Relatives 👵👴","Co-worker / Work Retreat 💼"
+   "Partner 👫","Friends 👭","Family 👨‍👩‍👧","Solo ✈️","Pet 🐾",
+  "Adventure Buddy 🧗","Group Tour 🚌","Bestie Squad 👯","Parents / Relatives 👵👴","Co-worker / Work Retreat 💼",
+  "Sibling Duo 👬","Newlyweds 💍","College Friends 🎓","Kids & Teens 👶👧","Grandparents 👴👵",
+  "Pet & Human Duo 🐶","Travel Club 🌍","Fitness Friends 🏃‍♂️","Art Lovers 🎨"
   ];
 
   if (spinBtn && tripResult) {
