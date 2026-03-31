@@ -76,14 +76,16 @@ a {
 /* ===== DESKTOP NAV ===== */
 .desktop-nav {
   display: flex;
-  gap: 20px;
-  list-style: none; /* remove bullets */
+  gap: 28px;
+  list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  justify-content: center; /* center nav items */
+  flex-wrap: wrap;         /* wrap if needed */
 }
 
 .desktop-nav li {
-  list-style: none; /* extra safety to remove bullets */
+  list-style: none;
 }
 
 .desktop-nav a {
@@ -130,19 +132,23 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.95); /* more solid so text is visible */
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   padding-top: 80px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 1000;
-  list-style: none; /* remove bullets */
+  list-style: none;
   margin: 0;
+}
+
+.mobile-nav li {
+  list-style: none; /* remove bullets */
 }
 
 .mobile-nav a {
@@ -189,30 +195,24 @@ a {
 html {
   scroll-behavior: smooth;
 }
-    
-/* ===== DESKTOP HEADER REDESIGN ===== */
+
+/* ===== DESKTOP HEADER ===== */
 @media (min-width: 1025px) {
   .header-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;  /* change to row so nav isn't stacked */
+    justify-content: space-between;
     align-items: center;
-    padding: 16px 0 6px 0;
+    padding: 16px 40px;
   }
 
   .logo {
     order: 1;
-    text-align: center;
-    width: 100%;
+    text-align: left;
   }
 
   .desktop-nav {
     order: 2;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 28px;
-    width: 100%;
   }
 
   .header-container > * {
@@ -1203,6 +1203,26 @@ html {
   color: #6c5a99;
   font-size: 0.95rem;
   margin-top: 12px;
+}
+    /* Generate Trip Button */
+.generate-trip-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #6e46b4, #8c70ff);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(110, 70, 180, 0.4);
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.generate-trip-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(110, 70, 180, 0.5);
 }
 
 /* ===============================
