@@ -846,9 +846,9 @@ html {
 
 /* ===== HOT DEALS SECTION ===== */
 .hot-deals {
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #f5f0ff, #e3d7ff);
-  border-radius: 20px;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f7f2ff, #e9ddff);
+  border-radius: 24px;
   text-align: center;
   overflow: hidden;
 }
@@ -856,13 +856,17 @@ html {
 .hot-deals h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.4rem;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .hot-deals p {
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  opacity: 0.85;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Horizontal Scroll Container */
@@ -870,8 +874,9 @@ html {
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  padding-bottom: 16px;
+  padding: 0 20px 16px 20px;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
 }
 
 .hot-deals-scroll::-webkit-scrollbar {
@@ -880,14 +885,21 @@ html {
 
 /* Individual Deal Cards */
 .hot-deal-card {
-  flex: 0 0 280px; /* fixed width cards */
-  background: linear-gradient(135deg, rgba(181,160,255,0.3), rgba(217,200,255,0.3));
-  border-radius: 16px;
+  flex: 0 0 280px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.20)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 18px;
   padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.10);
   display: flex;
   flex-direction: column;
   align-items: center;
+  scroll-snap-align: start;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -899,21 +911,22 @@ html {
 /* Deal Image */
 .deal-image {
   width: 100%;
-  border-radius: 12px;
+  height: 160px;
+  border-radius: 14px;
   margin-bottom: 12px;
   object-fit: cover;
 }
 
 /* Buttons */
 .hot-deal-card .button {
-  margin-top: 12px;
-  padding: 10px 24px;
+  margin-top: 14px;
+  padding: 10px 26px;
   border-radius: 999px;
-  background: #8e78e5;
+  background: #7f6be6;
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 6px 16px rgba(100,60,160,0.3);
+  box-shadow: 0 6px 16px rgba(127,107,230,0.25);
   transition: all 0.3s ease;
 }
 
@@ -2065,21 +2078,52 @@ html {
   <p>Deals I found that might be worth checking out!</p>
 
   <div class="hot-deals-scroll">
-    <!-- Placeholder Coming Soon Card -->
-    <div class="hot-deal-card">
-      <h3>Coming Soon ✨</h3>
-      <p>New handpicked deals ready for your next adventure are coming soon.</p>
-      <a href="#contact" class="button">I'm Interested</a>
-    </div>
 
-    <!-- Hidden Real Deal Card -->
-    <div class="hot-deal-card hot-deal-hidden">
-      <img src="carnival-flyer.jpg" alt="Carnival Deal Flyer" class="deal-image">
-      <h3>Carnival – Book Early, Save Big</h3>
-      <p>Early booking savings, up to $25 onboard credit, and 50% reduced deposit on select sailings.</p>
-      <p><strong>Book by:</strong> March 31st, 2026</p>
+    <!-- Disney World -->
+    <div class="hot-deal-card">
+      <img src="Disneyworld.png" alt="Walt Disney World Castle" class="deal-image">
+      <h3>Walt Disney World – Spring Into Magic ✨</h3>
+      <p>Save up to $250 per night + kids eat free at select Disney Resort hotels on magical vacation packages.</p>
+      <p><strong>Book by:</strong> June 30th, 2026</p>
       <a href="#contact" class="button">Interested?</a>
     </div>
+
+    <!-- Carnival -->
+    <div class="hot-deal-card">
+      <img src="carnival.png" alt="Carnival Cruise Ship" class="deal-image">
+      <h3>Carnival Cruises – Spring Savings 🌊</h3>
+      <p>Sail away with cruises starting at just $349 per person on select departures through 2028.</p>
+      <p><strong>Book by:</strong> April 30th, 2026</p>
+      <a href="#contact" class="button">Interested?</a>
+    </div>
+
+    <!-- Royalton -->
+    <div class="hot-deal-card">
+      <img src="vacationexpress.png" alt="Royalton Resort Beach" class="deal-image">
+      <h3>Royalton Resorts – April Exclusive ✨</h3>
+      <p>Up to 30% off + up to $600 resort credit at select all-inclusive resorts — from family-friendly fun to adults-only escapes.</p>
+      <p><strong>Book by:</strong> April 30th, 2026</p>
+      <a href="#contact" class="button">Interested?</a>
+    </div>
+
+    <!-- Exoticca -->
+    <div class="hot-deal-card">
+      <img src="exoticca.png" alt="Exotic Travel Destination" class="deal-image">
+      <h3>Exoticca – Firsts You’ll Never Forget ✨</h3>
+      <p>Up to 60% off unforgettable trips designed for those once-in-a-lifetime moments.</p>
+      <p><strong>Book by:</strong> April 30th, 2026</p>
+      <a href="#contact" class="button">Interested?</a>
+    </div>
+
+    <!-- Disneyland -->
+    <div class="hot-deal-card">
+      <img src="disneyland.png" alt="Disneyland Park" class="deal-image">
+      <h3>Disneyland – Hotel Savings ✨</h3>
+      <p>Save up to 25% on select Disneyland Resort hotel stays when you book 3 nights or more.</p>
+      <p><strong>Book by:</strong> May 7th, 2026</p>
+      <a href="#contact" class="button">Interested?</a>
+    </div>
+
   </div>
 </section>
 
