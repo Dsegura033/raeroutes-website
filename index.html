@@ -1,1 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaeRoutes</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head> 
+  <body>
+
+<!-- HEADER -->
+<header>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<header class="header-container">
+
+  <!-- HAMBURGER (LEFT, MOBILE ONLY) -->
+  <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
+
+  <!-- LOGO (CENTERED) -->
+  <div class="logo">
+      <a href="#home">
+          <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
+      </a>
+  </div>
+
+  <!-- DESKTOP NAV -->
+<nav class="desktop-nav">
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#planner">Mini Daydreams</a></li>
+    <li><a href="#hot-deals">Hot Deals</a></li>
+    <li><a href="#services">The Route Room</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobileNav">
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#planner">Mini Daydreams</a></li>
+    <li><a href="#hot-deals">Hot Deals</a></li>
+    <li><a href="#services">The Route Room</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+</header>
+
+
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="websitevid.mp4" type="video/mp4">
+    </video>
+    <div class="hero-text">
+        <h1>A World of Inspiration, wherever you are.</h1>
+        <p>Little escapes, Big ideas, and all the travel inspiration you need.</p>
+    </div>
+</section>
+  
+<!-- Intro Section --> 
+<section class="intro">
+  <div class="intro-wrapper">
+
+    <!-- LEFT: IMAGE -->
+    <div class="intro-image">
+      <img src="mejumpinginthesunset.png" alt="Travel inspiration image">
+    </div>
+
+    <!-- RIGHT: TEXT -->
+    <div class="intro-text">
+      <h2>Travel Inspiration Made Simple.</h2>
+      <p>
+        RaeRoutes discovers travel ideas designed to inspire, whether you're planning your next trip, or just enjoying the daydream.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY RAEROUTES SECTION -->
+<section class="why-raeroutes">
+    <div class="container">
+        <h2>What makes RaeRoutes feel different?</h2>
+     
+      <!-- Background floating sparkles -->
+<div class="collections-sparkles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+        <!-- Cards Grid -->
+        <div class="why-grid">
+
+            <!-- Card 1: Personalized Itineraries -->
+            <div class="why-card">
+                <div class="why-icon">
+                    <lottie-player
+                        src="daydream.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay
+                        style="width: 80px; height: 80px;">
+                    </lottie-player>
+                </div>
+                <h3>Mini Daydreams For Every Mood</h3>
+                <p>Creating travel ideas and short itineraries to spark your next adventures. No pressure, just inspo!</p>
+            </div>
+
+            <!-- Card 2: Stress-Free Planning -->
+            <div class="why-card">
+                <div class="why-icon">
+                    <lottie-player
+                        src="scroll.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay
+                        style="width: 80px; height: 80px;">
+                    </lottie-player>
+                </div>
+                <h3>Your Travel Playground </h3>
+                <p>Think of this as your cozy corner to scroll, explore, and discover trips you've heard or never thought of!</p>
+            </div>
+
+            <!-- Card 3: Travel With Intention -->
+            <div class="why-card">
+                <div class="why-icon">
+                    <lottie-player
+                        src="save.json"
+                        background="transparent"
+                        speed="1"
+                        loop
+                        autoplay
+                        style="width: 80px; height: 80px;">
+                    </lottie-player>
+                </div>
+                <h3>Inspiration You Can Actually Use</h3>
+                <p>Quick getaways, dreamy escapes, see trips I'd plan myself, and ideas you can save for later!</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="collections" class="collections-section">
+    <!-- Lottie animation as background -->
+    <lottie-player
+        src="websiteanimation.json"
+        class="collections-animation"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay>
+    </lottie-player>
+
+    <h2>Which Vibe Fits You?</h2>
+
+    <div class="collections">
+
+      <div class="collection-card" data-image="smartbudgetcollection.png">
+    <img src="newbudegt.png" alt="Smart Budget Collection">
+    <h3>Smart Budget Collection</h3>
+    <p>Travel ideas without breaking the bank.</p>
+</div>
+      
+      <div class="collection-card" data-image="celebrationscollection.png">
+    <img src="newcelebration.png" alt="Celebrations Collection">
+    <h3>Celebrations Collection</h3>
+    <p>Trip ideas for life's special moments.</p>
+</div>
+      
+        <div class="collection-card" data-image="citycollection.png">
+            <img src="newcity.png" alt="City Collection">
+            <h3>City Collection</h3>
+            <p>Ideas for urban adventures, daydreams, and weekend getaways.</p>
+        </div>
+
+        <div class="collection-card" data-image="Thecoastalcollection.png">
+            <img src="newcoastal.png" alt="Coastal Collection">
+            <h3>Coastal Collection</h3>
+            <p>Beachy adventures designed for unwinding and exploring.</p>
+        </div>
+
+        <div class="collection-card" data-image="romanticescapescollection.png">
+            <img src="newromantic.png" alt="Romantic Collection">
+            <h3>Romantic Collection</h3>
+            <p>Ideas for intimate trips and dreamy getaways.</p>
+        </div>
+
+        <div class="collection-card" data-image="familyfuncollection.png">
+            <img src="newfamilyfun.png" alt="Family Fun Collection">
+            <h3>Family Fun Collection</h3>
+            <p>Family friendly escapes that's fun, memorable, and totally doable.</p>
+        </div>
+
+        <div class="collection-card" data-image="adventurecollection.png">
+            <img src="newadventure.png" alt="Adventure Collection">
+            <h3>Adventure Collection</h3>
+            <p>Ideas for the ones who chase fresh air, big views, and a little adrenaline.</p>
+        </div>
+
+        <div class="collection-card" data-image="winterwonderland.png">
+            <img src="newwinter.png" alt="Winter Wonderland Collection">
+            <h3>Winter Wonderland Collection</h3>
+            <p>Ideas to make the most of the season, indoors or out.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox overlay for viewing full-size image -->
+<div class="lightbox" id="lightbox">
+  <button class="close-btn" id="closeLightbox">&times;</button>
+  <img src="" alt="Collection Image" id="lightboxImage">
+</div>
+
+  
+<!-- WEEKLY TRAVEL PACKAGES SECTION -->
+<section id="weekly-packages" class="weekly-packages">
+  <h2>Mini Daydream Series </h2>
+  <p>Mini Journeys that spark imagination and curiosity.
+    Daydream details are shared on facebook as a part of RaeRoutes experience.</p>
+  
+
+  <div class="packages-grid">
+
+    
+    <!-- Package 3 -->
+<div class="package-card">
+  <img src="1.png" alt="Tropical coastline getaway">
+  <div class="package-overlay">
+    <h3>Mini Daydream Series 3</h3>
+    <p>
+      Tropical coastlines,
+      ocean views,
+      endless adventures,
+      and plenty of time to unwind.
+    </p>
+    <div class="package-buttons">
+      <a href="https://www.facebook.com/share/p/1Bb3Eky3eD/" target="_blank" class="button view-btn">Explore More</a>
+    </div>
+  </div>
+</div>
+
+    <!-- Package 2-->
+    <div class="package-card">
+      <img src="minidaydream2.png" alt="Tulum, Mexico inspo">
+      <div class="package-overlay">
+        <h3>Mini Daydream Series 2 </h3>
+        <p> Beach time, slow lunches, 
+          sunset views, 
+          and nowhere to rush off to. </p>
+        <div class="package-buttons">
+          <a href="https://www.facebook.com/share/p/1KmmopD4jX/" target="_blank" class="button view-btn">Explore More</a>
+        </div>
+      </div>
+    </div>
+
+     <!-- Package 1-->
+    <div class="package-card">
+      <img src="laketahoe.png" alt="Lake Tahoe inspo">
+      <div class="package-overlay">
+        <h3>Mini Daydream Series 1 </h3>
+        <p> soft sunlight, calm lake views,
+          cozy corners to get
+          lost in for just a moment </p>
+        <div class="package-buttons">
+          <a href="https://www.facebook.com/share/p/14ao5HcUHtN/" target="_blank" class="button view-btn">Explore More</a>
+        </div>
+      </div>
+    </div>
+    
+  
+  </div>
+</section>
+
+
+<!-- HOT DEALS SECTION -->
+<section class="hot-deals" id="hot-deals">
+  <h2>Hot Deals ✨</h2>
+  <p>Deals I found that might be worth checking out!</p>
+
+  <div class="hot-deals-scroll">
+
+    <!-- Disney World -->
+    <div class="hot-deal-card">
+      <img src="Disneyworld.png" alt="Walt Disney World Castle" class="deal-image">
+      <h3>Walt Disney World – Spring Into Magic ✨</h3>
+      <p>Save up to $250 per night + kids eat free at select Disney Resort hotels on magical vacation packages.</p>
+      <p><strong>Available until:</strong> June 30th, 2026</p>
+      <a href="#contact" class="button">Ask about this trip</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SERVICES & GIFTING SECTION / INTERACTIVE HUB -->
+<section class="services-gifting" id="services">
+    <h2>The Route Room</h2>
+    <p>Your interactive travel hub! Pick a vibe, explore your style, and discover what's waiting for you!</p>
+
+    <!-- Sparkles -->
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+    <span class="sparkle"></span><span class="sparkle"></span>
+
+    <div class="service-scroll">
+        <div class="service-cards">
+            
+            <!-- Card 1: What Kind of Traveler -->
+            <div class="service-card traveler-card" data-emoji="🧳">
+                <h3>What Kind of Traveler Are You?</h3>
+                <div class="options">
+              <button data-type="The City Explorer">🏙️ The City Explorer</button>
+              <button data-type="The Coastal Relaxer">🏖️ The Coastal Relaxer</button>
+              <button data-type="The Adventure Seeker">⛰️ The Adventure Seeker</button>
+              <button data-type="The Cozy & Chill">☕ The Cozy & Chill</button>
+              <button data-type="The Smart Budget">💰 The Budgeter</button>
+              <button data-type="The Celebrations">🎉 The Celebration Planner</button>
+              <button data-type="The Romantic Escape">💖 The Romantic</button>
+              <button data-type="The Winter Wonderland">❄️ The Winter Lover</button>
+                </div>
+                <div class="result" style="display:none;"></div>
+            </div>
+
+            <!-- Card 2: Trip Generator -->
+            <div class="service-card trip-generator-card" data-emoji="✨">
+                <h3>Trip Generator</h3>
+               <button id="spinTrip" class="generate-trip-btn button">Generate My Trip 🎉</button>
+                <div class="trip-result" style="display:none;">
+                    <p>Destination: <span class="destination"></span></p>
+                    <p>Vibe: <span class="vibe"></span></p>
+                    <p>Travel Partner: <span class="partner"></span></p>
+                </div>
+                <p class="fun-note">
+                    Your adventure might need some creativity, just go with the flow! ✨
+                </p>
+            </div>
+
+            <!-- Card 3: Your Mood, Your Next Experience -->
+            <div class="service-card mood-card" data-emoji="🎯">
+                <h3>Your Mood, Your Next Experience</h3>
+                <p>Experiences for every vibe! Optional to book, impossible not to get inspired.</p>
+                <div class="button-group">
+                    <a href="https://dsegura033.github.io/raeroutes-things-to-do/" target="_blank" class="button primary">Inspo for Everyone</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+  
+  <!-- BRAIN ROT SERIES -->
+<section class="brain-rot-series" id="brain-rot-series">
+  <h2>Travel BrainRot</h2>
+  <p>
+    A peek into my BrainRot series! No planning, no structure, just destinations. 
+    This series is unfiltered, unserious, and purely brain rot.
+  </p>
+
+  <div class="brainrot-cards">
+
+    <!-- BrainRot Card 4 -->
+<div class="brainrot-card">
+  <iframe 
+    class="brainrot-video"
+    src="https://www.youtube.com/embed/wuRzGBH4V-g"
+    title="Episode 4"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+  <p>Episode 4: Travel BrainRot – Mukbang Series</p>
+</div>
+    
+     <!-- BrainRot Card 3 -->
+    <div class="brainrot-card">
+      <iframe 
+        class="brainrot-video"
+        src="https://www.youtube.com/embed/acOXJ_VRJkc"
+        title="Episode 3"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <p>Episode 3: Travel BrainRot – Renaissance Art 🎨</p>
+    </div>
+    
+ <!-- BrainRot Card 2 -->
+    <div class="brainrot-card">
+      <iframe 
+        class="brainrot-video"
+        src="https://www.youtube.com/embed/sUEYgfjkoDs"
+        title="Episode 2"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <p>Episode 2: Trips I Don’t Take But Think About</p>
+    </div>
+
+    <!-- BrainRot Card 1 -->
+    <div class="brainrot-card">
+      <iframe 
+        class="brainrot-video"
+        src="https://www.youtube.com/embed/5dWq9jmbLHk"
+        title="Episode 1"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+      <p>Episode 1: Trips I Don’t Take But Think About</p>
+    </div>
+  </div>
+</section>
+  
+<!--About me section -->
+<section id="about" class="about-section">
+    <div class="about-card">
+        <h2>Who's behind RaeRoutes</h2>
+        <!-- Sparkles -->
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+
+        <p>
+           Get to know me, my story, and why travel is my favorite way to connect 
+        </p>
+        <a href="about.html" class="about-btn">Meet Me →</a>
+    </div>
+</section>
+
+
+
+<!-- CONTACT SECTION -->
+<section class="contact-split" id="contact">
+    <div class="scroll-wrap">
+
+        <!-- Panel 1: Text + Buttons -->
+        <div class="contact-panel">
+            <div class="contact-right">
+                <h2>Something catch your eye?</h2>
+                <p>Scan to quickly connect, I'm happy to chat about trips & ideas!.</p>
+
+                <div class="contact-buttons">
+                    <a href="mailto:raeroutes13@gmail.com" class="button">Email Me</a>
+                    <a href="https://m.me/741937115671455" target="_blank" class="button">Message Me</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel 2: QR -->
+        <div class="contact-panel">
+            <div class="qr-box">
+                <img src="qr-code.png" alt="Scan to contact RaeRoutes">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer class="rr-footer">
+  <div class="footer-content">
+
+    <!-- Brand -->
+    <h3 class="footer-title">RaeRoutes</h3>
+    <p class="footer-tagline">Little escapes, Big ideas, and all the travel inspiration you need.</p>
+
+    <!-- Resources / Image PDFs -->
+    <div class="footer-resources">
+      <h4 class="footer-subtitle">Important Notice</h4>
+      <ul class="footer-links">
+      <li><button data-images="importantnotice.jpg,updated2.png">Safety & Important Notice</button></li>
+      </ul>
+    </div>
+
+    <!-- Socials / Contact -->
+    <div class="footer-socials">
+      <a href="mailto:raeroutes13@gmail.com">Email</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Copy -->
+    <p class="footer-copy">© 2026 RaeRoutes. All Rights Reserved.</p>
+
+  </div>
+</footer>
+
+<!-- Image Modal (for later JS) -->
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-modal-content">
+    <button class="pdf-close">&times;</button>
+    <a id="pdfExternal" href="#" target="_blank">
+      <img id="pdfImage" src="" alt="Document Preview">
+    </a>
+    <div class="pdf-nav">
+      <button id="prevPage">&lt;</button>
+      <button id="nextPage">&gt;</button>
+    </div>
+  </div>
+</div>
 
