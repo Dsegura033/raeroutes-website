@@ -57,23 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createObserver('.about-section h2, .about-section p, .about-section .about-btn');
   createObserver('.contact-split h2, .contact-split p, .contact-split .contact-buttons a, .contact-split .qr-box img');
 
-  // ===== Auto-scroll Testimonials =====
-  const scrollContainer = document.getElementById('testimonialScroll');
-  if (scrollContainer) {
-    let scrollAmount = 0;
-    let scrollDirection = 1;
-    const scrollSpeed = 0.5;
-
-    function autoScrollTestimonials() {
-      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-      scrollAmount += scrollDirection * scrollSpeed;
-      if(scrollAmount >= maxScroll || scrollAmount <= 0) scrollDirection *= -1;
-      scrollContainer.scrollLeft = scrollAmount;
-      requestAnimationFrame(autoScrollTestimonials);
-    }
-
-    autoScrollTestimonials();
-  }
+ 
 
   // ===== Why Cards Animation =====
   const whyCards = document.querySelectorAll('.why-card');
@@ -89,14 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     whyCards.forEach(card => observer.observe(card));
   }
 
-  // ===== Trip Planner Video Loop =====
-  const plannerVideo = document.getElementById('planner-video');
-  if (plannerVideo) {
-    setInterval(() => {
-      plannerVideo.currentTime = 0;
-      plannerVideo.play();
-    }, 15000);
-  }
+ 
 
   // ===== Footer PDF Modal =====
   const modal = document.getElementById("pdfModal");
@@ -175,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "You thrive on spontaneous adventures and unexpected detours.",
     "Travel is your playground for heart-pounding memories and epic experiences."
   ],
-  "The Cozy & Chill": [
+  "The Cozy & Chill friend": [
     "You cherish quiet mornings and hygge vibes. Quaint towns and slow days suit you best.",
     "Your perfect trip includes cozy cafés, scenic walks, and zero pressure.",
     "You travel to feel calm, comfortable, and fully present; no rushing required.",
@@ -183,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "You love slow-paced exploration, intimate corners, and charming hideaways.",
     "Relaxation and comfort are the heart of every trip you plan."
   ],
-  "The Smart Budget": [
+  "The Smart Budgeter": [
     "You love discovering amazing experiences without breaking the bank.",
     "Your trips are clever, curated, and make every dollar count.",
     "You enjoy travel that’s accessible, smart, and still full of memorable moments.",
@@ -191,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Every trip is about maximizing fun without overspending.",
     "Smart planning, clever choices, and unforgettable memories define your adventures."
   ],
-  "The Celebrations": [
+  "The Celebration friend": [
     "You travel to honor life’s big moments with joy and style.",
     "Birthdays, anniversaries, and milestones become unforgettable experiences.",
     "You love planning trips that make memories shine bright for everyone involved.",
@@ -199,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Your adventures are full of laughter, joy, and meaningful rituals.",
     "You make milestones magical with personalized, memorable escapes."
   ],
-  "The Romantic Escape": [
+  "The Romantic": [
     "You seek intimate, dreamy getaways with special someone(s).",
     "Candlelit dinners, scenic walks, and private moments are your ideal.",
     "Your trips are all about connection, romance, and unforgettable shared memories.",
@@ -207,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Scenic hideaways and cozy settings set the mood for your journeys.",
     "Every moment is curated to bring hearts closer together."
   ],
-  "The Winter Wonderland": [
+  "The Seasonal Friend": [
     "You embrace cozy, seasonal adventures both indoors and outdoors.",
     "Snowy landscapes, warm drinks, and festive vibes are your comfort zone.",
     "Your trips capture the magic of the season, from charming towns to winter activities.",
