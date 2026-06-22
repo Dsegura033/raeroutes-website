@@ -1345,6 +1345,113 @@ border-radius:999px;
 
 
 
+.deal-image {
+
+width:100%;
+
+height:180px;
+
+object-fit:cover;
+
+border-radius:22px;
+
+display:block;
+
+}
+
+
+
+
+.hot-deal-card {
+
+overflow:hidden;
+
+}
+
+
+
+.hot-deal-card h3 {
+
+margin-top:15px;
+
+font-size:1.3rem;
+
+color:#3b2c70;
+
+}
+
+
+
+.hot-deal-card p {
+
+font-size:.95rem;
+
+line-height:1.5;
+
+color:#51496d;
+
+}
+
+
+
+/* keep scroll cards consistent */
+
+.hot-deals-scroll {
+
+display:flex;
+
+gap:25px;
+
+overflow-x:auto;
+
+padding:30px 10px;
+
+scroll-snap-type:x mandatory;
+
+}
+
+
+
+.hot-deals-scroll::-webkit-scrollbar{
+
+display:none;
+
+}
+
+
+
+.hot-deal-card {
+
+flex:0 0 280px;
+
+scroll-snap-align:start;
+
+}
+
+
+
+
+
+@media(max-width:768px){
+
+
+.hot-deal-card{
+
+flex-basis:240px;
+
+}
+
+
+.deal-image{
+
+height:150px;
+
+}
+
+
+}
+
+
 
 
 /* ===================================
