@@ -1,5 +1,5 @@
-<script>
 document.addEventListener("DOMContentLoaded", () => {
+
 
   // ===== Lightbox (medium-large popup on top) =====
   const lightbox = document.getElementById('lightbox');
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 }); // end DOMContentLoaded
-</script>
+
 
 
 <!-- Lottie player (keep if used elsewhere) -->
