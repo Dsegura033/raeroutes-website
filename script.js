@@ -260,8 +260,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 }); // end DOMContentLoaded
 
-
-
-<!-- Lottie player (keep if used elsewhere) -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
