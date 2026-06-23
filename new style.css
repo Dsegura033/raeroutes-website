@@ -75,7 +75,10 @@ display:flex;
 
 align-items:center;
 
-justify-content:space-between;
+justify-content:flex-start;
+
+
+gap:35px;
 
 
 padding:12px 35px;
@@ -89,13 +92,16 @@ top:0;
 z-index:999;
 
 
-background:#ffffff;
+background:white;
 
 
-border-bottom:1px solid #e8e2f5;
+border-bottom:
+
+1px solid #e8e2f5;
 
 
 box-shadow:
+
 0 8px 25px rgba(50,40,100,.12);
 
 
@@ -104,30 +110,26 @@ box-shadow:
 
 
 
-
 /* LOGO */
-
-.logo {
-
-display:flex;
-
-align-items:center;
-
-}
 
 
 .logo img {
 
+
 height:60px;
+
 
 display:block;
 
 
 filter:
-drop-shadow(0 5px 12px rgba(80,50,130,.18));
+
+drop-shadow(
+0 5px 12px rgba(80,50,130,.18)
+);
+
 
 }
-
 
 
 
@@ -135,25 +137,70 @@ drop-shadow(0 5px 12px rgba(80,50,130,.18));
 
 
 /* =========================
-        DESKTOP NAV
+       NAVIGATION
 ========================= */
+
+
+.hamburger {
+
+
+display:block;
+
+
+background:none;
+
+
+border:none;
+
+
+cursor:pointer;
+
+
+font-size:2rem;
+
+
+color:#6d5aa8;
+
+
+padding:5px;
+
+
+order:2;
+
+
+}
+
+
+
 
 
 .desktop-nav {
 
 
-display:flex;
-
-align-items:center;
+display:none;
 
 
-gap:22px;
+flex-direction:column;
 
 
-margin-left:auto;
+gap:10px;
 
 
 }
+
+
+
+
+
+.desktop-nav.active {
+
+
+display:flex;
+
+
+}
+
+
 
 
 
@@ -166,9 +213,6 @@ text-decoration:none;
 color:#40365c;
 
 
-font-size:15px;
-
-
 font-weight:600;
 
 
@@ -178,7 +222,7 @@ padding:8px 12px;
 border-radius:20px;
 
 
-transition:.25s ease;
+transition:.25s;
 
 
 }
@@ -189,13 +233,14 @@ transition:.25s ease;
 .desktop-nav a:hover {
 
 
-background:#f1ebff;
+color:#9b7cff;
 
 
-color:#8064d8;
+background:#f3efff;
 
 
 }
+
 
 
 
@@ -209,6 +254,7 @@ color:#8064d8;
 
 background:
 
+
 linear-gradient(
 135deg,
 #9b7cff,
@@ -219,18 +265,14 @@ linear-gradient(
 color:white;
 
 
-padding:11px 22px;
+padding:10px 22px;
 
 
 border-radius:999px;
 
 
-box-shadow:
-
-0 8px 20px rgba(120,90,200,.22);
-
-
 }
+
 
 
 
@@ -238,79 +280,19 @@ box-shadow:
 .desktop-nav .nav-button:hover {
 
 
+color:white;
+
+
 background:
 
 linear-gradient(
 135deg,
-#8b6cf0,
-#69c9f5
+#8c6df0,
+#6fcdf7
 );
 
 
-color:white;
-
-
-transform:translateY(-2px);
-
-
 }
-
-
-
-
-
-
-
-
-/* =========================
-       HAMBURGER
-========================= */
-
-
-.hamburger {
-
-
-display:none;
-
-
-cursor:pointer;
-
-
-padding:8px;
-
-
-border-radius:12px;
-
-
-background:#f3efff;
-
-
-}
-
-
-
-.hamburger div {
-
-
-width:24px;
-
-height:3px;
-
-
-margin:4px 0;
-
-
-border-radius:10px;
-
-
-background:#6d5aa8;
-
-
-transition:.3s;
-
-
-}
-
 
 
 
@@ -323,19 +305,20 @@ transition:.3s;
 ========================= */
 
 
-.mobile-nav {
+@media(max-width:767px){
 
 
-display:none;
+.desktop-nav {
 
 
 position:absolute;
 
 
-top:78px;
+top:75px;
 
 
 left:15px;
+
 
 right:15px;
 
@@ -351,13 +334,7 @@ border-radius:25px;
 
 box-shadow:
 
-0 20px 45px rgba(50,40,100,.18);
-
-
-flex-direction:column;
-
-
-gap:12px;
+0 20px 40px rgba(50,40,100,.18);
 
 
 border:
@@ -368,63 +345,6 @@ border:
 }
 
 
-
-
-.mobile-nav a {
-
-
-text-decoration:none;
-
-
-color:#40365c;
-
-
-font-weight:600;
-
-
-padding:13px;
-
-
-border-radius:18px;
-
-
-background:#f8f5ff;
-
-
-transition:.25s;
-
-
-}
-
-
-
-.mobile-nav a:hover {
-
-
-background:
-
-linear-gradient(
-135deg,
-#cdbbff,
-#bceaff
-);
-
-
-color:white;
-
-
-}
-
-
-
-
-
-.mobile-nav.active {
-
-
-display:flex;
-
-
 }
 
 
@@ -432,23 +352,13 @@ display:flex;
 
 
 
+/* DESKTOP */
 
 
-
-@media(max-width:900px){
-
-
-.header-container{
+@media(min-width:768px){
 
 
-padding:12px 18px;
-
-
-}
-
-
-
-.desktop-nav{
+.hamburger {
 
 
 display:none;
@@ -458,20 +368,19 @@ display:none;
 
 
 
-.hamburger{
+.desktop-nav {
 
 
-display:block;
+display:flex;
 
 
-}
+flex-direction:row;
 
 
+gap:10px;
 
-.logo img{
 
-
-height:52px;
+margin-left:auto;
 
 
 }
