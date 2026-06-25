@@ -2381,7 +2381,6 @@ height:230px;
       ABOUT + CONTACT
 ===================================== */
 
-
 .about-section {
 
 padding:80px 25px;
@@ -2393,21 +2392,20 @@ background:
 radial-gradient(
 circle at top left,
 rgba(198,180,255,.45),
-transparent 40%
+transparent 45%
 ),
 
 radial-gradient(
 circle at bottom right,
-rgba(160,210,255,.45),
-transparent 40%
+rgba(160,210,255,.35),
+transparent 45%
 ),
 
 linear-gradient(
 135deg,
-#f1ebff,
-#e8f6ff
+#eee8ff,
+#eaf7ff
 );
-
 
 border-radius:45px;
 
@@ -2418,8 +2416,34 @@ position:relative;
 }
 
 
+/* subtle glow */
 
-/* JOURNAL SPREAD */
+.about-section::before {
+
+content:"";
+
+position:absolute;
+
+width:280px;
+
+height:280px;
+
+top:-120px;
+
+right:-100px;
+
+background:
+rgba(181,160,255,.25);
+
+border-radius:50%;
+
+filter:blur(70px);
+
+}
+
+
+
+/* LAYOUT */
 
 .journal-spread {
 
@@ -2431,7 +2455,7 @@ display:grid;
 
 grid-template-columns:1fr 1fr;
 
-gap:35px;
+gap:30px;
 
 position:relative;
 
@@ -2441,29 +2465,19 @@ z-index:2;
 
 
 
-/* remove weird line */
-
-.journal-spread::before {
-
-display:none;
-
-}
-
-
-
-/* shared card style */
+/* CARD BASE */
 
 .about-card,
 .contact-panel {
 
 background:
 
-rgba(255,255,255,.45);
+rgba(255,255,255,.35);
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(20px);
 
 
-border-radius:35px;
+border-radius:32px;
 
 
 padding:45px 35px;
@@ -2471,80 +2485,98 @@ padding:45px 35px;
 
 border:
 
-1px solid rgba(255,255,255,.55);
+1px solid rgba(255,255,255,.65);
 
 
 box-shadow:
 
-0 25px 55px rgba(70,50,120,.12);
+0 20px 45px rgba(70,50,120,.14);
 
 
 position:relative;
 
+
+transition:.3s ease;
+
 }
 
 
 
-/* scrapbook tilt */
+/* make them feel connected */
 
 .about-card {
 
-transform:rotate(-2deg);
+border-top-right-radius:20px;
 
 }
+
 
 
 .contact-panel {
 
-transform:rotate(2deg);
+border-top-left-radius:20px;
 
 }
 
 
 
-/* hover */
 
 .about-card:hover,
 .contact-panel:hover {
 
-transform:
-translateY(-8px)
-rotate(0deg);
+transform:translateY(-8px);
+
+box-shadow:
+
+0 30px 60px rgba(70,50,120,.20);
 
 }
 
 
 
-/* airplane */
+/* little top accent */
 
-.about-card::before {
+.about-card::before,
+.contact-panel::before {
 
-content:"✈️";
+content:"";
 
 position:absolute;
 
-top:-22px;
+top:0;
 
 left:50%;
 
 transform:translateX(-50%);
 
-font-size:2rem;
+width:90px;
+
+height:4px;
+
+border-radius:20px;
+
+background:
+
+linear-gradient(
+90deg,
+#9b7cff,
+#7ddcff
+);
 
 }
 
 
 
-/* text */
+/* TEXT */
 
 .about-card h3,
 .contact-card h3 {
 
 font-family:'Playfair Display',serif;
 
-color:#423178;
-
 font-size:2rem;
+
+color:#423178;
 
 margin-bottom:15px;
 
@@ -2563,7 +2595,8 @@ line-height:1.8;
 
 
 
-/* buttons */
+
+/* BUTTONS */
 
 .about-btn,
 .contact-card .button {
@@ -2571,7 +2604,6 @@ line-height:1.8;
 display:inline-block;
 
 margin-top:20px;
-
 
 background:
 
@@ -2581,7 +2613,6 @@ linear-gradient(
 #7ddcff
 );
 
-
 color:white;
 
 padding:13px 30px;
@@ -2590,12 +2621,25 @@ border-radius:999px;
 
 font-weight:600;
 
+text-decoration:none;
+
+
 box-shadow:
 
 0 10px 25px rgba(90,70,170,.2);
 
+
+transition:.25s;
+
 }
 
+
+.about-btn:hover,
+.contact-card .button:hover {
+
+transform:translateY(-3px);
+
+}
 
 
 
@@ -2617,9 +2661,9 @@ gap:25px;
 .about-card,
 .contact-panel {
 
-transform:none;
-
 padding:35px 25px;
+
+border-radius:32px;
 
 }
 
@@ -2631,7 +2675,6 @@ padding:35px 25px;
 transform:translateY(-5px);
 
 }
-
 
 
 }
