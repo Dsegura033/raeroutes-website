@@ -1098,19 +1098,31 @@ color:#50496b;
 }
 
 
-
 /* ===================================
-   WEEKLY TRAVEL PACKAGES
+      MINI DAYDREAMS ✨
+      Floating Travel Orbs
 =================================== */
 
 
 .weekly-packages {
 
-
 padding:90px 20px;
 
+margin:40px 20px;
 
 background:
+
+radial-gradient(
+circle at top left,
+rgba(198,180,255,.45),
+transparent 40%
+),
+
+radial-gradient(
+circle at bottom right,
+rgba(160,210,255,.45),
+transparent 40%
+),
 
 linear-gradient(
 135deg,
@@ -1119,19 +1131,13 @@ linear-gradient(
 );
 
 
-border-radius:35px;
-
-
-margin:40px 20px;
-
-
-box-shadow:
-
-0 20px 50px rgba(70,50,120,.10);
-
+border-radius:45px;
 
 overflow:hidden;
 
+box-shadow:
+
+0 25px 60px rgba(70,50,120,.12);
 
 }
 
@@ -1140,46 +1146,36 @@ overflow:hidden;
 
 .weekly-packages h2 {
 
-
 font-family:'Playfair Display',serif;
 
-
-font-size:2.8rem;
-
+font-size:clamp(2rem,5vw,3rem);
 
 color:#3b2c70;
 
-
 margin-bottom:15px;
 
-
 }
+
 
 
 
 .weekly-packages p {
 
+max-width:650px;
+
+margin:0 auto 45px;
 
 color:#51496d;
 
-
-max-width:650px;
-
-
-margin:0 auto 40px;
-
-
 line-height:1.7;
-
 
 }
 
 
 
-
-
-
-/* CARD ROW */
+/* ==========================
+      FLOATING ORBS ROW
+========================== */
 
 
 .packages-grid {
@@ -1187,18 +1183,16 @@ line-height:1.7;
 
 display:flex;
 
-
-gap:25px;
-
+gap:35px;
 
 overflow-x:auto;
 
-
-padding:20px 5px 30px;
+padding:30px 15px 50px;
 
 
 scroll-snap-type:x mandatory;
 
+-webkit-overflow-scrolling:touch;
 
 }
 
@@ -1212,46 +1206,52 @@ display:none;
 
 
 
-
-
-
-/* PACKAGE CARD */
+/* ==========================
+        DREAM ORBS
+========================== */
 
 
 .package-card {
 
 
-flex:0 0 310px;
+flex:0 0 240px;
 
 
-background:white;
+background:transparent;
 
 
-border-radius:30px;
+border-radius:50%;
 
 
-overflow:hidden;
+scroll-snap-align:center;
 
 
-scroll-snap-align:start;
+position:relative;
 
 
-box-shadow:
-
-
-0 18px 40px rgba(60,40,120,.15);
+text-align:center;
 
 
 transition:.35s ease;
 
 
-border:
+}
 
-1px solid rgba(120,100,180,.08);
 
+
+
+.package-card:nth-child(odd){
+
+transform:translateY(-18px);
 
 }
 
+
+.package-card:nth-child(even){
+
+transform:translateY(18px);
+
+}
 
 
 
@@ -1259,27 +1259,29 @@ border:
 .package-card:hover {
 
 
-transform:translateY(-10px);
+transform:
 
-
-box-shadow:
-
-0 25px 55px rgba(60,40,120,.22);
-
+translateY(-12px)
+scale(1.05);
 
 }
 
 
 
+/* ==========================
+          IMAGE CIRCLE
+========================== */
 
 
 .package-card img {
 
 
-width:100%;
+width:190px;
+
+height:190px;
 
 
-height:230px;
+margin:auto;
 
 
 object-fit:cover;
@@ -1288,28 +1290,39 @@ object-fit:cover;
 display:block;
 
 
+border-radius:50%;
+
+
+box-shadow:
+
+0 20px 45px rgba(70,50,120,.25);
+
+
+border:
+
+8px solid rgba(255,255,255,.65);
+
+
 }
 
 
 
 
-
-
-
-/* CARD CONTENT */
+/* ==========================
+        TEXT FLOATING
+========================== */
 
 
 .package-overlay {
 
 
-padding:25px;
+background:transparent;
 
 
-background:white;
+padding:20px 10px;
 
 
 }
-
 
 
 
@@ -1320,14 +1333,13 @@ background:white;
 font-family:'Playfair Display',serif;
 
 
-font-size:1.5rem;
+font-size:1.4rem;
 
 
 color:#3b2c70;
 
 
-margin-bottom:10px;
-
+margin-bottom:8px;
 
 }
 
@@ -1344,84 +1356,42 @@ font-size:.95rem;
 
 line-height:1.6;
 
-
 }
 
 
 
+/* remove old card feeling */
 
 
+.package-card::before {
 
 
-/* BUTTON */
+content:"✦";
+
+
+position:absolute;
+
+
+top:0;
+
+right:20px;
+
+
+color:#9b7cff;
+
+
+font-size:1.4rem;
+
+}
+
+
 
 
 .package-buttons {
 
-
-margin-top:20px;
-
+display:none;
 
 }
-
-
-
-.package-buttons .button {
-
-
-display:inline-block;
-
-
-background:
-
-
-linear-gradient(
-135deg,
-#9b7cff,
-#7ddcff
-);
-
-
-
-color:white;
-
-
-padding:
-
-12px 28px;
-
-
-
-border-radius:999px;
-
-
-font-weight:600;
-
-
-text-decoration:none;
-
-
-box-shadow:
-
-
-0 10px 22px rgba(90,70,170,.18);
-
-
-transition:.25s ease;
-
-
-}
-
-
-
-.package-buttons .button:hover {
-
-
-transform:translateY(-3px);
-
-
-}
-
 
 
 
@@ -1431,38 +1401,26 @@ transform:translateY(-3px);
 
 .weekly-packages {
 
-
-padding:65px 15px;
-
-}
-
-
-
-.weekly-packages h2{
-
-
-font-size:2.2rem;
-
+padding:70px 15px;
 
 }
 
 
 
-.package-card{
+.package-card {
 
-
-flex-basis:260px;
-
+flex-basis:220px;
 
 }
 
 
 
-.package-card img{
+.package-card img {
 
 
-height:200px;
+width:160px;
 
+height:160px;
 
 }
 
@@ -1470,34 +1428,50 @@ height:200px;
 }
 
 /* ===================================
-        TRAVEL FINDS BOARD
+      MINI DAYDREAMS
+      POSTCARD STYLE
 =================================== */
 
-.hot-deals {
+
+.weekly-packages {
 
 padding:90px 20px;
 
-margin:40px 15px;
+margin:40px 20px;
 
 background:
+
+radial-gradient(
+circle at top left,
+rgba(198,180,255,.45),
+transparent 40%
+),
+
+radial-gradient(
+circle at bottom right,
+rgba(160,210,255,.35),
+transparent 40%
+),
+
 linear-gradient(
 135deg,
-#f7f1ff,
-#e9f7ff
+#f6f0ff,
+#eaf7ff
 );
 
-border-radius:35px;
+border-radius:45px;
 
 overflow:hidden;
 
-position:relative;
-
 box-shadow:
-0 20px 50px rgba(70,50,120,.10);
+
+0 25px 60px rgba(70,50,120,.12);
 
 }
 
-.hot-deals h2 {
+
+
+.weekly-packages h2 {
 
 font-family:'Playfair Display',serif;
 
@@ -1505,15 +1479,15 @@ font-size:2.8rem;
 
 color:#3b2c70;
 
-margin-bottom:12px;
-
 }
 
-.hot-deals > p {
 
-max-width:700px;
 
-margin:0 auto 40px;
+.weekly-packages p {
+
+max-width:650px;
+
+margin:0 auto 45px;
 
 color:#62557d;
 
@@ -1521,11 +1495,14 @@ line-height:1.8;
 
 }
 
-/* ==========================
-      SCROLL ROW
-========================== */
 
-.hot-deals-scroll {
+
+/* =========================
+      DAYDREAM ROW
+========================= */
+
+
+.packages-grid {
 
 display:flex;
 
@@ -1533,214 +1510,301 @@ gap:35px;
 
 overflow-x:auto;
 
-padding:30px 20px;
+padding:30px 15px 40px;
 
 scroll-snap-type:x mandatory;
 
--webkit-overflow-scrolling:touch;
-
 }
 
-.hot-deals-scroll::-webkit-scrollbar{
+
+.packages-grid::-webkit-scrollbar{
 
 display:none;
 
 }
 
-/* ==========================
-      SCRAPBOOK CARDS
-========================== */
 
-.hot-deal-card {
+
+/* =========================
+      DREAM CARDS
+========================= */
+
+
+.package-card {
+
 
 position:relative;
 
-flex:0 0 320px;
+flex:0 0 290px;
 
-background:#fffdf8;
 
-padding:14px;
+background:
 
-border-radius:22px;
+rgba(255,255,255,.65);
+
+
+backdrop-filter:blur(18px);
+
+
+border-radius:35px;
+
+
+padding:18px;
+
 
 scroll-snap-align:center;
 
+
 box-shadow:
-0 18px 40px rgba(70,50,120,.15);
 
-transition:.3s ease;
+0 20px 45px rgba(70,50,120,.15);
 
-overflow:visible;
-
-}
-
-/* tape effect */
-
-.hot-deal-card::before {
-
-content:"";
-
-position:absolute;
-
-top:-10px;
-
-left:50%;
-
-transform:
-translateX(-50%)
-rotate(-3deg);
-
-width:90px;
-
-height:24px;
-
-background:
-rgba(255,255,255,.85);
 
 border:
-1px solid rgba(0,0,0,.05);
 
-z-index:10;
+1px solid rgba(255,255,255,.8);
 
-}
 
-/* alternating scrapbook look */
+transition:.35s ease;
 
-.hot-deal-card:nth-child(odd){
-
-transform:rotate(-2deg);
 
 }
 
-.hot-deal-card:nth-child(even){
 
-transform:rotate(2deg);
+
+/* scrapbook tilt */
+
+
+.package-card:nth-child(odd){
+
+transform:rotate(-3deg);
 
 }
 
-.hot-deal-card:hover {
+
+.package-card:nth-child(even){
+
+transform:rotate(3deg);
+
+}
+
+
+
+.package-card:hover{
 
 transform:
-translateY(-8px)
+
+translateY(-10px)
 rotate(0deg);
 
 }
 
-/* ==========================
-         IMAGE
-========================== */
 
-.deal-image {
+
+/* =========================
+      IMAGE
+========================= */
+
+
+.package-card img {
+
 
 width:100%;
 
-height:190px;
+
+height:170px;
+
 
 object-fit:cover;
 
-border-radius:16px;
+
+border-radius:28px;
+
 
 display:block;
 
-margin-bottom:15px;
 
 }
 
-/* ==========================
-         CONTENT
-========================== */
 
-.hot-deal-card h3 {
+
+.package-card::before {
+
+
+content:"✦";
+
+
+position:absolute;
+
+
+top:-15px;
+
+
+right:20px;
+
+
+width:35px;
+
+
+height:35px;
+
+
+border-radius:50%;
+
+
+background:
+
+linear-gradient(
+135deg,
+#cdb8ff,
+#bdeaff
+);
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+color:white;
+
+
+font-size:18px;
+
+
+box-shadow:
+
+0 8px 20px rgba(80,60,150,.2);
+
+
+}
+
+
+
+/* =========================
+      CONTENT
+========================= */
+
+
+.package-overlay {
+
+
+padding:20px 10px 10px;
+
+
+background:none;
+
+
+}
+
+
+
+.package-overlay h3 {
+
 
 font-family:'Playfair Display',serif;
 
-font-size:1.4rem;
+
+font-size:1.45rem;
+
 
 color:#3b2c70;
 
-margin:10px 0;
 
 }
 
-.hot-deal-card p {
 
-font-size:.95rem;
 
-line-height:1.7;
+.package-overlay p {
+
 
 color:#62557d;
 
-margin-bottom:12px;
+
+font-size:.95rem;
+
+
+line-height:1.7;
+
 
 }
 
-/* ==========================
-         BUTTON
-========================== */
 
-.hot-deal-card .button {
 
-display:inline-block;
+/* =========================
+      BUTTON
+========================= */
 
-margin-top:10px;
 
-padding:12px 24px;
+.package-buttons {
+
+
+margin-top:18px;
+
+}
+
+
+
+.package-buttons .button {
+
 
 background:
+
 linear-gradient(
 135deg,
 #9b7cff,
 #7ddcff
 );
 
-color:white;
+
+padding:11px 24px;
+
 
 border-radius:999px;
 
-font-weight:600;
+
+color:white;
+
 
 box-shadow:
-0 10px 20px rgba(90,70,170,.18);
 
-transition:.25s;
+0 10px 20px rgba(90,70,170,.2);
 
-}
-
-.hot-deal-card .button:hover {
-
-transform:translateY(-3px);
 
 }
 
-/* ==========================
-          MOBILE
-========================== */
+
+
+
+
+/* MOBILE */
+
 
 @media(max-width:768px){
 
-.hot-deals{
 
-padding:70px 15px;
+.weekly-packages{
+
+padding:65px 15px;
 
 }
 
-.hot-deals h2{
+
+.weekly-packages h2{
 
 font-size:2.2rem;
 
 }
 
-.hot-deal-card{
 
-flex-basis:280px;
+.package-card{
 
-}
-
-.deal-image{
-
-height:170px;
+flex-basis:260px;
 
 }
+
 
 }
 /* ===================================
