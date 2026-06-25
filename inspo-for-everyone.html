@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inspo For Everyone! | RaeRoutes</title>
+
+<style>
+/* ===== GLOBAL STYLES ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+
+    /* Scrapbook-inspired background with subtle spring hint */
+   background: linear-gradient(135deg, #FDF7FF, #EEF7F2); /* soft lilac tones */
+    /* Optional: subtle paper texture overlay */
+    /* background-image: url('scrapbook-texture.png'); */
+    background-size: cover;
+    background-repeat: repeat;
+
+    color: #2A2A2A;           /* dark gray, softer than pure black */
+    overflow-x: hidden;
+
+    /* Brand colors for gradients and overlays (untouched) */
+    --accent: #CDEBDD;        /* pastel sage */
+    --accent2: #C5D8F6;       /* pastel blue */
+    --overlay-bg: rgba(0,0,0,0.2); /* soft translucent overlay */
+}
+    
+    /* ===== HEADER ===== */
+.site-header {
+  padding: 10px 14px;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.site-logo {
+  max-height: 70px;      /* hard stop */
+  width: auto;
+}
+
+/* NAV */
+/* NAV CONTAINER */
+nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ALL LINKS */
+nav a {
+  background: rgba(255,255,255,0.15);  /* subtle white overlay */
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #2A2A2A;   /* match your logo text */
+  transition: background 0.2s, transform 0.2s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-1px);
+}
+
+/* CONTACT BUTTON SPECIAL */
+nav a.contact-btn {
+  background: rgba(200, 210, 245, 0.3); /* soft pastel blue from logo */
+  color: #2A2A2A;
+  font-weight: 600;
+}
+
+nav a.contact-btn:hover {
+  background: rgba(200, 210, 245, 0.5);
+}
+
+/* NAV SEARCH BAR */
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+}
+
+.nav-search input {
+  padding: 6px 10px;
+  border: 2px solid rgba(0,0,0,0.25);
+  border-radius: 6px;
+  font-size: 12px;
+  outline: none;
+  width: 150px;
+}
+
+.nav-search button {
+  padding: 6px 10px;
+  border: 2px solid rgba(0,0,0,0.25);
+  border-radius: 6px;
+  background: rgba(200, 210, 245, 0.3); /* match logo color */
+  cursor: pointer;
+}
+
+.nav-search button:hover {
+  background: rgba(200, 210, 245, 0.5);
+}
+    
+/* SEARCH RESULTS CARDS */
+#search-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+#search-results .result-card {
+  background: rgba(200, 210, 245, 0.3); /* subtle logo color */
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1 1 200px; /* responsive width for multiple cards */
+  min-width: 150px;
+  transition: background 0.2s;
+}
+
+#search-results .result-card:hover {
+  background: rgba(200, 210, 245, 0.5);
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 16px;
+  }
+
+  nav {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .nav-search {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .nav-search input {
+    width: 70%;
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .nav-search button {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+}
+    
+    /* ===== MOBILE FIRST SAFETY NET ===== */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+    
+/* ===== DESKTOP HEADER CLEANUP ===== */
+@media (min-width: 900px) {
+
+  .site-header {
+    padding: 18px 40px;      /* slightly more padding on desktop */
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;          /* center header content */
+  }
+
+  /* keep logo small–medium */
+  .site-logo {
+    max-height: 52px;        /* small–medium size */
+  }
+
+  /* desktop nav behavior */
+  nav {
+    gap: 14px;
+    flex-wrap: nowrap;       /* stop wrapping on desktop */
+  }
+
+  nav a {
+    font-size: 14px;         /* slightly bigger than mobile */
+    padding: 6px 14px;       /* comfortable clickable area */
+  }
+}
+
+
+
+    
+/* ===== HERO (CLEANED + COMBINED) ===== */
+.hero-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 16px;
+  min-height: 200px;
+
+  /* May tone (no yellow) */
+  background: linear-gradient(135deg, #FDF7FF, #F4FBF7);
+}
+
+.hero-card {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  height: 220px; /* mobile default */
+
+  padding: 6px;
+  text-align: center;
+  overflow: hidden;
+
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  border: 2px solid rgba(0,0,0,0.25);
+
+  box-shadow:
+    inset 0 0 0 2px rgba(0,0,0,0.1),
+    4px 5px 0 rgba(0,0,0,0.1),
+    0 8px 20px rgba(0,0,0,0.08);
+}
+
+.hero-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 900px) {
+  .hero-card {
+    height: 380px;
+    margin: 0 auto;
+  }
+}
+
+/* ===== MOBILE TWEAKS ===== */
+@media (max-width: 768px) {
+  .hero-wrapper {
+    padding: 12px;
+  }
+
+  .hero-card {
+    padding: 4px;
+  }
+
+  .hero-card img {
+    max-height: 220px;
+  }
+}
+
+/* ===== CATEGORY CARDS GRID (MOBILE FIRST) ===== */
+.category-scroll {
+  display: grid;
+  grid-template-columns: 1fr;      /* ONE card per row on mobile */
+  gap: 16px;
+  padding: 16px;
+  justify-items: center;
+}
+
+/* Tablets + Desktop */
+@media (min-width: 768px) {
+  .category-scroll {
+    grid-template-columns: repeat(2, 1fr); /* two cards per row */
+    gap: 20px;
+    padding: 20px;
+  }
+}
+
+
+/* ===== CARD STYLE ===== */
+.card {
+    width: 100%;
+    max-width: 300px;                       /* fits nicely in grid */
+    padding: 20px;
+
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    color: #2A2A2A;
+    font-weight: 600;
+    text-align: center;
+
+    border-radius: 0;                       /* sharp scrapbook edges */
+    border: 2px solid rgba(0,0,0,0.28);
+
+    position: relative;
+    cursor: pointer;
+
+    /* scrapbook depth + ripped effect */
+    box-shadow:
+        inset 0 0 0 2px rgba(0,0,0,0.1),
+        4px 5px 0 rgba(0,0,0,0.10),
+        0 8px 20px rgba(0,0,0,0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    transform: rotate(-0.2deg);             /* hand-placed tilt */
+    overflow: hidden;                        /* ensures tape stays inside */
+}
+
+.card:hover {
+    transform: translateY(-4px) rotate(-0.3deg);
+    box-shadow:
+        6px 7px 0 rgba(0,0,0,0.12),
+        0 12px 26px rgba(0,0,0,0.10);
+}
+
+/* ===== SCRAPBOOK APRIL TAPE ===== */
+.card::before,
+.overlay-content::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 80px;
+    height: 20px;
+    border-radius: 2px;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+
+    /* spring yellow stripe pattern */
+   background-color: #F2E9FF;
+background-image: repeating-linear-gradient(
+    45deg,
+    #F2E9FF,
+    #F2E9FF 6px,
+    #DDF3EA 6px,
+    #DDF3EA 12px
+);
+}
+
+/* ===== CARD ENTRANCE ANIMATION ===== */
+@keyframes cardEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) rotate(-0.2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.card {
+    opacity: 0; /* start hidden */
+    animation: cardEntrance 0.6s ease-out forwards;
+}
+
+/* stagger animation for multiple cards */
+.category-scroll .card:nth-child(1) { animation-delay: 0.1s; }
+.category-scroll .card:nth-child(2) { animation-delay: 0.2s; }
+.category-scroll .card:nth-child(3) { animation-delay: 0.3s; }
+.category-scroll .card:nth-child(4) { animation-delay: 0.4s; }
+.category-scroll .card:nth-child(5) { animation-delay: 0.5s; }
+.category-scroll .card:nth-child(6) { animation-delay: 0.6s; }
+
+
+
+
+/* ===== OVERLAY PANELS ===== */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-bg);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.overlay-content {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 0; /* sharp edges */
+    padding: 26px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 88%;
+    overflow-y: auto;
+    color: #2A2A2A;
+    position: relative;
+    transform: rotate(-0.2deg);
+
+    /* scrapbook ripped effect */
+    border: 2px solid rgba(0,0,0,0.28);
+    box-shadow:
+        inset 0 0 0 2px rgba(0,0,0,0.1), /* inner edge = ripped paper */
+        4px 5px 0 rgba(0,0,0,0.10),
+        0 8px 20px rgba(0,0,0,0.08);
+
+    font-size: 14px;
+}
+
+/* ===== SCRAPBOOK APRIL TAPE ON OVERLAYS ===== */
+.overlay-content::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 90px;
+    height: 20px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    z-index: 2;
+
+    /* spring yellow stripe pattern */
+    background-color: #FFF5BA; /* soft yellow base */
+    background-image: repeating-linear-gradient(
+        45deg,
+        #FFF5BA,
+        #FFF5BA 6px,
+        #FFD93D 6px,
+        #FFD93D 12px
+    );
+}
+
+.overlay-content h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.overlay-content h4 {
+    margin: 14px 0 6px;
+    font-size: 15px;
+    border-bottom: 1px dashed rgba(0,0,0,0.25);
+    padding-bottom: 4px;
+}
+
+.overlay-content .city {
+    margin-left: 14px;
+    font-size: 13px;
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+/* ===== CTA Button  ===== */
+.cta-btn {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 18px;
+    border: 2px solid rgba(0,0,0,0.4);
+    border-radius: 0; /* sharp edges */
+    background: rgba(255,255,255,0.35);
+    color: #2A2A2A;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.cta-btn:hover {
+    background: rgba(255,255,255,0.55);
+    transform: translateY(-1px);
+}
+
+/* ===== CLOSE BUTTON ===== */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 22px;
+    cursor: pointer;
+    color: white;
+}
+
+/* ===== MOBILE LAYOUT ===== */
+@media (max-width: 768px) {
+
+    /* STACKED CATEGORY CARDS */
+    .category-scroll {
+        display: grid;
+        grid-template-columns: 1fr; /* one card per row on mobile */
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .card {
+        max-width: 100%; /* full width of grid */
+        transform: rotate(0deg); /* remove tilt for easier reading */
+        padding: 18px;
+        animation-duration: 0.5s;
+    }
+
+    .card::before {
+        width: 60px;
+        height: 16px; /* smaller tape on mobile */
+    }
+
+    /* OVERLAY PANELS ON MOBILE */
+    .overlay-content {
+        width: 95%;
+        max-width: 95%;
+        max-height: 90%;
+        padding: 20px;
+        font-size: 13px;
+    }
+
+    .overlay-content::before {
+        width: 70px;
+        height: 16px; /* slightly smaller tape */
+    }
+
+    .overlay-content h3 {
+        font-size: 16px;
+    }
+
+    .overlay-content h4 {
+        font-size: 14px;
+    }
+
+    .overlay-content .city {
+        font-size: 12px;
+    }
+
+    /* CTA BUTTON */
+    .cta-btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact {
+    margin: 40px 20px 60px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    border-radius: 14px;
+   color: #2A2A2A;  /* changed from white to dark gray */
+    text-align: center;
+}
+.contact h3 { margin-bottom: 12px; }
+.contact a {
+    display: inline-block;
+    margin-top: 10px;
+    background: #fff;
+    color: #2A2A2A;  /* changed from white to dark gray */
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* FLOATING SPARKLE FOR QR CODE */
+.emoji-sparkle-qr { animation: floatSparkleQR 3s infinite; }
+@keyframes floatSparkleQR {
+    0% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-3px) rotate(2deg); }
+    50% { transform: translateY(0px) rotate(0deg); }
+    75% { transform: translateY(-2px) rotate(-2deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* MOBILE + DESKTOP */
+@media (min-width: 860px) { .category-scroll { justify-content: center; } }
+
+/* SIMPLE SCRAPBOOK ANIMATION */
+.emoji-sparkle { animation: floatSparkle 3s infinite; display: inline-block; }
+@keyframes floatSparkle { 0% { transform: translateY(0px); } 50% { transform: translateY(-4px); } 100% { transform: translateY(0px); } }
+
+    /* ===== FOOTER STYLING ===== */
+.site-footer {
+    background-color: #F3FAF6;
+    border-top: 1px solid #D6EDE3;
+    text-align: center;
+    padding: 20px 16px;
+    font-size: 14px;
+    color: #333;
+    margin-top: 40px;
+}
+
+.site-footer p {
+    margin: 4px 0;
+    line-height: 1.5;
+}
+
+.site-footer a {
+    color: #c03c8a; /* optional highlight color for partner links */
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <img src="IMG_7560.jpg" alt="RaeRoutes Logo" class="site-logo">
+
+    <nav>
+      <a href="#contact" class="contact-btn">Contact</a>
+    </nav>
+
+    <!-- SEARCH BAR -->
+    <form class="nav-search" onsubmit="return false;">
+      <input type="text" id="searchInput" placeholder="Search activities...">
+      <button type="button" onclick="searchCards()">🔍</button>
+    </form>
+      <!-- SEARCH RESULTS CARDS -->
+<div id="search-results"></div>
+  </div>
+</header>
+
+
+<div class="hero-wrapper">
+  <div class="hero-card">
+    <img src="june.png" alt="Inspo For Everyone">
+  </div>
+</div>
+
+
+
+<!-- CATEGORY CARDS -->
+<div id="categories" class="category-scroll">
+    <div class="card" onclick="openOverlay('nightlife')">🎉 Weekend Escapes</div>
+    <div class="card" onclick="openOverlay('sports')">🏈 Adventure & Thrills</div>
+    <div class="card" onclick="openOverlay('shows')">🎭 Live & Interactive</div>
+    <div class="card" onclick="openOverlay('festivals')">🌸 Festivals & Seasonal Fun</div>
+    <div class="card" onclick="openOverlay('getaways')">🏔️ Scenic & Relaxing</div>
+    <div class="card" onclick="openOverlay('music')">🎶 Music & Vibes</div>
+    <div class="card" onclick="openOverlay('jazz')">🎷 Chill & Recharge</div>
+    <div class="card" onclick="openOverlay('food')">🍴 Food & Culture</div>
+</div>
+
+<!-- NIGHTLIFE -->
+<div id="nightlife" class="overlay" data-tags="nightlife, summer, rooftop, beach clubs, june events, pool parties, miami, vegas, ibiza vibes, music festivals, nightlife">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <h3>Weekend Escapes Inspo✨<span class="emoji-sparkle">✨</span></h3>
+    <p>• Summer nights • Rooftop energy • Beach clubs & festivals</p>
+      
+    <h4>Major June Party Festivals</h4>
+    <div class="city">• Manchester, TN: Bonnaroo Music Festival — camping + nonstop music energy</div>
+    <div class="city">• Chicago, IL: Beyond Wonderland Chicago — EDM festival vibes</div>
+    <div class="city">• New York, NY: Governors Ball — music, nightlife & summer city energy</div>
+
+    <h4>Peak Pool Party Season</h4>
+    <div class="city">• Las Vegas, NV: Dayclubs & DJ residencies — cabanas + VIP experiences</div>
+    <div class="city">• Miami Beach, FL: South Beach nightlife + rooftop lounges</div>
+    <div class="city">• Scottsdale, AZ: Resort weekends + nightlife brunch scenes</div>
+
+    <h4>Beach Nights & Summer Takeovers</h4>
+    <div class="city">• Ibiza, Spain: Summer opening parties + beach clubs</div>
+    <div class="city">• Mykonos, Greece: Sunset beach parties + nightlife escapes</div>
+    <div class="city">• San Diego, CA: Rooftop bars + coastal nightlife vibes</div>
+
+    <p><em>Find nightlife experiences, VIP passes, and summer events ready to book</em></p>
+
+    <a class="cta-btn secondary" href="https://damonycasegura.goldentickets.com" target="_blank">
+      Explore the vibe
+    </a>
+  </div>
+</div>
+
+<!-- SPORTS -->
+<div id="sports" class="overlay" data-tags="sports, finals, nba, nhl, baseball, soccer, racing, stanley cup, championship, june sports">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <h3>🏀 Adventure & Thrills Inspo⚡ <span class="emoji-sparkle">⚡</span></h3>
+    <p> • Championship Season • Summer Sports • Stadium Energy</p>
+      
+    <h4>Championship Season</h4>
+    <div class="city">• Nationwide: NBA Finals — championship atmosphere + premium seating</div>
+    <div class="city">• Nationwide: Stanley Cup Finals — intense playoff energy</div>
+
+    <h4>Major June Sporting Events</h4>
+    <div class="city">• Worldwide: Soccer summer tournaments & international matches</div>
+    <div class="city">• New York, NY: Belmont Stakes — iconic horse racing event</div>
+    <div class="city">• Nationwide: MLB summer games — baseball season in full swing</div>
+
+    <h4>Summer Stadium Experiences</h4>
+    <div class="city">• Boston, MA: Fenway Park summer nights</div>
+    <div class="city">• Chicago, IL: Wrigley Field rooftop experiences</div>
+    <div class="city">• Los Angeles, CA: Dodgers Stadium sunset games</div>
+
+    <h4>Fight Nights & Live Action</h4>
+    <div class="city">• Las Vegas, NV: UFC fight weekends + VIP experiences</div>
+    <div class="city">• Nationwide: Summer boxing matches & arena events</div>
+
+    <p><em>Browse championship games, tickets, and sports experiences available now</em></p>
+
+    <a class="cta-btn primary" href="https://damonycasegura.goldentickets.com" target="_blank">
+      See What's Happening 
+    </a>
+  </div>
+</div>
+
+<!-- SHOWS -->
+<div id="shows" class="overlay"data-tags="shows, broadway, vegas, comedy, theater, immersive, entertainment, performances, summer shows, june">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <h3>Live & Interactive Inspo✨ <span class="emoji-sparkle">🎬</span></h3>
+    <p>Broadway • Vegas • Summer Entertainment • Interactive Experiences</p>
+
+    <h4>Summer Broadway & Touring Shows</h4>
+    <div class="city">• New York, NY: Broadway summer hits — premium seating & iconic productions</div>
+    <div class="city">• Nationwide: Hamilton, Wicked & top touring musicals</div>
+    <div class="city">• Nationwide: Summer theater tours & limited performances</div>
+
+    <h4>Las Vegas Summer Entertainment</h4>
+    <div class="city">• Las Vegas, NV: Sphere immersive experiences</div>
+    <div class="city">• Las Vegas, NV: Cirque du Soleil productions + VIP seating</div>
+    <div class="city">• Las Vegas, NV: Comedy residencies & weekend headliners</div>
+
+    <h4>Immersive Experiences</h4>
+    <div class="city">• Denver, CO: Meow Wolf — Convergence Station</div>
+    <div class="city">• Los Angeles, CA: Interactive theater & pop-up experiences</div>
+    <div class="city">• New York, NY: Rooftop cinema nights & immersive exhibits</div>
+
+    <p><em>Browse performances, shows, and entertainment experiences available now</em></p>
+
+    <a class="cta-btn primary" href="https://www.viator.com/?pid=P00011640&uid=U00716568&mcid=58086&currency=USD" target="_blank">
+      Discover More
+    </a>
+  </div>
+</div>
+
+<!-- FESTIVALS -->
+<div id="festivals" class="overlay"data-tags="festivals, june, pride, music festivals, summer, food festivals, culture">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <h3>🌞 Festivals & Seasonal Fun Inspo <span class="emoji-sparkle">🎉</span></h3>
+    <p>Summer Festivals • Pride Events • Music & Culture</p>
+
+    <h4>Major June Festivals</h4>
+    <div class="city">• Manchester, TN: Bonnaroo — music, camping & festival energy</div>
+    <div class="city">• Chicago, IL: Taste of Randolph — food + live music</div>
+    <div class="city">• New York, NY: Governors Ball — iconic summer music festival</div>
+
+    <h4>Pride Month Celebrations</h4>
+    <div class="city">• New York, NY: NYC Pride events & parades</div>
+    <div class="city">• San Francisco, CA: Pride celebrations + nightlife</div>
+    <div class="city">• Chicago, IL: Pride Fest & summer street festivals</div>
+
+    <h4>Summer Culture & Food Events</h4>
+    <div class="city">• Portland, OR: Waterfront festivals & local food scenes</div>
+    <div class="city">• Austin, TX: Outdoor concerts & food truck festivals</div>
+    <div class="city">• Seattle, WA: Summer markets + waterfront events</div>
+
+    <p><em>Book festival passes, guided tours, and seasonal experiences today</em></p>
+
+    <a class="cta-btn primary" href="mailto:raeroutes13@gmail.com" target="_blank">
+      Let’s Brainstorm 💡
+    </a>
+  </div>
+</div>
+
+<!-- GETAWAYS -->
+<div id="getaways" class="overlay"data-tags="getaways, june travel, beaches, europe, islands, summer vacations, scenic travel">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <h3>Scenic & Relaxing Inspo🏞️ <span class="emoji-sparkle">🏞️</span></h3>
+    <p>Summer Escapes • Coastal Views • Adventure & Relaxation</p>
+
+    <h4>Perfect June Destinations</h4>
+    <div class="city">• Amalfi Coast, Italy: Peak coastal beauty + summer energy</div>
+    <div class="city">• Santorini, Greece: Cliffside sunsets + island escapes</div>
+    <div class="city">• Maui, Hawaii: Tropical beaches + scenic road trips</div>
+
+    <h4>National Park Summer Adventures</h4>
+    <div class="city">• Glacier National Park, MT: Scenic drives + alpine lakes</div>
+    <div class="city">• Yellowstone, WY: Wildlife & summer hiking</div>
+    <div class="city">• Zion, UT: Red rock adventures + canyon views</div>
+
+    <h4>Quick Summer Escapes</h4>
+    <div class="city">• Charleston, SC: Coastal charm + beach weather</div>
+    <div class="city">• San Diego, CA: Sunny beaches + laid-back vibes</div>
+    <div class="city">• Lake Tahoe, CA/NV: Mountain lake views + outdoor adventures</div>
+
+    <p><em>Find tours, excursions, and getaway experiences ready to book</em></p>
+
+   <a class="cta-btn primary" href="mailto:raeroutes13@gmail.com" target="_blank">
+      Let’s Brainstorm 💡
+   </a>
+  </div>
+</div>
+
+<!-- MUSIC -->
+<div id="music" class="overlay"data-tags="music, concerts, tours, festivals, summer concerts, june music, live tours">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <h3>Music & Vibes Inspo 🎤 <span class="emoji-sparkle">🎤</span></h3>
+    <p>Summer Tours • Festivals • Stadium Shows</p>
+
+    <h4>Big Summer Tour Energy</h4>
+    <div class="city">• Morgan Wallen: Stadium tour stops + VIP experiences</div>
+    <div class="city">• Olivia Rodrigo: Arena performances + fan experiences</div>
+    <div class="city">• Luke Combs: Summer stadium concerts</div>
+
+    <h4>Major June Music Festivals</h4>
+    <div class="city">• Bonnaroo — camping + live music experience</div>
+    <div class="city">• Governors Ball — NYC summer music vibes</div>
+    <div class="city">• Beyond Wonderland Chicago — EDM festival weekends</div>
+
+    <p><em>Book concert tickets and music festival experiences now</em></p>
+
+    <a class="cta-btn primary" href="https://damonycasegura.goldentickets.com" target="_blank">
+      Feel the Vibe
+    </a>
+  </div>
+</div>
+
+<!-- JAZZ -->
+<div id="jazz" class="overlay"data-tags="jazz, candlelight, chill vibes, lounges, summer nights, live music">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <h3>Chill & Recharge Inspo 🎶 <span class="emoji-sparkle">🎶</span></h3>
+    <p>Jazz • Rooftops • Soulful Summer Nights</p>
+
+    <h4>Iconic Jazz Nights</h4>
+    <div class="city">• New Orleans, LA: Frenchmen Street + live jazz clubs</div>
+    <div class="city">• New York, NY: Rooftop jazz lounges & intimate sets</div>
+    <div class="city">• Chicago, IL: Green Mill late-night jazz vibes</div>
+
+    <h4>Summer Evening Experiences</h4>
+    <div class="city">• Seattle, WA: Waterfront music + cocktail lounges</div>
+    <div class="city">• Austin, TX: Blues & jazz fusion nights</div>
+    <div class="city">• Los Angeles, CA: Dinner jazz + rooftop evenings</div>
+
+    <h4>Candlelight Concerts</h4>
+    <div class="city">• Nationwide: Candlelight orchestras & themed live music experiences</div>
+
+    <p><em>Find jazz lounges, candlelight concerts, and chill experiences ready to book</em></p>
+
+    <a class="cta-btn primary" href="https://damonycasegura.goldentickets.com" target="_blank">
+     Unwind Here
+    </a>
+  </div>
+</div>
+
+<!-- FOOD -->
+<div id="food" class="overlay"data-tags="food, wine, summer dining, culinary travel, tastings, june festivals">
+  <div class="overlay-content">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <h3>Food & Culture Inspo🍷 <span class="emoji-sparkle">🍷</span></h3>
+    <p>Summer Dining • Wine • Culinary Escapes</p>
+
+    <h4>June Food Festivals</h4>
+    <div class="city">• Chicago, IL: Taste of Randolph — food vendors + live music</div>
+    <div class="city">• Portland, OR: Summer food truck festivals & local markets</div>
+    <div class="city">• Nationwide: Summer street fairs & foodie weekends</div>
+
+    <h4>Wine & Coastal Getaways</h4>
+    <div class="city">• Napa Valley, CA: Summer vineyard tastings</div>
+    <div class="city">• Sonoma, CA: Boutique wineries + outdoor dining</div>
+    <div class="city">• Tuscany, Italy: Countryside wine tours + culinary escapes</div>
+
+    <h4>Foodie Travel Favorites</h4>
+    <div class="city">• Charleston, SC: Southern cuisine + waterfront dining</div>
+    <div class="city">• Austin, TX: BBQ, tacos & summer patios</div>
+    <div class="city">• Las Vegas, NV: Celebrity chef restaurants + rooftop dining</div>
+
+    <p><em>Explore food tours, tastings, and culinary experiences you can book now</em></p>
+
+    <a class="cta-btn primary" href="https://www.viator.com/?pid=P00011640&uid=U00716568&mcid=58086&currency=USD" target="_blank">
+      Explore Flavors
+    </a>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<div id="contact" class="contact">
+    <h3>Get in Touch with RaeRoutes</h3>
+    <p>Have questions or don’t see what you’re looking for? Send a message or scan/hold down the QR code below!</p>
+    <a href="mailto:raeroutes13@gmail.com">raeroutes13@gmail.com</a>
+    <div style="margin-top: 16px; position: relative; display: inline-block;">
+        <img src="qr-code.png" alt="RaeRoutes QR Code" class="emoji-sparkle-qr" style="width:150px; height:auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+        <span class="emoji-sparkle" style="position:absolute; top:-8px; right:-8px; font-size:24px;">✨</span>
+    </div>
+</div>
+
+    <!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>✨ Powered by RaeRoutes | In partnership with trusted travel partners ✨</p>
+        <p>© 2026 RaeRoutes. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+function openOverlay(id){ document.getElementById(id).style.display='flex'; }
+function closeOverlay(){ document.querySelectorAll('.overlay').forEach(el => el.style.display='none'); }
+</script>
+    
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('searchInput');
+  const overlays = document.querySelectorAll('.overlay');
+  const resultsContainer = document.getElementById('search-results');
+
+  // Initially hide all overlays
+  overlays.forEach(overlay => overlay.style.display = 'none');
+
+  function searchCards() {
+    const query = searchInput.value.toLowerCase().trim();
+
+    // Clear previous results
+    resultsContainer.innerHTML = '';
+
+    if (!query) return; // do nothing if input is empty
+
+    overlays.forEach(overlay => {
+      const overlayContent = overlay.querySelector('.overlay-content');
+      const text = overlayContent ? overlayContent.textContent.toLowerCase() : '';
+      const tags = overlay.dataset.tags ? overlay.dataset.tags.toLowerCase() : '';
+
+      if (text.includes(query) || tags.includes(query)) {
+        // Create a mini result card
+        const card = document.createElement('div');
+        card.className = 'result-card';
+        card.textContent = overlayContent.querySelector('h3')?.textContent || 'View Details';
+        
+        // When clicked, open the overlay
+        card.addEventListener('click', () => {
+          overlay.style.display = 'flex';
+        });
+
+        resultsContainer.appendChild(card);
+      }
+    });
+  }
+
+  // Search on button click
+  document.querySelector('.nav-search button').addEventListener('click', searchCards);
+
+  // Search on Enter key
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') searchCards();
+  });
+
+  // Clear results when input is cleared
+  searchInput.addEventListener('input', (e) => {
+    if (!e.target.value.trim()) {
+      resultsContainer.innerHTML = '';
+    }
+  });
+});
+</script>
+  
+</body>
+</html>
