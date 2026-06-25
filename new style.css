@@ -1099,7 +1099,7 @@ color:#50496b;
 
 /* ===================================
       MINI DAYDREAMS ✨
-      Floating Dream Bubbles
+      Floating Travel Bubbles
 =================================== */
 
 
@@ -1119,14 +1119,14 @@ transparent 40%
 
 radial-gradient(
 circle at bottom right,
-rgba(160,210,255,.35),
+rgba(125,220,255,.35),
 transparent 40%
 ),
 
 linear-gradient(
 135deg,
-#f6f0ff,
-#eaf7ff
+#f4efff,
+#e8f6ff
 );
 
 
@@ -1143,6 +1143,7 @@ box-shadow:
 
 
 
+
 .weekly-packages h2 {
 
 font-family:'Playfair Display',serif;
@@ -1151,7 +1152,7 @@ font-size:clamp(2rem,5vw,3rem);
 
 color:#3b2c70;
 
-margin-bottom:10px;
+margin-bottom:15px;
 
 }
 
@@ -1172,26 +1173,24 @@ line-height:1.8;
 
 
 
-/* ==========================
-       FLOATING SCROLL
-========================== */
+/* =========================
+      SCROLL BUBBLES
+========================= */
 
 
 .packages-grid {
 
-
 display:flex;
 
-gap:35px;
+gap:40px;
 
 overflow-x:auto;
 
-padding:30px 25px 60px;
+padding:40px 20px 60px;
 
 scroll-snap-type:x mandatory;
 
 -webkit-overflow-scrolling:touch;
-
 
 }
 
@@ -1205,11 +1204,9 @@ display:none;
 
 
 
-
-
-/* ==========================
-        DREAM BUBBLES
-========================== */
+/* =========================
+      FLOATING BUBBLES
+========================= */
 
 
 .package-card {
@@ -1218,21 +1215,21 @@ display:none;
 flex:0 0 230px;
 
 
-height:260px;
+scroll-snap-align:center;
 
 
 background:
 
-rgba(255,255,255,.35);
+rgba(255,255,255,.45);
 
 
-backdrop-filter:blur(15px);
+backdrop-filter:blur(18px);
 
 
 border-radius:50%;
 
 
-position:relative;
+height:230px;
 
 
 display:flex;
@@ -1244,20 +1241,23 @@ align-items:center;
 justify-content:center;
 
 
-scroll-snap-align:center;
+position:relative;
 
 
 box-shadow:
 
-0 20px 45px rgba(70,50,120,.18);
+0 25px 50px rgba(70,50,120,.18);
 
 
 border:
 
-2px solid rgba(255,255,255,.6);
+1px solid rgba(255,255,255,.7);
 
 
 transition:.35s ease;
+
+
+padding:20px;
 
 
 }
@@ -1265,10 +1265,11 @@ transition:.35s ease;
 
 
 
+/* floating movement */
 
 .package-card:nth-child(odd){
 
-transform:translateY(-18px);
+transform:translateY(-20px);
 
 }
 
@@ -1276,7 +1277,7 @@ transform:translateY(-18px);
 
 .package-card:nth-child(even){
 
-transform:translateY(18px);
+transform:translateY(20px);
 
 }
 
@@ -1295,19 +1296,17 @@ scale(1.05);
 
 
 
-
-
-/* ==========================
-          IMAGE BUBBLE
-========================== */
+/* =========================
+        IMAGE BUBBLE
+========================= */
 
 
 .package-card img {
 
 
-width:120px;
+width:105px;
 
-height:120px;
+height:105px;
 
 
 object-fit:cover;
@@ -1323,27 +1322,33 @@ border:
 
 box-shadow:
 
-0 15px 35px rgba(70,50,120,.25);
+0 15px 35px rgba(70,50,120,.2);
 
+
+margin-bottom:12px;
 
 }
 
 
 
 
-/* ==========================
-          TEXT
-========================== */
+
+/* =========================
+        TEXT
+========================= */
 
 
 .package-overlay {
 
 
-padding:15px 10px 0;
+padding:0 12px;
 
 background:none;
 
+text-align:center;
+
 }
+
 
 
 
@@ -1353,14 +1358,16 @@ background:none;
 font-family:'Playfair Display',serif;
 
 
-font-size:1.25rem;
+font-size:1.15rem;
+
+
+line-height:1.2;
 
 
 color:#3b2c70;
 
 
-margin:5px 0;
-
+margin:0 0 8px;
 
 }
 
@@ -1369,72 +1376,27 @@ margin:5px 0;
 .package-overlay p {
 
 
-font-size:.9rem;
+font-size:.82rem;
+
+
+line-height:1.35;
+
 
 color:#62557d;
 
-line-height:1.5;
+
+margin:0;
+
 
 }
 
 
 
-/* floating sparkle */
 
+
+/* remove sparkle */
 
 .package-card::before {
-
-
-content:"✦";
-
-
-position:absolute;
-
-
-top:25px;
-
-right:35px;
-
-
-color:#9b7cff;
-
-
-font-size:1.5rem;
-
-
-animation:floatSparkle 3s ease-in-out infinite;
-
-}
-
-
-
-
-@keyframes floatSparkle{
-
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-
-50%{
-
-transform:translateY(-8px);
-
-}
-
-
-}
-
-
-
-
-
-/* hide buttons because daydreams are inspiration */
-
-.package-buttons{
 
 display:none;
 
@@ -1444,7 +1406,16 @@ display:none;
 
 
 
-/* MOBILE */
+/* hide buttons */
+
+.package-buttons {
+
+display:none;
+
+}
+
+
+
 
 
 @media(max-width:768px){
@@ -1457,12 +1428,11 @@ padding:70px 15px;
 }
 
 
-
 .package-card{
 
 flex-basis:210px;
 
-height:230px;
+height:210px;
 
 }
 
@@ -1470,18 +1440,32 @@ height:230px;
 
 .package-card img{
 
-width:100px;
+width:90px;
 
-height:100px;
+height:90px;
+
+}
+
+
+
+.package-overlay h3{
+
+font-size:1.05rem;
+
+}
+
+
+.package-overlay p{
+
+font-size:.78rem;
 
 }
 
 
 }
-
 /* ===================================
-        HOT DEALS ✨
-        Floating Travel Finds
+        HOT DEALS ✈️
+        Floating Travel Tickets
 =================================== */
 
 
@@ -1491,18 +1475,17 @@ padding:90px 20px;
 
 margin:40px 15px;
 
-
 background:
 
 radial-gradient(
-circle at top right,
+circle at top left,
 rgba(198,180,255,.45),
 transparent 40%
 ),
 
 radial-gradient(
-circle at bottom left,
-rgba(160,210,255,.35),
+circle at bottom right,
+rgba(125,220,255,.35),
 transparent 40%
 ),
 
@@ -1512,17 +1495,14 @@ linear-gradient(
 #e9f7ff
 );
 
-
 border-radius:45px;
 
 overflow:hidden;
 
 box-shadow:
-
 0 25px 60px rgba(70,50,120,.12);
 
 }
-
 
 
 
@@ -1531,9 +1511,11 @@ box-shadow:
 
 font-family:'Playfair Display',serif;
 
-font-size:clamp(2rem,5vw,3rem);
+font-size:2.8rem;
 
 color:#3b2c70;
+
+margin-bottom:15px;
 
 }
 
@@ -1553,9 +1535,10 @@ line-height:1.8;
 
 
 
-/* ==========================
-       SCROLL
-========================== */
+
+/* =========================
+     FLOATING SCROLL
+========================= */
 
 
 .hot-deals-scroll {
@@ -1566,7 +1549,7 @@ gap:35px;
 
 overflow-x:auto;
 
-padding:30px 20px 60px;
+padding:40px 20px 50px;
 
 scroll-snap-type:x mandatory;
 
@@ -1582,49 +1565,44 @@ display:none;
 
 
 
-
-/* ==========================
-       DEAL BUBBLES
-========================== */
+/* =========================
+        TICKETS
+========================= */
 
 
 .hot-deal-card {
 
 
-flex:0 0 230px;
+position:relative;
 
 
-background:
-
-rgba(255,255,255,.45);
-
-
-backdrop-filter:blur(18px);
-
-
-border-radius:40px;
-
-
-padding:25px 20px;
-
-
-text-align:center;
+flex:0 0 270px;
 
 
 scroll-snap-align:center;
 
 
+background:white;
+
+
+padding:25px;
+
+
+border-radius:35px;
+
+
 box-shadow:
 
-0 20px 45px rgba(70,50,120,.15);
-
-
-border:
-
-1px solid rgba(255,255,255,.7);
+0 25px 50px rgba(70,50,120,.18);
 
 
 transition:.35s ease;
+
+
+text-align:center;
+
+
+overflow:hidden;
 
 
 }
@@ -1632,10 +1610,10 @@ transition:.35s ease;
 
 
 
-
 .hot-deal-card:nth-child(odd){
 
-transform:translateY(-15px);
+transform:translateY(-18px)
+rotate(-3deg);
 
 }
 
@@ -1643,48 +1621,99 @@ transform:translateY(-15px);
 
 .hot-deal-card:nth-child(even){
 
-transform:translateY(15px);
+transform:translateY(15px)
+rotate(3deg);
 
 }
 
 
 
 
-.hot-deal-card:hover {
-
+.hot-deal-card:hover{
 
 transform:
 
-translateY(-10px)
-scale(1.05);
-
+translateY(-12px)
+scale(1.04)
+rotate(0deg);
 
 }
 
 
 
 
+/* ticket cutouts */
 
-/* ==========================
-       IMAGE CIRCLE
-========================== */
-
-
-.deal-image {
+.hot-deal-card::before,
+.hot-deal-card::after {
 
 
-width:120px;
+content:"";
 
-height:120px;
+
+position:absolute;
+
+
+width:35px;
+
+height:35px;
+
+
+background:
+
+#eef4ff;
 
 
 border-radius:50%;
 
 
+top:50%;
+
+
+transform:translateY(-50%);
+
+
+z-index:2;
+
+}
+
+
+
+.hot-deal-card::before{
+
+left:-18px;
+
+}
+
+
+.hot-deal-card::after{
+
+right:-18px;
+
+}
+
+
+
+
+
+/* IMAGE CIRCLE */
+
+
+.deal-image {
+
+
+width:110px;
+
+height:110px;
+
+
 object-fit:cover;
 
 
-margin:auto;
+border-radius:50%;
+
+
+margin:0 auto 15px;
 
 
 display:block;
@@ -1692,23 +1721,19 @@ display:block;
 
 border:
 
-6px solid rgba(255,255,255,.8);
+6px solid #f3edff;
 
 
 box-shadow:
 
-0 15px 35px rgba(70,50,120,.2);
-
+0 15px 30px rgba(70,50,120,.18);
 
 }
 
 
 
 
-
-/* ==========================
-       TEXT
-========================== */
+/* TEXT */
 
 
 .hot-deal-card h3 {
@@ -1717,14 +1742,10 @@ box-shadow:
 font-family:'Playfair Display',serif;
 
 
-font-size:1.35rem;
+font-size:1.45rem;
 
 
 color:#3b2c70;
-
-
-margin-top:18px;
-
 
 }
 
@@ -1735,48 +1756,34 @@ margin-top:18px;
 
 color:#62557d;
 
-
 font-size:.95rem;
-
 
 line-height:1.6;
 
+}
+
+
+
+
+/* little divider */
+
+.hot-deal-card span {
+
+
+display:block;
+
+height:1px;
+
+border-top:2px dashed #d9cfff;
+
+margin:18px 0;
 
 }
 
 
 
 
-
-/* sparkle */
-
-.hot-deal-card::before {
-
-
-content:"✦";
-
-
-position:absolute;
-
-
-top:15px;
-
-
-right:20px;
-
-
-color:#9b7cff;
-
-
-font-size:1.3rem;
-
-
-}
-
-
-
-
-/* button */
+/* BUTTON */
 
 
 .hot-deal-card .button {
@@ -1785,10 +1792,7 @@ font-size:1.3rem;
 display:inline-block;
 
 
-margin-top:15px;
-
-
-padding:10px 22px;
+padding:11px 25px;
 
 
 background:
@@ -1806,7 +1810,7 @@ color:white;
 border-radius:999px;
 
 
-font-weight:600;
+text-decoration:none;
 
 
 }
@@ -1827,23 +1831,12 @@ padding:70px 15px;
 
 .hot-deal-card{
 
-flex-basis:210px;
-
-}
-
-
-
-.deal-image{
-
-width:100px;
-
-height:100px;
+flex-basis:240px;
 
 }
 
 
 }
-
 
 /* ===================================
       THE ROUTE ROOM - SCRAPBOOK STYLE
