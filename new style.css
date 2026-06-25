@@ -2354,8 +2354,8 @@ height:230px;
 }
 
 /* =====================================
-      TRAVEL JOURNAL SPREAD
-      ABOUT + CONTACT COMBINED
+      TRAVEL ROUTE SECTION
+      ABOUT + CONTACT
 ===================================== */
 
 
@@ -2366,11 +2366,13 @@ padding:90px 25px;
 margin:40px 15px;
 
 background:
+
 linear-gradient(
 135deg,
 #f7f0ff,
 #e8f7ff
 );
+
 
 border-radius:45px;
 
@@ -2381,7 +2383,8 @@ overflow:hidden;
 }
 
 
-/* soft background glow */
+
+/* dreamy map glow */
 
 .about-section::before{
 
@@ -2389,18 +2392,20 @@ content:"";
 
 position:absolute;
 
-width:300px;
-height:300px;
+width:320px;
+height:320px;
 
-top:-120px;
+top:-140px;
 left:-120px;
+
 
 background:
 rgba(181,160,255,.25);
 
+
 border-radius:50%;
 
-filter:blur(60px);
+filter:blur(70px);
 
 }
 
@@ -2411,47 +2416,100 @@ content:"";
 
 position:absolute;
 
-width:300px;
-height:300px;
+width:320px;
+height:320px;
 
-bottom:-120px;
+bottom:-140px;
 right:-120px;
+
 
 background:
 rgba(125,220,255,.25);
 
+
 border-radius:50%;
 
-filter:blur(60px);
+filter:blur(70px);
 
 }
 
 
+
 /* =========================
-      JOURNAL GRID
+      ROUTE LAYOUT
 ========================= */
 
 
-.about-card,
-.contact-panel{
-
+.journal-spread{
 
 position:relative;
 
 z-index:2;
 
-background:
-rgba(255,255,255,.65);
+max-width:1100px;
 
-backdrop-filter:blur(18px);
+margin:auto;
+
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:60px;
+
+
+align-items:center;
+
+}
+
+
+
+/* dotted travel path */
+
+.journal-spread::before{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+
+top:50%;
+
+width:120px;
+
+border-top:
+
+3px dashed rgba(155,124,255,.45);
+
+
+transform:
+translate(-50%,-50%);
+
+
+z-index:-1;
+
+}
+
+
+
+/* =========================
+        ABOUT CARD
+========================= */
+
+
+.about-card{
+
+
+background:
+
+rgba(255,255,255,.75);
+
+
+padding:45px 35px;
 
 
 border-radius:35px;
-
-
-border:
-
-1px solid rgba(255,255,255,.8);
 
 
 box-shadow:
@@ -2459,99 +2517,113 @@ box-shadow:
 0 20px 50px rgba(70,50,120,.14);
 
 
-}
+border:
 
+1px solid rgba(255,255,255,.8);
 
-
-/* ABOUT PAGE */
-
-
-.about-card{
-
-max-width:520px;
-
-padding:45px 35px;
-
-margin:auto;
 
 text-align:center;
 
+
+position:relative;
+
 }
 
+
+
+
+/* location pin */
 
 .about-card::before{
 
-content:"";
+
+content:"✈️";
+
 
 position:absolute;
 
-top:-12px;
+
+top:-25px;
 
 left:50%;
 
-transform:
-translateX(-50%)
-rotate(-3deg);
+
+transform:translateX(-50%);
 
 
-width:100px;
-
-height:25px;
-
-
-background:
-rgba(255,255,255,.85);
-
-
-border:
-1px solid rgba(0,0,0,.05);
+font-size:2rem;
 
 }
+
+
 
 
 .about-card h2{
 
+
 font-family:'Playfair Display',serif;
 
-font-size:2.8rem;
+
+font-size:2.6rem;
+
 
 color:#423178;
 
+
 margin-bottom:15px;
+
 
 }
 
 
+
 .about-card p{
 
-max-width:430px;
-
-margin:20px auto;
 
 color:#5f577d;
 
+
 line-height:1.8;
 
+
 font-size:1rem;
+
 
 }
 
 
 
 /* =========================
-       CONTACT NOTE PAGE
+        CONTACT CARD
 ========================= */
 
 
 .contact-panel{
 
-max-width:520px;
+
+background:
+
+rgba(255,255,255,.75);
+
 
 padding:45px 35px;
 
-margin:40px auto 0;
+
+border-radius:35px;
+
+
+box-shadow:
+
+0 20px 50px rgba(70,50,120,.14);
+
+
+border:
+
+1px solid rgba(255,255,255,.8);
+
 
 text-align:center;
+
 
 }
 
@@ -2559,7 +2631,8 @@ text-align:center;
 
 .contact-card{
 
-background:transparent;
+
+background:none;
 
 box-shadow:none;
 
@@ -2567,31 +2640,37 @@ border:none;
 
 padding:0;
 
-max-width:100%;
-
 }
+
 
 
 .contact-card h3{
 
+
 font-family:'Playfair Display',serif;
+
 
 font-size:2.3rem;
 
+
 color:#423178;
 
-margin-bottom:15px;
 
 }
+
 
 
 .contact-card p{
 
+
 color:#5f577d;
+
 
 line-height:1.8;
 
+
 }
+
 
 
 
@@ -2601,10 +2680,13 @@ line-height:1.8;
 
 
 .about-btn,
-.contact-buttons .button{
+.contact-card .button{
 
 
 display:inline-block;
+
+
+margin-top:20px;
 
 
 background:
@@ -2628,22 +2710,30 @@ border-radius:999px;
 font-weight:600;
 
 
+text-decoration:none;
+
+
 box-shadow:
 
 0 10px 25px rgba(90,70,170,.2);
 
 
-transition:.25s ease;
+transition:.25s;
+
 
 }
+
 
 
 .about-btn:hover,
-.contact-buttons .button:hover{
+.contact-card .button:hover{
+
 
 transform:translateY(-4px);
 
+
 }
+
 
 
 
@@ -2655,9 +2745,23 @@ transform:translateY(-4px);
 @media(max-width:768px){
 
 
-.about-section{
+.journal-spread{
 
-padding:60px 15px;
+
+grid-template-columns:1fr;
+
+gap:35px;
+
+
+}
+
+
+
+.journal-spread::before{
+
+
+display:none;
+
 
 }
 
@@ -2666,10 +2770,11 @@ padding:60px 15px;
 .about-card,
 .contact-panel{
 
+
 padding:35px 22px;
 
-}
 
+}
 
 
 .about-card h2{
@@ -2679,25 +2784,10 @@ font-size:2.2rem;
 }
 
 
+
 .contact-card h3{
 
 font-size:2rem;
-
-}
-
-
-.contact-buttons{
-
-flex-direction:column;
-
-}
-
-
-.contact-buttons .button{
-
-width:100%;
-
-box-sizing:border-box;
 
 }
 
