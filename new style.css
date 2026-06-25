@@ -100,186 +100,108 @@ box-shadow:
 
 
 /* =========================
-        HAMBURGER
+        HEADER
 ========================= */
 
+.header-container {
 
-.hamburger {
+display:flex;
+align-items:center;
+justify-content:center;
 
-display:none;
+gap:40px;
 
-cursor:pointer;
+padding:12px 30px;
 
-margin-right:20px;
+position:sticky;
+top:0;
 
-}
+z-index:999;
 
+background:white;
 
-.hamburger div {
+border-bottom:1px solid #e8e2f5;
 
-width:25px;
-
-height:3px;
-
-margin:5px;
-
-
-border-radius:20px;
-
-
-background:
-
-linear-gradient(
-90deg,
-#9b7cff,
-#7ddcff
-);
+box-shadow:
+0 8px 25px rgba(50,40,100,.12);
 
 }
-
-
-
 
 
 /* =========================
           LOGO
 ========================= */
 
-
 .logo {
 
-
 display:flex;
-
-
 align-items:center;
-
+flex-shrink:0;
 
 }
 
-
-
 .logo img {
 
-
-height:100px;
-
+height:75px;
 
 display:block;
 
-
 filter:
-
 drop-shadow(
 0 5px 12px rgba(80,50,130,.18)
 );
 
-
 }
-
-
-
-
-
 
 
 /* =========================
        DESKTOP NAV
 ========================= */
 
-
 .desktop-nav {
 
-
-margin-left:auto;
-
+margin-left:0;
 
 }
-
-
 
 .desktop-nav ul {
 
-
 display:flex;
-
-
 align-items:center;
 
-
-gap:18px;
-
+gap:12px;
 
 list-style:none;
 
-
 margin:0;
-
-
 padding:0;
 
-
 }
-
-
-
-.desktop-nav li {
-
-
-margin:0;
-
-
-}
-
-
-
-
 
 .desktop-nav a {
 
-
 text-decoration:none;
-
 
 color:#40365c;
 
-
 font-size:15px;
-
-
 font-weight:600;
-
 
 padding:8px 12px;
 
-
 border-radius:20px;
-
 
 transition:.25s;
 
-
 }
-
-
-
 
 .desktop-nav a:hover {
 
-
 background:#f1ebff;
-
 
 color:#8b6cf0;
 
-
 }
-
-
-
-
-
-
 
 
 
@@ -787,8 +709,6 @@ flex:1;
 
 
 }
-
-
 
 
 
@@ -1559,105 +1479,77 @@ height:200px;
 
 }
 
-
 /* ===================================
-        TRAVEL FINDS
+        TRAVEL FINDS BOARD
 =================================== */
-
 
 .hot-deals {
 
 padding:90px 20px;
 
+margin:40px 15px;
 
 background:
-
 linear-gradient(
 135deg,
 #f7f1ff,
 #e9f7ff
 );
 
-
 border-radius:35px;
-
-
-margin:40px 15px;
-
 
 overflow:hidden;
 
+position:relative;
+
+box-shadow:
+0 20px 50px rgba(70,50,120,.10);
 
 }
-
-
-
-
 
 .hot-deals h2 {
 
-
 font-family:'Playfair Display',serif;
-
 
 font-size:2.8rem;
 
-
 color:#3b2c70;
 
-
-margin-bottom:10px;
-
+margin-bottom:12px;
 
 }
 
+.hot-deals > p {
 
-
-
-.hot-deals p {
-
-
-max-width:650px;
-
+max-width:700px;
 
 margin:0 auto 40px;
 
-
 color:#62557d;
 
-
-line-height:1.7;
-
+line-height:1.8;
 
 }
 
-
-
-
-
-/* slider */
+/* ==========================
+      SCROLL ROW
+========================== */
 
 .hot-deals-scroll {
 
-
 display:flex;
 
-
-gap:25px;
-
+gap:35px;
 
 overflow-x:auto;
 
-
-padding:20px 5px 25px;
-
+padding:30px 20px;
 
 scroll-snap-type:x mandatory;
 
+-webkit-overflow-scrolling:touch;
 
 }
-
-
 
 .hot-deals-scroll::-webkit-scrollbar{
 
@@ -1665,185 +1557,182 @@ display:none;
 
 }
 
-
-
-
-
-/* cards */
-
+/* ==========================
+      SCRAPBOOK CARDS
+========================== */
 
 .hot-deal-card {
 
+position:relative;
 
-flex:0 0 300px;
+flex:0 0 320px;
 
+background:#fffdf8;
 
-background:white;
+padding:14px;
 
+border-radius:22px;
 
-border-radius:30px;
-
-
-overflow:hidden;
-
-
-scroll-snap-align:start;
-
+scroll-snap-align:center;
 
 box-shadow:
-
 0 18px 40px rgba(70,50,120,.15);
-
 
 transition:.3s ease;
 
+overflow:visible;
 
 }
 
+/* tape effect */
 
+.hot-deal-card::before {
 
+content:"";
+
+position:absolute;
+
+top:-10px;
+
+left:50%;
+
+transform:
+translateX(-50%)
+rotate(-3deg);
+
+width:90px;
+
+height:24px;
+
+background:
+rgba(255,255,255,.85);
+
+border:
+1px solid rgba(0,0,0,.05);
+
+z-index:10;
+
+}
+
+/* alternating scrapbook look */
+
+.hot-deal-card:nth-child(odd){
+
+transform:rotate(-2deg);
+
+}
+
+.hot-deal-card:nth-child(even){
+
+transform:rotate(2deg);
+
+}
 
 .hot-deal-card:hover {
 
-
-transform:translateY(-8px);
-
-
-box-shadow:
-
-0 25px 55px rgba(70,50,120,.22);
-
+transform:
+translateY(-8px)
+rotate(0deg);
 
 }
 
-
-
-
-/* image */
+/* ==========================
+         IMAGE
+========================== */
 
 .deal-image {
 
-
 width:100%;
-
 
 height:190px;
 
-
 object-fit:cover;
 
+border-radius:16px;
 
 display:block;
 
+margin-bottom:15px;
 
 }
 
-
-
-
-
+/* ==========================
+         CONTENT
+========================== */
 
 .hot-deal-card h3 {
 
-
 font-family:'Playfair Display',serif;
 
-
-font-size:1.5rem;
-
+font-size:1.4rem;
 
 color:#3b2c70;
 
-
-padding:18px 20px 5px;
-
-
-margin:0;
-
+margin:10px 0;
 
 }
-
-
-
-
 
 .hot-deal-card p {
 
-
-padding:0 20px;
-
-
 font-size:.95rem;
 
-
-line-height:1.6;
-
+line-height:1.7;
 
 color:#62557d;
 
+margin-bottom:12px;
 
 }
 
-
-
-
+/* ==========================
+         BUTTON
+========================== */
 
 .hot-deal-card .button {
 
-
 display:inline-block;
 
+margin-top:10px;
 
-margin:15px 20px 22px;
-
-
-padding:12px 28px;
-
+padding:12px 24px;
 
 background:
-
 linear-gradient(
 135deg,
 #9b7cff,
 #7ddcff
 );
 
-
+color:white;
 
 border-radius:999px;
 
+font-weight:600;
 
-color:white;
+box-shadow:
+0 10px 20px rgba(90,70,170,.18);
 
+transition:.25s;
 
 }
-
-
-
-
 
 .hot-deal-card .button:hover {
 
-
 transform:translateY(-3px);
-
 
 }
 
-
-
-
+/* ==========================
+          MOBILE
+========================== */
 
 @media(max-width:768px){
 
-
 .hot-deals{
 
-padding:65px 15px;
+padding:70px 15px;
 
 }
-
-
 
 .hot-deals h2{
 
@@ -1851,22 +1740,17 @@ font-size:2.2rem;
 
 }
 
-
-
 .hot-deal-card{
 
-flex-basis:260px;
+flex-basis:280px;
 
 }
-
-
 
 .deal-image{
 
-height:160px;
+height:170px;
 
 }
-
 
 }
 
@@ -1956,27 +1840,35 @@ z-index:2;
       CARD ROW
 ========================== */
 
-.service-scroll {
+.service-scroll{
 
-overflow-x:auto;
+width:100%;
 
-padding-bottom:15px;
+margin-top:40px;
 
 }
 
-.service-scroll::-webkit-scrollbar {
+.service-scroll::-webkit-scrollbar{
 
 display:none;
 
 }
 
-.service-cards {
+.service-cards{
 
 display:flex;
 
-gap:28px;
+justify-content:center;
 
-padding:50px 10px;
+align-items:stretch;
+
+gap:30px;
+
+max-width:1150px;
+
+margin:0 auto;
+
+padding:20px 10px;
 
 }
 
@@ -1984,9 +1876,11 @@ padding:50px 10px;
       POSTCARD CARDS
 ========================== */
 
-.service-card {
+.service-card{
 
-flex:0 0 320px;
+flex:1;
+
+max-width:340px;
 
 background:#fffdf8;
 
@@ -2006,7 +1900,7 @@ align-items:center;
 
 justify-content:flex-start;
 
-min-height:380px;
+min-height:420px;
 
 border:1px solid rgba(120,100,180,.08);
 
@@ -2017,9 +1911,9 @@ transition:.3s ease;
 
 }
 
-/* tape effect */
+/* scrapbook tape */
 
-.service-card::after {
+.service-card::after{
 
 content:"";
 
@@ -2029,19 +1923,23 @@ top:-10px;
 
 left:50%;
 
-transform:translateX(-50%) rotate(-3deg);
+transform:
+translateX(-50%)
+rotate(-3deg);
 
 width:90px;
 
 height:22px;
 
-background:rgba(255,255,255,.8);
+background:
+rgba(255,255,255,.8);
 
-border:1px solid rgba(0,0,0,.05);
+border:
+1px solid rgba(0,0,0,.05);
 
 }
 
-.service-card::before {
+.service-card::before{
 
 content:attr(data-emoji);
 
@@ -2051,28 +1949,34 @@ margin-bottom:15px;
 
 }
 
-.service-card:nth-child(2) {
+.service-card:nth-child(2){
 
 transform:rotate(1.2deg);
 
 }
 
-.service-card:nth-child(3) {
+.service-card:nth-child(3){
 
 transform:rotate(-1deg);
 
 }
 
-.service-card:hover {
+.service-card:hover{
 
-transform:translateY(-8px) rotate(0deg);
+transform:
+translateY(-8px)
+rotate(0deg);
 
 box-shadow:
 0 22px 45px rgba(70,50,120,.18);
 
 }
 
-.service-card h3 {
+/* ==========================
+      CARD CONTENT
+========================== */
+
+.service-card h3{
 
 font-family:'Playfair Display', serif;
 
@@ -2080,11 +1984,11 @@ font-size:1.5rem;
 
 color:#47358e;
 
-margin-bottom:12px;
+margin-bottom:15px;
 
 }
 
-.service-card p {
+.service-card p{
 
 font-size:.98rem;
 
@@ -2095,117 +1999,12 @@ color:#5f577d;
 }
 
 /* ==========================
-      BUTTONS
-========================== */
-
-.service-card .button,
-.generate-trip-btn,
-.traveler-card .options button {
-
-background:
-linear-gradient(
-135deg,
-#b59cff,
-#8fdcff
-);
-
-border:none;
-
-border-radius:18px;
-
-padding:12px 18px;
-
-color:white;
-
-font-size:.95rem;
-
-cursor:pointer;
-
-width:auto;
-
-max-width:100%;
-
-box-shadow:
-0 8px 18px rgba(90,70,170,.15);
-
-transition:.25s ease;
-
-}
-
-.service-card .button:hover,
-.generate-trip-btn:hover,
-.traveler-card .options button:hover {
-
-transform:translateY(-2px);
-
-}
-
-/* ==========================
-      TRAVELER OPTIONS
-========================== */
-
-.traveler-card .options {
-
-display:flex;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:10px;
-
-margin-top:18px;
-
-}
-
-.traveler-card .options button {
-
-width:auto;
-
-}
-
-/* ==========================
-      TRIP GENERATOR
-========================== */
-
-.trip-generator-card {
-
-background:#fffdf8;
-
-border-radius:24px;
-
-box-shadow:
-0 15px 35px rgba(70,50,120,.10);
-
-}
-
-.trip-result {
-
-margin-top:15px;
-
-line-height:1.7;
-
-color:#5f577d;
-
-}
-
-.fun-note {
-
-margin-top:12px;
-
-font-style:italic;
-
-color:#7d6cae;
-
-}
-
-/* ==========================
       MOBILE
 ========================== */
 
 @media(max-width:768px){
 
-.services-gifting {
+.services-gifting{
 
 padding:70px 15px;
 
@@ -2213,22 +2012,55 @@ margin:20px 10px;
 
 }
 
-.services-gifting h2 {
+.services-gifting h2{
 
 font-size:2.2rem;
 
 }
 
-.service-card {
+.services-gifting > p{
 
-flex:0 0 85%;
+font-size:.95rem;
+
+padding:0 10px;
+
+}
+
+/* turn into scroll cards */
+
+.service-scroll{
+
+overflow-x:auto;
+
+padding-bottom:15px;
+
+-webkit-overflow-scrolling:touch;
+
+}
+
+.service-cards{
+
+justify-content:flex-start;
+
+width:max-content;
+
+max-width:none;
+
+padding:20px 5px;
+
+}
+
+.service-card{
+
+flex:0 0 85vw;
+
+max-width:none;
 
 min-height:auto;
 
 }
 
 }
-
  /* =====================================
         BRAIN ROT TRAVEL SERIES
 ===================================== */
@@ -2666,157 +2498,255 @@ font-size:2.2rem;
 }
 
 /* ===================================
-          CONTACT SECTION
+      LEAVE A NOTE AT RAEROUTES
 =================================== */
 
-.contact-split{
-    padding: 80px 20px;
-    margin: 40px 12px;
-
-    background: linear-gradient(
-        135deg,
-        #f3edff,
-        #e7f5ff
-    );
-
-    border-radius: 35px;
-
-    display: flex;
-    justify-content: center;
-
-    box-shadow:
-        0 20px 45px rgba(60,40,120,.12);
-}
-
-.scroll-wrap{
-    display:flex;
-    gap:24px;
-    width:100%;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
 .contact-panel{
-    width:100%;
-    max-width:420px;
 
-    padding:35px 28px;
+max-width:900px;
 
-    background:rgba(255,255,255,.55);
-    backdrop-filter:blur(16px);
+margin:40px auto;
 
-    border-radius:30px;
+padding:70px 30px;
 
-    border:1px solid rgba(255,255,255,.7);
+position:relative;
 
-    box-shadow:
-        0 15px 35px rgba(60,40,120,.10);
+overflow:hidden;
 
-    text-align:center;
+background:
+linear-gradient(
+135deg,
+#f5f0ff,
+#e9f7ff
+);
+
+border-radius:40px;
+
+box-shadow:
+0 20px 50px rgba(70,50,120,.12);
+
+text-align:center;
+
 }
 
-.contact-panel h2{
-    font-size:2rem;
-    margin-bottom:15px;
+/* dreamy background blobs */
+
+.contact-panel::before{
+
+content:"";
+
+position:absolute;
+
+width:280px;
+height:280px;
+
+top:-100px;
+left:-100px;
+
+border-radius:50%;
+
+background:
+rgba(181,160,255,.18);
+
+filter:blur(40px);
+
 }
 
-.contact-panel p{
-    line-height:1.7;
-    color:#555;
+.contact-panel::after{
+
+content:"";
+
+position:absolute;
+
+width:250px;
+height:250px;
+
+bottom:-80px;
+right:-80px;
+
+border-radius:50%;
+
+background:
+rgba(125,220,255,.18);
+
+filter:blur(40px);
+
 }
 
-/* NEW TRAVEL NOTE CARD */
+/* ==========================
+        NOTE CARD
+========================== */
 
-.travel-note{
-    text-align:left;
+.contact-card{
+
+position:relative;
+
+z-index:2;
+
+max-width:650px;
+
+margin:0 auto;
+
+background:
+rgba(255,255,255,.55);
+
+backdrop-filter:blur(18px);
+
+padding:40px;
+
+border-radius:30px;
+
+border:
+1px solid rgba(255,255,255,.7);
+
+box-shadow:
+0 15px 35px rgba(70,50,120,.10);
+
 }
 
-.travel-note h3{
-    font-size:1.2rem;
-    margin-bottom:15px;
+/* tape */
+
+.contact-card::before{
+
+content:"";
+
+position:absolute;
+
+top:-12px;
+
+left:50%;
+
+transform:
+translateX(-50%)
+rotate(-3deg);
+
+width:100px;
+
+height:25px;
+
+background:
+rgba(255,255,255,.85);
+
+border:
+1px solid rgba(0,0,0,.05);
+
 }
 
-.travel-note p{
-    font-style:italic;
-    margin-bottom:20px;
+/* ==========================
+         TEXT
+========================== */
+
+.contact-card h3{
+
+font-family:'Playfair Display',serif;
+
+font-size:2.4rem;
+
+color:#423178;
+
+margin-bottom:15px;
+
 }
 
-.travel-note-list{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+.contact-card p{
+
+font-size:1.05rem;
+
+line-height:1.8;
+
+color:#5f577d;
+
+max-width:520px;
+
+margin:0 auto 25px;
+
 }
 
-.travel-note-item{
-    background:rgba(255,255,255,.45);
-    padding:12px 16px;
-    border-radius:15px;
-    font-size:.9rem;
-}
+/* ==========================
+         BUTTONS
+========================== */
 
 .contact-buttons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:25px;
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+margin-top:25px;
+
 }
 
 .contact-buttons .button{
-    display:inline-block;
 
-    background:linear-gradient(
-        135deg,
-        #9b7cff,
-        #7ddcff
-    );
+padding:14px 28px;
 
-    color:white;
+border-radius:999px;
 
-    padding:12px 24px;
+background:
+linear-gradient(
+135deg,
+#9b7cff,
+#7ddcff
+);
 
-    border-radius:999px;
+color:white;
 
-    box-shadow:
-        0 8px 20px rgba(100,80,180,.22);
+font-weight:600;
 
-    transition:.3s ease;
+box-shadow:
+0 10px 25px rgba(90,70,170,.18);
+
+transition:.25s;
+
 }
 
 .contact-buttons .button:hover{
-    transform:translateY(-3px);
+
+transform:translateY(-3px);
+
 }
 
-@media(max-width:700px){
+/* ==========================
+          MOBILE
+========================== */
 
-    .contact-split{
-        padding:50px 12px;
-    }
+@media(max-width:768px){
 
-    .scroll-wrap{
-        flex-direction:column;
-        align-items:center;
-    }
+.contact-panel{
 
-    .contact-panel{
-        padding:25px 18px;
-    }
+padding:50px 15px;
 
-    .contact-panel h2{
-        font-size:1.7rem;
-    }
-
-    .contact-buttons{
-        flex-direction:column;
-        width:100%;
-    }
-
-    .contact-buttons .button{
-        width:100%;
-        box-sizing:border-box;
-    }
 }
 
+.contact-card{
+
+padding:30px 20px;
+
+}
+
+.contact-card h3{
+
+font-size:2rem;
+
+}
+
+.contact-buttons{
+
+flex-direction:column;
+
+}
+
+.contact-buttons .button{
+
+width:100%;
+
+}
+
+}
 
 
 
@@ -2824,222 +2754,167 @@ font-size:2.2rem;
              FOOTER
 =================================== */
 
+.rr-footer{
 
-.rr-footer {
-
-padding:50px 20px 30px;
-
+padding:28px 20px;
 
 background:
-
 linear-gradient(
 135deg,
 #33245f,
 #405d91
 );
 
-
 color:white;
 
-
-border-radius:35px 35px 0 0;
-
+border-radius:30px 30px 0 0;
 
 box-shadow:
-
-0 -15px 35px rgba(50,40,100,.2);
-
+0 -10px 25px rgba(50,40,100,.15);
 
 }
 
+.footer-content{
 
-
-
-.footer-content {
-
-
-max-width:700px;
+max-width:900px;
 
 margin:auto;
 
 text-align:center;
 
-
 }
 
+/* Logo / Name */
 
-
-
-.footer-title {
-
+.footer-title{
 
 font-family:'Playfair Display',serif;
 
+font-size:1.5rem;
 
-font-size:2rem;
-
-
-margin-bottom:8px;
-
+margin-bottom:5px;
 
 color:white;
 
-
 }
 
+/* Tagline */
 
+.footer-tagline{
 
+font-size:.85rem;
 
-.footer-tagline {
+max-width:450px;
 
-
-font-size:.95rem;
-
-
-max-width:500px;
-
-margin:0 auto 25px;
-
-
-color:rgba(255,255,255,.8);
-
+margin:0 auto 15px;
 
 line-height:1.5;
 
+color:rgba(255,255,255,.75);
 
 }
 
+/* Quick Links */
 
+.footer-socials{
 
+display:flex;
 
+justify-content:center;
 
-.footer-subtitle {
+gap:14px;
 
+flex-wrap:wrap;
 
-font-size:1rem;
-
-
-color:#d9ccff;
-
-
-margin-bottom:10px;
-
+margin:15px 0;
 
 }
 
+.footer-socials a{
 
+font-size:.9rem;
 
+color:white;
 
+opacity:.9;
 
-.footer-links {
+transition:.25s;
 
+}
+
+.footer-socials a:hover{
+
+opacity:1;
+
+transform:translateY(-2px);
+
+}
+
+/* Policies */
+
+.footer-links{
+
+display:flex;
+
+justify-content:center;
+
+gap:12px;
+
+flex-wrap:wrap;
 
 padding:0;
 
-list-style:none;
+margin:10px 0;
 
+list-style:none;
 
 }
 
-
-
-
-
-.footer-links button {
-
+.footer-links button{
 
 background:none;
 
 border:none;
 
-
-font-size:.9rem;
-
-
-color:#e8dcff;
-
-
-cursor:pointer;
-
-
-}
-
-
-
-
-
-.footer-socials {
-
-
-display:flex;
-
-
-justify-content:center;
-
-
-gap:18px;
-
-
-margin:25px 0;
-
-
-flex-wrap:wrap;
-
-
-}
-
-
-
-
-
-.footer-socials a {
-
-
-color:white;
-
-
-font-size:.95rem;
-
-
-text-decoration:none;
-
-
-transition:.3s;
-
-
-}
-
-
-
-
-
-.footer-socials a:hover{
-
-
-transform:translateY(-3px);
-
-
-}
-
-
-
-
-
-.footer-copy {
-
+color:#d9ccff;
 
 font-size:.8rem;
 
+cursor:pointer;
 
-color:rgba(255,255,255,.65);
-
-
-margin-top:20px;
-
+padding:0;
 
 }
 
+/* Copyright */
 
+.footer-copy{
+
+font-size:.75rem;
+
+color:rgba(255,255,255,.55);
+
+margin-top:12px;
+
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+.footer-socials{
+
+gap:10px;
+
+}
+
+.footer-title{
+
+font-size:1.3rem;
+
+}
+
+}
 
 /* ===================================
           IMAGE LIGHTBOX
@@ -3186,107 +3061,25 @@ font-size:32px;
 =================================== */
 
 
-.pdf-modal {
+.pdf-modal{
 
+display:none;
 
-background:
+position:fixed;
 
-rgba(30,20,70,.55);
+inset:0;
 
+z-index:99999;
+
+background:rgba(30,20,70,.55);
 
 backdrop-filter:blur(12px);
 
-
-}
-
-
-
-
-.pdf-modal-content {
-
-
-width:90%;
-
-max-width:600px;
-
-
-background:
-
-rgba(255,255,255,.85);
-
-
-
-backdrop-filter:blur(20px);
-
-
-
-border-radius:30px;
-
-
-
-box-shadow:
-
-0 25px 60px rgba(0,0,0,.25);
-
-
-}
-
-
-
-
-
-.pdf-close {
-
-
-color:#4b3c9f;
-
-
-}
-
-
-
-
-
-.pdf-nav {
-
-
-display:flex;
-
-
-gap:15px;
-
-
 justify-content:center;
 
+align-items:center;
 
 }
-
-
-
-
-
-.pdf-nav button {
-
-
-background:
-
-
-linear-gradient(
-135deg,
-#9b7cff,
-#7ddcff
-);
-
-
-
-border-radius:999px;
-
-
-padding:8px 18px;
-
-
-}
-
 
 
 
