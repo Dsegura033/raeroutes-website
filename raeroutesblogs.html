@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Guides | RaeRoutes</title>
+
+<style>
+/* ===== GLOBAL BODY ===== */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #ede8ff; /* slightly darker lavender */
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== TRAVEL WRAPPER ===== */
+.travel-wrapper {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 60px 25px;
+}
+
+/* ===== HEADER ===== */
+.blog-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.blog-logo {
+  width: 170px;
+  margin-bottom: 20px;
+  animation: softGlow 3s ease-in-out infinite;
+}
+
+@keyframes softGlow {
+  0% { filter: drop-shadow(0 0 6px rgba(160,130,250,0.4)); }
+  50% { filter: drop-shadow(0 0 22px rgba(170,140,255,0.7)); }
+  100% { filter: drop-shadow(0 0 6px rgba(160,130,250,0.4)); }
+}
+
+.blog-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #4a3f9e;
+}
+
+.blog-subtitle {
+  color: #5a4baa;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== SECTION CARD ===== */
+.section-card {
+  background: #e6dcff;
+  padding: 50px;
+  border-radius: 25px;
+  margin-bottom: 60px;
+  box-shadow: 0 12px 25px rgba(140,110,230,0.15);
+  border: 1px solid rgba(170,140,255,0.3);
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 26px;
+  color: #4a3f9e;
+}
+
+h3 {
+  margin-top: 25px;
+  font-size: 18px;
+  color: #5a4baa;
+}
+
+p {
+  margin-bottom: 16px;
+  color: #4c4c4c;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* ===== IMAGE FRAMES ===== */
+.guide-image img,
+.room-flyer-card .flyer-image {
+  width: 70%;
+  max-width: 500px;
+  border-radius: 20px;
+  border: 2px solid rgba(160,130,250,0.4);
+  padding: 8px;
+  box-shadow: 0 8px 20px rgba(160,130,250,0.3);
+  background: rgba(235,225,255,0.6);
+  display: inline-block;
+  margin: 25px 0;
+}
+
+/* ===== ITINERARY CARD ===== */
+.itinerary-card {
+  background: #dcd0ff;
+  padding: 35px;
+  border-radius: 25px;
+  margin-top: 25px;
+  box-shadow: 0 8px 20px rgba(160,130,250,0.2);
+}
+
+  .ai-image-caption {
+  text-align: center;
+  font-size: 14px;
+  color: #8a7fa8;
+  margin-top: 8px;
+  font-style: italic;
+}
+  
+/* ===== WHAT TO WEAR SECTION ===== */
+.wear-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.wear-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 40px;
+  bottom: 40px;
+  width: 4px;
+  background: linear-gradient(to bottom, #b5a0ff, #8e78e5);
+  border-radius: 10px;
+  opacity: 0.6;
+}
+
+.wear-section ul {
+  margin-top: 20px;
+}
+
+.wear-section li {
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+
+.carnival-highlight {
+  margin-top: 25px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 18px;
+  font-style: italic;
+  border: 1px solid rgba(160,130,250,0.3);
+}
+
+ 
+/* ===== WHAT TO WEAR FEATURE IMAGE ===== */
+.wear-section .guide-image {
+  text-align: center;
+}
+
+.wear-section .guide-image img {
+  width: 85%;
+  max-width: 650px;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 200, 230, 0.4);
+  background: rgba(255, 235, 245, 0.4);
+  box-shadow: 0 12px 30px rgba(180, 140, 255, 0.35);
+  padding: 10px;
+  margin: 30px auto;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wear-section .guide-image img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 18px 40px rgba(180, 140, 255, 0.45);
+}
+
+/* ===== COZY STAY CARD ===== */
+.cozy-stay-card {
+  text-align: center;
+  margin: 50px 0;
+  padding: 30px;
+  background: #e6dcff; /* soft lavender background */
+  border-radius: 25px;
+  box-shadow: 0 12px 25px rgba(160,130,250,0.2); /* soft shadow */
+  border: 1px solid rgba(160,130,250,0.3);
+}
+
+.cozy-stay-card .cozy-stay-content h3 {
+  color: #4a3f9e; /* dark lavender heading */
+  margin-bottom: 12px;
+  font-size: 1.8rem; /* keeps heading prominent */
+}
+
+.cozy-stay-card .cozy-stay-content p {
+  color: #4c4c4c; /* standard text color */
+  margin-bottom: 18px;
+  line-height: 1.6; /* makes paragraphs easier to read */
+  font-size: 1rem;
+}
+
+.cozy-stay-card .cozy-stay-content a {
+  color: #6b4eff; /* subtle link to match palette */
+  text-decoration: underline;
+}
+.cozy-stay-card ul {
+  list-style: none; /* removes default bullets */
+  padding-left: 0;
+  margin-bottom: 18px;
+}
+
+.cozy-stay-card ul li {
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 30px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cozy-stay-card ul li::before {
+  content: "•"; /* simple bullet */
+  position: absolute;
+  left: 0;
+  color: #6b4eff; /* matches your link/palette color */
+  font-weight: bold;
+}
+
+
+/* ===== READY TO PLAN CTA ===== */
+.planning-section {
+  text-align: center;
+  background: #d4c4ff;
+  padding: 50px 40px;
+  border-radius: 30px;
+  box-shadow: 0 12px 25px rgba(160,130,250,0.2);
+}
+
+.button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 16px 40px;
+  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: all 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== COLLAPSIBLE FUNCTIONALITY ===== */
+.collapsible-btn {
+  background: #b5a0ff;
+  color: #fff;
+  cursor: pointer;
+  padding: 16px 30px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.collapsible-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.collapsible-content {
+  display: none;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .travel-wrapper { padding: 50px 18px; }
+
+  .guide-image img,
+  .room-flyer-card .flyer-image { width: 90%; max-width: none; }
+
+  .section-card { padding: 35px; }
+
+  .itinerary-card { padding: 25px; }
+}
+/* ===== FOOTER ===== */
+.travel-footer {
+  background: #e6dcff; /* same light lavender as sections */
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 2px solid rgba(160,130,250,0.3);
+  margin-top: 60px;
+}
+
+.travel-footer .footer-content p {
+  margin: 10px 0;
+  color: #4a3f9e;
+  font-weight: 500;
+}
+
+.travel-footer .social-links {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.travel-footer .social-links a {
+  color: #5a4baa;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(235,225,255,0.6);
+  box-shadow: 0 4px 12px rgba(160,130,250,0.2);
+  transition: all 0.3s ease;
+}
+
+.travel-footer .social-links a:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(160,130,250,0.35);
+}
+
+@media (max-width: 600px) {
+  .travel-footer .social-links {
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .travel-footer .social-links a {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="travel-wrapper">
+
+  <!-- ===== HEADER ===== -->
+  <header class="blog-header">
+    <img src="IMG_7560.jpg" alt="RaeRoutes Logo" class="blog-logo">
+    <h1>Travel Guides & City Spotlights</h1>
+    <p class="blog-subtitle">
+      Thoughtful destinations. Slow itineraries. Intentional escapes.
+    </p>
+  </header>
+
+<!-- ===== COLLAPSIBLE VENICE SPOTLIGHT ===== -->
+<button type="button" class="collapsible-btn">
+February City Spotlight: Venice in February 🎭
+</button>
+
+<div class="collapsible-content">
+
+<div class="section-card">
+
+<h2>Venice in February: A Slow, Romantic Carnival Escape 🎭</h2>
+
+<p>
+Venice in February feels cinematic and intimate. The canals move quietly beneath soft winter skies, and Carnival season brings artistry and mystery to every piazza. Masks, velvet cloaks, candlelit dinners, and musicians echoing through narrow streets transform the city into something unforgettable.
+</p>
+
+<div class="guide-image">
+<img src="images/carnivalcelebration2.jpg" alt="Venice canal during Carnival season">
+</div>
+
+<p>
+While summer brings heavy crowds, February offers something slower and more intentional. You can wander freely, linger in cafés, and truly absorb the beauty of the architecture without feeling rushed.
+</p>
+
+</div>
+
+<div class="section-card">
+
+<h2>What Is Carnival in Venice?</h2>
+
+<p>
+Venice Carnival dates back to the 12th century and is known for elaborate masks and ornate costumes. Historically, masks allowed Venetians to celebrate freely across social classes. Today, Carnival includes public performances, parades, artistic displays, and elegant masquerade balls.
+</p>
+
+<div class="guide-image">
+<img src="images/masks.jpg" alt="Traditional Venetian Carnival masks">
+</div>
+
+</div>
+
+<div class="section-card">
+
+<h2>Why Visit Venice in February?</h2>
+
+<ul>
+<li>🎭 Immersive cultural experience during Carnival</li>
+<li>📸 Fewer tourists than peak summer season</li>
+<li>☕ Cozy cafés and slower mornings</li>
+<li>🛶 Romantic gondola rides through peaceful canals</li>
+<li>🌫️ Moody winter atmosphere perfect for photography</li>
+</ul>
+
+<div class="guide-image">
+<img src="images/st.square.PNG" alt="St Mark's Square during Carnival">
+</div>
+
+<div class="ai-image-caption">
+<p>Designed with AI for inspiration.</p>
+</div>
+
+</div>
+
+<!-- ITINERARY -->
+<div class="section-card">
+
+<h2>A 6-Day Romantic Carnival Journey in Venice✨</h2>
+
+<div class="itinerary-card">
+
+<h3>Day 1: Arrival & Evening Canal Welcome</h3>
+<p>
+Settle into your canal-side stay and take a slow evening walk through quiet waterfront paths. Let the soft winter air and glowing street lamps introduce you gently to the city’s rhythm. End the night with candlelit Italian dining at a local trattoria.
+</p>
+
+<h3>Day 2: St. Mark’s Square & Carnival Magic 🎭</h3>
+<p>
+Explore iconic landmarks like St. Mark’s Basilica and the Doge’s Palace. Immerse yourself in Carnival celebrations masked parades, street performances, and artisan stalls scattered across historic piazzas. Watch sunset light touch the water before enjoying a classic gondola ride.
+</p>
+
+<h3>Day 3: Murano & Burano Island Colors 🌈</h3>
+<p>
+Travel by vaporetto to the glass-blowing island of Murano, then continue to Burano, known for its vibrant pastel homes and delicate lace craftsmanship. Pause for seafood lunch beside the canals and wander slowly through photogenic streets.
+</p>
+
+<h3>Day 4: Hidden Venice & Coffee Rituals ☕</h3>
+<p>
+Spend the day exploring quieter neighborhoods like Cannaregio and Dorsoduro. Discover small cafés, artisan shops, and peaceful canal views. Take moments to sit, watch the water move, and experience the city without rushing.
+</p>
+
+<h3>Day 5: Carnival Grand Ball or Night Celebration 🌙</h3>
+<p>
+Attend an elegant Carnival ball, classical music performance, or nighttime waterfront stroll. If events are not booked, simply enjoy illuminated canals and the mystical atmosphere that Venice becomes after sunset.
+</p>
+
+<h3>Day 6: Slow Farewell Morning</h3>
+<p>
+Begin with cappuccino near the water, pick up handcrafted souvenirs, and take one final reflective walk along the canals before departure — leaving with quiet, lasting memories.
+</p>
+
+</div>
+</div>
+  <!-- ===== COZY STAY SECTION ===== -->
+<div class="cozy-stay-card">
+  <div class="cozy-stay-content">
+
+    <h3>Stay in a Cozy Canal-Side Room 🏠</h3>
+
+    <ul>
+      <li>Wake up to soft winter light spilling over Venetian rooftops 🌅</li>
+      <li>Steps from Carnival festivities 🎭 and masked parades in historic piazzas</li>
+      <li>Warm breakfast included each morning 🍳</li>
+      <li>Private terrace overlooking the canal 🌊</li>
+      <li>Relaxing jacuzzi after exploring Venice’s intimate streets 🛁</li>
+    </ul>
+
+    <p>
+      Curious about this stay? Feel free to <a href="mailto:raeroutes13@gmail.com">contact us 📩</a> for more details, or continue exploring the guide below.
+    </p>
+
+  </div>
+</div>
+
+<!-- ===== CTA SECTION ===== -->
+<div class="planning-section">
+
+<h2>Thinking About a Trip Like This?</h2>
+
+<p>
+If this kind of slow European escape speaks to you, I can help you bring it to life in a way that feels easy, personal, and completely your pace.
+</p>
+
+<a href="mailto:raeroutes13@gmail.com"
+class="button">
+Ask About This Trip 💌
+</a>
+
+</div>
+
+</div>
+  
+<!-- ===== COLLAPSIBLE DUBLIN SPOTLIGHT ===== -->
+
+<button type="button" class="collapsible-btn">
+March City Spotlight: Dublin in March ☘️
+</button>
+
+<div class="collapsible-content">
+
+<!-- INTRO SECTION -->
+<div class="section-card">
+
+<h2>Dublin in March: Culture, Charm & St. Patrick’s Celebration ☘️</h2>
+
+<p>
+Dublin in March feels electric yet intimate. Cobblestone streets hum with live music, historic pubs glow warmly against crisp spring air, and the city comes alive during St. Patrick’s Festival. Visitors can enjoy colorful parades, traditional Irish music, and cultural performances that celebrate Ireland’s heritage in a joyful, community centered atmosphere.
+</p>
+
+
+
+<div class="guide-image">
+<img src="images/aidublin.PNG" alt="Dublin city streets decorated for St. Patrick's Day">
+</div>
+
+<div class="ai-image-caption">
+<p>Designed with AI for inspiration.</p>
+</div>
+
+</div>
+
+<!-- WHAT MAKES MARCH SPECIAL -->
+<div class="section-card">
+
+<h2>What Makes March Special in Dublin?</h2>
+
+<p>
+March is home to Ireland’s most famous celebration: St. Patrick’s Festival. The city hosts parades, street entertainment, and cultural performances throughout the week. Alongside the festivities, early spring brings comfortable walking weather, making it a great time to explore historic landmarks, riverside paths, and lively local pubs.
+</p>
+
+<div class="guide-image">
+<img src="images/pubdance.png" alt="St. Patrick's celebration in Dublin">
+</div>
+
+</div>
+
+<!-- WHY VISIT -->
+<div class="section-card">
+
+<h2>Why Visit Dublin in March?</h2>
+
+<ul>
+<li>☘️ Experience the iconic St. Patrick’s Day Parade</li>
+<li>🎶 Live traditional Irish music in historic pubs</li>
+<li>🏰 Explore Dublin Castle & Trinity College</li>
+<li>🌦️ Cool but comfortable spring weather</li>
+<li>🍺 Guinness tastings at the Guinness Storehouse</li>
+</ul>
+
+<div class="guide-image">
+<img src="images/templebar.png" alt="Temple Bar district in Dublin">
+</div>
+
+</div>
+  
+  <!-- ITINERARY -->
+<div class="section-card">
+
+<h2>A 5-Day Dublin Itinerary for Two</h2>
+
+<div class="itinerary-card">
+
+<h3>Day 1: Arrival & Temple Bar Evening</h3>
+<p>
+Check into your central Dublin stay and explore Temple Bar’s lively streets. Enjoy traditional Irish cuisine and live music in a cozy pub.
+</p>
+
+<h3>Day 2: Historic Dublin</h3>
+<p>
+Visit Trinity College to see the Book of Kells, tour Dublin Castle, and stroll through St. Stephen’s Green before an evening whiskey tasting.
+</p>
+
+<h3>Day 3: St. Patrick’s Festival Experience</h3>
+<p>
+Secure a viewing spot for the parade, explore festival markets, and immerse yourself in the celebratory atmosphere throughout the city.
+</p>
+
+<h3>Day 4: Cliffs of Moher Day Trip</h3>
+<p>
+Take a guided day tour to the breathtaking Cliffs of Moher and enjoy sweeping Atlantic views.
+</p>
+
+<h3>Day 5: Slow Farewell</h3>
+<p>
+Enjoy a relaxed Irish breakfast, pick up handcrafted souvenirs, and take one last walk along the River Liffey before departure.
+</p>
+
+</div>
+</div>
+
+<!-- WHAT TO WEAR -->
+<div class="section-card wear-section">
+
+<h2>What to Wear in Dublin in March ☔☘️</h2>
+ 
+
+<p>
+March weather can be cool and unpredictable. Light layers and rain-ready pieces are recommended.
+</p>
+
+<div class="guide-image">
+<img src="images/dublininspo.PNG" alt="Spring outfits for Dublin in March">
+</div>
+
+<ul>
+<li>🧥 Waterproof coat</li>
+<li>🧶 Layering sweaters</li>
+<li>👖 Dark denim or trousers</li>
+<li>👢 Waterproof boots</li>
+<li>🧣 Scarves and crossbody bags</li>
+</ul>
+
+</div>
+
+<!-- STAY SECTION -->
+<div class="cozy-stay-card">
+
+<div class="cozy-stay-content">
+
+<h3>Stay in a Stylish 4-Star Dublin Hotel 🏨</h3>
+
+<ul>
+<li>✨ Modern bedrooms</li>
+<li>🚉 Transit access</li>
+<li>🏛️ Cultural landmarks nearby</li>
+<li>🌳 Green parks nearby</li>
+<li>🤍 Irish hospitality</li>
+</ul>
+  <p>
+      Curious about this stay? Feel free to <a href="mailto:raeroutes13@gmail.com">contact us 📩</a> for more details, or continue exploring the guide below.
+    </p>
+
+
+</div>
+</div>
+
+<!-- CTA -->
+<div class="planning-section">
+
+<h2>Thinking About a Trip Like This?</h2>
+
+<p>
+If this kind of experience feels like your style, I can help you plan something just as meaningful without the stress.
+</p>
+
+<a href="mailto:raeroutes13@gmail.com?subject=I’m interested in a trip like this 💌"
+class="button">
+Ask About This Trip 💌
+</a>
+
+</div>
+
+</div>
+  
+  <!-- ===== COLLAPSIBLE KYOTO SPOTLIGHT ===== -->
+
+<button type="button" class="collapsible-btn">
+April City Spotlight: Kyoto in April 🌸
+</button>
+
+<div class="collapsible-content">
+
+<!-- INTRO -->
+<div class="section-card">
+
+<h2>Kyoto in April: A City Wrapped in Cherry Blossoms 🌸</h2>
+
+<p>
+Kyoto in April feels like a quiet dream you get to walk through. Soft pink cherry blossoms line rivers, temples, and stone paths, creating a peaceful atmosphere that slows everything down. It’s one of the most iconic spring experiences in the world, beautiful, fleeting, and unforgettable.
+</p>
+ <div class="guide-image">
+<img src="images/kyoto.png" alt="Kyoto cherry blossoms along the river in April">
+</div>
+
+</div>
+  
+
+<!-- WHAT MAKES IT SPECIAL -->
+<div class="section-card">
+
+<h2>What Makes Kyoto in April So Special?</h2>
+
+<p>
+April is peak cherry blossom season in Japan, and Kyoto is one of the most magical places to experience it. The entire city transforms for a short window of time, where nature takes over historic streets and creates a calm, almost surreal atmosphere.
+</p>
+  
+<div class="guide-image">
+<img src="images/cherryblossoms.png" alt="Kyoto temple surrounded by cherry blossoms in spring">
+</div>
+</div>
+
+
+<!-- WHY VISIT -->
+<div class="section-card">
+
+<h2>Why Visit Kyoto in April?</h2>
+
+<ul>
+<li>🌸 Cherry blossoms in full bloom across temples and rivers</li>
+<li>🏯 Historic temples framed by soft spring scenery</li>
+<li>🚶‍♀️ Walkable, peaceful neighborhoods perfect for slow travel</li>
+<li>📸 Some of the most beautiful seasonal photography in the world</li>
+<li>🍵 Traditional tea houses and seasonal spring treats</li>
+</ul>
+  <div class="guide-image">
+<img src="images/path.png" alt="Kyoto streets lined with cherry blossoms in spring">
+</div>
+</div>
+   
+<!-- WHAT TO WEAR -->
+<div class="section-card wear-section">
+
+<h2>What to Wear in Kyoto in April 🌸</h2>
+
+<p>
+April weather is mild but can shift between warm days and cooler evenings, so light layering is key.
+</p>
+
+<ul>
+<li>🌿 Light trench coat or cardigan</li>
+<li>👗 Flowy dresses or relaxed pants</li>
+<li>👟 Comfortable walking shoes (you’ll be exploring a lot)</li>
+<li>🧣 Light scarf for cooler mornings/evenings</li>
+<li>🎒 Small crossbody or backpack for day exploring</li>
+</ul> 
+<div class="guide-image">
+<img src="images/kyotofitinspo.png" alt="Spring outfit inspiration for Kyoto travel">
+</div>
+</div>
+
+<!-- ITINERARY -->
+<div class="section-card">
+
+<h2>A 5-Day Cherry Blossom Itinerary in Kyoto 🌸</h2>
+
+<div class="itinerary-card">
+
+<h3>Day 1: Arrival & Slow Evening Walk</h3>
+<p>
+Arrive and settle in. Take a slow evening walk near the river to catch your first glimpse of cherry blossoms under soft sunset light.
+</p>
+
+<h3>Day 2: Temple Hopping & Sakura Views</h3>
+<p>
+Visit iconic temples like Kiyomizu-dera and explore surrounding streets lined with blossoms. Spend the day moving slowly and stopping often.
+</p>
+
+<h3>Day 3: Arashiyama Bamboo & River Paths</h3>
+<p>
+Walk through the bamboo forest, then explore the nearby river area where cherry blossoms reflect beautifully on the water.
+</p>
+
+<h3>Day 4: Local Culture & Tea Houses</h3>
+<p>
+Spend the day in traditional neighborhoods, visit tea houses, and enjoy seasonal matcha and sweets.
+</p>
+
+<h3>Day 5: Final Morning & Reflection</h3>
+<p>
+Take a final peaceful walk before departure—no rushing, just soaking in the last quiet moments.
+</p>
+
+</div>
+
+</div>
+
+<!-- STAY -->
+<div class="cozy-stay-card">
+
+<div class="cozy-stay-content">
+
+<h3>Stay in Central Kyoto Comfort 🏙️</h3>
+
+<p>
+A comfortable and convenient stay in the heart of Kyoto, perfect for exploring the city at your own pace. Located in Central Kyoto, this modern hotel puts you within walking distance of historic landmarks, local markets, and cultural gems—while still offering a calm place to unwind after a full day out.
+</p>
+
+<ul>
+<li>🚇 Easy access to metro stations for getting around the city</li>
+<li>🏯 Walk to iconic spots like Nijō Castle and Mikane Shrine</li>
+<li>🛍️ Near Nishiki Market & Shijo Street for food and shopping</li>
+<li>🎨 Close to Kyoto International Manga Museum</li>
+<li>🍜 Surrounded by local restaurants just steps from your stay</li>
+<li>🛏️ Cozy top-floor twin room for a quiet, restful stay</li>
+</ul>
+<p>
+Curious about this stay? Feel free to <a href="mailto:raeroutes13@gmail.com">ask about this trip 💌</a>
+</p>
+
+</div>
+</div>
+
+</div>
+
+  <!-- ===== COLLAPSIBLE AMALFI COAST SPOTLIGHT ===== -->
+
+<button type="button" class="collapsible-btn">
+May City Spotlight: The Amalfi Coast 🍋
+</button>
+
+<div class="collapsible-content">
+
+<!-- INTRO -->
+<div class="section-card">
+
+<h2>The Amalfi Coast in May: Italy’s Dreamiest Coastal Escape 🍋</h2>
+
+<p>
+The Amalfi Coast in May feels like the beginning of summer in the most beautiful way. Pastel seaside villages cling to dramatic cliffs, lemon groves scent the warm air, and sparkling blue water stretches endlessly along the coastline. From slow mornings in Sorrento to scenic drives through Positano and Ravello, every moment feels cinematic and unforgettable.
+</p>
+
+<div class="guide-image">
+<img src="images/positano.png" alt="Pastel cliffside view of Positano along the Amalfi Coast">
+</div>
+
+</div>
+
+<!-- WHAT MAKES IT SPECIAL -->
+<div class="section-card">
+
+<h2>What Makes the Amalfi Coast So Special?</h2>
+
+<p>
+The Amalfi Coast blends breathtaking scenery with slow Italian coastal living. Winding roads lead to colorful villages tucked into the cliffs, while hidden cafés, seaside restaurants, and historic towns create a feeling that’s both luxurious and relaxed. In May, the coast begins to glow with warm sunshine, blooming flowers, and fewer crowds before peak summer arrives.
+</p>
+
+<div class="guide-image">
+<img src="images/drivethecoast.png" alt="Scenic drive along the Amalfi Coast overlooking the sea">
+</div>
+
+</div>
+
+<!-- WHY VISIT -->
+<div class="section-card">
+
+<h2>Why Visit the Amalfi Coast in May?</h2>
+
+<ul>
+<li>🍋 Lemon groves and fresh limoncello along the coastline</li>
+<li>🌊 Stunning coastal scenery with sparkling blue water</li>
+<li>🚗 One of the most scenic coastal drives in Europe</li>
+<li>🏘️ Charming seaside towns like Positano, Ravello, and Amalfi</li>
+<li>☀️ Warm spring weather before peak summer crowds</li>
+<li>🍽️ Fresh coastal cuisine and classic Italian favorites</li>
+<li>📸 Endless dreamy photo spots around every corner</li>
+</ul>
+
+<div class="guide-image">
+<img src="images/limoncellopizza.png" alt="Limoncello tasting in Sorrento with fresh lemons">
+</div>
+
+</div>
+
+<!-- WHAT TO WEAR -->
+<div class="section-card wear-section">
+
+<h2>What to Wear on the Amalfi Coast in May 🍋</h2>
+
+<p>
+May brings warm sunny days and cooler evenings along the coast, making light layers and breezy outfits perfect for exploring seaside towns and relaxing near the water.
+</p>
+
+<ul>
+<li>👗 Flowy dresses, linen sets, or relaxed coastal outfits</li>
+<li>🕶️ Sunglasses and a sunhat for daytime exploring</li>
+<li>👟 Comfortable sandals or walking shoes for steep streets</li>
+<li>🧥 Light sweater or cardigan for evening dinners by the sea</li>
+<li>🎒 Small tote or crossbody bag for day trips and cafés</li>
+</ul>
+
+<div class="guide-image">
+<img src="images/whattowearmay.png" alt="Amalfi Coast outfit inspiration with coastal European style">
+</div>
+
+</div>
+
+<!-- ITINERARY -->
+<div class="section-card">
+
+<h2>A 5-Day Amalfi Coast Escape 🍋</h2>
+
+<div class="itinerary-card">
+
+<h3>Day 1: Arrival in Sorrento</h3>
+<p>
+Settle into the coastal charm of Sorrento with a slow evening walk, ocean views, and your first taste of authentic Italian cuisine.
+</p>
+
+<h3>Day 2: Positano & Scenic Coastal Drives</h3>
+<p>
+Spend the day driving along breathtaking cliffside roads and exploring the colorful streets, boutiques, and beaches of Positano.
+</p>
+
+<h3>Day 3: Capri & The Blue Grotto</h3>
+<p>
+Take a dreamy day trip to Capri and experience the famous Blue Grotto, where glowing electric blue water creates a magical atmosphere.
+</p>
+
+<h3>Day 4: Ravello, Amalfi & Hidden Coastal Gems</h3>
+<p>
+Explore charming hilltop villages, peaceful gardens, and scenic overlooks while discovering quieter corners of the coastline.
+</p>
+
+<h3>Day 5: Slow Morning & Limoncello Tasting</h3>
+<p>
+Enjoy one final slow morning along the coast before experiencing the bright flavors of Sorrento’s famous lemons during a traditional limoncello tasting.
+</p>
+
+</div>
+
+</div>
+
+<!-- STAY -->
+<div class="cozy-stay-card">
+
+<div class="cozy-stay-content">
+
+<h3>A Cliffside Stay in Sorrento 🍋</h3>
+
+<p>
+Perched above the coastline in Sorrento, this elegant cliffside stay offers panoramic views of the Gulf of Naples, Mount Vesuvius, and the sparkling Mediterranean below. Surrounded by olive groves, lemon trees, and peaceful terraces, it feels tucked away from the crowds while still close to the heart of town.
+</p>
+
+<p>
+Spend slow mornings overlooking the sea, relax beside cascading pools built into the hillside, and end your evenings with golden sunsets and coastal Italian cuisine in one of Italy’s dreamiest regions.
+</p>
+
+<ul>
+<li>🌊 Panoramic views of the Gulf of Naples & Mount Vesuvius</li>
+<li>🏊 Five cascading hillside pools surrounded by greenery</li>
+<li>🍋 Peaceful setting among olive groves and lemon trees</li>
+<li>🌅 Spacious terraces perfect for sunset views</li>
+<li>🍝 Elegant Mediterranean dining inspired by the coast</li>
+<li>🚶 Easy access to Sorrento and nearby Amalfi Coast towns</li>
+</ul>
+
+<p>
+Curious about this coastal escape? Feel free to <a href="mailto:raeroutes13@gmail.com">ask about this trip 💌</a>
+</p>
+
+</div>
+</div>
+
+</div>
+  
+  <!-- ===== COLLAPSIBLE IBIZA SPOTLIGHT ===== -->
+
+<button type="button" class="collapsible-btn">
+June City Spotlight: Ibiza, Spain 🌅
+</button>
+
+<div class="collapsible-content">
+
+<!-- INTRO -->
+<div class="section-card">
+
+<h2>Ibiza in June: A Mediterranean Island Escape 🌅</h2>
+
+<p>
+Ibiza in June feels like the beginning of summer in its most beautiful form. Crystal-clear waters, golden beaches, charming villages, and unforgettable sunsets create the perfect island escape. While the island is famous for its vibrant nightlife, Ibiza also offers historic landmarks, hidden coves, local markets, and a laid-back Mediterranean lifestyle that makes every day feel like a vacation.
+</p>
+
+<div class="guide-image">
+<img src="images/ibiza1.png" alt="Sunset over the coastline of Ibiza">
+</div>
+
+</div>
+
+<!-- WHAT MAKES IT SPECIAL -->
+<div class="section-card">
+
+<h2>What Makes Ibiza So Special?</h2>
+
+<p>
+Ibiza blends natural beauty, rich history, and island culture into one unforgettable destination. Visitors can spend their mornings wandering historic streets, afternoons relaxing beside turquoise waters, and evenings watching spectacular sunsets over the Mediterranean. Beyond the beaches, Ibiza offers charming villages, UNESCO-protected landmarks, and breathtaking coastal scenery around every corner.
+</p>
+
+<div class="guide-image">
+<img src="images/ibiza2.png" alt=" Ibiza blue ocean">
+</div>
+
+</div>
+
+<!-- WHY VISIT -->
+<div class="section-card">
+
+<h2>Why Visit Ibiza in June?</h2>
+
+<ul>
+<li>☀️ Warm Mediterranean weather and long sunny days</li>
+<li>🌊 Crystal-clear beaches and hidden coastal coves</li>
+<li>🏰 Explore Dalt Vila, Ibiza's UNESCO World Heritage Old Town</li>
+<li>🌅 Watch breathtaking sunsets over Es Vedrà</li>
+<li>🍽️ Enjoy authentic Spanish cuisine, seafood, and paella</li>
+<li>🛍️ Browse local artisan markets and boutiques</li>
+<li>✨ Experience the perfect balance of relaxation and adventure</li>
+</ul>
+
+<div class="guide-image">
+<img src="images/ibiza3.png" alt="Ibiza beach ">
+</div>
+
+
+</div>
+
+<!-- WHAT TO WEAR -->
+<div class="section-card wear-section">
+
+<h2>What to Wear in Ibiza in June ☀️</h2>
+
+<p>
+June brings warm sunshine, beach days, and comfortable evenings by the sea. Lightweight clothing and versatile accessories are perfect for exploring beaches, villages, and coastal viewpoints throughout the island.
+</p>
+
+<div class="guide-image">
+<img src="images/ibiza6.png" alt="Ibiza summer outfit inspiration">
+</div>
+
+<ul>
+<li>👗 Flowy dresses and breathable linen outfits</li>
+<li>🕶️ Sunglasses and a sunhat for sunny afternoons</li>
+<li>👡 Comfortable sandals for beach walks and sightseeing</li>
+<li>🧥 A light cardigan or layer for cooler evenings</li>
+<li>👜 Tote bags and crossbody bags for day exploring</li>
+</ul>
+
+</div>
+
+<!-- ITINERARY -->
+<div class="section-card">
+
+<h2>A 5-Day Ibiza Summer Escape 🌊</h2>
+
+<div class="itinerary-card">
+
+<h3>Day 1: Arrival & Island Welcome</h3>
+<p>
+Arrive in Ibiza and settle into your island stay. Spend the evening soaking in your first Mediterranean views and enjoying the relaxed atmosphere that makes Ibiza so special.
+</p>
+
+<h3>Day 2: Beach Day & Es Vedrà Views 🌅</h3>
+<p>
+Head to some of Ibiza's most beautiful beaches, including Cala d'Hort, Cala Salada, and Cala Vadella. Relax beside crystal-clear waters and take in incredible views of the mysterious island of Es Vedrà just offshore.
+</p>
+
+<h3>Day 3: Explore Dalt Vila 🏰</h3>
+<p>
+Spend the day wandering through Ibiza's UNESCO-listed Old Town. Explore cobblestone streets, centuries-old fortifications, charming cafés, and scenic viewpoints overlooking the harbor and coastline.
+</p>
+
+<h3>Day 4: Punta Galera & Coastal Adventures 🌊</h3>
+<p>
+Discover Punta Galera, one of Ibiza's most unique coastal landscapes. Relax beside natural rock formations, swim in turquoise waters, or choose an optional boat excursion to explore hidden coves and sea caves.
+</p>
+
+<h3>Day 5: Relaxation & Ibiza Nights ✨</h3>
+<p>
+Enjoy a leisurely final day before experiencing Ibiza after sunset. Whether you choose a waterfront dinner, live music, cozy wine bar, or the island's famous nightlife, spend your last evening making unforgettable memories.
+</p>
+
+</div>
+
+<div class="guide-image">
+<img src="images/ibiza5.png" alt="Punta Galera coastline in Ibiza">
+</div>
+
+</div>
+
+<!-- STAY -->
+<div class="cozy-stay-card">
+
+<div class="cozy-stay-content">
+
+<h3>A Relaxing Mediterranean Island Stay 🌴</h3>
+
+<p>
+Spend five nights enjoying the beauty of Ibiza while surrounded by sunshine, coastal views, and the relaxed rhythm of island life. Wake up each morning ready to explore beaches, historic landmarks, and hidden corners of one of Spain's most beloved destinations.
+</p>
+
+<ul>
+<li>✈️ Round-trip airfare included</li>
+<li>🚐 Round-trip airport transfers included</li>
+<li>🌴 Five nights in beautiful Ibiza</li>
+<li>🍳 Breakfast included daily</li>
+<li>🌊 Close to beaches and coastal attractions</li>
+<li>🌅 Easy access to famous sunset viewpoints</li>
+</ul>
+
+<p>
+Curious about this island escape? Feel free to <a href="mailto:raeroutes13@gmail.com">ask about this trip 💌</a>
+</p>
+
+</div>
+
+</div>
+
+<!-- CTA -->
+<div class="planning-section">
+
+<h2>Thinking About a Trip Like This?</h2>
+
+<p>
+If crystal-clear waters, Mediterranean sunsets, charming villages, and laid-back island adventures sound like your kind of getaway, I'd love to help you start planning.
+</p>
+
+<a href="mailto:raeroutes13@gmail.com?subject=I’m interested in a trip like this 💌"
+class="button">
+Ask About This Trip 💌
+</a>
+
+</div>
+
+</div>
+    
+<!-- ===== FOOTER ===== -->
+<footer class="travel-footer">
+  <div class="footer-content">
+    <p>Connect with RaeRoutes:</p>
+    <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=61579193352296" target="_blank">Facebook</a>
+      <a href="https://pin.it/2xbxo9lAy" target="_blank">Pinterest</a>
+      <a href="mailto:raeroutes13@gmail.com">Email</a>
+      <!-- Optional: add your website link -->
+      <a href="https://raeroutes.com" target="_blank">Website</a>
+    </div>
+    <p>&copy; 2026 RaeRoutes. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Collapsible toggle
+document.querySelectorAll(".collapsible-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    const content = btn.nextElementSibling;
+
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+
+  });
+});
+</script>
+  
+</body>
+</html>
