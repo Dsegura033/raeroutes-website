@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About RaeRoutes | Damonyca</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ===== GLOBAL BODY ===== */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+
+    /* Soft lavender site background */
+    background: #f7f5ff;
+
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+    padding: 20px 40px;
+    background: #f3f0ff; /* changed from #fff to page background color */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+header:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+
+header .logo a {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #4a3f9e;
+    display: flex;
+    align-items: center;
+}
+
+header .logo img { height: 50px; margin-right: 12px; }
+
+/* ===== HEADER NAVIGATION (DESKTOP DEFAULT) ===== */
+header nav {
+  display: flex;
+  gap: 30px; /* spacing between nav items */
+}
+
+header nav a {
+  text-decoration: none;
+  color: #5a4baa; /* main nav color */
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+header nav a:hover::after { 
+  width: 100%; 
+}
+
+header nav a:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== HAMBURGER ICON ===== */
+.hamburger { 
+  display: none; /* desktop hidden */
+  flex-direction: column; 
+  justify-content: space-between; 
+  width: 42px;
+  height: 38px;
+  padding: 8px;
+  cursor: pointer;
+
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+  .hamburger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+.hamburger span { 
+  height: 3px; 
+  background: #5a4baa; 
+  border-radius: 2px; 
+}
+
+/* ===== MOBILE NAVIGATION ===== */
+@media (max-width: 768px) {
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* needed for absolute nav */
+  }
+
+  /* Show hamburger on mobile */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide nav by default on mobile */
+  header nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    gap: 16px;
+    z-index: 1000;
+  }
+
+  /* THIS matches your existing JS */
+  header nav.show {
+    display: flex;
+  }
+
+  header nav a {
+    font-size: 18px;
+    padding: 12px 16px;
+  }
+}
+
+/* ===== Theme Song Player ===== */
+.theme-song-player {
+  text-align: center;
+  margin: 20px auto 40px;
+}
+
+.theme-song-player p {
+  font-weight: 500;
+  color: #7a5fa3;
+  margin-bottom: 12px;
+}
+
+#playPauseBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#playPauseBtn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Mini Audio Bars */
+.audio-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.audio-bars span {
+  width: 4px;
+  height: 6px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 2px;
+  animation: bounce 1s infinite;
+  animation-play-state: paused; /* paused by default */
+}
+
+.audio-bars span:nth-child(2) { animation-delay: 0.2s; }
+.audio-bars span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+  0%, 100% { height: 6px; opacity: 0.7; }
+  50% { height: 14px; opacity: 1; }
+}
+
+
+
+
+/* ===== ABOUT PAGE ===== */
+.about-page {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #ece4ff, #d9caff); /* soft lavender gradient */
+    overflow: hidden;
+}
+
+.about-page h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #4a3f9e;
+    text-align: center;
+    font-size: 44px;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+/* About content layout */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.about-text {
+    max-width: 600px;
+    font-size: 18px;
+    color: #4c4c4c;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+    text-align: center;
+}
+
+.about-text p { margin-bottom: 20px; }
+.about-text .button {
+    display: inline-block;
+    padding: 16px 50px;
+    background: linear-gradient(90deg, #b5a0ff, #8e78e5);
+    color: #fff;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 20px auto 0;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.about-text .button:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
+
+.about-image img {
+    max-width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+
+/* ===== CORE VIDEO ===== */
+.core-video {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.core-video h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #4a3f9e;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.core-video .video-placeholder {
+    width: 80%;
+    max-width: 800px;
+    height: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    position: relative;
+    background: radial-gradient(circle at center, rgba(181,160,255,0.2), transparent 70%);
+}
+
+.core-video .video-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('sparkles.png') repeat;
+    background-size: contain;
+    animation: spin 60s linear infinite;
+    pointer-events: none;
+}
+  
+/* ===== MOBILE ADJUSTMENTS ONLY ===== */
+@media (max-width: 600px) {
+    .core-video .video-placeholder {
+        width: 100%;           /* fill mobile screen width */
+        max-width: none;       /* remove desktop cap */
+        min-height: 300px;     /* make it taller */
+        aspect-ratio: auto;    /* allow natural height scaling */
+        margin: 0 auto;        /* center */
+    }
+
+    .core-video .video-placeholder video {
+        width: 100%;           /* fill container */
+        height: 100%;
+        object-fit: cover;     /* maintain crop style */
+    }
+
+    .core-video .video-caption {
+        font-size: 16px;       /* slightly smaller text for mobile */
+        margin-top: 10px;
+    }
+}
+
+
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.core-video .video-placeholder video { width: 100%; height: 100%; border-radius: 20px; object-fit: cover; z-index: 1; position: relative; }
+.core-video .video-caption { margin-top: 15px; font-weight: 600; font-size: 18px; color: #5a4baa; text-align: center; }
+
+/* ===== ABOUT STORY ===== */
+.about-story p {
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #4c4c4c;
+}
+/* ===== CTA BUTTON - START YOUR JOURNEY ===== */
+.about-story .button {
+    display: inline-block;       /* makes it behave like a button */
+    padding: 16px 50px;          /* button size */
+    background: linear-gradient(90deg, #b5a0ff, #8e78e5); /* purple gradient */
+    color: #fff;                 /* text color white */
+    border-radius: 30px;         /* rounded edges */
+    font-weight: 700;            /* bold text */
+    font-size: 18px;             /* readable size */
+    text-decoration: none;       /* remove underline */
+    text-align: center;          /* center text */
+    margin: 20px auto 0;         /* center horizontally */
+    transition: all 0.3s ease, box-shadow 0.3s ease; /* smooth hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* subtle shadow */
+}
+  
+@media screen and (max-width: 768px) {
+    .about-text .button {
+        display: block;
+        width: 100%;
+        margin: 20px 0 0 0; /* top 20px, no side margins */
+    }
+}
+
+/* Hover / pop effect */
+.about-story .button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+  
+
+
+/* ===== TRAVEL DIARIES ===== */
+.travel-diaries {
+    padding: 80px 20px 20px; /* reduce bottom padding from 60px → 20px */
+    text-align: center;
+    background: linear-gradient( 135deg, #f2ecff 0%,#dcd2ff 100%);
+}
+
+
+.travel-diaries h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #4a3f9e;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.travel-diaries p {
+    font-size: 18px;
+    color: #5a4baa;
+    margin-bottom: 40px;
+}
+
+  /* ===== BLOG BUTTON IN TRAVEL DIARIES ===== */
+.diaries-blog-btn {
+  text-align: center;
+  margin: 25px 0 35px 0;
+  display: block; /* show the button */
+}
+
+/* ===== LINK BUTTON STYLE ===== */
+.blog-link-btn {
+  display: inline-block;
+  padding: 14px 35px; /* a little bigger for tap-friendly mobile */
+  border-radius: 28px;
+  background: linear-gradient(135deg, #5e4b8b, #7a67b5);
+  color: #f1eaff;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(150,120,255,0.25);
+}
+
+/* hover effect */
+.blog-link-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(170,140,255,0.5);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .blog-link-btn {
+    padding: 12px 25px; /* smaller padding for small screens */
+    font-size: 16px;
+    width: 80%; /* full-ish width for easier tapping */
+    border-radius: 24px;
+  }
+}
+
+/* Grid - horizontal scroll on mobile, normal on desktop */
+.diaries-grid {
+    display: flex;
+    flex-wrap: nowrap;               
+    justify-content: center;          
+    gap: 40px;
+    overflow-x: auto;                
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch; 
+    scroll-snap-type: x mandatory;   
+    position: relative;
+}
+
+/* Scrapbook card */
+.diary-card {
+    flex: 0 0 auto;
+    width: 340px;
+    max-height: calc(100vh - 200px); /* optional: prevent cards from forcing extra section height */
+    aspect-ratio: 3 / 5;
+    background: rgba(255,255,255,0.9);
+    border: 2px dashed rgba(181,160,255,0.6);
+    border-radius: 22px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    scroll-snap-align: start;
+    margin-bottom: 0; /* make sure no extra margin added */
+}
+
+
+/* Alternate tilt */
+.diary-card:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+/* Hover */
+.diary-card:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.18);
+}
+
+/* Video link wrapper */
+.video-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Image covers the card */
+.video-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 22px;
+    display: block;
+}
+
+/* Play overlay */
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 0 12px rgba(0,0,0,0.6);
+    pointer-events: none;
+}
+
+/* ===== SCRAPBOOK TAPE EFFECT ===== */
+.diary-card::before,
+.diary-card::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 28px;
+    background: rgba(181,160,255,0.55);
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(90,75,170,0.35);
+    z-index: 1;
+    pointer-events: none;
+    backdrop-filter: blur(1px);
+}
+
+.diary-card::before {
+    top: -12px;
+    left: 18px;
+    transform: rotate(-8deg);
+}
+
+.diary-card::after {
+    bottom: -12px;
+    right: 18px;
+    transform: rotate(6deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .diary-card {
+        width: 280px;
+    }
+}
+
+  
+/* ===== FOOTER ===== */
+.rr-footer {
+  background: rgba(210, 200, 240, 0.6);
+  padding: 60px 25px;
+  text-align: center;
+  color: #444;
+  margin-top: 0; /* remove extra space */
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.05);
+}
+
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #6c5a99;
+  margin-bottom: 6px;
+}
+
+.footer-tagline {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.footer-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #6c5a99;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 25px;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links button {
+  background: none;
+  border: none;
+  color: #6c5a99;
+  font-size: 0.95rem;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.footer-links button:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.footer-socials a {
+  color: #6c5a99;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* ===== PDF IMAGE MODAL ===== */
+.pdf-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 20, 60, 0.45);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pdf-modal.active {
+  display: flex;
+}
+
+.pdf-modal-content {
+  background: linear-gradient(135deg, #f8f4ff, #eceaf7);
+  width: 90%;
+  max-width: 760px;
+  max-height: 80vh;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  position: relative;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* ✅ allow scrolling for desktop */
+  overflow-y: auto;
+}
+
+.pdf-modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.pdf-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #6c5a99;
+}
+
+/* Navigation Buttons for Multi-Page PDFs */
+.pdf-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.pdf-nav button {
+  background: #6c5a99;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: 0.3s;
+}
+
+.pdf-nav button:hover {
+  opacity: 1;
+}
+
+/* ===== MOBILE FOOTER ADJUSTMENTS ===== */
+@media (max-width: 480px) {
+  .rr-footer {
+    border-radius: 18px 18px 0 0;
+    padding: 50px 20px;
+  }
+
+  .footer-title {
+    font-size: 1.5rem;
+  }
+
+  .footer-links button {
+    font-size: 0.9rem;
+  }
+
+  .footer-socials {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .footer-socials a {
+    font-size: 0.9rem;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+  }
+
+  .pdf-modal-content {
+    max-height: 75vh;
+  }
+}
+
+
+/* ===== SCROLL ANIMATIONS ===== */
+.about-page h1.in-view,
+.about-text.in-view,
+.about-image img.in-view,
+.core-video.in-view,
+.about-story.in-view,
+.diary-card.in-view {
+    opacity: 1;
+    transform: rotate(0deg) translateY(0);
+    transition: all 0.8s ease-out;
+}
+
+/* ===== SCRAPBOOK EFFECTS ===== */
+.about-text, .about-image, .core-video, .about-story, .diary-card {
+    border: 2px dashed rgba(181,160,255,0.5);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    position: relative;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image { transform: rotate(1deg); }
+.core-video { transform: rotate(-1deg); }
+.about-story { transform: rotate(0.5deg); }
+.diary-card:nth-child(even) { transform: rotate(1deg); }
+
+.about-text:hover, .about-image:hover, .core-video:hover, .about-story:hover, .diary-card:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+    0% {background-position: 0 0;}
+    100% {background-position: 200px 200px;}
+}
+
+.about-text::before, .about-image::before, .core-video::before, .about-story::before, .diary-card::before {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    pointer-events: none;
+    background: url('sparkles.png') repeat;
+    opacity: 0.15;
+    animation: sparkle 60s linear infinite;
+    border-radius: inherit;
+}
+
+/* ===== RESPONSIVE / MOBILE ===== */
+@media screen and (max-width: 1024px) {
+    .about-content { flex-direction: column; align-items: center; }
+    .about-image img { max-width: 80%; }
+    .core-video .video-placeholder { height: 350px; }
+}
+
+@media screen and (max-width: 768px) {
+    header { flex-direction: row; justify-content: space-between; padding: 15px 20px; }
+    header nav { display: none; flex-direction: column; gap: 15px; position: absolute; top: 65px; left: 0; width: 100%; background: #fff; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 999; }
+    header nav.show { display: flex; }
+    .hamburger { display: flex; }
+
+    .about-content { flex-direction: column; align-items: center; gap: 30px; }
+    .about-image img { max-width: 90%; }
+    .about-page h1 { font-size: 36px; }
+    .about-text { font-size: 16px; }
+    .about-text .button { padding: 12px 30px; font-size: 16px; }
+
+    .core-video h2 { font-size: 32px; margin-bottom: 15px; }
+    .core-video .video-placeholder { width: 95%; height: 280px; }
+    .core-video .video-caption { font-size: 16px; margin-top: 10px; }
+
+    .diary-card { width: 90%; height: 180px; }
+    .about-text, .about-story p, .travel-diaries p { font-size: 16px; }
+}
+  /* ===== SCRAPBOOK BACKGROUNDS ===== */
+.about-text {
+    background: rgba(217, 200, 255, 0.9); /* soft lavender */
+}
+
+.about-image {
+    background: rgba(217, 200, 255, 0.9); /* soft lavender */
+}
+
+.core-video {
+    background: rgba(217, 200, 255, 0.9); /* soft lavender */
+}
+
+.about-story {
+    background: rgba(217, 200, 255, 0.9); /* soft lavender */
+}
+
+.diary-card {
+    background: rgba(217, 200, 255, 0.9); /* soft lavender */
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+ <!-- HEADER -->
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="IMG_7560.jpg" alt="RaeRoutes Logo">
+      RaeRoutes
+    </a>
+  </div>
+ <nav>
+  <!-- Home always links back to the homepage -->
+  <a href="index.html#home">Home</a>
+
+  <!-- About Me page sections -->
+  <a href="#about-story">Why RaeRoutes Exists</a>
+  <a href="#travel-diaries">Travel Diaries</a>
+</nav>
+
+<div class="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+</header>
+
+<!-- ABOUT SECTION -->
+<section class="about-page">
+  <div class="container">
+    <h1>Behind RaeRoutes</h1>
+    
+ 
+ <div class="theme-song-player">
+  <p>🎵 Set the Mood; Play & Pause, You Are In Control!</p>
+  
+  <button id="playPauseBtn">
+    A Beat by Drevski
+    <span class="audio-bars">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+  
+  <audio id="themeSong">
+    <source src="FieldsNormal.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+
+    <!-- Intro Text + Image -->
+    <div class="about-content">
+      <div class="about-text">
+        <p>Hi, I’m Damonyca, the heart behind RaeRoutes. Travel has always been more than just seeing new places, it’s a way to connect with the world, discover little moments of joy, and create memories that stick long after the trip ends.
+Life has a way of guiding you exactly where you’re meant to be. For me, that’s here: sharing experiences, stories, and daydreams that inspire others to explore at their own pace, in their own way.
+I’ve always loved exploring new destinations wandering city streets, feeling the ocean breeze on a coastal adventure, or cozying up during a winter getaway. That love of travel fuels everything I create for RaeRoutes! From the stories I share to the trips I dream about.</p>
+
+        
+      </div>
+
+      <div class="about-image">
+        <img src="myselfie.JPG" alt="Damonyca, founder of RaeRoutes" title="Damonyca, founder of RaeRoutes">
+        <div class="about-image-caption">
+          Damonyca Segura<br>
+          Independent Travel Agent<br>
+          raeroutes13@gmail.com
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Video Section -->
+<section class="core-video">
+  <h2>"Me Core"</h2>
+  <div class="video-placeholder">
+    <video id="meCoreVideo" autoplay loop muted playsinline poster="video-poster.jpg">
+      <source src="mecore2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <p class="video-caption">
+    Me Core: a mix of own images & a few online images that fit Damonyca's Vibe.
+  </p>
+</section>
+
+    <!-- Story / Why RaeRoutes Exists -->
+    <div class="about-story" id="about-story">
+      <p>RaeRoutes started out with me as a travel agent, helping people plan all kinds of trips. Over time, I realized I wanted to create something a little lighter, more playful, and fun, a space where travel inspiration, daydreams, and little adventures take center stage.
+ Even though RaeRoutes has pivoted toward sharing ideas, vibes, and mini escapes, I can still help plan trips if that’s what you’re looking for. For me, it’s all about connecting with the joy of exploring, whether it’s through a real trip or just imagining one.</p>
+
+      <p>Thanks for checking out the site!<br>
+      Bright days ahead,<br>
+      Damonyca</p>
+
+    </div>
+  </div>
+  
+</section>
+
+
+<section class="travel-diaries" id="travel-diaries">
+  <h2>Travel Diaries</h2>
+  <p>Explore trips, vlogs, and behind the scenes moments from RaeRoutes.
+    Full Travel diaries are shared on Facebook, where RaeRoutes is most active.</p>
+  <div class="diaries-blog-btn">
+  <a href="https://dsegura033.github.io/raeroutes-blogs/" class="blog-link-btn" target="_blank">
+    Read Blogs & More →
+  </a>
+</div>
+
+
+  <div class="diaries-grid">
+
+    <!-- Video 1 -->
+    <div class="diary-card">
+      <a href="https://www.facebook.com/61579193352296/videos/1183307170442172/" target="_blank" class="video-link">
+        <img src="hometownvlog.png" alt="Travel Diary 1 Cover">
+        <div class="play-overlay">▶</div>
+      </a>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="diary-card">
+      <a href="https://www.facebook.com/61579193352296/videos/1197916335291336/" target="_blank" class="video-link">
+        <img src="weekendvlogpic.png" alt="Travel Diary 2 Cover">
+        <div class="play-overlay">▶</div>
+      </a>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="diary-card">
+      <a href="https://www.facebook.com/61579193352296/videos/1382027573300490/" target="_blank" class="video-link">
+        <img src="firstvidpic.png" alt="Travel Diary 3 Cover">
+        <div class="play-overlay">▶</div>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+  <!-- FOOTER -->
+ <footer class="rr-footer">
+  <div class="footer-content">
+
+    <!-- Brand -->
+    <h3 class="footer-title">RaeRoutes</h3>
+    <p class="footer-tagline">Designed for Every Journey.</p>
+
+    <!-- Resources / Image PDFs -->
+    <div class="footer-resources">
+      <h4 class="footer-subtitle">Before You Book</h4>
+      <ul class="footer-links">
+        <li><button data-images="importantnotice.jpg,updated2.png">Safety & Important Notice</button></li>
+      </ul>
+    </div>
+
+    <!-- Socials / Contact -->
+    <div class="footer-socials">
+      <a href="mailto:raeroutes13@gmail.com">Email</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Copy -->
+    <p class="footer-copy">© 2026 RaeRoutes. All Rights Reserved.</p>
+
+  </div>
+</footer>
+
+<!-- Image Modal (for later JS) -->
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-modal-content">
+    <button class="pdf-close">&times;</button>
+    <a id="pdfExternal" href="#" target="_blank">
+      <img id="pdfImage" src="" alt="Document Preview">
+    </a>
+    <div class="pdf-nav">
+      <button id="prevPage">&lt;</button>
+      <button id="nextPage">&gt;</button>
+    </div>
+  </div>
+</div>
+
+
+</body>
+  
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const playBtn = document.getElementById('playPauseBtn');
+  const themeSong = document.getElementById('themeSong');
+  const bars = document.querySelectorAll('.audio-bars span');
+
+  if (playBtn && themeSong) {
+    playBtn.addEventListener('click', () => {
+      if (themeSong.paused) {
+        themeSong.play();
+        themeSong.loop = true;
+
+        // Animate bars
+        bars.forEach(bar => bar.style.animationPlayState = 'running');
+      } else {
+        themeSong.pause();
+
+        // Pause bars animation
+        bars.forEach(bar => bar.style.animationPlayState = 'paused');
+      }
+    });
+  }
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===============================
+     ABOUT PAGE SCROLL ANIMATIONS
+  =============================== */
+  const aboutElements = document.querySelectorAll(
+    '.about-page h1, .about-text, .about-image img'
+  );
+
+  if (aboutElements.length) {
+    const observerAbout = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observerAbout.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    aboutElements.forEach(el => observerAbout.observe(el));
+  }
+
+
+  /* ===============================
+     HAMBURGER MENU
+  =============================== */
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('header nav');
+
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('show');
+    });
+  }
+
+
+  /* ===============================
+     FOOTER PDF MODAL
+  =============================== */
+  const modal = document.getElementById("pdfModal");
+  const pdfImg = document.getElementById("pdfImage");
+  const external = document.getElementById("pdfExternal");
+  const pdfCloseBtn = document.querySelector(".pdf-close");
+  const prevBtn = document.getElementById("prevPage");
+  const nextBtn = document.getElementById("nextPage");
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  document.querySelectorAll(".footer-links button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const images = btn.getAttribute("data-images");
+      if (!images) return;
+
+      currentImages = images.split(",").map(i => i.trim());
+      currentIndex = 0;
+
+      pdfImg.src = currentImages[currentIndex];
+      external.href = currentImages[currentIndex];
+      modal.classList.add("active");
+
+      prevBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
+      nextBtn.style.display = currentImages.length > 1 ? 'inline-block' : 'none';
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove("active");
+    pdfImg.src = "";
+  }
+
+  if (pdfCloseBtn) pdfCloseBtn.addEventListener("click", closeModal);
+  if (modal) modal.addEventListener("click", e => {
+    if (e.target === modal) closeModal();
+  });
+
+  if (prevBtn) prevBtn.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      pdfImg.src = currentImages[currentIndex];
+      external.href = currentImages[currentIndex];
+    }
+  });
+
+  if (nextBtn) nextBtn.addEventListener("click", () => {
+    if (currentIndex < currentImages.length - 1) {
+      currentIndex++;
+      pdfImg.src = currentImages[currentIndex];
+      external.href = currentImages[currentIndex];
+    }
+  });
+
+
+  /* ===============================
+     TRAVELER QUIZ
+  =============================== */
+  const travelerButtons = document.querySelectorAll(
+    '.traveler-card .options button'
+  );
+  const travelerResult = document.querySelector(
+    '.traveler-card .result'
+  );
+
+  const travelerDescriptions = {
+    "City Explorer": [
+      "You thrive on the energy of bustling streets and hidden cafés. Urban adventures are your playground!",
+      "Skylines, museums, and late night eats fuel your travel style.",
+      "You love discovering neighborhoods and the rhythm of a city that never sleeps."
+    ],
+    "Coastal Relaxer": [
+      "Your soul finds calm in waves and golden sands.",
+      "Salt air, slow mornings, and ocean views are your version of luxury.",
+      "You travel to unwind sunshine and water are all you need."
+    ],
+    "Adventure Seeker": [
+      "You crave thrills, hikes, and the unknown.",
+      "Your trips are powered by adrenaline and fresh air.",
+      "You’re happiest chasing views and pushing limits."
+    ],
+    "Cozy & Chill": [
+      "You cherish quiet mornings and hygge vibes.",
+      "Your perfect trip includes cozy cafés and slow days.",
+      "You travel to feel calm, comfortable, and present."
+    ]
+  };
+
+  travelerButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const type = button.dataset.type;
+      const descriptions = travelerDescriptions[type];
+      if (!descriptions || !travelerResult) return;
+
+      const random =
+        descriptions[Math.floor(Math.random() * descriptions.length)];
+
+      travelerResult.innerHTML = `<strong>${type}</strong><br>${random}`;
+      travelerResult.style.display = 'block';
+    });
+  });
+
+
+  /* ===============================
+     PLAN MY TRIP WHEEL
+  =============================== */
+  const spinBtn = document.getElementById('spinTrip');
+  const tripResult = document.querySelector('.trip-result');
+
+  if (spinBtn && tripResult) {
+    const destEl = tripResult.querySelector('.destination');
+    const vibeEl = tripResult.querySelector('.vibe');
+    const partnerEl = tripResult.querySelector('.partner');
+
+    const destinations = [
+      "New York City, NY", "Miami, FL", "Sedona, AZ", "San Francisco, CA",
+      "Asheville, NC", "Chicago, IL", "Honolulu, HI",
+      "Paris, France", "Kyoto, Japan", "Santorini, Greece",
+      "Bali, Indonesia", "Rome, Italy", "London, England"
+    ];
+
+    const vibes = [
+      "Relaxed & Luxurious", "Adventure & Nature", "Romantic & Cozy",
+      "Urban & Vibrant", "Chill & Hygge", "Beach & Sun"
+    ];
+
+    const partners = [
+      "Partner 👫", "Friends 👭", "Family 👨‍👩‍👧",
+      "Solo ✈️", "Bestie Squad 👯"
+    ];
+
+    spinBtn.addEventListener('click', () => {
+      tripResult.style.display = 'block';
+      let i = 0;
+
+      const interval = setInterval(() => {
+        destEl.textContent =
+          destinations[Math.floor(Math.random() * destinations.length)];
+        vibeEl.textContent =
+          vibes[Math.floor(Math.random() * vibes.length)];
+        partnerEl.textContent =
+          partners[Math.floor(Math.random() * partners.length)];
+
+        i++;
+        if (i > 20) clearInterval(interval);
+      }, 50);
+    });
+  }
+
+});
+</script>
+  
+<!-- Load YouTube Iframe API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+let players = [];
+const themeSong = document.getElementById('themeSong');
+
+// Called by YouTube API when ready
+function onYouTubeIframeAPIReady() {
+  document.querySelectorAll('.brainrot-video').forEach((iframe, index) => {
+    players[index] = new YT.Player(iframe, {
+      events: {
+        'onStateChange': function(event) {
+          // Pause theme song when video starts
+          if(event.data === YT.PlayerState.PLAYING) {
+            if(themeSong && !themeSong.paused) themeSong.pause();
+          }
+        }
+      }
+    });
+  });
+}
+</script>
+
+
+
+</body>
+</html>
