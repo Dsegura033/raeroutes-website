@@ -1097,339 +1097,9 @@ color:#50496b;
 
 }
 
-
 /* ===================================
       MINI DAYDREAMS ✨
-      Floating Travel Orbs
-=================================== */
-
-
-.weekly-packages {
-
-padding:90px 20px;
-
-margin:40px 20px;
-
-background:
-
-radial-gradient(
-circle at top left,
-rgba(198,180,255,.45),
-transparent 40%
-),
-
-radial-gradient(
-circle at bottom right,
-rgba(160,210,255,.45),
-transparent 40%
-),
-
-linear-gradient(
-135deg,
-#f4efff,
-#e8f6ff
-);
-
-
-border-radius:45px;
-
-overflow:hidden;
-
-box-shadow:
-
-0 25px 60px rgba(70,50,120,.12);
-
-}
-
-
-
-
-.weekly-packages h2 {
-
-font-family:'Playfair Display',serif;
-
-font-size:clamp(2rem,5vw,3rem);
-
-color:#3b2c70;
-
-margin-bottom:15px;
-
-}
-
-
-
-
-.weekly-packages p {
-
-max-width:650px;
-
-margin:0 auto 45px;
-
-color:#51496d;
-
-line-height:1.7;
-
-}
-
-
-
-/* ==========================
-      FLOATING ORBS ROW
-========================== */
-
-
-.packages-grid {
-
-
-display:flex;
-
-gap:35px;
-
-overflow-x:auto;
-
-padding:30px 15px 50px;
-
-
-scroll-snap-type:x mandatory;
-
--webkit-overflow-scrolling:touch;
-
-}
-
-
-
-.packages-grid::-webkit-scrollbar{
-
-display:none;
-
-}
-
-
-
-/* ==========================
-        DREAM ORBS
-========================== */
-
-
-.package-card {
-
-
-flex:0 0 240px;
-
-
-background:transparent;
-
-
-border-radius:50%;
-
-
-scroll-snap-align:center;
-
-
-position:relative;
-
-
-text-align:center;
-
-
-transition:.35s ease;
-
-
-}
-
-
-
-
-.package-card:nth-child(odd){
-
-transform:translateY(-18px);
-
-}
-
-
-.package-card:nth-child(even){
-
-transform:translateY(18px);
-
-}
-
-
-
-
-.package-card:hover {
-
-
-transform:
-
-translateY(-12px)
-scale(1.05);
-
-}
-
-
-
-/* ==========================
-          IMAGE CIRCLE
-========================== */
-
-
-.package-card img {
-
-
-width:190px;
-
-height:190px;
-
-
-margin:auto;
-
-
-object-fit:cover;
-
-
-display:block;
-
-
-border-radius:50%;
-
-
-box-shadow:
-
-0 20px 45px rgba(70,50,120,.25);
-
-
-border:
-
-8px solid rgba(255,255,255,.65);
-
-
-}
-
-
-
-
-/* ==========================
-        TEXT FLOATING
-========================== */
-
-
-.package-overlay {
-
-
-background:transparent;
-
-
-padding:20px 10px;
-
-
-}
-
-
-
-
-.package-overlay h3 {
-
-
-font-family:'Playfair Display',serif;
-
-
-font-size:1.4rem;
-
-
-color:#3b2c70;
-
-
-margin-bottom:8px;
-
-}
-
-
-
-.package-overlay p {
-
-
-color:#62557d;
-
-
-font-size:.95rem;
-
-
-line-height:1.6;
-
-}
-
-
-
-/* remove old card feeling */
-
-
-.package-card::before {
-
-
-content:"✦";
-
-
-position:absolute;
-
-
-top:0;
-
-right:20px;
-
-
-color:#9b7cff;
-
-
-font-size:1.4rem;
-
-}
-
-
-
-
-.package-buttons {
-
-display:none;
-
-}
-
-
-
-
-@media(max-width:768px){
-
-
-.weekly-packages {
-
-padding:70px 15px;
-
-}
-
-
-
-.package-card {
-
-flex-basis:220px;
-
-}
-
-
-
-.package-card img {
-
-
-width:160px;
-
-height:160px;
-
-}
-
-
-}
-
-/* ===================================
-      MINI DAYDREAMS
-      POSTCARD STYLE
+      Floating Dream Bubbles
 =================================== */
 
 
@@ -1459,6 +1129,7 @@ linear-gradient(
 #eaf7ff
 );
 
+
 border-radius:45px;
 
 overflow:hidden;
@@ -1471,19 +1142,23 @@ box-shadow:
 
 
 
+
 .weekly-packages h2 {
 
 font-family:'Playfair Display',serif;
 
-font-size:2.8rem;
+font-size:clamp(2rem,5vw,3rem);
 
 color:#3b2c70;
+
+margin-bottom:10px;
 
 }
 
 
 
-.weekly-packages p {
+
+.weekly-packages > p {
 
 max-width:650px;
 
@@ -1497,12 +1172,13 @@ line-height:1.8;
 
 
 
-/* =========================
-      DAYDREAM ROW
-========================= */
+/* ==========================
+       FLOATING SCROLL
+========================== */
 
 
 .packages-grid {
+
 
 display:flex;
 
@@ -1510,11 +1186,15 @@ gap:35px;
 
 overflow-x:auto;
 
-padding:30px 15px 40px;
+padding:30px 25px 60px;
 
 scroll-snap-type:x mandatory;
 
+-webkit-overflow-scrolling:touch;
+
+
 }
+
 
 
 .packages-grid::-webkit-scrollbar{
@@ -1525,31 +1205,43 @@ display:none;
 
 
 
-/* =========================
-      DREAM CARDS
-========================= */
+
+
+/* ==========================
+        DREAM BUBBLES
+========================== */
 
 
 .package-card {
 
 
-position:relative;
+flex:0 0 230px;
 
-flex:0 0 290px;
+
+height:260px;
 
 
 background:
 
-rgba(255,255,255,.65);
+rgba(255,255,255,.35);
 
 
-backdrop-filter:blur(18px);
+backdrop-filter:blur(15px);
 
 
-border-radius:35px;
+border-radius:50%;
 
 
-padding:18px;
+position:relative;
+
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
 
 
 scroll-snap-align:center;
@@ -1557,12 +1249,12 @@ scroll-snap-align:center;
 
 box-shadow:
 
-0 20px 45px rgba(70,50,120,.15);
+0 20px 45px rgba(70,50,120,.18);
 
 
 border:
 
-1px solid rgba(255,255,255,.8);
+2px solid rgba(255,255,255,.6);
 
 
 transition:.35s ease;
@@ -1572,21 +1264,22 @@ transition:.35s ease;
 
 
 
-/* scrapbook tilt */
 
 
 .package-card:nth-child(odd){
 
-transform:rotate(-3deg);
+transform:translateY(-18px);
 
 }
+
 
 
 .package-card:nth-child(even){
 
-transform:rotate(3deg);
+transform:translateY(18px);
 
 }
+
 
 
 
@@ -1595,107 +1288,60 @@ transform:rotate(3deg);
 transform:
 
 translateY(-10px)
-rotate(0deg);
+scale(1.05);
 
 }
 
 
 
-/* =========================
-      IMAGE
-========================= */
+
+
+
+/* ==========================
+          IMAGE BUBBLE
+========================== */
 
 
 .package-card img {
 
 
-width:100%;
+width:120px;
 
-
-height:170px;
+height:120px;
 
 
 object-fit:cover;
 
 
-border-radius:28px;
-
-
-display:block;
-
-
-}
-
-
-
-.package-card::before {
-
-
-content:"✦";
-
-
-position:absolute;
-
-
-top:-15px;
-
-
-right:20px;
-
-
-width:35px;
-
-
-height:35px;
-
-
 border-radius:50%;
 
 
-background:
+border:
 
-linear-gradient(
-135deg,
-#cdb8ff,
-#bdeaff
-);
-
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-
-color:white;
-
-
-font-size:18px;
+5px solid rgba(255,255,255,.8);
 
 
 box-shadow:
 
-0 8px 20px rgba(80,60,150,.2);
+0 15px 35px rgba(70,50,120,.25);
 
 
 }
 
 
 
-/* =========================
-      CONTENT
-========================= */
+
+/* ==========================
+          TEXT
+========================== */
 
 
 .package-overlay {
 
 
-padding:20px 10px 10px;
-
+padding:15px 10px 0;
 
 background:none;
-
 
 }
 
@@ -1707,10 +1353,13 @@ background:none;
 font-family:'Playfair Display',serif;
 
 
-font-size:1.45rem;
+font-size:1.25rem;
 
 
 color:#3b2c70;
+
+
+margin:5px 0;
 
 
 }
@@ -1720,58 +1369,74 @@ color:#3b2c70;
 .package-overlay p {
 
 
+font-size:.9rem;
+
 color:#62557d;
 
+line-height:1.5;
 
-font-size:.95rem;
+}
 
 
-line-height:1.7;
+
+/* floating sparkle */
+
+
+.package-card::before {
+
+
+content:"✦";
+
+
+position:absolute;
+
+
+top:25px;
+
+right:35px;
+
+
+color:#9b7cff;
+
+
+font-size:1.5rem;
+
+
+animation:floatSparkle 3s ease-in-out infinite;
+
+}
+
+
+
+
+@keyframes floatSparkle{
+
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+
+50%{
+
+transform:translateY(-8px);
+
+}
 
 
 }
 
 
 
-/* =========================
-      BUTTON
-========================= */
 
 
-.package-buttons {
+/* hide buttons because daydreams are inspiration */
 
+.package-buttons{
 
-margin-top:18px;
-
-}
-
-
-
-.package-buttons .button {
-
-
-background:
-
-linear-gradient(
-135deg,
-#9b7cff,
-#7ddcff
-);
-
-
-padding:11px 24px;
-
-
-border-radius:999px;
-
-
-color:white;
-
-
-box-shadow:
-
-0 10px 20px rgba(90,70,170,.2);
-
+display:none;
 
 }
 
@@ -1787,26 +1452,399 @@ box-shadow:
 
 .weekly-packages{
 
-padding:65px 15px;
+padding:70px 15px;
 
 }
 
-
-.weekly-packages h2{
-
-font-size:2.2rem;
-
-}
 
 
 .package-card{
 
-flex-basis:260px;
+flex-basis:210px;
+
+height:230px;
+
+}
+
+
+
+.package-card img{
+
+width:100px;
+
+height:100px;
 
 }
 
 
 }
+
+/* ===================================
+        HOT DEALS ✨
+        Floating Travel Finds
+=================================== */
+
+
+.hot-deals {
+
+padding:90px 20px;
+
+margin:40px 15px;
+
+
+background:
+
+radial-gradient(
+circle at top right,
+rgba(198,180,255,.45),
+transparent 40%
+),
+
+radial-gradient(
+circle at bottom left,
+rgba(160,210,255,.35),
+transparent 40%
+),
+
+linear-gradient(
+135deg,
+#f7f1ff,
+#e9f7ff
+);
+
+
+border-radius:45px;
+
+overflow:hidden;
+
+box-shadow:
+
+0 25px 60px rgba(70,50,120,.12);
+
+}
+
+
+
+
+
+.hot-deals h2 {
+
+font-family:'Playfair Display',serif;
+
+font-size:clamp(2rem,5vw,3rem);
+
+color:#3b2c70;
+
+}
+
+
+
+.hot-deals > p {
+
+max-width:650px;
+
+margin:0 auto 45px;
+
+color:#62557d;
+
+line-height:1.8;
+
+}
+
+
+
+/* ==========================
+       SCROLL
+========================== */
+
+
+.hot-deals-scroll {
+
+display:flex;
+
+gap:35px;
+
+overflow-x:auto;
+
+padding:30px 20px 60px;
+
+scroll-snap-type:x mandatory;
+
+}
+
+
+.hot-deals-scroll::-webkit-scrollbar{
+
+display:none;
+
+}
+
+
+
+
+
+/* ==========================
+       DEAL BUBBLES
+========================== */
+
+
+.hot-deal-card {
+
+
+flex:0 0 230px;
+
+
+background:
+
+rgba(255,255,255,.45);
+
+
+backdrop-filter:blur(18px);
+
+
+border-radius:40px;
+
+
+padding:25px 20px;
+
+
+text-align:center;
+
+
+scroll-snap-align:center;
+
+
+box-shadow:
+
+0 20px 45px rgba(70,50,120,.15);
+
+
+border:
+
+1px solid rgba(255,255,255,.7);
+
+
+transition:.35s ease;
+
+
+}
+
+
+
+
+
+.hot-deal-card:nth-child(odd){
+
+transform:translateY(-15px);
+
+}
+
+
+
+.hot-deal-card:nth-child(even){
+
+transform:translateY(15px);
+
+}
+
+
+
+
+.hot-deal-card:hover {
+
+
+transform:
+
+translateY(-10px)
+scale(1.05);
+
+
+}
+
+
+
+
+
+/* ==========================
+       IMAGE CIRCLE
+========================== */
+
+
+.deal-image {
+
+
+width:120px;
+
+height:120px;
+
+
+border-radius:50%;
+
+
+object-fit:cover;
+
+
+margin:auto;
+
+
+display:block;
+
+
+border:
+
+6px solid rgba(255,255,255,.8);
+
+
+box-shadow:
+
+0 15px 35px rgba(70,50,120,.2);
+
+
+}
+
+
+
+
+
+/* ==========================
+       TEXT
+========================== */
+
+
+.hot-deal-card h3 {
+
+
+font-family:'Playfair Display',serif;
+
+
+font-size:1.35rem;
+
+
+color:#3b2c70;
+
+
+margin-top:18px;
+
+
+}
+
+
+
+.hot-deal-card p {
+
+
+color:#62557d;
+
+
+font-size:.95rem;
+
+
+line-height:1.6;
+
+
+}
+
+
+
+
+
+/* sparkle */
+
+.hot-deal-card::before {
+
+
+content:"✦";
+
+
+position:absolute;
+
+
+top:15px;
+
+
+right:20px;
+
+
+color:#9b7cff;
+
+
+font-size:1.3rem;
+
+
+}
+
+
+
+
+/* button */
+
+
+.hot-deal-card .button {
+
+
+display:inline-block;
+
+
+margin-top:15px;
+
+
+padding:10px 22px;
+
+
+background:
+
+linear-gradient(
+135deg,
+#9b7cff,
+#7ddcff
+);
+
+
+color:white;
+
+
+border-radius:999px;
+
+
+font-weight:600;
+
+
+}
+
+
+
+
+@media(max-width:768px){
+
+
+.hot-deals{
+
+padding:70px 15px;
+
+}
+
+
+
+.hot-deal-card{
+
+flex-basis:210px;
+
+}
+
+
+
+.deal-image{
+
+width:100px;
+
+height:100px;
+
+}
+
+
+}
+
+
 /* ===================================
       THE ROUTE ROOM - SCRAPBOOK STYLE
 =================================== */
