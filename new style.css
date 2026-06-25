@@ -3071,7 +3071,9 @@ inset:0;
 
 z-index:99999;
 
-background:rgba(30,20,70,.55);
+background:
+
+rgba(30,20,70,.55);
 
 backdrop-filter:blur(12px);
 
@@ -3079,49 +3081,141 @@ justify-content:center;
 
 align-items:center;
 
+padding:20px;
+
+}
+
+
+/* SHOW MODAL */
+
+.pdf-modal.active{
+
+display:flex;
+
 }
 
 
 
+/* PDF WINDOW */
+
+.pdf-modal-content{
+
+width:90%;
+
+max-width:600px;
+
+background:white;
+
+border-radius:30px;
+
+padding:25px;
+
+position:relative;
+
+box-shadow:
+
+0 25px 60px rgba(0,0,0,.25);
+
+}
+
+
+/* CLOSE BUTTON */
+
+.pdf-close{
+
+position:absolute;
+
+top:15px;
+
+right:18px;
+
+background:none;
+
+border:none;
+
+font-size:30px;
+
+cursor:pointer;
+
+color:#4b3c9f;
+
+z-index:2;
+
+}
+
+
+/* PREVIEW IMAGE */
+
+#pdfImage{
+
+width:100%;
+
+max-height:70vh;
+
+object-fit:contain;
+
+border-radius:20px;
+
+}
+
+
+
+/* PAGE BUTTONS */
+
+.pdf-nav{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+margin-top:20px;
+
+}
+
+
+.pdf-nav button{
+
+background:
+
+linear-gradient(
+135deg,
+#9b7cff,
+#7ddcff
+);
+
+color:white;
+
+border:none;
+
+border-radius:999px;
+
+padding:10px 22px;
+
+cursor:pointer;
+
+}
+
+
+/* MOBILE */
 
 @media(max-width:700px){
 
+.pdf-modal-content{
 
-.rr-footer{
+padding:18px;
 
-padding:40px 15px 25px;
-
-border-radius:25px 25px 0 0;
-
-}
-
-
-
-.footer-title{
-
-font-size:1.7rem;
+border-radius:25px;
 
 }
 
 
+#pdfImage{
 
-.footer-tagline{
-
-font-size:.9rem;
-
-}
-
-
-
-.footer-socials{
-
-flex-direction:column;
-
-gap:10px;
+max-height:60vh;
 
 }
-
-
 
 }
 
