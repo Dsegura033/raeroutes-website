@@ -1720,22 +1720,22 @@ height:170px;
 }
 
 }
-
 /* ===================================
       THE ROUTE ROOM - SCRAPBOOK STYLE
 =================================== */
 
+
 .services-gifting {
 
-padding:100px 20px;
+padding:90px 25px;
 
 margin:40px 20px;
 
 background:
 linear-gradient(
 180deg,
-#faf7ff 0%,
-#eef8ff 100%
+#faf7ff,
+#eef8ff
 );
 
 border-radius:40px;
@@ -1749,9 +1749,8 @@ box-shadow:
 
 }
 
-/* subtle map texture effect */
 
-.services-gifting::before {
+.services-gifting::before{
 
 content:"";
 
@@ -1761,59 +1760,72 @@ inset:0;
 
 background:
 
-radial-gradient(circle at 20% 20%, rgba(181,160,255,.12), transparent 25%),
+radial-gradient(
+circle at 20% 20%,
+rgba(181,160,255,.15),
+transparent 25%
+),
 
-radial-gradient(circle at 80% 70%, rgba(125,220,255,.12), transparent 25%);
+radial-gradient(
+circle at 80% 70%,
+rgba(125,220,255,.15),
+transparent 25%
+);
 
 pointer-events:none;
 
 }
 
-.services-gifting h2 {
 
-font-family:'Playfair Display', serif;
+.services-gifting h2{
+
+position:relative;
+z-index:2;
+
+font-family:'Playfair Display',serif;
 
 font-size:3rem;
 
 color:#423178;
 
-margin-bottom:18px;
+text-align:center;
 
-position:relative;
-
-z-index:2;
+margin-bottom:15px;
 
 }
 
-.services-gifting > p {
 
-max-width:720px;
+.services-gifting > p{
+
+position:relative;
+z-index:2;
+
+max-width:700px;
 
 margin:auto;
 
-font-size:1.05rem;
-
-line-height:1.8;
+text-align:center;
 
 color:#5f577d;
 
-position:relative;
-
-z-index:2;
+line-height:1.8;
 
 }
 
+
 /* ==========================
-      CARD ROW
+        CARD ROW
 ========================== */
+
 
 .service-scroll{
 
-width:100%;
+margin-top:45px;
 
-margin-top:40px;
+overflow-x:auto;
 
 }
+
 
 .service-scroll::-webkit-scrollbar{
 
@@ -1821,43 +1833,54 @@ display:none;
 
 }
 
+
+
 .service-cards{
 
 display:flex;
 
-justify-content:center;
-
-align-items:stretch;
-
-gap:30px;
+gap:28px;
 
 max-width:1150px;
 
-margin:0 auto;
+margin:auto;
 
 padding:20px 10px;
 
+justify-content:center;
+
 }
 
+
 /* ==========================
-      POSTCARD CARDS
+        POSTCARD CARDS
 ========================== */
 
+
 .service-card{
+
 
 flex:1;
 
 max-width:340px;
 
+min-height:400px;
+
+
 background:#fffdf8;
 
-border-radius:24px;
 
-padding:30px;
+border-radius:28px;
+
+
+padding:35px 25px;
+
+
+text-align:center;
+
 
 position:relative;
 
-text-align:center;
 
 display:flex;
 
@@ -1865,20 +1888,30 @@ flex-direction:column;
 
 align-items:center;
 
-justify-content:flex-start;
-
-min-height:420px;
-
-border:1px solid rgba(120,100,180,.08);
 
 box-shadow:
-0 15px 35px rgba(70,50,120,.10);
+
+0 18px 40px rgba(70,50,120,.12);
+
 
 transition:.3s ease;
 
+
 }
 
-/* scrapbook tape */
+
+
+.service-card::before{
+
+content:attr(data-emoji);
+
+font-size:3rem;
+
+margin-bottom:15px;
+
+}
+
+
 
 .service-card::after{
 
@@ -1892,35 +1925,31 @@ left:50%;
 
 transform:
 translateX(-50%)
-rotate(-3deg);
+rotate(-4deg);
+
 
 width:90px;
 
 height:22px;
 
+
 background:
 rgba(255,255,255,.8);
+
 
 border:
 1px solid rgba(0,0,0,.05);
 
 }
 
-.service-card::before{
 
-content:attr(data-emoji);
-
-font-size:3rem;
-
-margin-bottom:15px;
-
-}
 
 .service-card:nth-child(2){
 
-transform:rotate(1.2deg);
+transform:rotate(1deg);
 
 }
+
 
 .service-card:nth-child(3){
 
@@ -1928,24 +1957,31 @@ transform:rotate(-1deg);
 
 }
 
+
+
 .service-card:hover{
 
 transform:
 translateY(-8px)
 rotate(0deg);
 
+
 box-shadow:
-0 22px 45px rgba(70,50,120,.18);
+
+0 25px 55px rgba(70,50,120,.2);
 
 }
 
+
+
 /* ==========================
-      CARD CONTENT
+        CONTENT
 ========================== */
+
 
 .service-card h3{
 
-font-family:'Playfair Display', serif;
+font-family:'Playfair Display',serif;
 
 font-size:1.5rem;
 
@@ -1955,29 +1991,120 @@ margin-bottom:15px;
 
 }
 
+
 .service-card p{
-
-font-size:.98rem;
-
-line-height:1.7;
 
 color:#5f577d;
 
+line-height:1.7;
+
+font-size:.95rem;
+
 }
 
+
 /* ==========================
-      MOBILE
+        BUTTONS
 ========================== */
+
+
+.service-card .button,
+.generate-trip-btn,
+.traveler-card .options button{
+
+
+margin-top:auto;
+
+
+background:
+
+linear-gradient(
+135deg,
+#b59cff,
+#8fdcff
+);
+
+
+border:none;
+
+
+border-radius:999px;
+
+
+padding:12px 25px;
+
+
+color:white;
+
+
+font-weight:600;
+
+
+cursor:pointer;
+
+
+text-decoration:none;
+
+
+box-shadow:
+
+0 10px 25px rgba(90,70,170,.2);
+
+
+transition:.25s ease;
+
+}
+
+
+
+.service-card .button:hover,
+.generate-trip-btn:hover,
+.traveler-card .options button:hover{
+
+
+transform:translateY(-4px);
+
+}
+
+
+
+
+.traveler-card .options{
+
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-top:20px;
+
+}
+
+
+
+
+
+/* ==========================
+        MOBILE
+========================== */
+
 
 @media(max-width:768px){
 
+
 .services-gifting{
 
-padding:70px 15px;
+padding:65px 15px;
 
-margin:20px 10px;
+margin:25px 10px;
 
 }
+
+
 
 .services-gifting h2{
 
@@ -1985,25 +2112,7 @@ font-size:2.2rem;
 
 }
 
-.services-gifting > p{
 
-font-size:.95rem;
-
-padding:0 10px;
-
-}
-
-/* turn into scroll cards */
-
-.service-scroll{
-
-overflow-x:auto;
-
-padding-bottom:15px;
-
--webkit-overflow-scrolling:touch;
-
-}
 
 .service-cards{
 
@@ -2013,9 +2122,9 @@ width:max-content;
 
 max-width:none;
 
-padding:20px 5px;
-
 }
+
+
 
 .service-card{
 
@@ -2026,6 +2135,7 @@ max-width:none;
 min-height:auto;
 
 }
+
 
 }
  /* =====================================
