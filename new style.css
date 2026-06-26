@@ -838,7 +838,15 @@ box-shadow:
 
 }
 
+/* LOTTIE ICON SIZE */
 
+.why-icon lottie-player {
+
+width:75px;
+
+height:75px;
+
+}
 
 .why-card h3 {
 
