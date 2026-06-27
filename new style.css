@@ -1438,17 +1438,16 @@ color:#62557d;
 
 
 
-/* remove old buttons */
+/* remove old buttons only inside Mini Daydream bubbles */
 
 
 .package-buttons,
-.button,
-.view-btn {
+.package-card .button,
+.package-card .view-btn {
 
 display:none;
 
 }
-
 
 
 
