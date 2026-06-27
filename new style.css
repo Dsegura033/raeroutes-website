@@ -813,31 +813,18 @@ box-shadow:
 
 .why-icon {
 
-width:90px;
-
-height:90px;
+width:220px;
+height:220px;
 
 margin:0 auto 20px;
 
-border-radius:50%;
+display:block;
 
-display:flex;
+overflow:visible;
 
-align-items:center;
+background:none;
 
-justify-content:center;
-
-background:
-linear-gradient(
-135deg,
-#cdb8ff,
-#bdeaff
-);
-
-box-shadow:
-0 10px 25px rgba(100,70,160,.25);
-
-overflow:hidden;
+box-shadow:none;
 
 }
 
@@ -846,15 +833,14 @@ overflow:hidden;
 
 .why-icon lottie-player {
 
-width:70px;
-
-height:70px;
+width:220px !important;
+height:220px !important;
 
 display:block;
 
+margin:auto;
+
 }
-
-
 
 .why-card p {
 
