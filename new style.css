@@ -1146,7 +1146,6 @@ box-shadow:
 
 
 
-
 .weekly-packages h2 {
 
 font-family:'Playfair Display',serif;
@@ -1158,6 +1157,7 @@ color:#3b2c70;
 margin-bottom:15px;
 
 }
+
 
 
 
@@ -1176,34 +1176,32 @@ line-height:1.8;
 
 
 
+
+
 /* =========================
-      SCROLL BUBBLES
+      BUBBLE AREA
 ========================= */
 
 
 .packages-grid {
 
+
 display:flex;
 
-gap:40px;
+justify-content:center;
 
-overflow-x:auto;
+align-items:center;
 
-padding:40px 20px 70px;
+flex-wrap:wrap;
 
-scroll-snap-type:x mandatory;
+gap:55px;
 
--webkit-overflow-scrolling:touch;
+
+padding:50px 20px;
+
 
 }
 
-
-
-.packages-grid::-webkit-scrollbar{
-
-display:none;
-
-}
 
 
 
@@ -1215,10 +1213,12 @@ display:none;
 .package-card {
 
 
-flex:0 0 260px;
+width:270px;
+
+height:270px;
 
 
-scroll-snap-align:center;
+border-radius:50%;
 
 
 background:
@@ -1227,12 +1227,6 @@ rgba(255,255,255,.45);
 
 
 backdrop-filter:blur(18px);
-
-
-border-radius:45px;
-
-
-height:320px;
 
 
 display:flex;
@@ -1244,12 +1238,18 @@ align-items:center;
 justify-content:center;
 
 
+text-decoration:none;
+
+
 position:relative;
+
+
+overflow:hidden;
 
 
 box-shadow:
 
-0 25px 50px rgba(70,50,120,.18);
+0 25px 60px rgba(70,50,120,.18);
 
 
 border:
@@ -1257,42 +1257,89 @@ border:
 1px solid rgba(255,255,255,.7);
 
 
-transition:.35s ease;
+transition:
+
+transform .4s ease,
+box-shadow .4s ease;
 
 
-padding:25px;
+animation:
+
+floatBubble 6s ease-in-out infinite;
 
 
 }
 
 
 
-/* floating movement */
+/* stagger floating */
 
-.package-card:nth-child(odd){
+.package-card:nth-child(2){
 
-transform:translateY(-20px);
-
-}
-
-
-
-.package-card:nth-child(even){
-
-transform:translateY(20px);
+animation-delay:1.5s;
 
 }
 
 
 
+.package-card:nth-child(3){
 
-.package-card:hover{
+animation-delay:3s;
+
+}
+
+
+
+
+
+@keyframes floatBubble {
+
+
+0% {
+
+transform:translateY(0);
+
+}
+
+
+50% {
+
+transform:translateY(-18px);
+
+}
+
+
+100% {
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+
+.package-card:hover {
+
 
 transform:
-translateY(-10px)
-scale(1.05);
+
+translateY(-12px)
+scale(1.06);
+
+
+box-shadow:
+
+0 35px 80px rgba(70,50,120,.28);
+
 
 }
+
+
+
 
 
 
@@ -1305,9 +1352,9 @@ scale(1.05);
 .package-card img {
 
 
-width:105px;
+width:115px;
 
-height:105px;
+height:115px;
 
 
 object-fit:cover;
@@ -1326,7 +1373,8 @@ box-shadow:
 0 15px 35px rgba(70,50,120,.2);
 
 
-margin-bottom:12px;
+margin-bottom:15px;
+
 
 }
 
@@ -1342,11 +1390,10 @@ margin-bottom:12px;
 .package-overlay {
 
 
-padding:0 12px;
-
-background:none;
-
 text-align:center;
+
+padding:0 25px;
+
 
 }
 
@@ -1368,9 +1415,12 @@ line-height:1.2;
 color:#3b2c70;
 
 
-margin-bottom:8px;
+margin-bottom:10px;
+
 
 }
+
+
 
 
 
@@ -1380,109 +1430,24 @@ margin-bottom:8px;
 font-size:.82rem;
 
 
-line-height:1.35;
+line-height:1.45;
 
 
 color:#62557d;
 
 
-margin-bottom:15px;
-
 }
 
 
 
 
 
-/* =========================
-        BUTTONS
-========================= */
+/* remove old buttons */
 
 
-.package-buttons {
-
-display:flex;
-
-justify-content:center;
-
-margin-top:10px;
-
-}
-
-
-
-.button {
-
-
-display:inline-flex;
-
-align-items:center;
-
-justify-content:center;
-
-
-padding:10px 18px;
-
-
-border-radius:30px;
-
-
-background:rgba(255,255,255,.85);
-
-
-color:#3b2c70;
-
-
-text-decoration:none;
-
-
-font-size:.85rem;
-
-
-font-weight:600;
-
-
-box-shadow:
-
-0 10px 25px rgba(70,50,120,.15);
-
-
-transition:.3s ease;
-
-
-}
-
-
-
-.button:hover {
-
-
-transform:translateY(-3px);
-
-
-background:white;
-
-
-box-shadow:
-
-0 15px 35px rgba(70,50,120,.25);
-
-
-}
-
-
-
+.package-buttons,
+.button,
 .view-btn {
-
-border:1px solid rgba(255,255,255,.8);
-
-}
-
-
-
-/* remove sparkle */
-
-.package-card::before {
 
 display:none;
 
@@ -1500,6 +1465,7 @@ display:none;
 @media(max-width:768px){
 
 
+
 .weekly-packages{
 
 padding:70px 15px;
@@ -1508,29 +1474,52 @@ padding:70px 15px;
 
 
 
-.package-card{
 
-flex-basis:230px;
+.packages-grid{
 
-height:300px;
+
+flex-direction:column;
+
+
+gap:35px;
+
+
+}
+
+
+
+
+.package-card {
+
+
+width:230px;
+
+height:230px;
+
 
 }
 
 
 
-.package-card img{
 
-width:90px;
+.package-card img {
 
-height:90px;
+
+width:95px;
+
+height:95px;
+
 
 }
+
 
 
 
 .package-overlay h3{
 
+
 font-size:1.05rem;
+
 
 }
 
@@ -1538,12 +1527,17 @@ font-size:1.05rem;
 
 .package-overlay p{
 
+
 font-size:.78rem;
 
+
 }
 
 
+
 }
+
+
 /* ===================================
         HOT DEALS ✈️
         Floating Travel Tickets
