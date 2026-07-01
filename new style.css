@@ -3660,6 +3660,42 @@ max-height:60vh;
 
     z-index:5;
 
+
+}
+/* Make close buttons clickable */
+
+.magazine-card-close,
+.magazine-close {
+
+    position:absolute;
+
+    z-index:9999999;
+
+    cursor:pointer;
+
+    pointer-events:auto;
+
 }
 
+
+/* Card close X */
+
+.magazine-card-close {
+
+    top:10px;
+
+    right:10px;
+
+}
+
+
+/* Viewer close X */
+
+.magazine-close {
+
+    top:12px;
+
+    right:12px;
+
+}
 </style> 
