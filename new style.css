@@ -3298,20 +3298,21 @@ max-height:60vh;
 }
 
 /* ===============================
-   Travel Notes Floating Card
+   Travel Notes Popup Card
 ================================ */
+
 
 .magazine-card {
 
-    position:fixed;
+    position: fixed;
 
-    right:25px;
-    bottom:25px;
+    right: 25px;
+    bottom: 25px;
 
-    width:340px;
-    max-width:calc(100vw - 40px);
+    width: 340px;
+    max-width: calc(100vw - 40px);
 
-    padding:25px;
+    padding: 25px;
 
     background:
     linear-gradient(
@@ -3320,23 +3321,54 @@ max-height:60vh;
         rgba(120,170,255,.35)
     );
 
-    backdrop-filter:blur(18px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    border-radius:28px;
+    border-radius: 28px;
 
-    border:1px solid rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.25);
 
     box-shadow:
-    0 20px 50px rgba(60,40,120,.35);
+    0 25px 60px rgba(60,40,120,.35);
 
     color:white;
 
-    z-index:9999;
+    z-index:99999;
+
+
+    /* hidden until JS adds show */
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(60px);
+
+    transition:
+    opacity .5s ease,
+    transform .5s ease,
+    visibility .5s ease;
 
 }
 
 
+/* Popup appears */
+
+.magazine-card.show {
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+
+
 .magazine-card-content h3 {
+
+    margin-top:10px;
 
     font-family:"Playfair Display", serif;
 
@@ -3345,23 +3377,52 @@ max-height:60vh;
 }
 
 
+
+.magazine-card-content p {
+
+    line-height:1.5;
+
+    color:rgba(255,255,255,.85);
+
+}
+
+
+
+.magazine-label {
+
+    font-size:14px;
+
+    letter-spacing:.5px;
+
+}
+
+
+
 .magazine-card-close {
 
     position:absolute;
 
     top:12px;
+
     right:12px;
 
+
     width:32px;
+
     height:32px;
+
 
     border-radius:50%;
 
+
     border:none;
+
 
     background:rgba(255,255,255,.2);
 
+
     color:white;
+
 
     cursor:pointer;
 
@@ -3374,24 +3435,27 @@ max-height:60vh;
 
     margin-top:15px;
 
-    padding:12px 20px;
+    padding:12px 22px;
 
     border-radius:999px;
 
     border:none;
 
+    cursor:pointer;
+
+
     background:rgba(255,255,255,.25);
 
     color:white;
 
-    cursor:pointer;
+    backdrop-filter:blur(10px);
 
 }
 
 
 
 /* ===============================
-   Magazine Viewer
+   Magazine Viewer Popup
 ================================ */
 
 
@@ -3401,21 +3465,28 @@ max-height:60vh;
 
     inset:0;
 
-    z-index:9998;
+    z-index:99998;
+
 
     display:none;
+
 
     justify-content:center;
 
     align-items:center;
 
+
     padding:20px;
 
-    background:rgba(20,15,50,.55);
+
+    background:
+    rgba(20,15,50,.55);
+
 
     backdrop-filter:blur(10px);
 
 }
+
 
 
 .magazine-overlay.active {
@@ -3426,13 +3497,17 @@ max-height:60vh;
 
 
 
+
 .magazine-window {
 
+
     position:relative;
+
 
     width:min(850px,90vw);
 
     max-height:90vh;
+
 
     padding:20px;
 
@@ -3448,6 +3523,7 @@ max-height:60vh;
 
 
     background:
+
     linear-gradient(
         135deg,
         rgba(181,160,255,.45),
@@ -3455,27 +3531,134 @@ max-height:60vh;
     );
 
 
+    backdrop-filter:blur(20px);
+
+
     border-radius:32px;
+
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.35);
 
 }
 
 
 
+
 #magazineImage {
+
 
     display:block;
 
+
     width:100%;
+
 
     max-width:750px;
 
+
     max-height:75vh;
+
 
     height:auto;
 
+
     object-fit:contain;
 
+
     border-radius:18px;
+
+}
+
+
+
+/* arrows */
+
+.magazine-arrow {
+
+    position:absolute;
+
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+
+    width:45px;
+
+    height:45px;
+
+
+    border:none;
+
+
+    border-radius:50%;
+
+
+    background:rgba(255,255,255,.25);
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    z-index:5;
+
+}
+
+
+
+.magazine-arrow.left {
+
+    left:15px;
+
+}
+
+
+
+.magazine-arrow.right {
+
+    right:15px;
+
+}
+
+
+
+
+.magazine-close {
+
+
+    position:absolute;
+
+
+    top:12px;
+
+    right:12px;
+
+
+    width:38px;
+
+    height:38px;
+
+
+    border-radius:50%;
+
+
+    border:none;
+
+
+    background:rgba(255,255,255,.25);
+
+
+    color:white;
+
+
+    font-size:22px;
+
+
+    z-index:5;
 
 }
 
