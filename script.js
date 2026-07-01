@@ -123,6 +123,98 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // ======================================
+// ===== Travel Notes Magazine =====
+// ======================================
+
+const magazineCard = document.getElementById("magazineCard");
+const magazineOverlay = document.getElementById("magazineOverlay");
+const magazineImage = document.getElementById("magazineImage");
+
+const openMagazineBtn = document.getElementById("openMagazine");
+const closeMagazineBtn = document.getElementById("closeMagazine");
+const closeMagazineCardBtn = document.getElementById("closeMagazineCard");
+
+const prevMagazineBtn = document.getElementById("prevMagazinePage");
+const nextMagazineBtn = document.getElementById("nextMagazinePage");
+
+// Your magazine pages
+const magazinePages = [
+    "assets/magazines/julycover.png",
+    "assets/magazines/julypg2.png",
+    "assets/magazines/julypg3.png",
+    "assets/magazines/julypg4.png"
+];
+
+let currentMagazinePage = 0;
+
+// Show the floating card after 8-10 seconds
+setTimeout(() => {
+    if (magazineCard) {
+        magazineCard.classList.add("show");
+    }
+}, 9000);
+
+// Open the magazine
+if (openMagazineBtn) {
+    openMagazineBtn.addEventListener("click", () => {
+        currentMagazinePage = 0;
+        magazineImage.src = magazinePages[currentMagazinePage];
+        magazineOverlay.classList.add("active");
+    });
+}
+
+// Close the magazine viewer
+if (closeMagazineBtn) {
+    closeMagazineBtn.addEventListener("click", () => {
+        magazineOverlay.classList.remove("active");
+    });
+}
+
+// Close by clicking outside
+if (magazineOverlay) {
+    magazineOverlay.addEventListener("click", (e) => {
+        if (e.target === magazineOverlay) {
+            magazineOverlay.classList.remove("active");
+        }
+    });
+}
+
+// Close the floating card
+if (closeMagazineCardBtn) {
+    closeMagazineCardBtn.addEventListener("click", () => {
+        magazineCard.classList.remove("show");
+    });
+}
+
+// Previous page
+if (prevMagazineBtn) {
+    prevMagazineBtn.addEventListener("click", () => {
+        if (currentMagazinePage > 0) {
+            currentMagazinePage--;
+            magazineImage.src = magazinePages[currentMagazinePage];
+        }
+    });
+}
+
+// Next page
+if (nextMagazineBtn) {
+    nextMagazineBtn.addEventListener("click", () => {
+        if (currentMagazinePage < magazinePages.length - 1) {
+            currentMagazinePage++;
+            magazineImage.src = magazinePages[currentMagazinePage];
+        }
+    });
+}
+
+// ESC key closes magazine
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        magazineOverlay.classList.remove("active");
+    }
+});
+  
+
   // ===== Traveler Quiz =====
   const travelerButtons = document.querySelectorAll('.traveler-card .options button');
   const travelerResult = document.querySelector('.traveler-card .result');
