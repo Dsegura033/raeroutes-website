@@ -3298,20 +3298,20 @@ max-height:60vh;
 }
 
 /* ===============================
-   Newsletter Floating Card
+   Travel Notes Floating Card
 ================================ */
 
-.newsletter-card {
+.magazine-card {
 
-    position: fixed;
+    position:fixed;
 
-    right: 25px;
-    bottom: 25px;
+    right:25px;
+    bottom:25px;
 
-    width: 340px;
-    max-width: calc(100vw - 40px);
+    width:340px;
+    max-width:calc(100vw - 40px);
 
-    padding: 25px;
+    padding:25px;
 
     background:
     linear-gradient(
@@ -3320,9 +3320,9 @@ max-height:60vh;
         rgba(120,170,255,.35)
     );
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:blur(18px);
 
-    border-radius: 28px;
+    border-radius:28px;
 
     border:1px solid rgba(255,255,255,.25);
 
@@ -3333,46 +3333,44 @@ max-height:60vh;
 
     z-index:9999;
 
-    animation: newsletterSlide .7s ease;
 }
 
 
-
-@keyframes newsletterSlide {
-
-    from {
-        opacity:0;
-        transform:translateY(50px);
-    }
-
-    to {
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-
-
-
-.newsletter-card h3 {
+.magazine-card-content h3 {
 
     font-family:"Playfair Display", serif;
 
-}
-
-
-.newsletter-card p {
-
-    line-height:1.5;
+    font-size:28px;
 
 }
 
 
+.magazine-card-close {
 
-.newsletter-card a {
+    position:absolute;
 
-    display:inline-block;
+    top:12px;
+    right:12px;
+
+    width:32px;
+    height:32px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:rgba(255,255,255,.2);
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+
+
+.magazine-btn {
 
     margin-top:15px;
 
@@ -3380,11 +3378,13 @@ max-height:60vh;
 
     border-radius:999px;
 
-    background:rgba(255,255,255,.2);
+    border:none;
+
+    background:rgba(255,255,255,.25);
 
     color:white;
 
-    text-decoration:none;
+    cursor:pointer;
 
 }
 
@@ -3413,10 +3413,9 @@ max-height:60vh;
 
     background:rgba(20,15,50,.55);
 
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
 
 }
-
 
 
 .magazine-overlay.active {
@@ -3427,19 +3426,16 @@ max-height:60vh;
 
 
 
-/* The actual journal window */
-
 .magazine-window {
 
     position:relative;
 
-    width:min(800px, 90vw);
+    width:min(850px,90vw);
 
     max-height:90vh;
 
     padding:20px;
 
-    overflow:hidden;
 
     display:flex;
 
@@ -3448,28 +3444,22 @@ max-height:60vh;
     align-items:center;
 
 
-    background:
+    overflow:hidden;
 
+
+    background:
     linear-gradient(
-    135deg,
-    rgba(181,160,255,.55),
-    rgba(120,170,255,.35)
+        135deg,
+        rgba(181,160,255,.45),
+        rgba(120,170,255,.3)
     );
 
 
-    backdrop-filter:blur(20px);
-
     border-radius:32px;
-
-    box-shadow:
-    0 25px 70px rgba(0,0,0,.35);
 
 }
 
 
-
-
-/* Magazine page */
 
 #magazineImage {
 
@@ -3477,99 +3467,15 @@ max-height:60vh;
 
     width:100%;
 
-    height:auto;
+    max-width:750px;
 
     max-height:75vh;
+
+    height:auto;
 
     object-fit:contain;
 
     border-radius:18px;
-
-}
-
-
-
-/* arrows */
-
-
-.magazine-arrow {
-
-    position:absolute;
-
-    top:50%;
-
-    transform:translateY(-50%);
-
-
-    width:45px;
-
-    height:45px;
-
-
-    border-radius:50%;
-
-    border:none;
-
-
-    background:rgba(255,255,255,.25);
-
-    color:white;
-
-    cursor:pointer;
-
-    z-index:5;
-
-}
-
-
-.magazine-arrow.left {
-
-    left:15px;
-
-}
-
-
-.magazine-arrow.right {
-
-    right:15px;
-
-}
-
-
-
-
-.magazine-close {
-
-
-    position:absolute;
-
-
-    top:12px;
-
-    right:12px;
-
-
-    width:38px;
-
-    height:38px;
-
-
-    border-radius:50%;
-
-
-    border:none;
-
-
-    background:rgba(255,255,255,.25);
-
-
-    color:white;
-
-
-    font-size:22px;
-
-
-    z-index:5;
 
 }
 
