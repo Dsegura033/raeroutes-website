@@ -1172,16 +1172,26 @@ Built across seven scenic hills, Lisbon is a city where every winding street lea
 <!-- WHY VISIT -->
 <div class="section-card">
 
-<h2>Why Visit Lisbon in July?</h2>
+<h2>Why Visit Lisbon in July? ☀️</h2>
+
+<p>
+July is one of the best times to experience Lisbon's vibrant energy. Long sunny days, warm evenings, outdoor cafés, and colorful neighborhoods make the city come alive. From historic landmarks and scenic viewpoints to waterfront strolls and unforgettable flavors, Lisbon offers the perfect balance of adventure, culture, and relaxed European summer charm.
+</p>
 
 <ul>
-<li>☀️ Warm, sunny weather perfect for exploring</li>
-<li>🚋 Ride the famous Tram 28 through historic neighborhoods</li>
-<li>🏰 Visit Belém Tower and Jerónimos Monastery</li>
-<li>📸 Wander Rossio Square and Praça do Comércio</li>
-<li>🍮 Try a freshly baked pastel de nata</li>
-<li>🎶 Experience authentic Fado music in Alfama</li>
-<li>🌅 Enjoy unforgettable sunsets over the Tagus River</li>
+<li>☀️ <strong>Enjoy warm, sunny weather</strong> perfect for exploring Lisbon's hills, viewpoints, and colorful streets on foot</li>
+
+<li>🚋 <strong>Ride the famous Tram 28</strong> through historic neighborhoods like Alfama, passing charming alleyways and iconic city views</li>
+
+<li>🏰 <strong>Step into Portugal's history</strong> by visiting Belém Tower and Jerónimos Monastery, two incredible landmarks showcasing Lisbon's Age of Discovery</li>
+
+<li>📸 <strong>Explore Lisbon's beautiful plazas</strong> like Rossio Square and Praça do Comércio, where architecture, cafés, and local life meet</li>
+
+<li>🍮 <strong>Taste authentic Portuguese flavors</strong> with a freshly baked pastel de nata from a local bakery</li>
+
+<li>🎶 <strong>Experience traditional Fado music</strong> in Alfama, where soulful melodies fill the historic streets in the evenings</li>
+
+<li>🌅 <strong>Watch unforgettable sunsets</strong> from Lisbon's famous miradouros (viewpoints) overlooking the Tagus River and the city's red rooftops</li>
 </ul>
 
 <div class="guide-image">
@@ -1205,7 +1215,26 @@ Lisbon in July calls for effortless European summer style. Expect warm sunshine,
 </div>
 
 
-<h3>👗 Women's Style Inspiration</h3>
+<!-- WHAT TO WEAR -->
+<div class="section-card wear-section">
+
+<h2>Lisbon Style Guide 👒✨</h2>
+
+<p>
+Lisbon in July calls for effortless European summer style. Expect warm sunshine, colorful streets, cobblestone hills, and plenty of walking, so choose breathable fabrics, comfortable shoes, and versatile pieces that can take you from daytime exploring to sunset dinners along the Tagus River.
+</p>
+
+<div class="guide-image">
+<img src="assets/images/lisbon-outfit.png" alt="Lisbon summer fashion inspiration featuring chic European vacation outfits and travel essentials">
+</div>
+
+
+<!-- WOMEN -->
+<button type="button" class="mini-collapsible-btn">
+👗 Women's Style Inspiration
+</button>
+
+<div class="mini-collapsible-content">
 
 <ul>
 <li>🤍 Flowy linen dresses, maxi dresses, or matching linen sets</li>
@@ -1216,8 +1245,15 @@ Lisbon in July calls for effortless European summer style. Expect warm sunshine,
 <li>✨ Gold jewelry and simple layers for an effortless Mediterranean style</li>
 </ul>
 
+</div>
 
-<h3>👔 Men's Style Inspiration</h3>
+
+<!-- MEN -->
+<button type="button" class="mini-collapsible-btn">
+👔 Men's Style Inspiration
+</button>
+
+<div class="mini-collapsible-content">
 
 <ul>
 <li>🤍 Linen button-down shirts or breathable cotton polos</li>
@@ -1228,8 +1264,15 @@ Lisbon in July calls for effortless European summer style. Expect warm sunshine,
 <li>⌚ Minimal watches and classic accessories for a polished vacation look</li>
 </ul>
 
+</div>
 
-<h3>👜 Accessories & Travel Essentials</h3>
+
+<!-- ACCESSORIES -->
+<button type="button" class="mini-collapsible-btn">
+👜 Accessories & Travel Essentials
+</button>
+
+<div class="mini-collapsible-content">
 
 <ul>
 <li>👜 Woven tote, crossbody bag, or small day bag</li>
@@ -1242,6 +1285,8 @@ Lisbon in July calls for effortless European summer style. Expect warm sunshine,
 <li>🌬️ Mini handheld fan for warm afternoons</li>
 <li>🩹 Blister patches for Lisbon's famous hills and cobblestone streets</li>
 </ul>
+
+</div>
 
 
 <h3>🎨 RaeRoutes Style Palette</h3>
@@ -1377,7 +1422,8 @@ Plan My Portugal Adventure 💌
 </footer>
 
 <script>
-// Collapsible toggle
+
+// Main City Spotlight collapsible toggle
 document.querySelectorAll(".collapsible-btn").forEach(btn => {
   btn.addEventListener("click", () => {
 
@@ -1391,6 +1437,23 @@ document.querySelectorAll(".collapsible-btn").forEach(btn => {
 
   });
 });
+
+
+// Mini collapsible dropdowns (Style Guides, etc.)
+document.querySelectorAll(".mini-collapsible-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    const content = btn.nextElementSibling;
+
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+
+  });
+});
+
 </script>
   
 </body>
