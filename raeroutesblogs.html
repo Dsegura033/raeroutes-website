@@ -302,6 +302,66 @@ li {
 
   .itinerary-card { padding: 25px; }
 }
+
+  /* ===== MINI COLLAPSIBLE STYLE DROPDOWNS ===== */
+
+.mini-collapsible-btn {
+  background: rgba(181,160,255,0.35);
+  color: #4a3f9e;
+  cursor: pointer;
+  padding: 14px 22px;
+  width: 100%;
+  border: 1px solid rgba(160,130,250,0.3);
+  text-align: left;
+  outline: none;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-top: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(160,130,250,0.12);
+}
+
+.mini-collapsible-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(181,160,255,0.55);
+  box-shadow: 0 10px 20px rgba(160,130,250,0.2);
+}
+
+
+.mini-collapsible-btn::after {
+  content: "＋";
+  float: right;
+  font-size: 20px;
+  color: #6b4eff;
+}
+
+
+.mini-collapsible-btn.active::after {
+  content: "−";
+}
+
+
+.mini-collapsible-content {
+  display: none;
+  overflow: hidden;
+  background: rgba(255,255,255,0.25);
+  border-radius: 0 0 20px 20px;
+  padding: 15px 20px;
+  margin-top: -5px;
+  animation: fadeIn 0.4s ease-in;
+}
+
+
+.mini-collapsible-content ul {
+  margin: 10px 0;
+}
+
+
+.mini-collapsible-content li {
+  margin-bottom: 12px;
+}
+  
 /* ===== FOOTER ===== */
 .travel-footer {
   background: #e6dcff; /* same light lavender as sections */
