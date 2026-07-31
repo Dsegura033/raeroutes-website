@@ -140,10 +140,10 @@ const nextMagazineBtn = document.getElementById("nextMagazinePage");
 
 // Your magazine pages
 const magazinePages = [
-    "assets/magazines/julycover.png",
-    "assets/magazines/julypg2.png",
-    "assets/magazines/julypg3.png",
-    "assets/magazines/julypg4.png"
+    "assets/magazines/1.png",
+    "assets/magazines/2.png",
+    "assets/magazines/3.png",
+    "assets/magazines/4.png"
 ];
 
 let currentMagazinePage = 0;
