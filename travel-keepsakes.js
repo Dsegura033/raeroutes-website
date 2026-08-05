@@ -1,72 +1,201 @@
 /* =====================================================
         RAE ROUTES - TRAVEL KEEPSAKES
-        Full Interactive Script
+        Interactive Creator Script
 ====================================================== */
 
 
 document.addEventListener("DOMContentLoaded", () => {
 
 
+
 /* =====================================================
-        VARIABLES
+        CREATOR ACCORDIONS
 ====================================================== */
 
 
-let selectedFilmStyle = "vintage";
+const creatorToggles = document.querySelectorAll(".creator-toggle");
+
+
+creatorToggles.forEach(toggle => {
+
+
+    const content = toggle.nextElementSibling;
+
+    const icon = toggle.querySelector(".toggle-icon");
+
+
+
+    // Start closed
+
+    content.style.maxHeight = "0px";
+
+    content.style.overflow = "hidden";
+
+    content.style.transition = "max-height .5s ease";
+
+
+
+    toggle.addEventListener("click", () => {
+
+
+
+        const isOpen = toggle.classList.contains("active");
+
+
+
+        // Close all sections
+
+        creatorToggles.forEach(otherToggle => {
+
+
+            const otherContent = otherToggle.nextElementSibling;
+
+            const otherIcon = otherToggle.querySelector(".toggle-icon");
+
+
+            otherToggle.classList.remove("active");
+
+
+            otherIcon.textContent = "+";
+
+
+            otherContent.style.maxHeight = "0px";
+
+
+        });
+
+
+
+
+
+        // Open clicked section
+
+        if(!isOpen){
+
+
+            toggle.classList.add("active");
+
+
+            icon.textContent = "−";
+
+
+            content.style.maxHeight = content.scrollHeight + "px";
+
+
+        }
+
+
+
+    });
+
+
+
+});
+
+
+
+
+
+
+
+
+/* =====================================================
+        GLOBAL VARIABLES
+====================================================== */
+
+
+let selectedFilmStyle = null;
+
+let selectedPostcardStyle = null;
+
 
 let capturedPhotos = [];
 
 let currentPhoto = 0;
 
+
 let cameraStream = null;
 
 
 
+/* =====================================================
+        PHOTO BOOTH ELEMENTS
+====================================================== */
+
+
 const filmCards = document.querySelectorAll(".film-card");
+
 
 const startButton = document.getElementById("startBooth");
 
+
 const uploadButton = document.getElementById("uploadMode");
+
 
 const cameraButton = document.getElementById("cameraMode");
 
+
 const photoUpload = document.getElementById("photoUpload");
+
 
 const cameraPreview = document.getElementById("cameraPreview");
 
+
 const photoStatus = document.querySelector(".photo-status");
 
-const countdown = document.querySelector(".countdown-display");
+
+const countdownDisplay = document.querySelector(".countdown-display");
+
 
 const developingScreen = document.querySelector(".developing-screen");
 
-const canvas = document.getElementById("filmCanvas");
-
-const downloadButton = document.querySelector(".download-button");
-
-const restartButton = document.querySelector(".restart-button");
 
 const filmReveal = document.querySelector(".film-reveal");
 
 
+const canvas = document.getElementById("filmCanvas");
+
+
+const downloadButton = document.querySelector(".download-button");
+
+
+const restartButton = document.querySelector(".restart-button");
+
+
+
+
 
 /* =====================================================
-        HIDE STARTING SECTIONS
+        INITIAL STATES
 ====================================================== */
 
 
-developingScreen.style.display = "none";
+if(developingScreen){
 
-filmReveal.style.display = "none";
+    developingScreen.style.display = "none";
 
-cameraPreview.style.display = "none";
+}
+
+
+if(filmReveal){
+
+    filmReveal.style.display = "none";
+
+}
+
+
+if(cameraPreview){
+
+    cameraPreview.style.display = "none";
+
+}
 
 
 
 
 
 /* =====================================================
-        FILM STYLE PICKER
+        FILM STYLE SELECTION
 ====================================================== */
 
 
@@ -76,6 +205,7 @@ filmCards.forEach(card => {
     card.addEventListener("click", () => {
 
 
+
         filmCards.forEach(item => {
 
             item.classList.remove("selected");
@@ -83,16 +213,21 @@ filmCards.forEach(card => {
         });
 
 
+
         card.classList.add("selected");
+
 
 
         selectedFilmStyle = card.dataset.style;
 
 
+
     });
 
 
+
 });
+
 
 
 
@@ -106,7 +241,7 @@ filmCards.forEach(card => {
 async function startCamera(){
 
 
-    try {
+    try{
 
 
         cameraStream = await navigator.mediaDevices.getUserMedia({
@@ -118,7 +253,9 @@ async function startCamera(){
         });
 
 
+
         cameraPreview.srcObject = cameraStream;
+
 
         cameraPreview.style.display = "block";
 
@@ -130,7 +267,7 @@ async function startCamera(){
 
 
         alert(
-            "Camera access was unavailable. Try uploading your photos instead!"
+            "Camera access was unavailable. Please upload your photos instead."
         );
 
 
@@ -143,11 +280,26 @@ async function startCamera(){
 
 
 
-cameraButton.addEventListener("click", () => {
 
-    startCamera();
+/* =====================================================
+        CAMERA BUTTON
+====================================================== */
 
-});
+
+if(cameraButton){
+
+
+    cameraButton.addEventListener("click", ()=>{
+
+
+        startCamera();
+
+
+    });
+
+
+}
+
 
 
 
@@ -159,57 +311,79 @@ cameraButton.addEventListener("click", () => {
 ====================================================== */
 
 
-uploadButton.addEventListener("click", () => {
+if(uploadButton){
 
 
-    photoUpload.click();
+    uploadButton.addEventListener("click", ()=>{
 
 
-});
-
-
-
-
-
-photoUpload.addEventListener("change", (event)=>{
-
-
-    const files = Array.from(event.target.files);
-
-
-    capturedPhotos = [];
-
-
-    files.slice(0,4).forEach(file=>{
-
-
-        const reader = new FileReader();
-
-
-        reader.onload = e=>{
-
-
-            capturedPhotos.push(e.target.result);
-
-
-            if(capturedPhotos.length === 4){
-
-                createFilmStrip();
-
-            }
-
-
-        };
-
-
-        reader.readAsDataURL(file);
+        photoUpload.click();
 
 
     });
 
 
+}
 
-});
+
+
+
+
+
+if(photoUpload){
+
+
+    photoUpload.addEventListener("change",(event)=>{
+
+
+        const files = Array.from(event.target.files);
+
+
+
+        capturedPhotos = [];
+
+
+
+        files.slice(0,4).forEach(file=>{
+
+
+            const reader = new FileReader();
+
+
+
+            reader.onload = (e)=>{
+
+
+                capturedPhotos.push(e.target.result);
+
+
+
+                if(capturedPhotos.length === 4){
+
+
+                    showDeveloping();
+
+
+                }
+
+
+
+            };
+
+
+
+            reader.readAsDataURL(file);
+
+
+
+        });
+
+
+
+    });
+
+
+}
 
 
 
@@ -222,35 +396,62 @@ photoUpload.addEventListener("change", (event)=>{
 ====================================================== */
 
 
-startButton.addEventListener("click", ()=>{
+if(startButton){
 
 
-    if(!cameraStream){
-
-        startCamera();
-
-    }
-
-
-    capturedPhotos = [];
-
-    currentPhoto = 0;
-
-
-    takePhoto();
-
-
-});
+    startButton.addEventListener("click", ()=>{
 
 
 
+        capturedPhotos = [];
 
+
+        currentPhoto = 0;
+
+
+
+        if(!cameraStream){
+
+
+            startCamera();
+
+
+        }
+
+
+
+        setTimeout(()=>{
+
+
+            takePhoto();
+
+
+        },1000);
+
+
+
+    });
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+        TAKE PHOTOS
+====================================================== */
 
 
 function takePhoto(){
 
 
-    if(currentPhoto >=4){
+
+    if(currentPhoto >= 4){
 
 
         showDeveloping();
@@ -263,24 +464,38 @@ function takePhoto(){
 
 
 
-    photoStatus.innerHTML = 
-    `Photo ${currentPhoto + 1} of 4`;
+
+
+    if(photoStatus){
+
+
+        photoStatus.innerHTML = 
+        `Photo ${currentPhoto + 1} of 4`;
+
+
+    }
+
 
 
 
     countdownSequence(()=>{
 
 
+
         captureImage();
+
 
 
         currentPhoto++;
 
 
+
         takePhoto();
 
 
+
     });
+
 
 
 }
@@ -299,23 +514,27 @@ function takePhoto(){
 function countdownSequence(callback){
 
 
-    let number = 3;
 
-
-    countdown.innerHTML = number;
+    let count = 3;
 
 
 
-    let timer = setInterval(()=>{
+    countdownDisplay.innerHTML = count;
 
 
-        number--;
+
+    const timer = setInterval(()=>{
 
 
-        if(number >0){
+
+        count--;
 
 
-            countdown.innerHTML = number;
+
+        if(count > 0){
+
+
+            countdownDisplay.innerHTML = count;
 
 
         }
@@ -327,19 +546,22 @@ function countdownSequence(callback){
             clearInterval(timer);
 
 
-            countdown.innerHTML="📸";
+
+            countdownDisplay.innerHTML = "📸";
+
 
 
             setTimeout(()=>{
 
 
-                countdown.innerHTML="";
-
+                countdownDisplay.innerHTML = "";
 
                 callback();
 
 
+
             },700);
+
 
 
         }
@@ -358,6 +580,7 @@ function countdownSequence(callback){
 
 
 
+
 /* =====================================================
         CAPTURE IMAGE
 ====================================================== */
@@ -366,20 +589,28 @@ function countdownSequence(callback){
 function captureImage(){
 
 
+
     const tempCanvas = document.createElement("canvas");
 
 
-    tempCanvas.width = cameraPreview.videoWidth || 600;
 
-    tempCanvas.height = cameraPreview.videoHeight || 400;
-
-
-
-    const context = tempCanvas.getContext("2d");
+    tempCanvas.width =
+        cameraPreview.videoWidth || 600;
 
 
 
-    context.drawImage(
+    tempCanvas.height =
+        cameraPreview.videoHeight || 400;
+
+
+
+
+    const ctx = tempCanvas.getContext("2d");
+
+
+
+
+    ctx.drawImage(
 
         cameraPreview,
 
@@ -392,6 +623,7 @@ function captureImage(){
         tempCanvas.height
 
     );
+
 
 
 
@@ -411,7 +643,6 @@ function captureImage(){
 
 
 
-
 /* =====================================================
         DEVELOPING SCREEN
 ====================================================== */
@@ -420,21 +651,23 @@ function captureImage(){
 function showDeveloping(){
 
 
-    developingScreen.style.display="block";
+    if(developingScreen){
+
+        developingScreen.style.display = "block";
+
+    }
 
 
     setTimeout(()=>{
 
 
-        createFilmStrip();
+        finishFilm();
 
 
     },3000);
 
 
-
 }
-
 
 
 
@@ -450,29 +683,34 @@ function showDeveloping(){
 function createFilmStrip(){
 
 
-    canvas.width = 500;
+    if(!canvas) return;
 
-    canvas.height = 1200;
+
+
+    canvas.width = 600;
+
+    canvas.height = 1500;
+
 
 
     const ctx = canvas.getContext("2d");
 
 
 
-    ctx.fillStyle="#111";
+    // Film background
+
+    ctx.fillStyle = "#111";
 
     ctx.fillRect(
-
         0,
-
         0,
-
         canvas.width,
-
         canvas.height
-
     );
 
+
+
+    let loadedImages = 0;
 
 
 
@@ -482,64 +720,521 @@ function createFilmStrip(){
         const img = new Image();
 
 
-        img.onload=()=>{
+
+        img.onload = ()=>{
 
 
             ctx.drawImage(
 
                 img,
 
-                60,
+                80,
 
-                80 + index*260,
+                100 + index * 300,
 
-                380,
+                440,
 
-                210
-
-            );
-
-
-            ctx.fillStyle="#fff";
-
-
-            ctx.font="25px Poppins";
-
-
-            ctx.fillText(
-
-                "RaeRoutes",
-
-                180,
-
-                1150
+                240
 
             );
+
+
+
+            loadedImages++;
+
+
+
+            if(loadedImages === capturedPhotos.length){
+
+
+                drawFilmDecorations(ctx);
+
+
+                ctx.fillStyle="#ffffff";
+
+                ctx.font="30px cursive";
+
+                ctx.textAlign="center";
+
+
+                ctx.fillText(
+
+                    "RaeRoutes ✈️",
+
+                    canvas.width / 2,
+
+                    1420
+
+                );
+
+
+            }
 
 
 
         };
 
 
-        img.src=photo;
 
+        img.src = photo;
 
 
     });
 
 
 
-    applyFilmStyle();
+}
+
+
+
+
+
+
+
+
+
+/* =====================================================
+        COLLECTION DOODLES
+====================================================== */
+
+
+function drawFilmDecorations(ctx){
+
+
+    ctx.strokeStyle="#ffffff";
+
+    ctx.lineWidth=4;
+
+
+
+    switch(selectedFilmStyle){
+
+
+
+        case "coastal":
+
+
+            drawSun(ctx,500,80);
+
+            drawWave(ctx,40,1400);
+
+            drawShell(ctx,520,1350);
+
+            break;
+
+
+
+
+
+        case "adventure":
+
+
+            drawMountain(ctx,70,70);
+
+            drawCompass(ctx,520,1350);
+
+            break;
+
+
+
+
+
+        case "romantic":
+
+
+            drawHeart(ctx,520,90);
+
+            drawFlower(ctx,70,1350);
+
+            break;
+
+
+
+
+
+        case "winter":
+
+
+            drawSnowflake(ctx,520,90);
+
+            drawSnowflake(ctx,80,1350);
+
+            break;
+
+
+
+        default:
+
+
+            drawStar(ctx,520,90);
+
+            drawStar(ctx,80,1350);
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+        DOODLE FUNCTIONS
+====================================================== */
+
+
+function drawSun(ctx,x,y){
+
+
+    ctx.beginPath();
+
+    ctx.arc(x,y,30,0,Math.PI*2);
+
+    ctx.stroke();
+
+
+
+    for(let i=0;i<8;i++){
+
+
+        ctx.beginPath();
+
+        ctx.moveTo(x,y);
+
+
+        ctx.lineTo(
+
+            x + Math.cos(i)*55,
+
+            y + Math.sin(i)*55
+
+        );
+
+
+        ctx.stroke();
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+function drawWave(ctx,x,y){
+
+
+    ctx.beginPath();
+
+
+    ctx.moveTo(x,y);
+
+
+
+    for(let i=0;i<100;i++){
+
+
+        ctx.lineTo(
+
+            x+i*3,
+
+            y + Math.sin(i/5)*10
+
+        );
+
+
+    }
+
+
+    ctx.stroke();
+
+
+}
+
+
+
+
+
+
+
+function drawShell(ctx,x,y){
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+
+        x,
+
+        y,
+
+        25,
+
+        Math.PI,
+
+        0
+
+    );
+
+
+    ctx.stroke();
+
+
+}
+
+
+
+
+
+
+
+function drawHeart(ctx,x,y){
+
+
+    ctx.beginPath();
+
+
+    ctx.moveTo(x,y+20);
+
+
+    ctx.bezierCurveTo(
+
+        x-40,y-20,
+
+        x-40,y+50,
+
+        x,y+70
+
+    );
+
+
+    ctx.bezierCurveTo(
+
+        x+40,y+50,
+
+        x+40,y-20,
+
+        x,y+20
+
+    );
+
+
+    ctx.stroke();
+
+
+}
+
+
+
+
+
+
+
+function drawSnowflake(ctx,x,y){
+
+
+    for(let i=0;i<6;i++){
+
+
+        ctx.beginPath();
+
+
+        ctx.moveTo(x,y);
+
+
+        ctx.lineTo(
+
+            x + Math.cos(i)*40,
+
+            y + Math.sin(i)*40
+
+        );
+
+
+        ctx.stroke();
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+function drawMountain(ctx,x,y){
+
+
+    ctx.beginPath();
+
+
+    ctx.moveTo(x,y+80);
+
+    ctx.lineTo(x+50,y);
+
+    ctx.lineTo(x+100,y+80);
+
+
+    ctx.stroke();
+
+
+}
+
+
+
+
+
+
+
+function drawCompass(ctx,x,y){
+
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+
+        x,
+
+        y,
+
+        35,
+
+        0,
+
+        Math.PI*2
+
+    );
+
+
+    ctx.stroke();
+
+
+}
+
+
+
+
+
+
+
+function drawFlower(ctx,x,y){
+
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+
+        x,
+
+        y,
+
+        15,
+
+        0,
+
+        Math.PI*2
+
+    );
+
+
+    ctx.stroke();
+
+
+}
+
+
+
+
+
+
+
+function drawStar(ctx,x,y){
+
+
+    ctx.beginPath();
+
+
+    for(let i=0;i<10;i++){
+
+
+        const angle = i * Math.PI / 5;
+
+
+        const radius = i % 2 === 0 ? 25 : 10;
+
+
+        ctx.lineTo(
+
+            x + Math.cos(angle)*radius,
+
+            y + Math.sin(angle)*radius
+
+        );
+
+
+    }
+
+
+    ctx.closePath();
+
+
+    ctx.stroke();
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+        FINISH DEVELOPING
+====================================================== */
+
+
+function finishFilm(){
+
+
+    createFilmStrip();
 
 
 
     setTimeout(()=>{
 
 
-        developingScreen.style.display="none";
+        if(developingScreen){
+
+            developingScreen.style.display="none";
+
+        }
 
 
-        filmReveal.style.display="block";
+
+        if(filmReveal){
+
+            filmReveal.style.display="block";
+
+        }
+
 
 
     },1000);
@@ -548,68 +1243,44 @@ function createFilmStrip(){
 
 }
 
-
-
-
-
-
-
-
-/* =====================================================
-        APPLY FILM STYLE
+        /* =====================================================
+        FILM REVEAL ANIMATION
 ====================================================== */
 
 
-function applyFilmStyle(){
+function revealFilmStrip(){
 
 
-    if(selectedFilmStyle==="vintage"){
+    if(!filmReveal) return;
 
 
-        canvas.style.filter="sepia(30%)";
+
+    filmReveal.style.display = "block";
+
+
+
+    const strip = document.querySelector(".film-strip-preview");
+
+
+
+    if(strip){
+
+
+        strip.classList.remove("show-strip");
+
+
+        setTimeout(()=>{
+
+
+            strip.classList.add("show-strip");
+
+
+        },100);
+
 
 
     }
 
-
-
-    if(selectedFilmStyle==="passport"){
-
-
-        canvas.style.filter="contrast(110%)";
-
-
-    }
-
-
-
-    if(selectedFilmStyle==="coastal"){
-
-
-        canvas.style.filter="brightness(110%)";
-
-
-    }
-
-
-
-    if(selectedFilmStyle==="scrapbook"){
-
-
-        canvas.style.filter="saturate(130%)";
-
-
-    }
-
-
-
-    if(selectedFilmStyle==="classic"){
-
-
-        canvas.style.filter="grayscale(100%)";
-
-
-    }
 
 
 }
@@ -622,27 +1293,34 @@ function applyFilmStyle(){
 
 
 /* =====================================================
-        DOWNLOAD
+        DOWNLOAD FILM STRIP
 ====================================================== */
 
 
-downloadButton.addEventListener("click",()=>{
+if(downloadButton){
 
 
-    const link=document.createElement("a");
+    downloadButton.addEventListener("click",()=>{
 
 
-    link.download="raeroutes-film-strip.png";
+        const link = document.createElement("a");
 
 
-    link.href=canvas.toDataURL();
+        link.download = "RaeRoutes-Travel-Keepsake.png";
 
 
-    link.click();
+        link.href = canvas.toDataURL("image/png");
+
+
+        link.click();
 
 
 
-});
+    });
+
+
+
+}
 
 
 
@@ -652,27 +1330,101 @@ downloadButton.addEventListener("click",()=>{
 
 
 /* =====================================================
-        RESTART
+        RETAKE PHOTO BOOTH
 ====================================================== */
 
 
-restartButton.addEventListener("click",()=>{
+if(restartButton){
 
 
-    capturedPhotos=[];
-
-    currentPhoto=0;
+    restartButton.addEventListener("click",()=>{
 
 
-    filmReveal.style.display="none";
-
-    developingScreen.style.display="none";
+        capturedPhotos = [];
 
 
-    photoStatus.innerHTML="Photo 0 of 4";
+        currentPhoto = 0;
 
 
-});
+
+        if(canvas){
+
+
+            const ctx = canvas.getContext("2d");
+
+
+            ctx.clearRect(
+
+                0,
+
+                0,
+
+                canvas.width,
+
+                canvas.height
+
+            );
+
+
+        }
+
+
+
+
+
+        if(filmReveal){
+
+
+            filmReveal.style.display="none";
+
+
+        }
+
+
+
+        if(developingScreen){
+
+
+            developingScreen.style.display="none";
+
+
+        }
+
+
+
+
+
+        if(cameraPreview){
+
+
+            cameraPreview.style.display="none";
+
+
+        }
+
+
+
+
+
+        if(photoStatus){
+
+
+            photoStatus.innerHTML="Photo 0 of 4";
+
+
+        }
+
+
+
+        countdown.innerHTML="";
+
+
+
+    });
+
+
+
+}
 
 
 
@@ -682,69 +1434,104 @@ restartButton.addEventListener("click",()=>{
 
 
 /* =====================================================
+        STOP CAMERA
+====================================================== */
+
+
+function stopCamera(){
+
+
+    if(cameraStream){
+
+
+        cameraStream.getTracks().forEach(track=>{
+
+
+            track.stop();
+
+
+        });
+
+
+        cameraStream=null;
+
+
+    }
+
+
+
+}
+        /* =====================================================
         POSTCARD CREATOR
 ====================================================== */
 
 
-const postcardUpload =
-document.getElementById("postcardUploadButton");
+const postcardUploadButton = document.getElementById("postcardUploadButton");
+
+const postcardCameraButton = document.getElementById("postcardCameraButton");
+
+const postcardFile = document.getElementById("postcardPhotoUpload");
+
+const postcardVideo = document.getElementById("postcardCameraPreview");
+
+const postcardPreview = document.querySelector(".postcard-preview");
 
 
-const postcardFile =
-document.getElementById("postcardPhotoUpload");
+
+let selectedPostcardStyle = "vintage";
+
+let postcardImage = "";
+
+let postcardStream = null;
 
 
-const postcardPreview =
-document.querySelector(".postcard-preview");
 
 
 
-postcardUpload.addEventListener("click",()=>{
+/* =====================================================
+        POSTCARD STYLE SELECTION
+====================================================== */
 
 
-    postcardFile.click();
+const postcardStyles = document.querySelectorAll(
+    ".postcard-style-picker button"
+);
+
+
+
+postcardStyles.forEach((style)=>{
+
+
+    style.addEventListener("click",()=>{
+
+
+        postcardStyles.forEach(btn=>{
+
+
+            btn.classList.remove("selected");
+
+
+        });
+
+
+
+        style.classList.add("selected");
+
+
+
+        selectedPostcardStyle = style.innerText;
+
+
+
+        updatePostcardPreview();
+
+
+
+    });
+
 
 
 });
-
-
-
-
-
-postcardFile.addEventListener("change",(event)=>{
-
-
-    const file=event.target.files[0];
-
-
-    if(!file) return;
-
-
-
-    const reader=new FileReader();
-
-
-    reader.onload=e=>{
-
-
-        postcardPreview.innerHTML=`
-
-        <img 
-        src="${e.target.result}"
-        style="max-width:100%; border-radius:15px;">
-
-        `;
-
-
-    };
-
-
-    reader.readAsDataURL(file);
-
-
-
-});
-
 
 
 
@@ -754,28 +1541,158 @@ postcardFile.addEventListener("change",(event)=>{
 
 
 /* =====================================================
-        TAB BUTTONS
+        UPLOAD PHOTO
 ====================================================== */
 
 
-const photoTab=document.getElementById("photoBoothTab");
-
-const postcardTab=document.getElementById("postcardTab");
+if(postcardUploadButton){
 
 
-const photoSection=document.getElementById("photoBooth");
-
-const postcardSection=document.getElementById("postcard");
+    postcardUploadButton.addEventListener("click",()=>{
 
 
+        postcardFile.click();
 
 
-photoTab.addEventListener("click",()=>{
+    });
 
 
-    photoSection.scrollIntoView({
+}
 
-        behavior:"smooth"
+
+
+
+
+
+if(postcardFile){
+
+
+    postcardFile.addEventListener("change",(event)=>{
+
+
+        const file = event.target.files[0];
+
+
+
+        if(!file) return;
+
+
+
+        const reader = new FileReader();
+
+
+
+        reader.onload = (e)=>{
+
+
+            postcardImage = e.target.result;
+
+
+            updatePostcardPreview();
+
+
+
+        };
+
+
+
+        reader.readAsDataURL(file);
+
+
+
+    });
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+        POSTCARD CAMERA
+====================================================== */
+
+
+if(postcardCameraButton){
+
+
+postcardCameraButton.addEventListener("click",async()=>{
+
+
+    try{
+
+
+        postcardStream = await navigator.mediaDevices.getUserMedia({
+
+            video:true,
+
+            audio:false
+
+        });
+
+
+
+        postcardVideo.srcObject = postcardStream;
+
+
+        postcardVideo.style.display="block";
+
+
+
+    }
+
+
+    catch(error){
+
+
+        alert(
+        "Camera unavailable. Try uploading a photo instead!"
+        );
+
+
+    }
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+        LIVE TEXT UPDATES
+====================================================== */
+
+
+const postcardInputs = document.querySelectorAll(
+
+    ".postcard-details input, .postcard-details textarea"
+
+);
+
+
+
+postcardInputs.forEach(input=>{
+
+
+    input.addEventListener("input",()=>{
+
+
+        updatePostcardPreview();
+
 
     });
 
@@ -785,18 +1702,97 @@ photoTab.addEventListener("click",()=>{
 
 
 
-postcardTab.addEventListener("click",()=>{
 
 
-    postcardSection.scrollIntoView({
-
-        behavior:"smooth"
-
-    });
 
 
-});
+/* =====================================================
+        CREATE POSTCARD PREVIEW
+====================================================== */
 
+
+function updatePostcardPreview(){
+
+
+    if(!postcardPreview) return;
+
+
+
+    const destination =
+    document.querySelector(
+    ".postcard-details input:nth-of-type(1)"
+    )?.value || "Your Adventure";
+
+
+
+    const date =
+    document.querySelector(
+    ".postcard-details input:nth-of-type(2)"
+    )?.value || "";
+
+
+
+    const message =
+    document.querySelector(
+    ".postcard-details textarea"
+    )?.value || "Greetings from somewhere beautiful ✈️";
+
+
+
+    const from =
+    document.querySelector(
+    ".postcard-details input:nth-of-type(3)"
+    )?.value || "";
+
+
+
+
+
+    postcardPreview.innerHTML = `
+
+
+        <div class="postcard-design ${selectedPostcardStyle}">
+
+
+            ${
+                postcardImage
+                ?
+                `<img src="${postcardImage}">`
+                :
+                `<div class="empty-photo">
+                    Add your travel photo
+                </div>`
+            }
+
+
+
+            <div class="postcard-writing">
+
+
+                <h4>${destination}</h4>
+
+
+                <small>${date}</small>
+
+
+                <p>${message}</p>
+
+
+                <span>${from}</span>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    `;
+
+
+
+}
 
 
 
