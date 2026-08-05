@@ -143,13 +143,11 @@ if(filmReveal){
 }
 
 
-if(cameraPreview){
+if(cameraArea){
 
-    cameraPreview.style.display = "none";
+    cameraArea.style.display = "none";
 
 }
-
-
 
 
 
@@ -160,10 +158,10 @@ if(cameraPreview){
 
 filmCards.forEach(card => {
 
+
     card.addEventListener("click", () => {
 
 
-        // Remove previous selection
         filmCards.forEach(item => {
 
             item.classList.remove("selected");
@@ -171,22 +169,19 @@ filmCards.forEach(card => {
         });
 
 
-        // Select clicked style
         card.classList.add("selected");
 
 
-        // Save style choice
         selectedFilmStyle = card.dataset.style;
 
 
-        console.log("Selected film style:", selectedFilmStyle);
+        console.log("Selected film:", selectedFilmStyle);
 
 
     });
 
 
 });
-
 
 
 /* =====================================================
@@ -202,15 +197,19 @@ async function startCamera(){
 
         cameraStream = await navigator.mediaDevices.getUserMedia({
 
-            video:true,
+            video:{
+                facingMode:"user"
+            },
 
             audio:false
 
         });
 
 
-
         cameraPreview.srcObject = cameraStream;
+
+
+        cameraArea.style.display = "block";
 
 
         cameraPreview.style.display = "block";
@@ -222,6 +221,9 @@ async function startCamera(){
     catch(error){
 
 
+        console.log(error);
+
+
         alert(
             "Camera access was unavailable. Please upload your photos instead."
         );
@@ -231,9 +233,6 @@ async function startCamera(){
 
 
 }
-
-
-
 
 
 
@@ -355,49 +354,33 @@ if(photoUpload){
 if(startButton){
 
 
-    startButton.addEventListener("click", ()=>{
-
+    startButton.addEventListener("click", async ()=>{
 
 
         capturedPhotos = [];
 
-
         currentPhoto = 0;
-
 
 
         if(!cameraStream){
 
-
-            startCamera();
-
+            await startCamera();
 
         }
 
 
+        if(cameraArea){
 
-        setTimeout(()=>{
+            cameraArea.style.display = "block";
 
-
-            takePhoto();
-
-
-        },1000);
-
+        }
 
 
     });
 
 
 }
-
-
-
-
-
-
-
-
+        
 /* =====================================================
         TAKE PHOTOS
 ====================================================== */
@@ -406,6 +389,7 @@ if(startButton){
 function takePhoto(){
 
 
+    // Stop after 4 photos
 
     if(currentPhoto >= 4){
 
@@ -420,7 +404,7 @@ function takePhoto(){
 
 
 
-
+    // Update photo number
 
     if(photoStatus){
 
@@ -433,20 +417,46 @@ function takePhoto(){
 
 
 
+    // Make sure camera is ready
+
+    if(!cameraPreview.videoWidth){
+
+
+        setTimeout(()=>{
+
+
+            takePhoto();
+
+
+        },500);
+
+
+        return;
+
+
+    }
+
+
+
 
     countdownSequence(()=>{
-
 
 
         captureImage();
 
 
-
         currentPhoto++;
 
 
+        // Small pause before next photo
 
-        takePhoto();
+        setTimeout(()=>{
+
+
+            takePhoto();
+
+
+        },1000);
 
 
 
@@ -457,17 +467,21 @@ function takePhoto(){
 }
 
 
-
-
-
-
-
 /* =====================================================
         COUNTDOWN
 ====================================================== */
 
 
 function countdownSequence(callback){
+
+
+    if(!countdownDisplay){
+
+        callback();
+
+        return;
+
+    }
 
 
 
@@ -480,7 +494,6 @@ function countdownSequence(callback){
 
 
     const timer = setInterval(()=>{
-
 
 
         count--;
@@ -511,6 +524,7 @@ function countdownSequence(callback){
 
 
                 countdownDisplay.innerHTML = "";
+
 
                 callback();
 
@@ -545,24 +559,38 @@ function countdownSequence(callback){
 function captureImage(){
 
 
+    if(!cameraPreview){
+
+        return;
+
+    }
+
+
+
+    // Make sure video is ready
+
+    if(cameraPreview.readyState < 2){
+
+        console.log("Camera not ready yet");
+
+        return;
+
+    }
+
+
 
     const tempCanvas = document.createElement("canvas");
 
 
 
-    tempCanvas.width =
-        cameraPreview.videoWidth || 600;
+    tempCanvas.width = cameraPreview.videoWidth;
 
 
-
-    tempCanvas.height =
-        cameraPreview.videoHeight || 400;
-
+    tempCanvas.height = cameraPreview.videoHeight;
 
 
 
     const ctx = tempCanvas.getContext("2d");
-
 
 
 
@@ -582,23 +610,23 @@ function captureImage(){
 
 
 
+    const imageData = tempCanvas.toDataURL("image/png");
 
-    capturedPhotos.push(
 
-        tempCanvas.toDataURL("image/png")
 
+    capturedPhotos.push(imageData);
+
+
+
+    console.log(
+        "Photo captured:",
+        capturedPhotos.length
     );
-
 
 
 }
 
-
-
-
-
-
-
+        
 /* =====================================================
         DEVELOPING SCREEN
 ====================================================== */
@@ -607,11 +635,30 @@ function captureImage(){
 function showDeveloping(){
 
 
+    // Hide camera when developing starts
+
+    if(cameraArea){
+
+        cameraArea.style.display = "none";
+
+    }
+
+
+
+    if(readyScreen){
+
+        readyScreen.style.display = "none";
+
+    }
+
+
+
     if(developingScreen){
 
         developingScreen.style.display = "block";
 
     }
+
 
 
     setTimeout(()=>{
@@ -623,14 +670,9 @@ function showDeveloping(){
     },3000);
 
 
+
 }
-
-
-
-
-
-
-
+        
 /* =====================================================
         CREATE FILM STRIP
 ====================================================== */
@@ -653,20 +695,44 @@ function createFilmStrip(){
 
 
 
-    // Film background
+    // FILM STYLE BACKGROUNDS
 
-    ctx.fillStyle = "#111";
+    const styles = {
+
+        vintage: "#f3e4c5",
+
+        passport: "#dfe8dc",
+
+        coastal: "#d8eef2",
+
+        scrapbook: "#f5eadc",
+
+        classic: "#f7f7f2"
+
+    };
+
+
+
+    ctx.fillStyle = styles[selectedFilmStyle] || styles.vintage;
+
 
     ctx.fillRect(
+
         0,
+
         0,
+
         canvas.width,
+
         canvas.height
+
     );
 
 
 
+
     let loadedImages = 0;
+
 
 
 
@@ -680,6 +746,27 @@ function createFilmStrip(){
         img.onload = ()=>{
 
 
+            // photo frame
+
+            ctx.fillStyle = "#ffffff";
+
+
+            ctx.fillRect(
+
+                60,
+
+                80 + index * 300,
+
+                480,
+
+                260
+
+            );
+
+
+
+            // photo
+
             ctx.drawImage(
 
                 img,
@@ -690,7 +777,7 @@ function createFilmStrip(){
 
                 440,
 
-                240
+                220
 
             );
 
@@ -706,11 +793,15 @@ function createFilmStrip(){
                 drawFilmDecorations(ctx);
 
 
-                ctx.fillStyle="#ffffff";
 
-                ctx.font="30px cursive";
+                ctx.fillStyle="#2F2B28";
+
+
+                ctx.font="32px cursive";
+
 
                 ctx.textAlign="center";
+
 
 
                 ctx.fillText(
@@ -719,9 +810,10 @@ function createFilmStrip(){
 
                     canvas.width / 2,
 
-                    1420
+                    1430
 
                 );
+
 
 
             }
@@ -735,18 +827,12 @@ function createFilmStrip(){
         img.src = photo;
 
 
+
     });
 
 
 
 }
-
-
-
-
-
-
-
 
 
 /* =====================================================
@@ -757,9 +843,9 @@ function createFilmStrip(){
 function drawFilmDecorations(ctx){
 
 
-    ctx.strokeStyle="#ffffff";
+    ctx.strokeStyle = "#2F2B28";
 
-    ctx.lineWidth=4;
+    ctx.lineWidth = 4;
 
 
 
@@ -770,59 +856,69 @@ function drawFilmDecorations(ctx){
         case "coastal":
 
 
-            drawSun(ctx,500,80);
+            drawSun(ctx,500,90);
 
-            drawWave(ctx,40,1400);
+            drawWave(ctx,40,1380);
 
-            drawShell(ctx,520,1350);
-
-            break;
-
-
-
-
-
-        case "adventure":
-
-
-            drawMountain(ctx,70,70);
-
-            drawCompass(ctx,520,1350);
+            drawShell(ctx,520,1320);
 
             break;
 
 
 
 
+        case "passport":
 
-        case "romantic":
+
+            drawCompass(ctx,500,100);
+
+            drawStamp(ctx,80,1350);
+
+            break;
 
 
-            drawHeart(ctx,520,90);
 
-            drawFlower(ctx,70,1350);
+
+        case "scrapbook":
+
+
+            drawStar(ctx,500,100);
+
+            drawFlower(ctx,80,1350);
 
             break;
 
 
 
 
+        case "classic":
 
-        case "winter":
 
+            drawStar(ctx,500,100);
 
-            drawSnowflake(ctx,520,90);
-
-            drawSnowflake(ctx,80,1350);
+            drawStar(ctx,80,1350);
 
             break;
+
+
+
+
+        case "vintage":
+
+
+            drawHeart(ctx,500,100);
+
+            drawFlower(ctx,80,1350);
+
+            break;
+
 
 
 
         default:
 
 
-            drawStar(ctx,520,90);
+            drawStar(ctx,500,100);
 
             drawStar(ctx,80,1350);
 
@@ -833,11 +929,6 @@ function drawFilmDecorations(ctx){
 
 
 }
-
-
-
-
-
 
 
 
@@ -867,9 +958,9 @@ function drawSun(ctx,x,y){
 
         ctx.lineTo(
 
-            x + Math.cos(i)*55,
+            x + Math.cos(i * Math.PI / 4) * 55,
 
-            y + Math.sin(i)*55
+            y + Math.sin(i * Math.PI / 4) * 55
 
         );
 
@@ -886,8 +977,6 @@ function drawSun(ctx,x,y){
 
 
 
-
-
 function drawWave(ctx,x,y){
 
 
@@ -898,14 +987,14 @@ function drawWave(ctx,x,y){
 
 
 
-    for(let i=0;i<100;i++){
+    for(let i=0;i<120;i++){
 
 
         ctx.lineTo(
 
-            x+i*3,
+            x + i * 3,
 
-            y + Math.sin(i/5)*10
+            y + Math.sin(i / 6) * 10
 
         );
 
@@ -922,12 +1011,11 @@ function drawWave(ctx,x,y){
 
 
 
-
-
 function drawShell(ctx,x,y){
 
 
     ctx.beginPath();
+
 
     ctx.arc(
 
@@ -948,8 +1036,6 @@ function drawShell(ctx,x,y){
 
 
 }
-
-
 
 
 
@@ -995,67 +1081,6 @@ function drawHeart(ctx,x,y){
 
 
 
-
-
-function drawSnowflake(ctx,x,y){
-
-
-    for(let i=0;i<6;i++){
-
-
-        ctx.beginPath();
-
-
-        ctx.moveTo(x,y);
-
-
-        ctx.lineTo(
-
-            x + Math.cos(i)*40,
-
-            y + Math.sin(i)*40
-
-        );
-
-
-        ctx.stroke();
-
-
-    }
-
-
-}
-
-
-
-
-
-
-
-function drawMountain(ctx,x,y){
-
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(x,y+80);
-
-    ctx.lineTo(x+50,y);
-
-    ctx.lineTo(x+100,y+80);
-
-
-    ctx.stroke();
-
-
-}
-
-
-
-
-
-
-
 function drawCompass(ctx,x,y){
 
 
@@ -1072,9 +1097,20 @@ function drawCompass(ctx,x,y){
 
         0,
 
-        Math.PI*2
+        Math.PI * 2
 
     );
+
+
+    ctx.moveTo(x,y-35);
+
+    ctx.lineTo(x,y+35);
+
+
+    ctx.moveTo(x-35,y);
+
+    ctx.lineTo(x+35,y);
+
 
 
     ctx.stroke();
@@ -1083,6 +1119,58 @@ function drawCompass(ctx,x,y){
 }
 
 
+
+
+
+function drawStamp(ctx,x,y){
+
+
+    ctx.setLineDash([8,6]);
+
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+
+        x,
+
+        y,
+
+        45,
+
+        0,
+
+        Math.PI * 2
+
+    );
+
+
+    ctx.stroke();
+
+
+
+    ctx.setLineDash([]);
+
+
+
+    ctx.font = "20px cursive";
+
+    ctx.textAlign = "center";
+
+
+    ctx.fillText(
+
+        "TRAVEL",
+
+        x,
+
+        y + 5
+
+    );
+
+
+}
 
 
 
@@ -1104,7 +1192,29 @@ function drawFlower(ctx,x,y){
 
         0,
 
-        Math.PI*2
+        Math.PI * 2
+
+    );
+
+
+    ctx.stroke();
+
+
+
+    ctx.beginPath();
+
+
+    ctx.arc(
+
+        x + 25,
+
+        y,
+
+        15,
+
+        0,
+
+        Math.PI * 2
 
     );
 
@@ -1118,12 +1228,11 @@ function drawFlower(ctx,x,y){
 
 
 
-
-
 function drawStar(ctx,x,y){
 
 
     ctx.beginPath();
+
 
 
     for(let i=0;i<10;i++){
@@ -1135,16 +1244,18 @@ function drawStar(ctx,x,y){
         const radius = i % 2 === 0 ? 25 : 10;
 
 
+
         ctx.lineTo(
 
-            x + Math.cos(angle)*radius,
+            x + Math.cos(angle) * radius,
 
-            y + Math.sin(angle)*radius
+            y + Math.sin(angle) * radius
 
         );
 
 
     }
+
 
 
     ctx.closePath();
@@ -1158,10 +1269,6 @@ function drawStar(ctx,x,y){
 
 
 
-
-
-
-
 /* =====================================================
         FINISH DEVELOPING
 ====================================================== */
@@ -1170,16 +1277,36 @@ function drawStar(ctx,x,y){
 function finishFilm(){
 
 
+    // Create final film strip
+
     createFilmStrip();
+
+
+
+    // Stop camera after photos are finished
+
+    if(cameraStream){
+
+        cameraStream.getTracks().forEach(track => {
+
+            track.stop();
+
+        });
+
+
+        cameraStream = null;
+
+    }
 
 
 
     setTimeout(()=>{
 
 
+
         if(developingScreen){
 
-            developingScreen.style.display="none";
+            developingScreen.style.display = "none";
 
         }
 
@@ -1187,7 +1314,20 @@ function finishFilm(){
 
         if(filmReveal){
 
-            filmReveal.style.display="block";
+            filmReveal.style.display = "block";
+
+        }
+
+
+
+        // trigger reveal animation if available
+
+        const strip = document.querySelector(".film-strip-preview");
+
+
+        if(strip){
+
+            strip.classList.add("show-strip");
 
         }
 
@@ -1198,8 +1338,7 @@ function finishFilm(){
 
 
 }
-
-        /* =====================================================
+/* =====================================================
         FILM REVEAL ANIMATION
 ====================================================== */
 
@@ -1210,6 +1349,8 @@ function revealFilmStrip(){
     if(!filmReveal) return;
 
 
+
+    // Show reveal section
 
     filmReveal.style.display = "block";
 
@@ -1222,17 +1363,21 @@ function revealFilmStrip(){
     if(strip){
 
 
+        // Reset animation
+
         strip.classList.remove("show-strip");
 
 
-        setTimeout(()=>{
+
+        // Restart animation
+
+        requestAnimationFrame(()=>{
 
 
             strip.classList.add("show-strip");
 
 
-        },100);
-
+        });
 
 
     }
@@ -1240,10 +1385,6 @@ function revealFilmStrip(){
 
 
 }
-
-
-
-
 
 
 
@@ -1259,25 +1400,38 @@ if(downloadButton){
     downloadButton.addEventListener("click",()=>{
 
 
+        if(!canvas) return;
+
+
+
         const link = document.createElement("a");
+
 
 
         link.download = "RaeRoutes-Travel-Keepsake.png";
 
 
+
         link.href = canvas.toDataURL("image/png");
+
+
+
+        document.body.appendChild(link);
+
 
 
         link.click();
 
 
 
+        document.body.removeChild(link);
+
+
+
     });
 
 
-
 }
-
 
 
 
@@ -1296,12 +1450,16 @@ if(restartButton){
     restartButton.addEventListener("click",()=>{
 
 
+        // Reset photos
+
         capturedPhotos = [];
 
 
         currentPhoto = 0;
 
 
+
+        // Clear canvas
 
         if(canvas){
 
@@ -1327,10 +1485,12 @@ if(restartButton){
 
 
 
+        // Hide finished screens
+
         if(filmReveal){
 
 
-            filmReveal.style.display="none";
+            filmReveal.style.display = "none";
 
 
         }
@@ -1341,18 +1501,41 @@ if(restartButton){
         if(developingScreen){
 
 
-            developingScreen.style.display="none";
+            developingScreen.style.display = "none";
 
 
         }
 
 
 
+
+        // Hide camera
 
         if(cameraPreview){
 
 
-            cameraPreview.style.display="none";
+            cameraPreview.style.display = "none";
+
+
+        }
+
+
+
+        // Stop camera completely
+
+        if(cameraStream){
+
+
+            cameraStream.getTracks().forEach(track=>{
+
+
+                track.stop();
+
+
+            });
+
+
+            cameraStream = null;
 
 
         }
@@ -1360,10 +1543,12 @@ if(restartButton){
 
 
 
+        // Reset status
+
         if(photoStatus){
 
 
-            photoStatus.innerHTML="Photo 0 of 4";
+            photoStatus.innerHTML = "Photo 0 of 4";
 
 
         }
@@ -1374,10 +1559,11 @@ if(restartButton){
         if(countdownDisplay){
 
 
-            countdownDisplay.innerHTML="";
+            countdownDisplay.innerHTML = "";
 
 
         }
+
 
 
     });
@@ -1385,7 +1571,7 @@ if(restartButton){
 
 }
 
-
+        
 
 /* =====================================================
         STOP CAMERA
@@ -1407,7 +1593,22 @@ function stopCamera(){
         });
 
 
-        cameraStream=null;
+
+        cameraStream = null;
+
+
+
+    }
+
+
+
+    if(cameraPreview){
+
+
+        cameraPreview.srcObject = null;
+
+
+        cameraPreview.style.display = "none";
 
 
     }
@@ -1415,6 +1616,7 @@ function stopCamera(){
 
 
 }
+
         /* =====================================================
         POSTCARD CREATOR
 ====================================================== */
@@ -1430,15 +1632,15 @@ const postcardVideo = document.getElementById("postcardCameraPreview");
 
 const postcardPreview = document.querySelector(".postcard-preview");
 
+const postcardCanvas = document.createElement("canvas");
 
 
-let selectedPostcardStyle = "vintage";
+
+let selectedPostcardStyle = "Vintage Air Mail";
 
 let postcardImage = "";
 
 let postcardStream = null;
-
-
 
 
 
@@ -1459,6 +1661,8 @@ postcardStyles.forEach((style)=>{
     style.addEventListener("click",()=>{
 
 
+        // remove old selection
+
         postcardStyles.forEach(btn=>{
 
 
@@ -1469,13 +1673,19 @@ postcardStyles.forEach((style)=>{
 
 
 
+        // add new selection
+
         style.classList.add("selected");
 
 
 
-        selectedPostcardStyle = style.innerText;
+        // save selected design
+
+        selectedPostcardStyle = style.dataset.style || style.innerText;
 
 
+
+        // update preview
 
         updatePostcardPreview();
 
@@ -1484,12 +1694,7 @@ postcardStyles.forEach((style)=>{
     });
 
 
-
 });
-
-
-
-
 
 
 
@@ -1539,10 +1744,25 @@ if(postcardFile){
         reader.onload = (e)=>{
 
 
-            postcardImage = e.target.result;
+            const img = new Image();
 
 
-            updatePostcardPreview();
+
+            img.onload = ()=>{
+
+
+                postcardImage = img.src;
+
+
+
+                updatePostcardPreview();
+
+
+            };
+
+
+
+            img.src = e.target.result;
 
 
 
@@ -1557,13 +1777,7 @@ if(postcardFile){
     });
 
 
-
 }
-
-
-
-
-
 
 
 
@@ -1575,54 +1789,64 @@ if(postcardFile){
 if(postcardCameraButton){
 
 
-postcardCameraButton.addEventListener("click",async()=>{
+    postcardCameraButton.addEventListener("click", async()=>{
 
 
-    try{
+        try{
 
 
-        postcardStream = await navigator.mediaDevices.getUserMedia({
-
-            video:true,
-
-            audio:false
-
-        });
+            postcardStream = await navigator.mediaDevices.getUserMedia({
 
 
+                video:{
 
-        postcardVideo.srcObject = postcardStream;
+                    facingMode:"user"
 
-
-        postcardVideo.style.display="block";
-
-
-
-    }
+                },
 
 
-    catch(error){
+                audio:false
 
 
-        alert(
-        "Camera unavailable. Try uploading a photo instead!"
-        );
-
-
-    }
+            });
 
 
 
-});
+            postcardVideo.srcObject = postcardStream;
 
+
+
+            postcardVideo.style.display = "block";
+
+
+
+            postcardVideo.play();
+
+
+
+        }
+
+
+        catch(error){
+
+
+            console.log(error);
+
+
+
+            alert(
+                "Camera unavailable. Try uploading a photo instead!"
+            );
+
+
+        }
+
+
+
+    });
 
 
 }
-
-
-
-
-
 
 
 
@@ -1648,12 +1872,11 @@ postcardInputs.forEach(input=>{
         updatePostcardPreview();
 
 
+
     });
 
 
 });
-
-
 
 
 
@@ -1673,30 +1896,30 @@ function updatePostcardPreview(){
 
 
     const destination =
-    document.querySelector(
-    ".postcard-details input:nth-of-type(1)"
-    )?.value || "Your Adventure";
+        document.querySelector(
+            ".postcard-details input:nth-of-type(1)"
+        )?.value || "Your Adventure";
 
 
 
     const date =
-    document.querySelector(
-    ".postcard-details input:nth-of-type(2)"
-    )?.value || "";
+        document.querySelector(
+            ".postcard-details input:nth-of-type(2)"
+        )?.value || "";
 
 
 
     const message =
-    document.querySelector(
-    ".postcard-details textarea"
-    )?.value || "Greetings from somewhere beautiful ✈️";
+        document.querySelector(
+            ".postcard-details textarea"
+        )?.value || "Greetings from somewhere beautiful ✈️";
 
 
 
     const from =
-    document.querySelector(
-    ".postcard-details input:nth-of-type(3)"
-    )?.value || "";
+        document.querySelector(
+            ".postcard-details input:nth-of-type(3)"
+        )?.value || "";
 
 
 
@@ -1708,15 +1931,21 @@ function updatePostcardPreview(){
         <div class="postcard-design ${selectedPostcardStyle}">
 
 
-            ${
-                postcardImage
-                ?
-                `<img src="${postcardImage}">`
-                :
-                `<div class="empty-photo">
-                    Add your travel photo
-                </div>`
-            }
+            <div class="postcard-photo-area">
+
+
+                ${
+                    postcardImage
+                    ?
+                    `<img src="${postcardImage}" class="postcard-image">`
+                    :
+                    `<div class="empty-photo">
+                        Add your travel photo
+                    </div>`
+                }
+
+
+            </div>
 
 
 
@@ -1745,10 +1974,4 @@ function updatePostcardPreview(){
     `;
 
 
-
 }
-
-
-
-
-});
