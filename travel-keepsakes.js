@@ -16,70 +16,46 @@ document.addEventListener("DOMContentLoaded", () => {
 const creatorToggles = document.querySelectorAll(".creator-toggle");
 
 
-creatorToggles.forEach((toggle) => {
-
-    const content = toggle.nextElementSibling;
-    const icon = toggle.querySelector(".toggle-icon");
-
-
-    if (!content || !icon) return;
-
-
-    content.style.maxHeight = "0px";
-    content.style.overflow = "hidden";
-    content.style.transition = "max-height .5s ease";
-
+creatorToggles.forEach(toggle => {
 
     toggle.addEventListener("click", () => {
 
+        const content = toggle.nextElementSibling;
+        const icon = toggle.querySelector(".toggle-icon");
 
-        const isOpen = toggle.classList.contains("active");
-
-
-        // Close all creator sections
-
-        creatorToggles.forEach((otherToggle) => {
+        // Close other sections
+        creatorToggles.forEach(otherToggle => {
 
             const otherContent = otherToggle.nextElementSibling;
             const otherIcon = otherToggle.querySelector(".toggle-icon");
 
+            if(otherToggle !== toggle){
 
-            otherToggle.classList.remove("active");
-
-
-            if(otherIcon){
-                otherIcon.textContent = "+";
-            }
-
-
-            if(otherContent){
                 otherContent.style.maxHeight = "0px";
-            }
+                otherIcon.textContent = "+";
+                otherToggle.classList.remove("active");
 
+            }
 
         });
 
 
-
-        // Open selected creator section
-
-        if(!isOpen){
-
-
-            toggle.classList.add("active");
-
-
-            icon.textContent = "−";
-
+        // Open / close clicked section
+        if(content.style.maxHeight === "0px" || content.style.maxHeight === ""){
 
             content.style.maxHeight = content.scrollHeight + "px";
+            icon.textContent = "−";
+            toggle.classList.add("active");
 
+        } else {
+
+            content.style.maxHeight = "0px";
+            icon.textContent = "+";
+            toggle.classList.remove("active");
 
         }
 
-
     });
-
 
 });
 
