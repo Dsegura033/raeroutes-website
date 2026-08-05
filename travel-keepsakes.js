@@ -160,11 +160,10 @@ if(cameraPreview){
 
 filmCards.forEach(card => {
 
-
     card.addEventListener("click", () => {
 
 
-
+        // Remove previous selection
         filmCards.forEach(item => {
 
             item.classList.remove("selected");
@@ -172,23 +171,21 @@ filmCards.forEach(card => {
         });
 
 
-
+        // Select clicked style
         card.classList.add("selected");
 
 
-
+        // Save style choice
         selectedFilmStyle = card.dataset.style;
 
+
+        console.log("Selected film style:", selectedFilmStyle);
 
 
     });
 
 
-
 });
-
-
-
 
 
 
