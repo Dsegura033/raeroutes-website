@@ -743,3 +743,430 @@ button:hover {
 
 
 }
+/* =====================================================
+        FILM DESIGN PREVIEW CARDS
+====================================================== */
+
+
+.film-style-options {
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:30px;
+
+}
+
+
+
+.film-card {
+
+    width:230px;
+
+    min-height:380px;
+
+    padding:25px 20px;
+
+    background:
+
+    rgba(255,255,255,.18);
+
+    border:none;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    color:#33234d;
+
+    transition:.35s ease;
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+
+.film-card:hover,
+.film-card.selected {
+
+
+    transform:translateY(-10px);
+
+
+    box-shadow:
+
+    0 20px 40px rgba(60,40,120,.35);
+
+
+}
+
+
+
+
+.film-card h4 {
+
+
+    font-family:'Playfair Display', serif;
+
+    margin-top:20px;
+
+    font-size:1.3rem;
+
+
+}
+
+
+
+.film-card p {
+
+
+    font-size:.85rem;
+
+}
+
+
+
+
+/* =====================================================
+        MINI FILM STRIP PREVIEWS
+====================================================== */
+
+
+.preview-film {
+
+
+    width:150px;
+
+    height:270px;
+
+    margin:auto;
+
+
+    padding:25px 15px;
+
+
+    border-radius:12px;
+
+
+    position:relative;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+
+    box-shadow:
+
+    0 15px 30px rgba(0,0,0,.25);
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+
+/* Film holes */
+
+
+.preview-film::before,
+.preview-film::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    left:5px;
+
+    right:5px;
+
+
+    height:12px;
+
+
+    background:
+
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,.8) 0 8px,
+        transparent 8px 18px
+    );
+
+
+}
+
+
+
+.preview-film::before {
+
+    top:8px;
+
+}
+
+
+.preview-film::after {
+
+    bottom:8px;
+
+}
+
+
+
+
+
+.preview-photo {
+
+
+    flex:1;
+
+
+    border-radius:8px;
+
+
+    background:
+
+
+    linear-gradient(
+        135deg,
+        #d8c5ff,
+        #8dbde8
+    );
+
+
+    border:
+
+    3px solid rgba(255,255,255,.7);
+
+
+}
+
+
+
+
+
+
+
+/* =====================================================
+        FILM DESIGNS
+====================================================== */
+
+
+
+.vintage-preview {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #6f452c,
+        #d39b67
+    );
+
+
+}
+
+
+.vintage-preview .preview-photo {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #c89c70,
+        #f2d2a2
+    );
+
+
+}
+
+
+
+
+
+
+.passport-preview {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #17284f,
+        #526fa8
+    );
+
+
+}
+
+
+
+.passport-preview .preview-photo {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #b7c8df,
+        #f1ead9
+    );
+
+
+}
+
+
+
+.passport-preview span {
+
+
+    color:white;
+
+    font-size:.65rem;
+
+    letter-spacing:2px;
+
+}
+
+
+
+
+
+
+
+.coastal-preview {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #087b8c,
+        #7de0dc
+    );
+
+
+}
+
+
+
+.coastal-preview .preview-photo {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #9be7ff,
+        #f7e6c4
+    );
+
+
+}
+
+
+
+
+
+
+
+.scrapbook-preview {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #f1d7b8,
+        #fff1db
+    );
+
+
+}
+
+
+
+.scrapbook-preview .preview-photo {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #d7b48b,
+        #fff0d0
+    );
+
+
+}
+
+
+
+.scrapbook-preview span {
+
+
+    color:#6a4b35;
+
+    font-size:.7rem;
+
+}
+
+
+
+
+
+
+
+.classic-preview {
+
+
+    background:#171717;
+
+
+}
+
+
+
+.classic-preview .preview-photo {
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #555,
+        #ddd
+    );
+
+
+}
+
+
+
+.classic-preview span {
+
+
+    color:white;
+
+    font-size:.65rem;
+
+    letter-spacing:2px;
+
+}
+
+
+
+
