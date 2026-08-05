@@ -1,115 +1,65 @@
 /* =====================================================
         RAE ROUTES - TRAVEL KEEPSAKES
-        FULL SCRIPT
+        Full Interactive Script
 ====================================================== */
+
+
+document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =====================================================
-        GLOBAL VARIABLES
+        VARIABLES
 ====================================================== */
 
 
-let selectedFilm = "vintage";
+let selectedFilmStyle = "vintage";
 
-let boothPhotos = [];
+let capturedPhotos = [];
 
-let postcardPhoto = null;
+let currentPhoto = 0;
 
 let cameraStream = null;
 
-let currentMode = "camera";
 
-
-
-
-
-/* =====================================================
-        ELEMENTS
-====================================================== */
-
-
-const photoTab = document.getElementById("photoBoothTab");
-const postcardTab = document.getElementById("postcardTab");
-
-const photoSection = document.getElementById("photoBooth");
-const postcardSection = document.getElementById("postcard");
 
 const filmCards = document.querySelectorAll(".film-card");
 
 const startButton = document.getElementById("startBooth");
 
-const cameraButton = document.getElementById("cameraMode");
 const uploadButton = document.getElementById("uploadMode");
 
-const cameraVideo = document.getElementById("cameraPreview");
+const cameraButton = document.getElementById("cameraMode");
 
-const uploadInput = document.getElementById("photoUpload");
+const photoUpload = document.getElementById("photoUpload");
 
-const countdownDisplay =
-document.querySelector(".countdown-display");
+const cameraPreview = document.getElementById("cameraPreview");
 
-const photoStatus =
-document.querySelector(".photo-status");
+const photoStatus = document.querySelector(".photo-status");
 
-const canvas =
-document.getElementById("filmCanvas");
+const countdown = document.querySelector(".countdown-display");
 
-const downloadButton =
-document.querySelector(".download-button");
+const developingScreen = document.querySelector(".developing-screen");
 
-const restartButton =
-document.querySelector(".restart-button");
+const canvas = document.getElementById("filmCanvas");
 
+const downloadButton = document.querySelector(".download-button");
 
+const restartButton = document.querySelector(".restart-button");
 
-
+const filmReveal = document.querySelector(".film-reveal");
 
 
 
 /* =====================================================
-        TAB SWITCHING
+        HIDE STARTING SECTIONS
 ====================================================== */
 
 
-if(photoTab && postcardTab){
+developingScreen.style.display = "none";
 
+filmReveal.style.display = "none";
 
-photoTab.addEventListener("click",()=>{
-
-
-photoSection.style.display="block";
-
-postcardSection.style.display="none";
-
-
-});
-
-
-
-postcardTab.addEventListener("click",()=>{
-
-
-photoSection.style.display="none";
-
-postcardSection.style.display="block";
-
-
-});
-
-
-}
-
-
-
-
-if(postcardSection){
-
-postcardSection.style.display="none";
-
-}
-
-
-
+cameraPreview.style.display = "none";
 
 
 
@@ -120,33 +70,84 @@ postcardSection.style.display="none";
 ====================================================== */
 
 
-filmCards.forEach(card=>{
+filmCards.forEach(card => {
 
 
-card.addEventListener("click",()=>{
+    card.addEventListener("click", () => {
 
 
-filmCards.forEach(item=>{
+        filmCards.forEach(item => {
 
-item.classList.remove("selected");
+            item.classList.remove("selected");
+
+        });
+
+
+        card.classList.add("selected");
+
+
+        selectedFilmStyle = card.dataset.style;
+
+
+    });
+
 
 });
 
 
-card.classList.add("selected");
 
 
-selectedFilm = card.dataset.style;
+
+/* =====================================================
+        CAMERA ACCESS
+====================================================== */
 
 
+async function startCamera(){
+
+
+    try {
+
+
+        cameraStream = await navigator.mediaDevices.getUserMedia({
+
+            video:true,
+
+            audio:false
+
+        });
+
+
+        cameraPreview.srcObject = cameraStream;
+
+        cameraPreview.style.display = "block";
+
+
+    }
+
+
+    catch(error){
+
+
+        alert(
+            "Camera access was unavailable. Try uploading your photos instead!"
+        );
+
+
+    }
+
+
+}
+
+
+
+
+
+cameraButton.addEventListener("click", () => {
+
+    startCamera();
 
 });
-
-
-});
-
-
-
 
 
 
@@ -154,228 +155,61 @@ selectedFilm = card.dataset.style;
 
 
 /* =====================================================
-        CAMERA
+        UPLOAD PHOTO MODE
 ====================================================== */
 
 
-
-async function openCamera(){
-
-
-try{
+uploadButton.addEventListener("click", () => {
 
 
-cameraStream = await navigator.mediaDevices.getUserMedia({
-
-video:{
-facingMode:"user"
-},
-
-audio:false
-
-});
-
-
-
-if(cameraVideo){
-
-
-cameraVideo.srcObject=cameraStream;
-
-
-}
-
-
-
-}
-
-catch(error){
-
-
-alert(
-
-"Camera unavailable. Please upload photos instead."
-
-);
-
-
-}
-
-
-
-}
-
-
-
-
-
-if(cameraButton){
-
-
-cameraButton.addEventListener("click",()=>{
-
-
-currentMode="camera";
-
-openCamera();
+    photoUpload.click();
 
 
 });
 
 
-}
 
 
 
+photoUpload.addEventListener("change", (event)=>{
 
 
+    const files = Array.from(event.target.files);
 
 
-
-/* =====================================================
-        UPLOAD MODE
-====================================================== */
+    capturedPhotos = [];
 
 
-if(uploadButton){
+    files.slice(0,4).forEach(file=>{
 
 
-uploadButton.addEventListener("click",()=>{
+        const reader = new FileReader();
 
 
-currentMode="upload";
+        reader.onload = e=>{
 
 
-uploadInput.click();
+            capturedPhotos.push(e.target.result);
 
 
-});
+            if(capturedPhotos.length === 4){
+
+                createFilmStrip();
+
+            }
 
 
-}
+        };
 
 
+        reader.readAsDataURL(file);
 
 
-
-
-if(uploadInput){
-
-
-uploadInput.addEventListener("change",(event)=>{
-
-
-boothPhotos=[];
-
-
-const files=[...event.target.files].slice(0,4);
-
-
-
-files.forEach(file=>{
-
-
-const reader=new FileReader();
-
-
-reader.onload=e=>{
-
-
-boothPhotos.push(e.target.result);
-
-
-};
-
-
-reader.readAsDataURL(file);
+    });
 
 
 
 });
-
-
-
-});
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================================
-        COUNTDOWN
-====================================================== */
-
-
-
-function delay(time){
-
-return new Promise(resolve=>setTimeout(resolve,time));
-
-}
-
-
-
-
-async function countdown(){
-
-
-for(let number=3; number>0; number--){
-
-
-countdownDisplay.textContent=number;
-
-
-await delay(1000);
-
-
-}
-
-
-countdownDisplay.textContent="📸";
-
-
-flash();
-
-
-await delay(500);
-
-
-countdownDisplay.textContent="";
-
-
-}
-
-
-
-
-
-
-
-function flash(){
-
-
-document.body.classList.add("camera-flash");
-
-
-setTimeout(()=>{
-
-
-document.body.classList.remove("camera-flash");
-
-
-},300);
-
-
-}
-
-
 
 
 
@@ -388,60 +222,67 @@ document.body.classList.remove("camera-flash");
 ====================================================== */
 
 
-if(startButton){
+startButton.addEventListener("click", ()=>{
 
 
-startButton.addEventListener("click",async()=>{
+    if(!cameraStream){
+
+        startCamera();
+
+    }
 
 
-boothPhotos=[];
+    capturedPhotos = [];
+
+    currentPhoto = 0;
 
 
-
-for(let i=1;i<=4;i++){
-
-
-photoStatus.textContent=
-`Photo ${i} of 4`;
-
-
-
-await countdown();
-
-
-
-if(currentMode==="camera"){
-
-
-boothPhotos.push(
-capturePhoto()
-);
-
-
-}
-
-
-
-}
-
-
-
-photoStatus.textContent=
-"Developing your memories...";
-
-
-
-await delay(2500);
-
-
-
-createFilmStrip();
-
+    takePhoto();
 
 
 });
 
 
+
+
+
+
+function takePhoto(){
+
+
+    if(currentPhoto >=4){
+
+
+        showDeveloping();
+
+
+        return;
+
+
+    }
+
+
+
+    photoStatus.innerHTML = 
+    `Photo ${currentPhoto + 1} of 4`;
+
+
+
+    countdownSequence(()=>{
+
+
+        captureImage();
+
+
+        currentPhoto++;
+
+
+        takePhoto();
+
+
+    });
+
+
 }
 
 
@@ -450,51 +291,115 @@ createFilmStrip();
 
 
 
-
-
 /* =====================================================
-        CAPTURE CAMERA PHOTO
+        COUNTDOWN
 ====================================================== */
 
 
-function capturePhoto(){
+function countdownSequence(callback){
 
 
-const tempCanvas=
-document.createElement("canvas");
+    let number = 3;
 
 
-tempCanvas.width=
-cameraVideo.videoWidth || 500;
-
-
-tempCanvas.height=
-cameraVideo.videoHeight || 400;
+    countdown.innerHTML = number;
 
 
 
-const ctx=
-tempCanvas.getContext("2d");
+    let timer = setInterval(()=>{
+
+
+        number--;
+
+
+        if(number >0){
+
+
+            countdown.innerHTML = number;
+
+
+        }
+
+
+        else{
+
+
+            clearInterval(timer);
+
+
+            countdown.innerHTML="📸";
+
+
+            setTimeout(()=>{
+
+
+                countdown.innerHTML="";
+
+
+                callback();
+
+
+            },700);
+
+
+        }
 
 
 
-ctx.drawImage(
-
-cameraVideo,
-
-0,
-
-0,
-
-tempCanvas.width,
-
-tempCanvas.height
-
-);
+    },1000);
 
 
 
-return tempCanvas.toDataURL("image/png");
+}
+
+
+
+
+
+
+
+/* =====================================================
+        CAPTURE IMAGE
+====================================================== */
+
+
+function captureImage(){
+
+
+    const tempCanvas = document.createElement("canvas");
+
+
+    tempCanvas.width = cameraPreview.videoWidth || 600;
+
+    tempCanvas.height = cameraPreview.videoHeight || 400;
+
+
+
+    const context = tempCanvas.getContext("2d");
+
+
+
+    context.drawImage(
+
+        cameraPreview,
+
+        0,
+
+        0,
+
+        tempCanvas.width,
+
+        tempCanvas.height
+
+    );
+
+
+
+    capturedPhotos.push(
+
+        tempCanvas.toDataURL("image/png")
+
+    );
 
 
 
@@ -507,132 +412,141 @@ return tempCanvas.toDataURL("image/png");
 
 
 
+/* =====================================================
+        DEVELOPING SCREEN
+====================================================== */
+
+
+function showDeveloping(){
+
+
+    developingScreen.style.display="block";
+
+
+    setTimeout(()=>{
+
+
+        createFilmStrip();
+
+
+    },3000);
+
+
+
+}
+
+
+
+
+
+
+
 
 /* =====================================================
-        FILM STRIP CREATOR
+        CREATE FILM STRIP
 ====================================================== */
 
 
 function createFilmStrip(){
 
 
-if(!canvas)return;
+    canvas.width = 500;
+
+    canvas.height = 1200;
 
 
-canvas.width=320;
-
-canvas.height=1000;
-
-
-
-const ctx=
-canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
 
 
 
-ctx.fillStyle=
-getFilmColor();
+    ctx.fillStyle="#111";
 
+    ctx.fillRect(
 
+        0,
 
-ctx.fillRect(
+        0,
 
-0,
+        canvas.width,
 
-0,
+        canvas.height
 
-canvas.width,
-
-canvas.height
-
-);
+    );
 
 
 
 
-
-boothPhotos.forEach((photo,index)=>{
-
-
-const image=new Image();
+    capturedPhotos.forEach((photo,index)=>{
 
 
-
-image.onload=()=>{
-
-
-ctx.drawImage(
-
-image,
-
-40,
-
-70+(index*220),
-
-240,
-
-160
-
-);
+        const img = new Image();
 
 
-
-};
-
+        img.onload=()=>{
 
 
-image.src=photo;
+            ctx.drawImage(
+
+                img,
+
+                60,
+
+                80 + index*260,
+
+                380,
+
+                210
+
+            );
+
+
+            ctx.fillStyle="#fff";
+
+
+            ctx.font="25px Poppins";
+
+
+            ctx.fillText(
+
+                "RaeRoutes",
+
+                180,
+
+                1150
+
+            );
 
 
 
-});
+        };
+
+
+        img.src=photo;
+
+
+
+    });
+
+
+
+    applyFilmStyle();
+
+
+
+    setTimeout(()=>{
+
+
+        developingScreen.style.display="none";
+
+
+        filmReveal.style.display="block";
+
+
+    },1000);
 
 
 
 }
-
-
-
-
-
-
-function getFilmColor(){
-
-
-switch(selectedFilm){
-
-
-case "passport":
-
-return "#1f355f";
-
-
-case "coastal":
-
-return "#42b9c2";
-
-
-case "scrapbook":
-
-return "#efd7b5";
-
-
-case "classic":
-
-return "#111";
-
-
-default:
-
-return "#9b6b43";
-
-
-}
-
-
-
-}
-
 
 
 
@@ -642,35 +556,93 @@ return "#9b6b43";
 
 
 /* =====================================================
-        DOWNLOAD FILM
+        APPLY FILM STYLE
 ====================================================== */
 
 
-if(downloadButton){
+function applyFilmStyle(){
+
+
+    if(selectedFilmStyle==="vintage"){
+
+
+        canvas.style.filter="sepia(30%)";
+
+
+    }
+
+
+
+    if(selectedFilmStyle==="passport"){
+
+
+        canvas.style.filter="contrast(110%)";
+
+
+    }
+
+
+
+    if(selectedFilmStyle==="coastal"){
+
+
+        canvas.style.filter="brightness(110%)";
+
+
+    }
+
+
+
+    if(selectedFilmStyle==="scrapbook"){
+
+
+        canvas.style.filter="saturate(130%)";
+
+
+    }
+
+
+
+    if(selectedFilmStyle==="classic"){
+
+
+        canvas.style.filter="grayscale(100%)";
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+/* =====================================================
+        DOWNLOAD
+====================================================== */
 
 
 downloadButton.addEventListener("click",()=>{
 
 
-const link=document.createElement("a");
+    const link=document.createElement("a");
 
 
-link.download=
-"RaeRoutes-Travel-Keepsake.png";
+    link.download="raeroutes-film-strip.png";
 
 
-link.href=
-canvas.toDataURL();
+    link.href=canvas.toDataURL();
 
 
-link.click();
+    link.click();
 
 
 
 });
-
-
-}
 
 
 
@@ -684,38 +656,23 @@ link.click();
 ====================================================== */
 
 
-if(restartButton){
-
-
 restartButton.addEventListener("click",()=>{
 
 
-boothPhotos=[];
+    capturedPhotos=[];
+
+    currentPhoto=0;
 
 
-photoStatus.textContent=
-"Photo 0 of 4";
+    filmReveal.style.display="none";
+
+    developingScreen.style.display="none";
 
 
-countdownDisplay.textContent="";
-
-
-canvas
-.getContext("2d")
-.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
+    photoStatus.innerHTML="Photo 0 of 4";
 
 
 });
-
-
-}
-
 
 
 
@@ -729,10 +686,12 @@ canvas.height
 ====================================================== */
 
 
-const postcardInputs =
-document.querySelectorAll(
-".postcard-details input, .postcard-details textarea"
-);
+const postcardUpload =
+document.getElementById("postcardUploadButton");
+
+
+const postcardFile =
+document.getElementById("postcardPhotoUpload");
 
 
 const postcardPreview =
@@ -740,163 +699,48 @@ document.querySelector(".postcard-preview");
 
 
 
-postcardInputs.forEach(input=>{
+postcardUpload.addEventListener("click",()=>{
 
 
-input.addEventListener("input",updatePostcard);
-
-
-});
-
-
-
-
-
-function updatePostcard(){
-
-
-if(!postcardPreview)return;
-
-
-
-const destination=
-postcardInputs[0]?.value || "Your Destination";
-
-
-const date=
-postcardInputs[1]?.value || "Your Date";
-
-
-const message=
-postcardInputs[2]?.value || "Your Memory";
-
-
-const name=
-postcardInputs[3]?.value || "Traveler";
-
-
-
-postcardPreview.innerHTML=`
-
-<h2>${destination}</h2>
-
-<p>${date}</p>
-
-<p>${message}</p>
-
-<p>— ${name}</p>
-
-`;
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================================
-        POSTCARD PHOTO UPLOAD
-====================================================== */
-
-
-const postcardUpload =
-document.querySelector(".postcard-photo input");
-
-
-
-if(postcardUpload){
-
-
-postcardUpload.addEventListener("change",e=>{
-
-
-const file=e.target.files[0];
-
-
-const reader=new FileReader();
-
-
-reader.onload=function(event){
-
-
-postcardPhoto=
-event.target.result;
-
-
-postcardPreview.style.backgroundImage=
-`url(${postcardPhoto})`;
-
-
-};
-
-
-
-reader.readAsDataURL(file);
-
+    postcardFile.click();
 
 
 });
 
 
 
-}
+
+
+postcardFile.addEventListener("change",(event)=>{
+
+
+    const file=event.target.files[0];
+
+
+    if(!file) return;
 
 
 
+    const reader=new FileReader();
 
 
+    reader.onload=e=>{
 
 
+        postcardPreview.innerHTML=`
 
-/* =====================================================
-        FAQ
-====================================================== */
+        <img 
+        src="${e.target.result}"
+        style="max-width:100%; border-radius:15px;">
 
-
-const faqItems =
-document.querySelectorAll(".faq-item");
-
+        `;
 
 
-faqItems.forEach(item=>{
+    };
 
 
-const question =
-item.querySelector("h3");
+    reader.readAsDataURL(file);
 
-
-const answer =
-item.querySelector("p");
-
-
-
-answer.style.display="none";
-
-
-
-question.style.cursor="pointer";
-
-
-
-question.addEventListener("click",()=>{
-
-
-answer.style.display =
-answer.style.display==="none"
-?
-"block"
-:
-"none";
-
-
-
-});
 
 
 });
@@ -910,21 +754,50 @@ answer.style.display==="none"
 
 
 /* =====================================================
-        CAMERA CLEANUP
+        TAB BUTTONS
 ====================================================== */
 
 
-window.addEventListener("beforeunload",()=>{
+const photoTab=document.getElementById("photoBoothTab");
+
+const postcardTab=document.getElementById("postcardTab");
 
 
-if(cameraStream){
+const photoSection=document.getElementById("photoBooth");
+
+const postcardSection=document.getElementById("postcard");
 
 
-cameraStream.getTracks()
-.forEach(track=>track.stop());
 
 
-}
+photoTab.addEventListener("click",()=>{
+
+
+    photoSection.scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+
+});
+
+
+
+
+postcardTab.addEventListener("click",()=>{
+
+
+    postcardSection.scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+
+});
+
+
 
 
 
