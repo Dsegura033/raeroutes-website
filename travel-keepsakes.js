@@ -353,14 +353,10 @@ if(photoUpload){
 
 if(startButton){
 
-
-    startButton.addEventListener("click", async ()=>{
-
+    startButton.addEventListener("click", async()=>{
 
         capturedPhotos = [];
-
         currentPhoto = 0;
-
 
         if(!cameraStream){
 
@@ -368,16 +364,25 @@ if(startButton){
 
         }
 
-
         if(cameraArea){
 
             cameraArea.style.display = "block";
 
         }
 
+        if(readyScreen){
+
+            readyScreen.style.display = "none";
+
+        }
+
+        setTimeout(()=>{
+
+            takePhoto();
+
+        },500);
 
     });
-
 
 }
         
