@@ -133,9 +133,8 @@ nav{
     color:var(--accent);
 
 }
-
 /* =====================================================
-                PHOTO BOOTH
+                PHOTO BOOTH ACCORDION
 ===================================================== */
 
 .creator-section{
@@ -143,6 +142,7 @@ nav{
     padding:5rem 0;
 
 }
+
 
 .creator-toggle{
 
@@ -160,17 +160,25 @@ nav{
 
     align-items:center;
 
-    padding-bottom:2rem;
+    text-align:left;
+
+    padding:0 0 2rem;
 
     border-bottom:2px dashed var(--paper-dark);
 
+    position:relative;
+
+    z-index:2;
+
 }
+
 
 .creator-heading{
 
     text-align:left;
 
 }
+
 
 .creator-heading h2{
 
@@ -182,6 +190,7 @@ nav{
 
 }
 
+
 .creator-heading p{
 
     max-width:500px;
@@ -190,10 +199,14 @@ nav{
 
 }
 
+
 .toggle-icon{
 
     width:42px;
+
     height:42px;
+
+    flex-shrink:0;
 
     border-radius:50%;
 
@@ -213,11 +226,13 @@ nav{
 
 }
 
+
 .creator-toggle:hover .toggle-icon{
 
     transform:scale(1.08);
 
 }
+
 
 .creator-content{
 
@@ -238,20 +253,32 @@ nav{
 .film-style-picker{
 
     margin-top:4rem;
+    text-align:center;
 
 }
+
 
 .film-style-picker h3{
 
-    text-align:center;
-
     font-family:var(--heading-font);
 
-    font-size:2rem;
+    font-size:2.2rem;
 
-    margin-bottom:.75rem;
+    margin-bottom:1rem;
 
 }
+
+
+.film-style-picker p{
+
+    max-width:600px;
+
+    margin:0 auto 3rem;
+
+    color:#666;
+
+}
+
 
 
 .film-style-options{
@@ -262,10 +289,65 @@ nav{
 
     justify-content:center;
 
-    gap:3rem;
+    align-items:flex-start;
+
+    gap:2.5rem;
 
 }
 
+
+
+/* Individual film choices */
+
+.film-card{
+
+    width:180px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    text-align:center;
+
+    position:relative;
+
+    transition:.35s ease;
+
+}
+
+
+
+/* Film card hover */
+
+.film-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+
+
+/* Selected style */
+
+.film-card.selected{
+
+    transform:translateY(-12px);
+
+}
+
+
+
+.film-card.selected .preview-film{
+
+    border-color:var(--accent);
+
+    box-shadow:
+    0 0 0 4px rgba(110,139,116,.15),
+    10px 12px 0 rgba(0,0,0,.08);
+
+}
 
 
 /* =====================================================
@@ -285,46 +367,91 @@ nav{
 
     text-align:center;
 
-    transition:.35s;
+    transition:.35s ease;
 
     position:relative;
 
+    padding:0;
+
 }
 
 
+
+/* hover effect */
 
 .film-card:hover{
 
-    transform:translateY(-12px) scale(1.05);
+    transform:translateY(-12px) rotate(0deg) scale(1.05);
 
 }
 
 
+
+/* selected film style */
 
 .film-card.selected{
 
-    transform:translateY(-8px) scale(1.08);
+    transform:translateY(-15px) scale(1.08);
 
 }
 
 
+
+/* selected outline */
+
+.film-card.selected .preview-film{
+
+    border:3px solid var(--accent);
+
+    box-shadow:
+        0 0 0 6px rgba(110,139,116,.15),
+        10px 12px 0 rgba(0,0,0,.10);
+
+}
+
+
+
+/* little selected label */
+
+.film-card.selected::after{
+
+    content:"✓ Selected";
+
+    position:absolute;
+
+    bottom:-28px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:.75rem;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+
+    color:var(--accent);
+
+    font-weight:600;
+
+}
 
 /* =====================================================
                 FILM PREVIEW
 ===================================================== */
 
-
 .preview-film{
 
     position:relative;
 
-    background:#fffef8;
+    background:#111;
 
     border:3px solid #2f2b28;
 
     border-radius:12px;
 
-    padding:12px;
+    padding:14px;
 
     box-shadow:8px 10px 0 rgba(0,0,0,.08);
 
@@ -333,8 +460,7 @@ nav{
 }
 
 
-
-/* film holes */
+/* film sprocket holes */
 
 .preview-film::before,
 .preview-film::after{
@@ -347,13 +473,14 @@ nav{
 
     bottom:0;
 
-    width:10px;
+    width:12px;
 
     background:
+    radial-gradient(circle,#f8f4ec 4px,transparent 5px);
 
-    radial-gradient(circle,#2f2b28 3px,transparent 4px);
+    background-size:12px 32px;
 
-    background-size:10px 35px;
+    z-index:2;
 
 }
 
@@ -372,25 +499,67 @@ nav{
 }
 
 
-
-
+/* photo window */
 
 .preview-photo{
 
     width:100%;
 
-    aspect-ratio:1/1;
+    aspect-ratio:1 / 1;
 
-    background:#ece7df;
+    background:#ddd5c8;
 
-    border-radius:6px;
+    border-radius:4px;
 
     margin-bottom:10px;
 
     position:relative;
 
+    overflow:hidden;
+
 }
 
+
+
+/* fake travel photo placeholder */
+
+.preview-photo::before{
+
+    content:"✈️";
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:2.5rem;
+
+}
+
+
+
+/* style label */
+
+.preview-film span{
+
+    color:white;
+
+    text-align:center;
+
+    font-size:.75rem;
+
+    letter-spacing:.12em;
+
+    display:block;
+
+    text-transform:uppercase;
+
+}
 
 
 /* =====================================================
@@ -398,22 +567,37 @@ nav{
 ===================================================== */
 
 
-/* Vintage */
+/* Make preview photo show as a styled film frame */
 
-.vintage-preview{
+.preview-photo{
 
-    background:#f6e6c9;
+    position:relative;
+    overflow:hidden;
 
 }
 
 
-.vintage-preview::after{
+/* VINTAGE */
+
+.vintage-preview .preview-photo{
+
+    background:
+    linear-gradient(
+        rgba(246,230,201,.75),
+        rgba(246,230,201,.75)
+    ),
+    #d8c3a5;
+
+}
+
+
+.vintage-preview .preview-photo::after{
 
     content:"✦ ✈ ✦";
 
     position:absolute;
 
-    bottom:15px;
+    bottom:12px;
 
     left:0;
 
@@ -421,7 +605,7 @@ nav{
 
     text-align:center;
 
-    font-size:18px;
+    font-size:22px;
 
     color:#9b7748;
 
@@ -429,24 +613,27 @@ nav{
 
 
 
+/* PASSPORT */
 
+.passport-preview .preview-photo{
 
-/* Passport */
-
-.passport-preview{
-
-    background:#e8efe8;
+    background:
+    linear-gradient(
+        rgba(232,239,232,.8),
+        rgba(232,239,232,.8)
+    ),
+    #9eb59f;
 
 }
 
 
-.passport-preview::after{
+.passport-preview .preview-photo::after{
 
-    content:"✈  🇫🇷  ✈";
+    content:"✈  PARIS  ✈";
 
     position:absolute;
 
-    bottom:15px;
+    bottom:12px;
 
     left:0;
 
@@ -454,7 +641,7 @@ nav{
 
     text-align:center;
 
-    font-size:15px;
+    font-size:18px;
 
     color:#6e8b74;
 
@@ -462,24 +649,27 @@ nav{
 
 
 
+/* COASTAL */
 
+.coastal-preview .preview-photo{
 
-/* Coastal */
-
-.coastal-preview{
-
-    background:#dcecf0;
+    background:
+    linear-gradient(
+        rgba(220,236,240,.8),
+        rgba(220,236,240,.8)
+    ),
+    #8fc4d1;
 
 }
 
 
-.coastal-preview::after{
+.coastal-preview .preview-photo::after{
 
     content:"☀︎ 〰︎ 🐚";
 
     position:absolute;
 
-    bottom:15px;
+    bottom:12px;
 
     left:0;
 
@@ -487,7 +677,7 @@ nav{
 
     text-align:center;
 
-    font-size:18px;
+    font-size:24px;
 
     color:#4d8490;
 
@@ -495,24 +685,27 @@ nav{
 
 
 
+/* SCRAPBOOK */
 
+.scrapbook-preview .preview-photo{
 
-/* Scrapbook */
-
-.scrapbook-preview{
-
-    background:#f4eadc;
+    background:
+    linear-gradient(
+        rgba(244,234,220,.8),
+        rgba(244,234,220,.8)
+    ),
+    #c89b7b;
 
 }
 
 
-.scrapbook-preview::after{
+.scrapbook-preview .preview-photo::after{
 
     content:"✂ ✿ ★";
 
     position:absolute;
 
-    bottom:15px;
+    bottom:12px;
 
     left:0;
 
@@ -520,7 +713,7 @@ nav{
 
     text-align:center;
 
-    font-size:18px;
+    font-size:24px;
 
     color:#a56b4f;
 
@@ -528,31 +721,22 @@ nav{
 
 
 
-
-
-/* Classic */
-
-.classic-preview{
-
-    background:#222;
-
-}
-
+/* CLASSIC */
 
 .classic-preview .preview-photo{
 
-    background:#444;
+    background:#333;
 
 }
 
 
-.classic-preview::after{
+.classic-preview .preview-photo::after{
 
     content:"CLASSIC";
 
     position:absolute;
 
-    bottom:15px;
+    bottom:12px;
 
     left:0;
 
@@ -560,9 +744,9 @@ nav{
 
     text-align:center;
 
-    font-size:12px;
+    font-size:14px;
 
-    letter-spacing:.15em;
+    letter-spacing:.2em;
 
     color:white;
 
@@ -612,6 +796,8 @@ nav{
     margin-top:.4rem;
 
 }
+
+
 /* =====================================================
                 PHOTO BOOTH EXPERIENCE
 ===================================================== */
@@ -747,9 +933,14 @@ nav{
                 CAMERA
 ===================================================== */
 
+
 .camera-area{
 
     display:none;
+
+    max-width:700px;
+
+    margin:4rem auto;
 
 }
 
@@ -771,6 +962,8 @@ nav{
 
     background:#d8d8d8;
 
+    position:relative;
+
 }
 
 
@@ -782,6 +975,8 @@ nav{
     height:100%;
 
     object-fit:cover;
+
+    display:block;
 
 }
 
@@ -817,9 +1012,26 @@ nav{
                 DEVELOPING
 ===================================================== */
 
+
 .developing-screen{
 
     display:none;
+
+    max-width:700px;
+
+    margin:4rem auto;
+
+    padding:3rem;
+
+    background:#fffdf8;
+
+    border:2px solid var(--ink);
+
+    border-radius:18px;
+
+    box-shadow:10px 10px 0 rgba(0,0,0,.08);
+
+    text-align:center;
 
 }
 
@@ -828,6 +1040,8 @@ nav{
 .developing-screen h3{
 
     margin-bottom:1rem;
+
+    font-family:var(--heading-font);
 
 }
 
@@ -870,6 +1084,7 @@ nav{
 
     }
 
+
     50%{
 
         transform:scaleX(1);
@@ -877,6 +1092,7 @@ nav{
         opacity:1;
 
     }
+
 
     100%{
 
@@ -889,14 +1105,16 @@ nav{
 }
 
 
-
 /* =====================================================
                 FILM REVEAL
 ===================================================== */
 
+
 .film-reveal{
 
     display:none;
+
+    text-align:center;
 
 }
 
@@ -906,7 +1124,15 @@ nav{
 
     margin:2rem auto;
 
-    width:max-content;
+    width:100%;
+
+    max-width:600px;
+
+    display:flex;
+
+    justify-content:center;
+
+    animation:filmDrop .8s ease;
 
 }
 
@@ -914,7 +1140,13 @@ nav{
 
 #filmCanvas{
 
-    max-width:100%;
+    width:100%;
+
+    max-width:600px;
+
+    height:auto;
+
+    display:block;
 
     filter:drop-shadow(8px 10px 14px rgba(0,0,0,.18));
 
@@ -922,7 +1154,31 @@ nav{
 
 
 
+@keyframes filmDrop{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-30px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
 /* Buttons */
+
 
 .download-button,
 .restart-button{
@@ -955,14 +1211,30 @@ nav{
 }
 
 
-
 /* =====================================================
                 SHARE
 ===================================================== */
 
+
 .share-keepsake{
 
     display:none;
+
+    max-width:700px;
+
+    margin:4rem auto;
+
+    padding:3rem;
+
+    background:#fffdf8;
+
+    border:2px solid var(--ink);
+
+    border-radius:18px;
+
+    box-shadow:10px 10px 0 rgba(0,0,0,.08);
+
+    text-align:center;
 
 }
 
@@ -975,16 +1247,18 @@ nav{
 }
 
 
-
 /* =====================================================
                 RETURN LINK
 ===================================================== */
+
 
 .return-home{
 
     text-align:center;
 
     margin-top:4rem;
+
+    padding-bottom:3rem;
 
 }
 
@@ -996,6 +1270,8 @@ nav{
 
     text-decoration:none;
 
+    font-weight:600;
+
     transition:.3s;
 
 }
@@ -1006,16 +1282,38 @@ nav{
 
     color:var(--accent);
 
-}
+    transform:translateY(-2px);
 
+}
 
 /* =====================================================
                 POSTCARD CREATOR
 ===================================================== */
 
+
 .postcard-creator{
 
     padding:5rem 0;
+
+}
+
+
+.postcard-creator h2{
+
+    font-family:var(--heading-font);
+
+    font-size:2.2rem;
+
+    margin-bottom:.5rem;
+
+}
+
+
+.postcard-creator p{
+
+    color:#666;
+
+    max-width:600px;
 
 }
 
@@ -1034,6 +1332,7 @@ nav{
 }
 
 
+
 .postcard-style-picker h3{
 
     font-family:var(--heading-font);
@@ -1043,6 +1342,7 @@ nav{
     margin-bottom:3rem;
 
 }
+
 
 
 .postcard-style-picker button{
@@ -1061,7 +1361,7 @@ nav{
 
     border:2px solid var(--ink);
 
-    border-radius:6px;
+    border-radius:8px;
 
     cursor:pointer;
 
@@ -1071,7 +1371,9 @@ nav{
 
     box-shadow:8px 10px 0 rgba(0,0,0,.08);
 
-    transition:.35s;
+    transition:.35s ease;
+
+    overflow:hidden;
 
 }
 
@@ -1079,34 +1381,52 @@ nav{
 
 /* scrapbook postcard angles */
 
-.postcard-style-picker button:nth-child(2){
+.postcard-style-picker button:nth-child(1){
 
     transform:rotate(-3deg);
 
 }
 
 
-.postcard-style-picker button:nth-child(3){
+.postcard-style-picker button:nth-child(2){
 
     transform:rotate(2deg);
 
 }
 
 
-.postcard-style-picker button:nth-child(4){
+.postcard-style-picker button:nth-child(3){
 
     transform:rotate(-2deg);
 
 }
 
 
-.postcard-style-picker button:nth-child(5){
+.postcard-style-picker button:nth-child(4){
 
     transform:rotate(3deg);
 
 }
 
 
+
+/* selected postcard style */
+
+.postcard-style-picker button.selected{
+
+    transform:translateY(-12px) rotate(0deg) scale(1.05);
+
+    border:3px solid var(--accent);
+
+    box-shadow:
+        0 0 0 6px rgba(110,139,116,.15),
+        10px 12px 0 rgba(0,0,0,.12);
+
+}
+
+
+
+/* hover */
 
 .postcard-style-picker button:hover{
 
@@ -1137,7 +1457,6 @@ nav{
 }
 
 
-
 /* =====================================================
                 PHOTO SECTION
 ===================================================== */
@@ -1152,6 +1471,7 @@ nav{
 }
 
 
+
 .postcard-photo h3{
 
     font-family:var(--heading-font);
@@ -1161,6 +1481,7 @@ nav{
     margin-bottom:2rem;
 
 }
+
 
 
 .postcard-photo button{
@@ -1177,9 +1498,12 @@ nav{
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:.3s ease;
+
+    font-family:var(--body-font);
 
 }
+
 
 
 .postcard-photo button:hover{
@@ -1188,8 +1512,9 @@ nav{
 
     color:white;
 
-}
+    transform:translateY(-3px);
 
+}
 
 
 /* =====================================================
@@ -1204,6 +1529,7 @@ nav{
     margin:0 auto 7rem;
 
 }
+
 
 
 .postcard-details h3{
@@ -1255,6 +1581,21 @@ nav{
 
     font-size:1rem;
 
+    transition:.3s ease;
+
+}
+
+
+
+.postcard-details input:focus,
+.postcard-details textarea:focus{
+
+    outline:none;
+
+    border-color:var(--accent);
+
+    box-shadow:0 0 0 3px rgba(110,139,116,.15);
+
 }
 
 
@@ -1262,6 +1603,8 @@ nav{
 .postcard-details textarea{
 
     min-height:170px;
+
+    resize:vertical;
 
 }
 
@@ -1274,13 +1617,15 @@ nav{
 
 .postcard-preview{
 
+    width:100%;
+
     max-width:700px;
 
     min-height:420px;
 
     margin:auto;
 
-    padding:3rem;
+    padding:2rem;
 
     background:#fffdf8;
 
@@ -1302,9 +1647,9 @@ nav{
 
     box-shadow:10px 12px 0 rgba(0,0,0,.08);
 
+    overflow:hidden;
+
 }
-
-
 
 /* =====================================================
                 RETURN
@@ -1317,7 +1662,10 @@ nav{
 
     margin-top:5rem;
 
+    padding-bottom:3rem;
+
 }
+
 
 
 .postcard-creator .return-home a{
@@ -1326,14 +1674,22 @@ nav{
 
     color:var(--ink);
 
+    font-weight:600;
+
+    transition:.3s ease;
+
 }
+
 
 
 .postcard-creator .return-home a:hover{
 
     color:var(--accent);
 
+    transform:translateY(-2px);
+
 }
+
 
 /* =====================================================
                 PRIVACY SECTION
