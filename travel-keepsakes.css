@@ -253,19 +253,6 @@ nav{
 
 }
 
-.film-style-picker p{
-
-    text-align:center;
-
-    max-width:600px;
-
-    margin:auto auto 3rem;
-
-}
-
-
-
-
 
 .film-style-options{
 
@@ -281,11 +268,10 @@ nav{
 
 
 
-
-
 /* =====================================================
-                FILM STRIPS
+                FILM CARDS
 ===================================================== */
+
 
 .film-card{
 
@@ -295,73 +281,93 @@ nav{
 
     cursor:pointer;
 
-    width:170px;
-
-    transition:.35s;
+    width:180px;
 
     text-align:center;
 
-}
+    transition:.35s;
 
-
-
-
-
-.film-card:nth-child(1){
-
-    transform:rotate(-4deg);
+    position:relative;
 
 }
-
-.film-card:nth-child(2){
-
-    transform:rotate(2deg);
-
-}
-
-.film-card:nth-child(3){
-
-    transform:rotate(-2deg);
-
-}
-
-.film-card:nth-child(4){
-
-    transform:rotate(3deg);
-
-}
-
-.film-card:nth-child(5){
-
-    transform:rotate(-3deg);
-
-}
-
-
 
 
 
 .film-card:hover{
 
-    transform:translateY(-10px) scale(1.05);
+    transform:translateY(-12px) scale(1.05);
 
 }
 
 
 
+.film-card.selected{
+
+    transform:translateY(-8px) scale(1.08);
+
+}
+
+
+
+/* =====================================================
+                FILM PREVIEW
+===================================================== */
 
 
 .preview-film{
 
+    position:relative;
+
     background:#fffef8;
 
-    border:2px solid #2f2b28;
+    border:3px solid #2f2b28;
 
-    border-radius:10px;
+    border-radius:12px;
 
     padding:12px;
 
     box-shadow:8px 10px 0 rgba(0,0,0,.08);
+
+    overflow:hidden;
+
+}
+
+
+
+/* film holes */
+
+.preview-film::before,
+.preview-film::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    bottom:0;
+
+    width:10px;
+
+    background:
+
+    radial-gradient(circle,#2f2b28 3px,transparent 4px);
+
+    background-size:10px 35px;
+
+}
+
+
+.preview-film::before{
+
+    left:3px;
+
+}
+
+
+.preview-film::after{
+
+    right:3px;
 
 }
 
@@ -381,10 +387,192 @@ nav{
 
     margin-bottom:10px;
 
+    position:relative;
+
 }
 
 
 
+/* =====================================================
+            STYLE DOODLES
+===================================================== */
+
+
+/* Vintage */
+
+.vintage-preview{
+
+    background:#f6e6c9;
+
+}
+
+
+.vintage-preview::after{
+
+    content:"✦ ✈ ✦";
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:0;
+
+    right:0;
+
+    text-align:center;
+
+    font-size:18px;
+
+    color:#9b7748;
+
+}
+
+
+
+
+
+/* Passport */
+
+.passport-preview{
+
+    background:#e8efe8;
+
+}
+
+
+.passport-preview::after{
+
+    content:"✈  🇫🇷  ✈";
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:0;
+
+    right:0;
+
+    text-align:center;
+
+    font-size:15px;
+
+    color:#6e8b74;
+
+}
+
+
+
+
+
+/* Coastal */
+
+.coastal-preview{
+
+    background:#dcecf0;
+
+}
+
+
+.coastal-preview::after{
+
+    content:"☀︎ 〰︎ 🐚";
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:0;
+
+    right:0;
+
+    text-align:center;
+
+    font-size:18px;
+
+    color:#4d8490;
+
+}
+
+
+
+
+
+/* Scrapbook */
+
+.scrapbook-preview{
+
+    background:#f4eadc;
+
+}
+
+
+.scrapbook-preview::after{
+
+    content:"✂ ✿ ★";
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:0;
+
+    right:0;
+
+    text-align:center;
+
+    font-size:18px;
+
+    color:#a56b4f;
+
+}
+
+
+
+
+
+/* Classic */
+
+.classic-preview{
+
+    background:#222;
+
+}
+
+
+.classic-preview .preview-photo{
+
+    background:#444;
+
+}
+
+
+.classic-preview::after{
+
+    content:"CLASSIC";
+
+    position:absolute;
+
+    bottom:15px;
+
+    left:0;
+
+    right:0;
+
+    text-align:center;
+
+    font-size:12px;
+
+    letter-spacing:.15em;
+
+    color:white;
+
+}
+
+
+
+/* =====================================================
+                TEXT
+===================================================== */
 
 
 .preview-film span{
@@ -403,8 +591,6 @@ nav{
 
 
 
-
-
 .film-card h4{
 
     margin-top:1rem;
@@ -417,8 +603,6 @@ nav{
 
 
 
-
-
 .film-card p{
 
     font-size:.9rem;
@@ -428,7 +612,6 @@ nav{
     margin-top:.4rem;
 
 }
-
 /* =====================================================
                 PHOTO BOOTH EXPERIENCE
 ===================================================== */
