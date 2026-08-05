@@ -8,15 +8,14 @@
 
     <title>Travel Keepsakes | RaeRoutes</title>
 
-    <meta name="description" content="Create a travel keepsake with RaeRoutes. Capture your memories with a photo booth film strip or create a personalized postcard.">
+    <meta name="description"
+        content="Create a travel keepsake with RaeRoutes. Capture your memories with a photo booth film strip or create a personalized postcard.">
 
     <meta name="robots" content="noindex, nofollow">
 
     <link rel="stylesheet" href="travel-keepsakes.css">
 
-
 </head>
-
 
 <body>
 
@@ -28,7 +27,9 @@
 <nav class="keepsake-nav">
 
     <a href="index.html">
+
         ← Back to RaeRoutes
+
     </a>
 
 </nav>
@@ -36,543 +37,343 @@
 
 
 
-
 <!-- =====================================================
-                    HERO
+                        HERO
 ====================================================== -->
 
 <header class="keepsake-hero">
 
     <h1>
+
         ✈️ Travel Keepsakes
+
     </h1>
 
-
     <p>
+
         Create a little souvenir from your adventures.
         Capture your memories and turn them into something
         you can save and share.
-    </p>
 
+    </p>
 
     <p class="privacy-message">
+
         🔒 Your photos stay on your device and are never uploaded
         or stored by RaeRoutes.
-    </p>
 
+    </p>
 
 </header>
 
-
-
-
-
-
-
 <!-- =====================================================
-                KEEP SAKE CHOICE
+                PHOTO BOOTH ACCORDION
 ====================================================== -->
 
+<section class="creator-section">
 
-<section class="keepsake-choice">
+    <button class="creator-toggle" type="button">
 
+        <div class="creator-heading">
 
-    <h2>
-        How would you like to remember your adventure?
-    </h2>
-
-
-
-    <div class="choice-buttons">
-
-
-
-        <button class="choice-card active" id="photoBoothTab">
-
-            📸
-
-            <h3>
-                Travel Photo Booth
-            </h3>
+            <h2>📸 Travel Photo Booth</h2>
 
             <p>
-                Step inside, smile, and create a vintage travel film strip.
+                Step inside the booth and create a vintage-inspired travel film strip.
             </p>
 
-        </button>
+        </div>
+
+        <span class="toggle-icon">+</span>
+
+    </button>
 
 
 
+    <div class="creator-content">
+
+        <section class="photo-booth" id="photoBooth">
 
 
-        <button class="choice-card" id="postcardTab">
+            <!-- =====================================================
+                            FILM STYLE SELECTION
+            ====================================================== -->
 
-            💌
+            <div class="film-style-picker">
 
-            <h3>
-                Postcard Creator
-            </h3>
+                <h3>
+                    Choose Your Film Strip Style
+                </h3>
 
-            <p>
-                Turn your favorite memory into a postcard.
-            </p>
+                <div class="film-style-options">
 
-        </button>
+                    <button class="film-card film-style" data-style="vintage">
+
+                        <div class="preview-film vintage-preview">
+
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+
+                            <span>TRAVEL DIARY</span>
+
+                        </div>
+
+                        <h4>Vintage Traveler</h4>
+
+                        <p>
+                            Warm tones • Classic adventure feel
+                        </p>
+
+                    </button>
 
 
+
+                    <button class="film-card film-style" data-style="passport">
+
+                        <div class="preview-film passport-preview">
+
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+
+                            <span>PASSPORT</span>
+
+                        </div>
+
+                        <h4>Passport Memories</h4>
+
+                        <p>
+                            Stamps • Places • Little moments
+                        </p>
+
+                    </button>
+
+
+
+                    <button class="film-card film-style" data-style="coastal">
+
+                        <div class="preview-film coastal-preview">
+
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+
+                            <span>COASTAL</span>
+
+                        </div>
+
+                        <h4>Coastal Escape</h4>
+
+                        <p>
+                            Ocean colors • Dreamy getaway
+                        </p>
+
+                    </button>
+
+
+
+                    <button class="film-card film-style" data-style="scrapbook">
+
+                        <div class="preview-film scrapbook-preview">
+
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+
+                            <span>ADVENTURE</span>
+
+                        </div>
+
+                        <h4>Scrapbook Adventure</h4>
+
+                        <p>
+                            Travel journal • Handmade memories
+                        </p>
+
+                    </button>
+
+
+
+                    <button class="film-card film-style" data-style="classic">
+
+                        <div class="preview-film classic-preview">
+
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+                            <div class="preview-photo"></div>
+
+                            <span>CLASSIC FILM</span>
+
+                        </div>
+
+                        <h4>Classic Film</h4>
+
+                        <p>
+                            Minimal • Cinematic • Timeless
+                        </p>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                            PHOTO OPTIONS
+            ====================================================== -->
+
+            <div class="ready-screen">
+
+                <h3>
+                    Ready for your photos?
+                </h3>
+
+                <p>
+                    Take four photos with your camera or upload your own.
+                </p>
+
+                <button id="startBooth">
+                    📸 Start Photo Booth
+                </button>
+
+                <br><br>
+
+                <button id="uploadMode">
+                    📁 Upload Photos
+                </button>
+
+                <input
+                    type="file"
+                    id="photoUpload"
+                    accept="image/*"
+                    multiple
+                    hidden>
+
+                <button id="cameraMode">
+                    📷 Use Camera
+                </button>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                            CAMERA
+            ====================================================== -->
+
+            <div class="camera-area">
+
+                <h3>
+                    Photo Booth
+                </h3>
+
+                <div class="camera-preview">
+
+                    <video
+                        id="cameraPreview"
+                        autoplay
+                        playsinline>
+                    </video>
+
+                </div>
+
+                <div class="photo-status">
+
+                    Photo 0 of 4
+
+                </div>
+
+                <div class="countdown-display"></div>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                            DEVELOPING
+            ====================================================== -->
+
+            <div class="developing-screen">
+
+                <h3>
+                    🎞 Developing Your Memories...
+                </h3>
+
+                <p>
+                    Adding the finishing touches ✨
+                </p>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                            FINAL REVEAL
+            ====================================================== -->
+
+            <div class="film-reveal">
+
+                <h3>
+                    ✨ Your Travel Film Strip ✨
+                </h3>
+
+                <div class="film-strip-preview">
+
+                    <canvas id="filmCanvas"></canvas>
+
+                </div>
+
+                <button class="download-button">
+
+                    ⬇️ Download Keepsake
+
+                </button>
+
+                <button class="restart-button">
+
+                    🔄 Take Another
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                            SHARE
+            ====================================================== -->
+
+            <div class="share-keepsake">
+
+                <h3>
+                    Love your travel memory?
+                </h3>
+
+                <p>
+                    Share your creation and tag
+                    <strong>@RaeRoutes</strong> 💜
+                </p>
+
+            </div>
+
+
+
+            <div class="return-home">
+
+                <a href="index.html">
+
+                    ✈️ Return to RaeRoutes
+
+                </a>
+
+            </div>
+
+        </section>
 
     </div>
-
-
-</section>
-
-
-
-
-
-
-<!-- =====================================================
-                PHOTO BOOTH CREATOR
-====================================================== -->
-
-
-<section class="photo-booth" id="photoBooth">
-
-
-<h2>
-    📸 Travel Photo Booth
-</h2>
-
-
-<p>
-    Choose your film style, step inside the booth, and create your travel memory.
-</p>
-
-
-
-
-
-<!-- =====================================================
-                FILM STYLE SELECTION
-====================================================== -->
-
-
-<div class="film-style-picker">
-
-
-<h3>
-    Choose Your Film Strip Style
-</h3>
-
-
-
-<div class="film-style-options">
-
-
-
-<button class="film-card film-style" data-style="vintage">
-
-
-<div class="preview-film vintage-preview">
-
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-
-    <span>
-        TRAVEL DIARY
-    </span>
-
-</div>
-
-
-<h4>
-Vintage Traveler
-</h4>
-
-
-<p>
-Warm tones • Classic adventure feel
-</p>
-
-
-</button>
-
-
-
-
-
-<button class="film-card film-style" data-style="passport">
-
-
-<div class="preview-film passport-preview">
-
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-
-    <span>
-        PASSPORT
-    </span>
-
-</div>
-
-
-<h4>
-Passport Memories
-</h4>
-
-
-<p>
-Stamps • Places • Little moments
-</p>
-
-
-</button>
-
-
-
-
-
-<button class="film-card film-style" data-style="coastal">
-
-
-<div class="preview-film coastal-preview">
-
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-
-    <span>
-        COASTAL
-    </span>
-
-</div>
-
-
-<h4>
-Coastal Escape
-</h4>
-
-
-<p>
-Ocean colors • Dreamy getaway
-</p>
-
-
-</button>
-
-
-
-
-
-<button class="film-card film-style" data-style="scrapbook">
-
-
-<div class="preview-film scrapbook-preview">
-
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-
-    <span>
-        ADVENTURE
-    </span>
-
-</div>
-
-
-<h4>
-Scrapbook Adventure
-</h4>
-
-
-<p>
-Travel journal • Handmade memories
-</p>
-
-
-</button>
-
-
-
-
-
-<button class="film-card film-style" data-style="classic">
-
-
-<div class="preview-film classic-preview">
-
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-    <div class="preview-photo"></div>
-
-    <span>
-        CLASSIC FILM
-    </span>
-
-</div>
-
-
-<h4>
-Classic Film
-</h4>
-
-
-<p>
-Minimal • Cinematic • Timeless
-</p>
-
-
-</button>
-
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<!-- =====================================================
-                PHOTO OPTIONS
-====================================================== -->
-
-
-<div class="ready-screen">
-
-
-<h3>
-    Ready for your photos?
-</h3>
-
-
-<p>
-    Take four photos with your camera or upload your own.
-</p>
-
-
-
-<button id="startBooth">
-
-    📸 Start Photo Booth
-
-</button>
-
-
-<br><br>
-
-
-<button id="uploadMode">
-
-    📁 Upload Photos
-
-</button>
-
-
-<input 
-    type="file"
-    id="photoUpload"
-    accept="image/*"
-    multiple
-    hidden
->
-
-
-
-<button id="cameraMode">
-
-    📷 Use Camera
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- =====================================================
-                CAMERA AREA
-====================================================== -->
-
-
-<div class="camera-area">
-
-
-<h3>
-    Photo Booth
-</h3>
-
-
-
-<div class="camera-preview">
-
-
-<video 
-    id="cameraPreview"
-    autoplay
-    playsinline>
-</video>
-
-
-
-</div>
-
-
-
-
-<div class="photo-status">
-
-    Photo 0 of 4
-
-</div>
-
-
-
-
-<div class="countdown-display">
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- =====================================================
-                DEVELOPING
-====================================================== -->
-
-
-<div class="developing-screen">
-
-
-<h3>
-    🎞 Developing Your Memories...
-</h3>
-
-
-<p>
-    Adding the finishing touches ✨
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- =====================================================
-                FINAL REVEAL
-====================================================== -->
-
-
-<div class="film-reveal">
-
-
-<h3>
-    ✨ Your Travel Film Strip ✨
-</h3>
-
-
-
-<div class="film-strip-preview">
-
-
-<canvas id="filmCanvas"></canvas>
-
-
-</div>
-
-
-
-
-
-<button class="download-button">
-
-⬇️ Download Keepsake
-
-</button>
-
-
-
-
-
-<button class="restart-button">
-
-🔄 Take Another
-
-</button>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- =====================================================
-                SHARE
-====================================================== -->
-
-
-<div class="share-keepsake">
-
-
-<h3>
-    Love your travel memory?
-</h3>
-
-
-<p>
-    Share your creation and tag
-    <strong>@RaeRoutes</strong>
-    💜
-</p>
-
-
-</div>
-
-
-
-
-
-
-
-<div class="return-home">
-
-
-<a href="index.html">
-
-✈️ Return to RaeRoutes
-
-</a>
-
-
-</div>
-
-
 
 </section>
 
@@ -581,221 +382,181 @@ Minimal • Cinematic • Timeless
                 POSTCARD CREATOR
 ====================================================== -->
 
+<section class="creator-section">
 
-<section class="postcard-creator" id="postcard">
+    <button class="creator-toggle" type="button">
 
+        <div class="creator-heading">
 
+            <h2>💌 Postcard Creator</h2>
 
-<h2>
-    💌 Postcard Creator
-</h2>
+            <p>
+                Turn your favorite travel memory into a postcard worth keeping.
+            </p>
 
+        </div>
 
-<p>
-    Turn a favorite memory into a postcard worth keeping.
-</p>
+        <span class="toggle-icon">+</span>
 
+    </button>
 
 
 
+    <div class="creator-content">
 
+        <section class="postcard-creator" id="postcard">
 
+            <!-- =====================================================
+                            STYLE PICKER
+            ====================================================== -->
 
-<!-- STYLE PICKER -->
+            <div class="postcard-style-picker">
 
+                <h3>
+                    Choose Your Style
+                </h3>
 
-<div class="postcard-style-picker">
+                <button>
+                    ✈️ Vintage Air Mail
+                </button>
 
+                <button>
+                    🌊 Coastal Escape
+                </button>
 
-<h3>
-    Choose Your Style
-</h3>
+                <button>
+                    📖 Scrapbook Memory
+                </button>
 
+                <button>
+                    🤍 Classic Minimal
+                </button>
 
+            </div>
 
-<button>
 
-✈️ Vintage Air Mail
 
-</button>
+            <!-- =====================================================
+                            PHOTO
+            ====================================================== -->
 
+            <div class="postcard-photo">
 
+                <h3>
+                    Add Your Photo
+                </h3>
 
+                <button id="postcardUploadButton">
+                    📷 Upload Photo
+                </button>
 
-<button>
+                <button id="postcardCameraButton">
+                    📸 Take Photo
+                </button>
 
-🌊 Coastal Escape
+                <input
+                    type="file"
+                    id="postcardPhotoUpload"
+                    accept="image/*"
+                    hidden>
 
-</button>
+                <video
+                    id="postcardCameraPreview"
+                    autoplay
+                    playsinline
+                    style="display:none;">
+                </video>
 
+            </div>
 
 
 
-<button>
+            <!-- =====================================================
+                            DETAILS
+            ====================================================== -->
 
-📖 Scrapbook Memory
+            <div class="postcard-details">
 
-</button>
+                <h3>
+                    Customize Your Postcard
+                </h3>
 
+                <label>
 
+                    Destination
 
+                    <input
+                        type="text"
+                        placeholder="Where was your adventure?">
 
-<button>
+                </label>
 
-🤍 Classic Minimal
 
-</button>
 
+                <label>
 
+                    Date
 
-</div>
+                    <input
+                        type="text"
+                        placeholder="Month / Year">
 
+                </label>
 
 
 
+                <label>
 
+                    Message
 
+                    <textarea
+                        placeholder="Write your postcard message..."></textarea>
 
-<div class="postcard-photo">
+                </label>
 
 
-<h3>
-    Add Your Photo
-</h3>
 
+                <label>
 
-<button id="postcardUploadButton">
+                    From
 
-📷 Upload Photo
+                    <input
+                        type="text"
+                        placeholder="Your name">
 
-</button>
+                </label>
 
+            </div>
 
 
-<button id="postcardCameraButton">
 
-📸 Take Photo
+            <!-- =====================================================
+                            PREVIEW
+            ====================================================== -->
 
-</button>
+            <div class="postcard-preview">
 
+                Your postcard preview will appear here.
 
+            </div>
 
-<input 
-    type="file" 
-    id="postcardPhotoUpload" 
-    accept="image/*"
-    hidden
->
 
 
+            <div class="return-home">
 
-<video 
-    id="postcardCameraPreview"
-    autoplay
-    playsinline
-    style="display:none;">
-</video>
+                <a href="index.html">
 
+                    ✈️ Return to RaeRoutes
 
+                </a>
 
-</div>
-<!-- DETAILS -->
+            </div>
 
+        </section>
 
-<div class="postcard-details">
-
-
-<h3>
-    Customize Your Postcard
-</h3>
-
-
-
-<label>
-
-Destination
-
-<input type="text" placeholder="Where was your adventure?">
-
-</label>
-
-
-
-
-<label>
-
-Date
-
-<input type="text" placeholder="Month / Year">
-
-</label>
-
-
-
-
-<label>
-
-Message
-
-<textarea placeholder="Write your postcard message..."></textarea>
-
-</label>
-
-
-
-
-<label>
-
-From
-
-<input type="text" placeholder="Your name">
-
-</label>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- POSTCARD PREVIEW -->
-
-
-<div class="postcard-preview">
-
-    Your postcard preview will appear here.
-
-</div>
-
-
-
-
-
-
-<div class="return-home">
-
-
-<a href="index.html">
-
-    ✈️ Return to RaeRoutes
-
-</a>
-
-
-</div>
-
-
+    </div>
 
 </section>
-
-
-
-
 
 
 
@@ -805,55 +566,29 @@ From
                 PRIVACY SECTION
 ====================================================== -->
 
-
 <section class="privacy-section">
 
+    <h2>
+        🔒 Your Privacy Matters
+    </h2>
 
-<h2>
-    🔒 Your Privacy Matters
-</h2>
+    <p>
+        Your memories belong to you.
+    </p>
 
+    <ul>
 
+        <li>No photos uploaded to RaeRoutes</li>
 
-<p>
-    Your memories belong to you.
-</p>
+        <li>No photo storage</li>
 
+        <li>No account required</li>
 
+        <li>Created directly on your device</li>
 
-<ul>
-
-
-<li>
-    No photos uploaded to RaeRoutes
-</li>
-
-
-<li>
-    No photo storage
-</li>
-
-
-<li>
-    No account required
-</li>
-
-
-<li>
-    Created directly on your device
-</li>
-
-
-
-</ul>
-
-
+    </ul>
 
 </section>
-
-
-
-
 
 
 
@@ -863,118 +598,84 @@ From
                     FAQ
 ====================================================== -->
 
-
 <section class="faq-section">
 
+    <h2>
+        Frequently Asked Questions
+    </h2>
 
-<h2>
-    Frequently Asked Questions
-</h2>
 
 
+    <div class="faq-item">
 
+        <h3>
+            Are my photos saved?
+        </h3>
 
+        <p>
+            No. Your photos stay on your device and are never stored by RaeRoutes.
+        </p>
 
-<div class="faq-item">
+    </div>
 
 
-<h3>
-    Are my photos saved?
-</h3>
 
+    <div class="faq-item">
 
-<p>
-    No. Your photos stay on your device and are never stored by RaeRoutes.
-</p>
+        <h3>
+            Does RaeRoutes see my photos?
+        </h3>
 
+        <p>
+            No. Your memories remain private.
+        </p>
 
-</div>
+    </div>
 
 
 
+    <div class="faq-item">
 
+        <h3>
+            Do I need an account?
+        </h3>
 
+        <p>
+            Nope! Create your keepsake and download it when you're finished.
+        </p>
 
-<div class="faq-item">
+    </div>
 
 
-<h3>
-    Does RaeRoutes see my photos?
-</h3>
 
+    <div class="faq-item">
 
-<p>
-    No. Your memories remain private.
-</p>
+        <h3>
+            Can I use this on my phone?
+        </h3>
 
+        <p>
+            Yes! The creator is designed with mobile users in mind.
+        </p>
 
-</div>
+    </div>
 
 
 
+    <div class="faq-item">
 
+        <h3>
+            Will more keepsakes be added?
+        </h3>
 
+        <p>
+            More travel creations are coming soon.
+        </p>
 
-<div class="faq-item">
-
-
-<h3>
-    Do I need an account?
-</h3>
-
-
-<p>
-    Nope! Create your keepsake and download it when you're finished.
-</p>
-
-
-</div>
-
-
-
-
-
-
-<div class="faq-item">
-
-
-<h3>
-    Can I use this on my phone?
-</h3>
-
-
-<p>
-    Yes! The creator is designed with mobile users in mind.
-</p>
-
-
-</div>
-
-
-
-
-
-
-<div class="faq-item">
-
-
-<h3>
-    Will more keepsakes be added?
-</h3>
-
-
-<p>
-    More travel creations are coming soon.
-</p>
-
-
-</div>
-
-
-
-
+    </div>
 
 </section>
+
 
 
 
@@ -983,29 +684,19 @@ From
                 FINAL RETURN
 ====================================================== -->
 
-
 <section class="return-section">
 
+    <h2>
+        Ready for your next adventure?
+    </h2>
 
-<h2>
-    Ready for your next adventure?
-</h2>
+    <a href="index.html">
 
+        ✈️ Back to RaeRoutes
 
-
-<a href="index.html">
-
-    ✈️ Back to RaeRoutes
-
-</a>
-
-
+    </a>
 
 </section>
-
-
-
-
 
 
 
@@ -1015,24 +706,17 @@ From
                     FOOTER
 ====================================================== -->
 
-
 <footer>
 
+    <p>
+        ✈️ RaeRoutes
+    </p>
 
-<p>
-    ✈️ RaeRoutes
-</p>
-
-
-<p>
-    Dream. Explore. Remember.
-</p>
-
-
+    <p>
+        Dream. Explore. Remember.
+    </p>
 
 </footer>
-
-
 
 <script src="travel-keepsakes.js"></script>
 
