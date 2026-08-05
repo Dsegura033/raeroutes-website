@@ -13,62 +13,59 @@ document.addEventListener("DOMContentLoaded", () => {
 ====================================================== */
 
 
+/* =====================================================
+        CREATOR ACCORDIONS
+====================================================== */
+
 const creatorToggles = document.querySelectorAll(".creator-toggle");
 
 
-creatorToggles.forEach(toggle => {
-
+creatorToggles.forEach((toggle) => {
 
     const content = toggle.nextElementSibling;
-
     const icon = toggle.querySelector(".toggle-icon");
 
 
+    if (!content || !icon) return;
 
-    // Start closed
 
     content.style.maxHeight = "0px";
-
     content.style.overflow = "hidden";
-
     content.style.transition = "max-height .5s ease";
-
 
 
     toggle.addEventListener("click", () => {
 
 
-
         const isOpen = toggle.classList.contains("active");
 
 
+        // Close all creator sections
 
-        // Close all sections
-
-        creatorToggles.forEach(otherToggle => {
-
+        creatorToggles.forEach((otherToggle) => {
 
             const otherContent = otherToggle.nextElementSibling;
-
             const otherIcon = otherToggle.querySelector(".toggle-icon");
 
 
             otherToggle.classList.remove("active");
 
 
-            otherIcon.textContent = "+";
+            if(otherIcon){
+                otherIcon.textContent = "+";
+            }
 
 
-            otherContent.style.maxHeight = "0px";
+            if(otherContent){
+                otherContent.style.maxHeight = "0px";
+            }
 
 
         });
 
 
 
-
-
-        // Open clicked section
+        // Open selected creator section
 
         if(!isOpen){
 
@@ -85,19 +82,10 @@ creatorToggles.forEach(toggle => {
         }
 
 
-
     });
 
 
-
 });
-
-
-
-
-
-
-
 
 /* =====================================================
         GLOBAL VARIABLES
