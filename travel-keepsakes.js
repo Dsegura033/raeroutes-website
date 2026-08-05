@@ -66,7 +66,6 @@ creatorToggles.forEach(toggle => {
 
 let selectedFilmStyle = null;
 
-let selectedPostcardStyle = null;
 
 
 let capturedPhotos = [];
@@ -1331,7 +1330,6 @@ if(restartButton){
 
 
 
-
         if(filmReveal){
 
 
@@ -1342,6 +1340,7 @@ if(restartButton){
 
 
 
+
         if(developingScreen){
 
 
@@ -1349,7 +1348,6 @@ if(restartButton){
 
 
         }
-
 
 
 
@@ -1365,7 +1363,6 @@ if(restartButton){
 
 
 
-
         if(photoStatus){
 
 
@@ -1376,20 +1373,20 @@ if(restartButton){
 
 
 
-        countdown.innerHTML="";
 
+        if(countdownDisplay){
+
+
+            countdownDisplay.innerHTML="";
+
+
+        }
 
 
     });
 
 
-
 }
-
-
-
-
-
 
 
 
