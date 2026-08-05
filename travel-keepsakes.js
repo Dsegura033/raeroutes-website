@@ -1975,8 +1975,9 @@ function updatePostcardPreview(){
 
         </div>
 
-
     `;
 
-
 }
+
+// Close DOMContentLoaded
+});
