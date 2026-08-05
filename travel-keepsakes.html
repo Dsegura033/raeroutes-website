@@ -131,8 +131,6 @@
 
 
 
-
-
 <!-- =====================================================
                 PHOTO BOOTH CREATOR
 ====================================================== -->
@@ -141,22 +139,23 @@
 <section class="photo-booth" id="photoBooth">
 
 
-
 <h2>
     📸 Travel Photo Booth
 </h2>
 
 
 <p>
-    Choose your film style, then step inside the booth!
+    Choose your film style, step inside the booth, and create your travel memory.
 </p>
 
 
 
 
 
+<!-- =====================================================
+                FILM STYLE SELECTION
+====================================================== -->
 
-<!-- FILM STYLE SELECTION -->
 
 <div class="film-style-picker">
 
@@ -171,8 +170,6 @@
 
 
 
-<!-- VINTAGE TRAVELER -->
-
 <button class="film-card film-style" data-style="vintage">
 
 
@@ -183,7 +180,7 @@
     <div class="preview-photo"></div>
 
     <span>
-        AUG 2026
+        TRAVEL DIARY
     </span>
 
 </div>
@@ -195,7 +192,7 @@ Vintage Traveler
 
 
 <p>
-Warm film tones • Classic travel journal
+Warm tones • Classic adventure feel
 </p>
 
 
@@ -205,10 +202,6 @@ Warm film tones • Classic travel journal
 
 
 
-
-
-<!-- PASSPORT -->
-
 <button class="film-card film-style" data-style="passport">
 
 
@@ -217,7 +210,6 @@ Warm film tones • Classic travel journal
     <div class="preview-photo"></div>
     <div class="preview-photo"></div>
     <div class="preview-photo"></div>
-
 
     <span>
         PASSPORT
@@ -232,7 +224,7 @@ Passport Memories
 
 
 <p>
-Travel stamps • Adventure archive
+Stamps • Places • Little moments
 </p>
 
 
@@ -241,10 +233,6 @@ Travel stamps • Adventure archive
 
 
 
-
-
-
-<!-- COASTAL -->
 
 <button class="film-card film-style" data-style="coastal">
 
@@ -255,11 +243,9 @@ Travel stamps • Adventure archive
     <div class="preview-photo"></div>
     <div class="preview-photo"></div>
 
-
     <span>
         COASTAL
     </span>
-
 
 </div>
 
@@ -270,7 +256,7 @@ Coastal Escape
 
 
 <p>
-Ocean tones • Dreamy getaway
+Ocean colors • Dreamy getaway
 </p>
 
 
@@ -280,25 +266,18 @@ Ocean tones • Dreamy getaway
 
 
 
-
-
-<!-- SCRAPBOOK -->
-
 <button class="film-card film-style" data-style="scrapbook">
 
 
 <div class="preview-film scrapbook-preview">
 
-
     <div class="preview-photo"></div>
     <div class="preview-photo"></div>
     <div class="preview-photo"></div>
-
 
     <span>
         ADVENTURE
     </span>
-
 
 </div>
 
@@ -309,7 +288,7 @@ Scrapbook Adventure
 
 
 <p>
-Handmade memories • Travel diary
+Travel journal • Handmade memories
 </p>
 
 
@@ -319,25 +298,18 @@ Handmade memories • Travel diary
 
 
 
-
-
-<!-- CLASSIC -->
-
 <button class="film-card film-style" data-style="classic">
 
 
 <div class="preview-film classic-preview">
 
-
     <div class="preview-photo"></div>
     <div class="preview-photo"></div>
     <div class="preview-photo"></div>
-
 
     <span>
         CLASSIC FILM
     </span>
-
 
 </div>
 
@@ -358,31 +330,63 @@ Minimal • Cinematic • Timeless
 
 </div>
 
-
 </div>
 
 
 
-<!-- READY BUTTON -->
+
+
+
+
+<!-- =====================================================
+                PHOTO OPTIONS
+====================================================== -->
 
 
 <div class="ready-screen">
 
 
 <h3>
-    Your film strip is ready!
+    Ready for your photos?
 </h3>
 
 
 <p>
-    When you're ready, step inside the booth.
+    Take four photos with your camera or upload your own.
 </p>
 
 
 
 <button id="startBooth">
 
-    I'm Ready! 📸
+    📸 Start Photo Booth
+
+</button>
+
+
+<br><br>
+
+
+<button id="uploadMode">
+
+    📁 Upload Photos
+
+</button>
+
+
+<input 
+    type="file"
+    id="photoUpload"
+    accept="image/*"
+    multiple
+    hidden
+>
+
+
+
+<button id="cameraMode">
+
+    📷 Use Camera
 
 </button>
 
@@ -395,8 +399,9 @@ Minimal • Cinematic • Timeless
 
 
 
-
-<!-- CAMERA AREA -->
+<!-- =====================================================
+                CAMERA AREA
+====================================================== -->
 
 
 <div class="camera-area">
@@ -410,7 +415,14 @@ Minimal • Cinematic • Timeless
 
 <div class="camera-preview">
 
-    Camera Preview
+
+<video 
+    id="cameraPreview"
+    autoplay
+    playsinline>
+</video>
+
+
 
 </div>
 
@@ -428,8 +440,6 @@ Minimal • Cinematic • Timeless
 
 <div class="countdown-display">
 
-    3
-
 </div>
 
 
@@ -442,8 +452,9 @@ Minimal • Cinematic • Timeless
 
 
 
-
-<!-- DEVELOPING SCREEN -->
+<!-- =====================================================
+                DEVELOPING
+====================================================== -->
 
 
 <div class="developing-screen">
@@ -459,7 +470,6 @@ Minimal • Cinematic • Timeless
 </p>
 
 
-
 </div>
 
 
@@ -469,7 +479,9 @@ Minimal • Cinematic • Timeless
 
 
 
-<!-- FINAL FILM STRIP REVEAL -->
+<!-- =====================================================
+                FINAL REVEAL
+====================================================== -->
 
 
 <div class="film-reveal">
@@ -481,28 +493,31 @@ Minimal • Cinematic • Timeless
 
 
 
-
 <div class="film-strip-preview">
 
-    Your completed film strip will appear here.
+
+<canvas id="filmCanvas"></canvas>
+
 
 </div>
+
 
 
 
 
 <button class="download-button">
 
-    ⬇️ Download Keepsake
+⬇️ Download Keepsake
 
 </button>
 
 
 
 
+
 <button class="restart-button">
 
-    🔄 Take Another
+🔄 Take Another
 
 </button>
 
@@ -517,20 +532,17 @@ Minimal • Cinematic • Timeless
 
 
 
-<!-- SHARE SECTION -->
+<!-- =====================================================
+                SHARE
+====================================================== -->
 
 
 <div class="share-keepsake">
 
 
 <h3>
-    Love your travel memories?
+    Love your travel memory?
 </h3>
-
-
-<p>
-    We'd love to see your adventure!
-</p>
 
 
 <p>
@@ -546,7 +558,6 @@ Minimal • Cinematic • Timeless
 
 
 
-<!-- RETURN BUTTON -->
 
 
 <div class="return-home">
@@ -554,7 +565,7 @@ Minimal • Cinematic • Timeless
 
 <a href="index.html">
 
-    ✈️ Return to RaeRoutes
+✈️ Return to RaeRoutes
 
 </a>
 
@@ -563,15 +574,7 @@ Minimal • Cinematic • Timeless
 
 
 
-
 </section>
-
-
-
-
-
-
-
 
 
 <!-- =====================================================
@@ -653,9 +656,6 @@ Minimal • Cinematic • Timeless
 
 
 
-<!-- PHOTO -->
-
-
 <div class="postcard-photo">
 
 
@@ -664,7 +664,7 @@ Minimal • Cinematic • Timeless
 </h3>
 
 
-<button>
+<button id="postcardUploadButton">
 
 📷 Upload Photo
 
@@ -672,7 +672,7 @@ Minimal • Cinematic • Timeless
 
 
 
-<button>
+<button id="postcardCameraButton">
 
 📸 Take Photo
 
@@ -680,14 +680,25 @@ Minimal • Cinematic • Timeless
 
 
 
+<input 
+    type="file" 
+    id="postcardPhotoUpload" 
+    accept="image/*"
+    hidden
+>
+
+
+
+<video 
+    id="postcardCameraPreview"
+    autoplay
+    playsinline
+    style="display:none;">
+</video>
+
+
+
 </div>
-
-
-
-
-
-
-
 <!-- DETAILS -->
 
 
