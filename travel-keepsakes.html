@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Travel Keepsakes | RaeRoutes</title>
+
+    <meta name="description" content="Create a travel keepsake with RaeRoutes. Capture your memories with a photo booth film strip or create a personalized postcard.">
+
+    <meta name="robots" content="noindex, nofollow">
+
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+                    BACK TO RAEROUTES
+====================================================== -->
+
+<nav class="keepsake-nav">
+
+    <a href="index.html">
+        ← Back to RaeRoutes
+    </a>
+
+</nav>
+
+
+
+
+
+<!-- =====================================================
+                    HERO
+====================================================== -->
+
+<header class="keepsake-hero">
+
+    <h1>
+        ✈️ Travel Keepsakes
+    </h1>
+
+
+    <p>
+        Create a little souvenir from your adventures.
+        Capture your memories and turn them into something
+        you can save and share.
+    </p>
+
+
+    <p class="privacy-message">
+        🔒 Your photos stay on your device and are never uploaded
+        or stored by RaeRoutes.
+    </p>
+
+
+</header>
+
+
+
+
+
+
+
+<!-- =====================================================
+                KEEP SAKE CHOICE
+====================================================== -->
+
+
+<section class="keepsake-choice">
+
+
+    <h2>
+        How would you like to remember your adventure?
+    </h2>
+
+
+
+    <div class="choice-buttons">
+
+
+
+        <button class="choice-card active" id="photoBoothTab">
+
+            📸
+
+            <h3>
+                Travel Photo Booth
+            </h3>
+
+            <p>
+                Step inside, smile, and create a vintage travel film strip.
+            </p>
+
+        </button>
+
+
+
+
+
+        <button class="choice-card" id="postcardTab">
+
+            💌
+
+            <h3>
+                Postcard Creator
+            </h3>
+
+            <p>
+                Turn your favorite memory into a postcard.
+            </p>
+
+        </button>
+
+
+
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- =====================================================
+                PHOTO BOOTH CREATOR
+====================================================== -->
+
+
+<section class="photo-booth" id="photoBooth">
+
+
+
+<h2>
+    📸 Travel Photo Booth
+</h2>
+
+
+<p>
+    Choose your film style, then step inside the booth!
+</p>
+
+
+
+
+
+
+<!-- FILM STYLE SELECTION -->
+
+
+<div class="film-style-picker">
+
+
+<h3>
+    Choose Your Film Strip Style
+</h3>
+
+
+
+<button class="film-style">
+
+    🎞 Vintage Traveler
+
+</button>
+
+
+
+<button class="film-style">
+
+    🛂 Passport Memories
+
+</button>
+
+
+
+<button class="film-style">
+
+    🌊 Coastal Escape
+
+</button>
+
+
+
+<button class="film-style">
+
+    📖 Scrapbook Adventure
+
+</button>
+
+
+
+<button class="film-style">
+
+    🖤 Classic Film
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- READY BUTTON -->
+
+
+<div class="ready-screen">
+
+
+<h3>
+    Your film strip is ready!
+</h3>
+
+
+<p>
+    When you're ready, step inside the booth.
+</p>
+
+
+
+<button id="startBooth">
+
+    I'm Ready! 📸
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- CAMERA AREA -->
+
+
+<div class="camera-area">
+
+
+<h3>
+    Photo Booth
+</h3>
+
+
+
+<div class="camera-preview">
+
+    Camera Preview
+
+</div>
+
+
+
+
+<div class="photo-status">
+
+    Photo 0 of 4
+
+</div>
+
+
+
+
+<div class="countdown-display">
+
+    3
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- DEVELOPING SCREEN -->
+
+
+<div class="developing-screen">
+
+
+<h3>
+    🎞 Developing Your Memories...
+</h3>
+
+
+<p>
+    Adding the finishing touches ✨
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- FINAL FILM STRIP REVEAL -->
+
+
+<div class="film-reveal">
+
+
+<h3>
+    ✨ Your Travel Film Strip ✨
+</h3>
+
+
+
+
+<div class="film-strip-preview">
+
+    Your completed film strip will appear here.
+
+</div>
+
+
+
+
+<button class="download-button">
+
+    ⬇️ Download Keepsake
+
+</button>
+
+
+
+
+<button class="restart-button">
+
+    🔄 Take Another
+
+</button>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- SHARE SECTION -->
+
+
+<div class="share-keepsake">
+
+
+<h3>
+    Love your travel memories?
+</h3>
+
+
+<p>
+    We'd love to see your adventure!
+</p>
+
+
+<p>
+    Share your creation and tag
+    <strong>@RaeRoutes</strong>
+    💜
+</p>
+
+
+</div>
+
+
+
+
+
+<!-- RETURN BUTTON -->
+
+
+<div class="return-home">
+
+
+<a href="index.html">
+
+    ✈️ Return to RaeRoutes
+
+</a>
+
+
+</div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+                POSTCARD CREATOR
+====================================================== -->
+
+
+<section class="postcard-creator" id="postcard">
+
+
+
+<h2>
+    💌 Postcard Creator
+</h2>
+
+
+<p>
+    Turn a favorite memory into a postcard worth keeping.
+</p>
+
+
+
+
+
+
+
+<!-- STYLE PICKER -->
+
+
+<div class="postcard-style-picker">
+
+
+<h3>
+    Choose Your Style
+</h3>
+
+
+
+<button>
+
+✈️ Vintage Air Mail
+
+</button>
+
+
+
+
+<button>
+
+🌊 Coastal Escape
+
+</button>
+
+
+
+
+<button>
+
+📖 Scrapbook Memory
+
+</button>
+
+
+
+
+<button>
+
+🤍 Classic Minimal
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- PHOTO -->
+
+
+<div class="postcard-photo">
+
+
+<h3>
+    Add Your Photo
+</h3>
+
+
+<button>
+
+📷 Upload Photo
+
+</button>
+
+
+
+<button>
+
+📸 Take Photo
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- DETAILS -->
+
+
+<div class="postcard-details">
+
+
+<h3>
+    Customize Your Postcard
+</h3>
+
+
+
+<label>
+
+Destination
+
+<input type="text" placeholder="Where was your adventure?">
+
+</label>
+
+
+
+
+<label>
+
+Date
+
+<input type="text" placeholder="Month / Year">
+
+</label>
+
+
+
+
+<label>
+
+Message
+
+<textarea placeholder="Write your postcard message..."></textarea>
+
+</label>
+
+
+
+
+<label>
+
+From
+
+<input type="text" placeholder="Your name">
+
+</label>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- POSTCARD PREVIEW -->
+
+
+<div class="postcard-preview">
+
+    Your postcard preview will appear here.
+
+</div>
+
+
+
+
+
+
+<div class="return-home">
+
+
+<a href="index.html">
+
+    ✈️ Return to RaeRoutes
+
+</a>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+                PRIVACY SECTION
+====================================================== -->
+
+
+<section class="privacy-section">
+
+
+<h2>
+    🔒 Your Privacy Matters
+</h2>
+
+
+
+<p>
+    Your memories belong to you.
+</p>
+
+
+
+<ul>
+
+
+<li>
+    No photos uploaded to RaeRoutes
+</li>
+
+
+<li>
+    No photo storage
+</li>
+
+
+<li>
+    No account required
+</li>
+
+
+<li>
+    Created directly on your device
+</li>
+
+
+
+</ul>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+                    FAQ
+====================================================== -->
+
+
+<section class="faq-section">
+
+
+<h2>
+    Frequently Asked Questions
+</h2>
+
+
+
+
+
+<div class="faq-item">
+
+
+<h3>
+    Are my photos saved?
+</h3>
+
+
+<p>
+    No. Your photos stay on your device and are never stored by RaeRoutes.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="faq-item">
+
+
+<h3>
+    Does RaeRoutes see my photos?
+</h3>
+
+
+<p>
+    No. Your memories remain private.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="faq-item">
+
+
+<h3>
+    Do I need an account?
+</h3>
+
+
+<p>
+    Nope! Create your keepsake and download it when you're finished.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="faq-item">
+
+
+<h3>
+    Can I use this on my phone?
+</h3>
+
+
+<p>
+    Yes! The creator is designed with mobile users in mind.
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="faq-item">
+
+
+<h3>
+    Will more keepsakes be added?
+</h3>
+
+
+<p>
+    More travel creations are coming soon.
+</p>
+
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+<!-- =====================================================
+                FINAL RETURN
+====================================================== -->
+
+
+<section class="return-section">
+
+
+<h2>
+    Ready for your next adventure?
+</h2>
+
+
+
+<a href="index.html">
+
+    ✈️ Back to RaeRoutes
+
+</a>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+                    FOOTER
+====================================================== -->
+
+
+<footer>
+
+
+<p>
+    ✈️ RaeRoutes
+</p>
+
+
+<p>
+    Dream. Explore. Remember.
+</p>
+
+
+
+</footer>
+
+
+
+
+
+</body>
+
+</html>
