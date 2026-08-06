@@ -67,162 +67,128 @@
 </header>
 
 <!-- =====================================================
-                PHOTO BOOTH ACCORDION
-====================================================== -->
-
-<section class="creator-section">
-
-    <button class="creator-toggle" type="button">
-
-        <div class="creator-heading">
-
-            <h2>📸 Travel Photo Booth</h2>
-
-            <p>
-                Step inside the booth and create a vintage-inspired travel film strip.
-            </p>
-
-        </div>
-
-        <span class="toggle-icon">+</span>
-
-    </button>
-
-
-
-    <div class="creator-content">
-
-        <section class="photo-booth" id="photoBooth">
-
-
-          <!-- =====================================================
                     FILM STYLE SELECTION
 ====================================================== -->
 
 <div class="film-style-picker">
 
-    <h3>
-        Choose Your Film Strip Style
-    </h3>
+    <h3>Choose Your Film Strip Style</h3>
 
+    <p>
+        Browse through the RaeRoutes collections and choose the keepsake
+        style you'd like to create.
+    </p>
 
     <div class="film-style-options">
 
+        <!-- Previous -->
 
-        <button class="film-arrow film-arrow-left" type="button">
-            ←
+        <button
+            class="film-arrow film-arrow-left"
+            type="button"
+            aria-label="Previous Style">
+
+            &#10094;
+
         </button>
 
 
+        <!-- Film Preview -->
 
         <div class="film-preview-box">
 
+            <div
+                class="film-card selected"
+                id="filmCard">
 
-            <button class="film-card film-style selected" data-style="vintage">
+                <div class="preview-film">
 
+                    <img
+                        id="filmOverlay"
+                        class="film-overlay"
+                        src="assets/overlay/adventure.svg"
+                        alt="Adventure Film Style">
 
-                <div class="preview-film vintage-preview">
-
-
-                    <div class="preview-photo">
-
-                        <!-- SVG doodle goes here -->
-
-                    </div>
-
-
-                    <div class="preview-photo">
-
-                        <!-- SVG doodle goes here -->
-
-                    </div>
-
-
-                    <div class="preview-photo">
-
-                        <!-- SVG doodle goes here -->
-
-                    </div>
-
-
-                    <span>
-                        TRAVEL DIARY
-                    </span>
-
+                    <div class="preview-photo"></div>
+                    <div class="preview-photo"></div>
+                    <div class="preview-photo"></div>
 
                 </div>
 
-
-
-                <h4>
-                    Vintage Traveler
+                <h4 id="filmStyleName">
+                    Adventure
                 </h4>
 
-
-                <p>
-                    Warm tones • Classic adventure feel
+                <p id="filmStyleDescription">
+                    Perfect for bucket list adventures and unforgettable journeys.
                 </p>
 
+                <button
+                    id="chooseFilmStyle"
+                    class="choose-film-btn"
+                    type="button">
 
-            </button>
+                    Choose This Style
 
-
-        </div>
-
-
-
-        <button class="film-arrow film-arrow-right" type="button">
-            →
-        </button>
-
-
-    </div>
-
-
-</div>
-
-
-
-            <!-- =====================================================
-                            PHOTO OPTIONS
-            ====================================================== -->
-
-            <div class="ready-screen">
-
-                <h3>
-                    Ready for your photos?
-                </h3>
-
-                <p>
-                    Take four photos with your camera or upload your own.
-                </p>
-
-                <button id="startBooth">
-                    📸 Start Photo Booth
-                </button>
-
-                <br><br>
-
-                <button id="uploadMode">
-                    📁 Upload Photos
-                </button>
-
-                <input
-                    type="file"
-                    id="photoUpload"
-                    accept="image/*"
-                    multiple
-                    hidden>
-
-                <button id="cameraMode">
-                    📷 Use Camera
                 </button>
 
             </div>
 
+        </div>
 
 
-          <!-- =====================================================
+        <!-- Next -->
+
+        <button
+            class="film-arrow film-arrow-right"
+            type="button"
+            aria-label="Next Style">
+
+            &#10095;
+
+        </button>
+
+    </div>
+
+</div>
+
+    
+ <!-- =====================================================
+                    PHOTO OPTIONS
+====================================================== -->
+
+<div class="ready-screen">
+
+    <h3>
+        Ready to Create Your Keepsake?
+    </h3>
+
+    <p>
+        Capture four new memories or upload your favorite travel photos to
+        create your custom film strip.
+    </p>
+
+    <button id="startBooth">
+        📸 Start Photo Booth
+    </button>
+
+    <br><br>
+
+    <button id="uploadMode">
+        📁 Upload Photos
+    </button>
+
+    <input
+        type="file"
+        id="photoUpload"
+        accept="image/*"
+        multiple
+        hidden>
+
+</div>
+
+    
+<!-- =====================================================
                 CAMERA
 ====================================================== -->
 
@@ -256,9 +222,10 @@
 
 
 </div>
-            <!-- =====================================================
+    
+ <!-- =====================================================
                             DEVELOPING
-            ====================================================== -->
+  ====================================================== -->
 
             <div class="developing-screen">
 
@@ -273,37 +240,39 @@
             </div>
 
 
+<!-- =====================================================
+                    FINAL REVEAL
+====================================================== -->
 
-            <!-- =====================================================
-                            FINAL REVEAL
-            ====================================================== -->
+<div class="film-reveal">
 
-            <div class="film-reveal">
+    <h3>
+        ✨ Your Keepsake is Ready! ✨
+    </h3>
 
-                <h3>
-                    ✨ Your Travel Film Strip ✨
-                </h3>
+    <p>
+        Your memories have been turned into a one-of-a-kind RaeRoutes keepsake.
+    </p>
 
-                <div class="film-strip-preview">
+    <div class="film-strip-preview">
 
-                    <canvas id="filmCanvas"></canvas>
+        <canvas id="filmCanvas"></canvas>
 
-                </div>
+    </div>
 
-                <button class="download-button">
+    <button class="download-button">
 
-                    ⬇️ Download Keepsake
+        ⬇️ Download Keepsake
 
-                </button>
+    </button>
 
-                <button class="restart-button">
+    <button class="restart-button">
 
-                    🔄 Take Another
+        🔄 Create Another
 
-                </button>
+    </button>
 
-            </div>
-
+</div>
 
 
             <!-- =====================================================
