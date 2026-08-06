@@ -335,7 +335,7 @@ nav{
 
 .film-preview-box{
 
-    width:200px;
+    width:220px;
 
     position:relative;
 
@@ -352,6 +352,9 @@ nav{
 
 
 .preview-film{
+
+    transform:scaleX(1.08);
+    transform-origin:center;
 
     position:relative;
 
