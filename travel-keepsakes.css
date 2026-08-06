@@ -245,7 +245,6 @@ nav{
 
 }
 
-
 /* =====================================================
             FILM STYLE PICKER
 ===================================================== */
@@ -259,6 +258,7 @@ nav{
 }
 
 
+
 .film-style-picker h3{
 
     font-family:var(--heading-font);
@@ -268,6 +268,7 @@ nav{
     margin-bottom:1rem;
 
 }
+
 
 
 .film-style-picker p{
@@ -283,8 +284,9 @@ nav{
 
 
 /* =====================================================
-            FILM OPTIONS / CAROUSEL
+            FILM CAROUSEL
 ===================================================== */
+
 
 .film-style-options{
 
@@ -292,174 +294,100 @@ nav{
 
     align-items:center;
 
-    gap:1.5rem;
+    justify-content:center;
 
-    overflow-x:auto;
-
-    scroll-behavior:smooth;
-
-    max-width:900px;
-
-    margin:0 auto;
-
-    padding:1rem;
-
-    scrollbar-width:none;
+    gap:2rem;
 
 }
 
 
 
-.film-style-options::-webkit-scrollbar{
+.film-arrow{
 
-    display:none;
+    width:45px;
 
-}
+    height:45px;
 
+    border-radius:50%;
 
+    border:2px solid var(--ink);
 
-/* =====================================================
-            FILM CARD
-===================================================== */
+    background:#fffdf8;
 
-.film-card{
-
-    flex:0 0 150px;
-
-    width:150px;
-
-    border:none;
-
-    background:none;
-
-    padding:0;
+    font-size:1.5rem;
 
     cursor:pointer;
 
-    text-align:center;
-
-    position:relative;
-
-    transition:.35s ease;
-
-}
-
-
-.film-card:hover{
-
-    transform:translateY(-8px);
+    transition:.3s;
 
 }
 
 
 
-.film-card.selected .preview-film{
+.film-arrow:hover{
 
-    box-shadow:
+    background:var(--accent);
 
-        0 0 0 3px var(--accent),
-
-        8px 10px 0 rgba(0,0,0,.08);
+    color:white;
 
 }
 
 
 
 /* =====================================================
-            FILM FRAME
+            FILM PREVIEW BOX
 ===================================================== */
+
+
+.film-preview-box{
+
+    width:280px;
+
+}
+
+
+
+.film-card{
+
+    text-align:center;
+
+}
+
+
 
 .preview-film{
 
-    position:relative;
-
     background:#1f1f1f;
 
-    border-radius:12px;
+    padding:12px;
 
-    padding:10px;
+    border-radius:15px;
 
-    overflow:hidden;
-
-    box-shadow:
-
-        8px 10px 0 rgba(0,0,0,.08);
+    box-shadow:8px 10px 0 rgba(0,0,0,.08);
 
 }
 
 
-
-/* Inner film border */
-
-.preview-film::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:6px;
-
-    border:1px solid rgba(255,255,255,.18);
-
-    border-radius:8px;
-
-    pointer-events:none;
-
-}
-
-
-
-/* =====================================================
-            PHOTO WINDOW
-===================================================== */
 
 .preview-photo{
 
-    position:relative;
-
     width:100%;
 
-    aspect-ratio:1 / 1;
+    aspect-ratio:1/1;
 
     background:#e8dfd3;
 
-    border-radius:5px;
+    margin-bottom:8px;
 
     overflow:hidden;
 
-}
-
-
-
-/* =====================================================
-            PHOTO + SVG LAYERS
-===================================================== */
-
-
-/* Actual photo */
-
-.preview-photo img.photo{
-
-    position:absolute;
-
-    inset:0;
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
-    z-index:1;
+    position:relative;
 
 }
 
 
 
-/* SVG overlay */
-
-.preview-photo svg,
-.preview-photo img:not(.photo){
+.film-overlay{
 
     position:absolute;
 
@@ -473,39 +401,9 @@ nav{
 
     pointer-events:none;
 
-    z-index:2;
-
 }
 
 
-
-/* =====================================================
-            FILM LABEL
-===================================================== */
-
-.preview-film span{
-
-    display:block;
-
-    margin-top:10px;
-
-    color:#f7f2e8;
-
-    text-align:center;
-
-    font-size:.7rem;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-
-}
-
-
-
-/* =====================================================
-            STYLE NAME + DESCRIPTION
-===================================================== */
 
 .film-card h4{
 
@@ -513,58 +411,64 @@ nav{
 
     font-family:var(--heading-font);
 
-    font-size:1rem;
-
 }
 
 
 
 .film-card p{
 
-    font-size:.8rem;
+    font-size:.9rem;
 
     color:#777;
-
-    margin-top:.4rem;
 
 }
 
 
 
-/* =====================================================
-            MOBILE
-===================================================== */
+.choose-film-btn{
+
+    margin-top:1rem;
+
+    padding:.7rem 1.5rem;
+
+    border-radius:999px;
+
+    border:2px solid var(--ink);
+
+    background:white;
+
+    cursor:pointer;
+
+}
+
+
+
+.choose-film-btn:hover{
+
+    background:var(--accent);
+
+    color:white;
+
+}
+
+
+
+/* MOBILE */
 
 @media(max-width:700px){
-
 
     .film-style-options{
 
         gap:1rem;
 
-        max-width:100%;
-
     }
 
 
+    .film-preview-box{
 
-    .film-card{
-
-        flex:0 0 130px;
-
-        width:130px;
+        width:220px;
 
     }
-
-
-
-    .film-card h4{
-
-        font-size:.9rem;
-
-    }
-
-
 
 }
 
