@@ -1133,7 +1133,7 @@ async function drawFilmDecorations(ctx){
 
 
         sparkle:
-            "assets/overlay/sparkle.png",
+            "assets/overlay/sparkles.png",
 
 
         classic:
