@@ -253,6 +253,7 @@ nav{
 .film-style-picker{
 
     margin-top:4rem;
+
     text-align:center;
 
 }
@@ -261,7 +262,9 @@ nav{
 .film-style-picker h3{
 
     font-family:var(--heading-font);
+
     font-size:2.2rem;
+
     margin-bottom:1rem;
 
 }
@@ -270,7 +273,9 @@ nav{
 .film-style-picker p{
 
     max-width:600px;
+
     margin:0 auto 3rem;
+
     color:#666;
 
 }
@@ -278,16 +283,36 @@ nav{
 
 
 /* =====================================================
-            FILM OPTIONS
+            FILM OPTIONS / CAROUSEL
 ===================================================== */
 
 .film-style-options{
 
     display:flex;
-    justify-content:center;
+
     align-items:center;
-    flex-wrap:wrap;
-    gap:2rem;
+
+    gap:1.5rem;
+
+    overflow-x:auto;
+
+    scroll-behavior:smooth;
+
+    max-width:900px;
+
+    margin:0 auto;
+
+    padding:1rem;
+
+    scrollbar-width:none;
+
+}
+
+
+
+.film-style-options::-webkit-scrollbar{
+
+    display:none;
 
 }
 
@@ -299,9 +324,12 @@ nav{
 
 .film-card{
 
-    width:220px;
+    flex:0 0 150px;
+
+    width:150px;
 
     border:none;
+
     background:none;
 
     padding:0;
@@ -324,10 +352,13 @@ nav{
 }
 
 
+
 .film-card.selected .preview-film{
 
     box-shadow:
+
         0 0 0 3px var(--accent),
+
         8px 10px 0 rgba(0,0,0,.08);
 
 }
@@ -346,11 +377,12 @@ nav{
 
     border-radius:12px;
 
-    padding:14px;
+    padding:10px;
 
     overflow:hidden;
 
     box-shadow:
+
         8px 10px 0 rgba(0,0,0,.08);
 
 }
@@ -404,7 +436,7 @@ nav{
 ===================================================== */
 
 
-/* Actual uploaded photo */
+/* Actual photo */
 
 .preview-photo img.photo{
 
@@ -424,7 +456,7 @@ nav{
 
 
 
-/* SVG decorations */
+/* SVG overlay */
 
 .preview-photo svg,
 .preview-photo img:not(.photo){
@@ -461,9 +493,9 @@ nav{
 
     text-align:center;
 
-    font-size:.75rem;
+    font-size:.7rem;
 
-    letter-spacing:.15em;
+    letter-spacing:.12em;
 
     text-transform:uppercase;
 
@@ -472,55 +504,28 @@ nav{
 
 
 /* =====================================================
-            FILM STYLE BACKGROUNDS
+            STYLE NAME + DESCRIPTION
 ===================================================== */
 
+.film-card h4{
 
-/* Vintage */
+    margin-top:1rem;
 
-.vintage-preview .preview-photo{
+    font-family:var(--heading-font);
 
-    background:#ead8b8;
-
-}
-
-
-
-/* Passport */
-
-.passport-preview .preview-photo{
-
-    background:#dce7dc;
+    font-size:1rem;
 
 }
 
 
 
-/* Coastal */
+.film-card p{
 
-.coastal-preview .preview-photo{
+    font-size:.8rem;
 
-    background:#d7edf2;
+    color:#777;
 
-}
-
-
-
-/* Scrapbook */
-
-.scrapbook-preview .preview-photo{
-
-    background:#ead8c7;
-
-}
-
-
-
-/* Classic */
-
-.classic-preview .preview-photo{
-
-    background:#333;
+    margin-top:.4rem;
 
 }
 
@@ -532,18 +537,34 @@ nav{
 
 @media(max-width:700px){
 
+
     .film-style-options{
 
-        gap:1.25rem;
+        gap:1rem;
+
+        max-width:100%;
 
     }
+
 
 
     .film-card{
 
-        width:180px;
+        flex:0 0 130px;
+
+        width:130px;
 
     }
+
+
+
+    .film-card h4{
+
+        font-size:.9rem;
+
+    }
+
+
 
 }
 
