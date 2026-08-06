@@ -101,6 +101,20 @@ const nextFilm = document.querySelector(".film-arrow-right");
 
 
 const startButton = document.getElementById("startBooth");
+        
+const developingScreen = document.getElementById("developingScreen");
+
+const filmReveal = document.getElementById("filmReveal");
+
+const cameraArea = document.getElementById("cameraArea");
+
+const cameraPreview = document.getElementById("cameraPreview");
+
+const cameraButton = document.getElementById("cameraButton");
+
+const uploadButton = document.getElementById("uploadButton");
+
+const photoUpload = document.getElementById("photoUpload");
 
 
 /* =====================================================
@@ -843,7 +857,7 @@ function showDeveloping(){
 
 }
         
-/* =====================================================
+ /* =====================================================
         CREATE FILM STRIP
 ====================================================== */
 
@@ -867,28 +881,44 @@ async function createFilmStrip(){
 
     /*
         FILM BACKGROUND COLORS
-        Temporary base layer.
-        SVG designs will sit on top.
+        Base layer for the selected PNG film design.
     */
+
 
 
     const styles = {
 
-        vintage:"#ead8b8",
 
-        passport:"#dce7dc",
+        adventure:"#ead8b8",
+
+        travel:"#ead8b8",
+
+        budget:"#dce7dc",
+
+        celebrate:"#f4d8d8",
+
+        city:"#d9d9d9",
 
         coastal:"#d7edf2",
 
-        scrapbook:"#ead8c7",
+        romantic:"#f3dce5",
+
+        bubbles:"#dff4f4",
+
+        winter:"#e7edf5",
+
+        sparkle:"#eee5f8",
 
         classic:"#333333"
+
 
     };
 
 
 
-    ctx.fillStyle = styles[selectedFilmStyle] || styles.vintage;
+    ctx.fillStyle =
+        styles[selectedFilmStyle] || styles.travel;
+
 
 
     ctx.fillRect(
@@ -906,8 +936,8 @@ async function createFilmStrip(){
 
 
 
-    let loadedImages = 0;
 
+    let loadedImages = 0;
 
 
 
@@ -990,6 +1020,7 @@ async function createFilmStrip(){
             ctx.lineWidth = 12;
 
 
+
             ctx.strokeRect(
 
                 x,
@@ -1005,6 +1036,7 @@ async function createFilmStrip(){
 
 
             loadedImages++;
+
 
 
 
@@ -1036,8 +1068,8 @@ async function createFilmStrip(){
                 );
 
 
-
             }
+
 
 
         };
@@ -1054,65 +1086,65 @@ async function createFilmStrip(){
 }
 
 /* =====================================================
-        SVG FILM DECORATIONS
+        FILM DECORATIONS
 ====================================================== */
 
 
 async function drawFilmDecorations(ctx){
 
 
-    const svgOverlays = {
+    const filmOverlays = {
 
 
         travel:
-            "assets/overlay/travel.svg",
+            "assets/overlay/travel.png",
 
 
         budget:
-            "assets/overlay/budget.svg",
+            "assets/overlay/budget.png",
 
 
         celebrate:
-            "assets/overlay/celebrate.svg",
+            "assets/overlay/celebrate.png",
 
 
         city:
-            "assets/overlay/city.svg",
+            "assets/overlay/city.png",
 
 
         coastal:
-            "assets/overlay/coastal.svg",
+            "assets/overlay/coastal.png",
 
 
         romantic:
-            "assets/overlay/romantic.svg",
+            "assets/overlay/romantic.png",
 
 
         bubbles:
-            "assets/overlay/bubbles.svg",
+            "assets/overlay/bubbles.png",
 
 
         adventure:
-            "assets/overlay/adventure.svg",
+            "assets/overlay/adventure.png",
 
 
         winter:
-            "assets/overlay/winter.svg",
+            "assets/overlay/winter.png",
 
 
-        stars:
-            "assets/overlay/stars.svg",
+        sparkle:
+            "assets/overlay/sparkle.png",
 
 
         classic:
-            "assets/overlay/blank.svg"
+            "assets/overlay/blank.png"
 
 
     };
 
 
 
-    const overlayPath = svgOverlays[selectedFilmStyle];
+    const overlayPath = filmOverlays[selectedFilmStyle];
 
 
 
@@ -1132,16 +1164,16 @@ async function drawFilmDecorations(ctx){
 
 
 
-    const svgImage = new Image();
+    const overlayImage = new Image();
 
 
 
-    svgImage.onload = ()=>{
+    overlayImage.onload = ()=>{
 
 
         ctx.drawImage(
 
-            svgImage,
+            overlayImage,
 
             0,
 
@@ -1158,11 +1190,11 @@ async function drawFilmDecorations(ctx){
 
 
 
-    svgImage.onerror = ()=>{
+    overlayImage.onerror = ()=>{
 
 
         console.log(
-            "Could not load SVG:",
+            "Could not load film overlay:",
             overlayPath
         );
 
@@ -1171,13 +1203,12 @@ async function drawFilmDecorations(ctx){
 
 
 
-    svgImage.src = overlayPath;
+    overlayImage.src = overlayPath;
 
 
 
 }
-
-
+        
 /* =====================================================
         FINISH DEVELOPING
 ====================================================== */
