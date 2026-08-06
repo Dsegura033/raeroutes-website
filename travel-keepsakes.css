@@ -343,6 +343,8 @@ nav{
 
     width:280px;
 
+    position:relative;
+
 }
 
 
@@ -357,17 +359,23 @@ nav{
 
 .preview-film{
 
+    position:relative;
+
     background:#1f1f1f;
 
     padding:12px;
 
     border-radius:15px;
 
+    overflow:hidden;
+
     box-shadow:8px 10px 0 rgba(0,0,0,.08);
 
 }
 
 
+
+/* Film photos */
 
 .preview-photo{
 
@@ -383,9 +391,13 @@ nav{
 
     position:relative;
 
+    z-index:1;
+
 }
 
 
+
+/* SVG overlay */
 
 .film-overlay{
 
@@ -400,6 +412,8 @@ nav{
     object-fit:contain;
 
     pointer-events:none;
+
+    z-index:5;
 
 }
 
