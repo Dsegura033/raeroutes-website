@@ -308,6 +308,12 @@ nav{
 
     height:45px;
 
+    flex-shrink:0;
+
+    position:relative;
+
+    z-index:10;
+
     border-radius:50%;
 
     border:2px solid var(--ink);
@@ -322,18 +328,6 @@ nav{
 
 }
 
-
-
-.film-arrow:hover{
-
-    background:var(--accent);
-
-    color:white;
-
-}
-
-
-
 /* =====================================================
             FILM PREVIEW BOX
 ===================================================== */
@@ -341,7 +335,7 @@ nav{
 
 .film-preview-box{
 
-    width:280px;
+    width:200px;
 
     position:relative;
 
@@ -363,7 +357,7 @@ nav{
 
     background:#1f1f1f;
 
-    padding:12px;
+    padding:8px;
 
     border-radius:15px;
 
