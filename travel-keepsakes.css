@@ -403,14 +403,13 @@ nav{
 
     height:100%;
 
-    object-fit:contain;
+    object-fit:cover;
 
     pointer-events:none;
 
     z-index:5;
 
 }
-
 
 
 .film-card h4{
