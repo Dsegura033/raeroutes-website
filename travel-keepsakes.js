@@ -162,6 +162,8 @@ filmCards.forEach(card => {
     card.addEventListener("click", () => {
 
 
+        // Remove previous selection
+
         filmCards.forEach(item => {
 
             item.classList.remove("selected");
@@ -169,10 +171,23 @@ filmCards.forEach(card => {
         });
 
 
+
+        // Add current selection
+
         card.classList.add("selected");
 
 
+
+        // Save selected film style
+
         selectedFilmStyle = card.dataset.style;
+
+
+
+        // Optional: update preview overlay
+
+        updateFilmPreview(selectedFilmStyle);
+
 
 
         console.log("Selected film:", selectedFilmStyle);
@@ -182,6 +197,94 @@ filmCards.forEach(card => {
 
 
 });
+
+
+
+/* =====================================================
+        UPDATE FILM SVG PREVIEW
+====================================================== */
+
+
+function updateFilmPreview(style){
+
+
+    const svgOverlays = document.querySelectorAll(".film-overlay");
+
+
+    svgOverlays.forEach(svg => {
+
+        svg.style.display = "none";
+
+    });
+
+
+
+    const activeOverlay = document.querySelector(
+        `.film-overlay.${style}`
+    );
+
+
+    if(activeOverlay){
+
+        activeOverlay.style.display = "block";
+
+    }
+
+
+}
+
+        /* =====================================================
+        FILM STYLE CAROUSEL ARROWS
+====================================================== */
+
+
+const filmOptions = document.querySelector(".film-style-options");
+
+const filmPrev = document.querySelector(".film-arrow.left");
+
+const filmNext = document.querySelector(".film-arrow.right");
+
+
+
+if(filmOptions && filmPrev && filmNext){
+
+
+
+    filmPrev.addEventListener("click",()=>{
+
+
+        filmOptions.scrollBy({
+
+            left:-250,
+
+            behavior:"smooth"
+
+        });
+
+
+    });
+
+
+
+
+
+    filmNext.addEventListener("click",()=>{
+
+
+        filmOptions.scrollBy({
+
+            left:250,
+
+            behavior:"smooth"
+
+        });
+
+
+    });
+
+
+
+}
 
 
 /* =====================================================
@@ -204,6 +307,7 @@ async function startCamera(){
             audio:false
 
         });
+
 
 
         cameraPreview.srcObject = cameraStream;
@@ -233,10 +337,8 @@ async function startCamera(){
 
 
 }
-
-
-
-/* =====================================================
+        
+ /* =====================================================
         CAMERA BUTTON
 ====================================================== */
 
@@ -254,7 +356,6 @@ if(cameraButton){
 
 
 }
-
 
 
 
@@ -282,16 +383,22 @@ if(uploadButton){
 
 
 
-
-
-
 if(photoUpload){
 
 
     photoUpload.addEventListener("change",(event)=>{
 
 
-        const files = Array.from(event.target.files);
+        const files = Array.from(event.target.files)
+            .slice(0,4);
+
+
+
+        if(files.length === 0){
+
+            return;
+
+        }
 
 
 
@@ -299,7 +406,7 @@ if(photoUpload){
 
 
 
-        files.slice(0,4).forEach(file=>{
+        files.forEach(file=>{
 
 
             const reader = new FileReader();
@@ -313,14 +420,15 @@ if(photoUpload){
 
 
 
-                if(capturedPhotos.length === 4){
+                // Continue once uploads finish
+
+                if(capturedPhotos.length === files.length){
 
 
                     showDeveloping();
 
 
                 }
-
 
 
             };
@@ -345,7 +453,6 @@ if(photoUpload){
 
 
 
-
 /* =====================================================
         START PHOTO BOOTH
 ====================================================== */
@@ -353,39 +460,67 @@ if(photoUpload){
 
 if(startButton){
 
+
     startButton.addEventListener("click", async()=>{
 
+
         capturedPhotos = [];
+
         currentPhoto = 0;
+
+
 
         if(!cameraStream){
 
+
             await startCamera();
 
+
         }
+
+
 
         if(cameraArea){
 
+
             cameraArea.style.display = "block";
 
+
         }
+
+
 
         if(readyScreen){
 
+
             readyScreen.style.display = "none";
+
 
         }
 
+
+
         setTimeout(()=>{
+
 
             takePhoto();
 
+
         },500);
+
+
 
     });
 
+
 }
-        
+
+
+
+
+
+
+
 /* =====================================================
         TAKE PHOTOS
 ====================================================== */
@@ -394,7 +529,7 @@ if(startButton){
 function takePhoto(){
 
 
-    // Stop after 4 photos
+    // Finish after 4 photos
 
     if(currentPhoto >= 4){
 
@@ -409,12 +544,12 @@ function takePhoto(){
 
 
 
-    // Update photo number
+
 
     if(photoStatus){
 
 
-        photoStatus.innerHTML = 
+        photoStatus.innerHTML =
         `Photo ${currentPhoto + 1} of 4`;
 
 
@@ -422,7 +557,9 @@ function takePhoto(){
 
 
 
-    // Make sure camera is ready
+
+
+    // Wait until camera loads
 
     if(!cameraPreview.videoWidth){
 
@@ -444,6 +581,8 @@ function takePhoto(){
 
 
 
+
+
     countdownSequence(()=>{
 
 
@@ -453,7 +592,7 @@ function takePhoto(){
         currentPhoto++;
 
 
-        // Small pause before next photo
+
 
         setTimeout(()=>{
 
@@ -472,6 +611,10 @@ function takePhoto(){
 }
 
 
+
+
+
+
 /* =====================================================
         COUNTDOWN
 ====================================================== */
@@ -482,9 +625,11 @@ function countdownSequence(callback){
 
     if(!countdownDisplay){
 
+
         callback();
 
         return;
+
 
     }
 
@@ -548,14 +693,7 @@ function countdownSequence(callback){
 
 
 }
-
-
-
-
-
-
-
-
+        
 /* =====================================================
         CAPTURE IMAGE
 ====================================================== */
@@ -683,7 +821,7 @@ function showDeveloping(){
 ====================================================== */
 
 
-function createFilmStrip(){
+async function createFilmStrip(){
 
 
     if(!canvas) return;
@@ -700,19 +838,24 @@ function createFilmStrip(){
 
 
 
-    // FILM STYLE BACKGROUNDS
+    /*
+        FILM BACKGROUND COLORS
+        Temporary base layer.
+        SVG designs will sit on top.
+    */
+
 
     const styles = {
 
-        vintage: "#f3e4c5",
+        vintage:"#ead8b8",
 
-        passport: "#dfe8dc",
+        passport:"#dce7dc",
 
-        coastal: "#d8eef2",
+        coastal:"#d7edf2",
 
-        scrapbook: "#f5eadc",
+        scrapbook:"#ead8c7",
 
-        classic: "#f7f7f2"
+        classic:"#333333"
 
     };
 
@@ -751,34 +894,80 @@ function createFilmStrip(){
         img.onload = ()=>{
 
 
-            // photo frame
+            const x = 80;
 
-            ctx.fillStyle = "#ffffff";
+            const y = 90 + index * 300;
 
 
-            ctx.fillRect(
 
-                60,
+            /*
+                PHOTO WINDOW
+            */
 
-                80 + index * 300,
 
-                480,
+            ctx.save();
 
-                260
+
+
+            ctx.beginPath();
+
+
+            ctx.rect(
+
+                x,
+
+                y,
+
+                440,
+
+                220
 
             );
 
 
+            ctx.clip();
 
-            // photo
+
 
             ctx.drawImage(
 
                 img,
 
-                80,
+                x,
 
-                100 + index * 300,
+                y,
+
+                440,
+
+                220
+
+            );
+
+
+
+            ctx.restore();
+
+
+
+
+
+
+            /*
+                PHOTO FRAME BORDER
+            */
+
+
+            ctx.strokeStyle = "#ffffff";
+
+
+            ctx.lineWidth = 12;
+
+
+            ctx.strokeRect(
+
+                x,
+
+                y,
 
                 440,
 
@@ -799,7 +988,7 @@ function createFilmStrip(){
 
 
 
-                ctx.fillStyle="#2F2B28";
+                ctx.fillStyle="#fffdf8";
 
 
                 ctx.font="32px cursive";
@@ -824,7 +1013,6 @@ function createFilmStrip(){
             }
 
 
-
         };
 
 
@@ -836,442 +1024,131 @@ function createFilmStrip(){
     });
 
 
-
 }
 
-
 /* =====================================================
-        COLLECTION DOODLES
+        SVG FILM DECORATIONS
 ====================================================== */
 
 
-function drawFilmDecorations(ctx){
+async function drawFilmDecorations(ctx){
 
 
-    ctx.strokeStyle = "#2F2B28";
-
-    ctx.lineWidth = 4;
+    const svgOverlays = {
 
 
-
-    switch(selectedFilmStyle){
-
-
-
-        case "coastal":
+        travel:
+            "assets/overlay/travel.svg",
 
 
-            drawSun(ctx,500,90);
-
-            drawWave(ctx,40,1380);
-
-            drawShell(ctx,520,1320);
-
-            break;
+        budget:
+            "assets/overlay/budget.svg",
 
 
+        celebrate:
+            "assets/overlay/celebrate.svg",
 
 
-        case "passport":
+        city:
+            "assets/overlay/city.svg",
 
 
-            drawCompass(ctx,500,100);
-
-            drawStamp(ctx,80,1350);
-
-            break;
+        coastal:
+            "assets/overlay/coastal.svg",
 
 
+        romantic:
+            "assets/overlay/romantic.svg",
 
 
-        case "scrapbook":
+        bubbles:
+            "assets/overlay/bubbles.svg",
 
 
-            drawStar(ctx,500,100);
-
-            drawFlower(ctx,80,1350);
-
-            break;
+        adventure:
+            "assets/overlay/adventure.svg",
 
 
+        winter:
+            "assets/overlay/winter.svg",
 
 
-        case "classic":
+        stars:
+            "assets/overlay/stars.svg",
 
 
-            drawStar(ctx,500,100);
+        classic:
+            "assets/overlay/blank.svg"
 
-            drawStar(ctx,80,1350);
 
-            break;
+    };
 
 
 
-
-        case "vintage":
-
-
-            drawHeart(ctx,500,100);
-
-            drawFlower(ctx,80,1350);
-
-            break;
+    const overlayPath = svgOverlays[selectedFilmStyle];
 
 
 
+    if(!overlayPath){
 
-        default:
+
+        console.log(
+            "No film overlay selected:",
+            selectedFilmStyle
+        );
 
 
-            drawStar(ctx,500,100);
-
-            drawStar(ctx,80,1350);
-
+        return;
 
 
     }
 
 
 
-}
+    const svgImage = new Image();
 
 
 
-/* =====================================================
-        DOODLE FUNCTIONS
-====================================================== */
+    svgImage.onload = ()=>{
 
 
-function drawSun(ctx,x,y){
+        ctx.drawImage(
 
+            svgImage,
 
-    ctx.beginPath();
+            0,
 
-    ctx.arc(x,y,30,0,Math.PI*2);
+            0,
 
-    ctx.stroke();
+            canvas.width,
 
-
-
-    for(let i=0;i<8;i++){
-
-
-        ctx.beginPath();
-
-        ctx.moveTo(x,y);
-
-
-        ctx.lineTo(
-
-            x + Math.cos(i * Math.PI / 4) * 55,
-
-            y + Math.sin(i * Math.PI / 4) * 55
+            canvas.height
 
         );
 
 
-        ctx.stroke();
-
-
-    }
-
-
-}
+    };
 
 
 
+    svgImage.onerror = ()=>{
 
 
-function drawWave(ctx,x,y){
-
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(x,y);
-
-
-
-    for(let i=0;i<120;i++){
-
-
-        ctx.lineTo(
-
-            x + i * 3,
-
-            y + Math.sin(i / 6) * 10
-
+        console.log(
+            "Could not load SVG:",
+            overlayPath
         );
 
 
-    }
+    };
 
 
-    ctx.stroke();
+
+    svgImage.src = overlayPath;
+
 
 
 }
-
-
-
-
-
-function drawShell(ctx,x,y){
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-
-        x,
-
-        y,
-
-        25,
-
-        Math.PI,
-
-        0
-
-    );
-
-
-    ctx.stroke();
-
-
-}
-
-
-
-
-
-function drawHeart(ctx,x,y){
-
-
-    ctx.beginPath();
-
-
-    ctx.moveTo(x,y+20);
-
-
-    ctx.bezierCurveTo(
-
-        x-40,y-20,
-
-        x-40,y+50,
-
-        x,y+70
-
-    );
-
-
-    ctx.bezierCurveTo(
-
-        x+40,y+50,
-
-        x+40,y-20,
-
-        x,y+20
-
-    );
-
-
-    ctx.stroke();
-
-
-}
-
-
-
-
-
-function drawCompass(ctx,x,y){
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-
-        x,
-
-        y,
-
-        35,
-
-        0,
-
-        Math.PI * 2
-
-    );
-
-
-    ctx.moveTo(x,y-35);
-
-    ctx.lineTo(x,y+35);
-
-
-    ctx.moveTo(x-35,y);
-
-    ctx.lineTo(x+35,y);
-
-
-
-    ctx.stroke();
-
-
-}
-
-
-
-
-
-function drawStamp(ctx,x,y){
-
-
-    ctx.setLineDash([8,6]);
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-
-        x,
-
-        y,
-
-        45,
-
-        0,
-
-        Math.PI * 2
-
-    );
-
-
-    ctx.stroke();
-
-
-
-    ctx.setLineDash([]);
-
-
-
-    ctx.font = "20px cursive";
-
-    ctx.textAlign = "center";
-
-
-    ctx.fillText(
-
-        "TRAVEL",
-
-        x,
-
-        y + 5
-
-    );
-
-
-}
-
-
-
-
-
-function drawFlower(ctx,x,y){
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-
-        x,
-
-        y,
-
-        15,
-
-        0,
-
-        Math.PI * 2
-
-    );
-
-
-    ctx.stroke();
-
-
-
-    ctx.beginPath();
-
-
-    ctx.arc(
-
-        x + 25,
-
-        y,
-
-        15,
-
-        0,
-
-        Math.PI * 2
-
-    );
-
-
-    ctx.stroke();
-
-
-}
-
-
-
-
-
-function drawStar(ctx,x,y){
-
-
-    ctx.beginPath();
-
-
-
-    for(let i=0;i<10;i++){
-
-
-        const angle = i * Math.PI / 5;
-
-
-        const radius = i % 2 === 0 ? 25 : 10;
-
-
-
-        ctx.lineTo(
-
-            x + Math.cos(angle) * radius,
-
-            y + Math.sin(angle) * radius
-
-        );
-
-
-    }
-
-
-
-    ctx.closePath();
-
-
-    ctx.stroke();
-
-
-}
-
-
 
 
 /* =====================================================
@@ -1279,12 +1156,12 @@ function drawStar(ctx,x,y){
 ====================================================== */
 
 
-function finishFilm(){
+async function finishFilm(){
 
 
-    // Create final film strip
+    // Create final film strip first
 
-    createFilmStrip();
+    await createFilmStrip();
 
 
 
@@ -1292,26 +1169,34 @@ function finishFilm(){
 
     if(cameraStream){
 
+
         cameraStream.getTracks().forEach(track => {
 
+
             track.stop();
+
 
         });
 
 
+
         cameraStream = null;
 
+
     }
+
+
 
 
 
     setTimeout(()=>{
 
 
-
         if(developingScreen){
 
+
             developingScreen.style.display = "none";
+
 
         }
 
@@ -1319,22 +1204,19 @@ function finishFilm(){
 
         if(filmReveal){
 
+
             filmReveal.style.display = "block";
 
-        }
-
-
-
-        // trigger reveal animation if available
-
-        const strip = document.querySelector(".film-strip-preview");
-
-
-        if(strip){
-
-            strip.classList.add("show-strip");
 
         }
+
+
+
+
+
+        // Trigger reveal animation
+
+        revealFilmStrip();
 
 
 
@@ -1343,6 +1225,13 @@ function finishFilm(){
 
 
 }
+
+
+
+
+
+
+
 /* =====================================================
         FILM REVEAL ANIMATION
 ====================================================== */
@@ -1355,31 +1244,31 @@ function revealFilmStrip(){
 
 
 
-    // Show reveal section
-
     filmReveal.style.display = "block";
 
 
 
-    const strip = document.querySelector(".film-strip-preview");
+    const strip = document.querySelector(
+        ".film-strip-preview"
+    );
 
 
 
     if(strip){
 
 
-        // Reset animation
+        strip.classList.remove(
+            "show-strip"
+        );
 
-        strip.classList.remove("show-strip");
 
-
-
-        // Restart animation
 
         requestAnimationFrame(()=>{
 
 
-            strip.classList.add("show-strip");
+            strip.classList.add(
+                "show-strip"
+            );
 
 
         });
@@ -1390,8 +1279,6 @@ function revealFilmStrip(){
 
 
 }
-
-
 
 
 /* =====================================================
@@ -1409,27 +1296,47 @@ if(downloadButton){
 
 
 
-        const link = document.createElement("a");
+        canvas.toBlob((blob)=>{
+
+
+            if(!blob) return;
 
 
 
-        link.download = "RaeRoutes-Travel-Keepsake.png";
+            const link = document.createElement("a");
 
 
 
-        link.href = canvas.toDataURL("image/png");
+            const styleName = selectedFilmStyle || "travel";
 
 
 
-        document.body.appendChild(link);
+            link.download =
+                `RaeRoutes-${styleName}-Keepsake.png`;
 
 
 
-        link.click();
+            link.href = URL.createObjectURL(blob);
 
 
 
-        document.body.removeChild(link);
+            document.body.appendChild(link);
+
+
+
+            link.click();
+
+
+
+            document.body.removeChild(link);
+
+
+
+            URL.revokeObjectURL(link.href);
+
+
+
+        },"image/png");
 
 
 
@@ -1437,7 +1344,6 @@ if(downloadButton){
 
 
 }
-
 
 
 
@@ -1464,12 +1370,48 @@ if(restartButton){
 
 
 
+        // Reset film selection
+
+        selectedFilmStyle = "travel";
+
+
+
+        filmCards.forEach(card=>{
+
+
+            card.classList.remove("selected");
+
+
+        });
+
+
+
+        const defaultFilm = document.querySelector(
+            `[data-style="${selectedFilmStyle}"]`
+        );
+
+
+
+        if(defaultFilm){
+
+
+            defaultFilm.classList.add("selected");
+
+
+        }
+
+
+
+
+
+
         // Clear canvas
 
         if(canvas){
 
 
             const ctx = canvas.getContext("2d");
+
 
 
             ctx.clearRect(
@@ -1490,7 +1432,9 @@ if(restartButton){
 
 
 
-        // Hide finished screens
+
+
+        // Hide screens
 
         if(filmReveal){
 
@@ -1499,7 +1443,6 @@ if(restartButton){
 
 
         }
-
 
 
 
@@ -1513,8 +1456,20 @@ if(restartButton){
 
 
 
+        if(cameraArea){
 
-        // Hide camera
+
+            cameraArea.style.display = "none";
+
+
+        }
+
+
+
+
+
+
+        // Hide camera preview
 
         if(cameraPreview){
 
@@ -1523,6 +1478,9 @@ if(restartButton){
 
 
         }
+
+
+
 
 
 
@@ -1540,10 +1498,13 @@ if(restartButton){
             });
 
 
+
             cameraStream = null;
 
 
         }
+
+
 
 
 
@@ -1553,11 +1514,11 @@ if(restartButton){
         if(photoStatus){
 
 
-            photoStatus.innerHTML = "Photo 0 of 4";
+            photoStatus.innerHTML =
+                "Photo 0 of 4";
 
 
         }
-
 
 
 
@@ -1571,13 +1532,11 @@ if(restartButton){
 
 
 
+
     });
 
 
 }
-
-        
-
 /* =====================================================
         STOP CAMERA
 ====================================================== */
@@ -1602,12 +1561,14 @@ function stopCamera(){
         cameraStream = null;
 
 
-
     }
 
 
 
     if(cameraPreview){
+
+
+        cameraPreview.pause();
 
 
         cameraPreview.srcObject = null;
