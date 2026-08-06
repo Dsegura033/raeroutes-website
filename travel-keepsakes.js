@@ -130,7 +130,7 @@ if(cameraArea){
 
 
 
-/* =====================================================
+ /* =====================================================
         FILM STYLE SELECTION
 ====================================================== */
 
@@ -140,67 +140,67 @@ const filmStyles = [
     {
         name:"Adventure",
         description:"Perfect for bucket list adventures and unforgettable journeys.",
-        overlay:"assets/overlay/adventure.svg"
+        overlay:"assets/overlay/adventure.png"
     },
 
     {
         name:"Travel",
         description:"Capture the feeling of exploring somewhere new.",
-        overlay:"assets/overlay/travel.svg"
+        overlay:"assets/overlay/travel.png"
     },
 
     {
         name:"Budget",
         description:"For affordable adventures and smart travel memories.",
-        overlay:"assets/overlay/budget.svg"
+        overlay:"assets/overlay/budget.png"
     },
 
     {
         name:"Celebrate",
         description:"A keepsake for special moments and milestones.",
-        overlay:"assets/overlay/celebrate.svg"
+        overlay:"assets/overlay/celebrate.png"
     },
 
     {
         name:"City",
         description:"Perfect for unforgettable city escapes.",
-        overlay:"assets/overlay/city.svg"
+        overlay:"assets/overlay/city.png"
     },
 
     {
         name:"Coastal",
         description:"Made for beach days and ocean adventures.",
-        overlay:"assets/overlay/coastal.svg"
+        overlay:"assets/overlay/coastal.png"
     },
 
     {
         name:"Romantic",
         description:"A dreamy keepsake for your favorite moments.",
-        overlay:"assets/overlay/romantic.svg"
+        overlay:"assets/overlay/romantic.png"
     },
 
     {
         name:"Bubbles",
         description:"A fun and playful travel memory style.",
-        overlay:"assets/overlay/bubbles.svg"
+        overlay:"assets/overlay/bubbles.png"
     },
 
     {
         name:"Winter",
         description:"Perfect for snowy escapes and cozy adventures.",
-        overlay:"assets/overlay/winter.svg"
+        overlay:"assets/overlay/winter.png"
     },
 
     {
-        name:"Stars",
+        name:"Sparkle",
         description:"A magical style for unforgettable journeys.",
-        overlay:"assets/overlay/stars.svg"
+        overlay:"assets/overlay/sparkle.png"
     },
 
     {
         name:"Classic",
         description:"A simple keepsake with no added decorations.",
-        overlay:"assets/overlay/blank.svg"
+        overlay:"assets/overlay/blank.png"
     }
 
 ];
@@ -311,7 +311,6 @@ if(chooseFilmStyle){
     });
 
 }
-
 
 
 
