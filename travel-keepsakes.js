@@ -332,50 +332,37 @@ if(chooseFilmStyle){
         CAMERA ACCESS
 ====================================================== */
 
+async function startCamera() {
 
-async function startCamera(){
-
-
-    try{
-
+    try {
 
         cameraStream = await navigator.mediaDevices.getUserMedia({
 
-            video:{
-                facingMode:"user"
+            video: {
+                facingMode: "user"
             },
 
-            audio:false
+            audio: false
 
         });
 
-
-
         cameraPreview.srcObject = cameraStream;
-
 
         cameraArea.style.display = "block";
 
-
         cameraPreview.style.display = "block";
-
 
     }
 
-
-    catch(error){
-
+    catch (error) {
 
         console.log(error);
 
-
         alert(
-            "Camera access was unavailable. Please upload your photos instead."
+            "To use the Photo Booth, please allow camera access when your browser asks. If you choose not to, you can still create your keepsake by uploading photos instead."
         );
 
-
     }
-
 
 }
         
