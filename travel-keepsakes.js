@@ -85,43 +85,22 @@ let cameraStream = null;
 const filmCards = document.querySelectorAll(".film-card");
 
 
+const filmCard = document.getElementById("filmCard");
+
+const filmOverlay = document.getElementById("filmOverlay");
+
+const filmStyleName = document.getElementById("filmStyleName");
+
+const filmStyleDescription = document.getElementById("filmStyleDescription");
+
+const chooseFilmStyle = document.getElementById("chooseFilmStyle");
+
+const previousFilm = document.querySelector(".film-arrow-left");
+
+const nextFilm = document.querySelector(".film-arrow-right");
+
+
 const startButton = document.getElementById("startBooth");
-
-
-const uploadButton = document.getElementById("uploadMode");
-
-
-const cameraButton = document.getElementById("cameraMode");
-
-
-const photoUpload = document.getElementById("photoUpload");
-
-
-const cameraPreview = document.getElementById("cameraPreview");
-
-
-const photoStatus = document.querySelector(".photo-status");
-
-
-const countdownDisplay = document.querySelector(".countdown-display");
-
-
-const developingScreen = document.querySelector(".developing-screen");
-
-
-const filmReveal = document.querySelector(".film-reveal");
-
-
-const canvas = document.getElementById("filmCanvas");
-
-
-const downloadButton = document.querySelector(".download-button");
-
-
-const restartButton = document.querySelector(".restart-button");
-
-
-
 
 
 /* =====================================================
@@ -156,135 +135,184 @@ if(cameraArea){
 ====================================================== */
 
 
-filmCards.forEach(card => {
+const filmStyles = [
+
+    {
+        name:"Adventure",
+        description:"Perfect for bucket list adventures and unforgettable journeys.",
+        overlay:"assets/overlay/adventure.svg"
+    },
+
+    {
+        name:"Travel",
+        description:"Capture the feeling of exploring somewhere new.",
+        overlay:"assets/overlay/travel.svg"
+    },
+
+    {
+        name:"Budget",
+        description:"For affordable adventures and smart travel memories.",
+        overlay:"assets/overlay/budget.svg"
+    },
+
+    {
+        name:"Celebrate",
+        description:"A keepsake for special moments and milestones.",
+        overlay:"assets/overlay/celebrate.svg"
+    },
+
+    {
+        name:"City",
+        description:"Perfect for unforgettable city escapes.",
+        overlay:"assets/overlay/city.svg"
+    },
+
+    {
+        name:"Coastal",
+        description:"Made for beach days and ocean adventures.",
+        overlay:"assets/overlay/coastal.svg"
+    },
+
+    {
+        name:"Romantic",
+        description:"A dreamy keepsake for your favorite moments.",
+        overlay:"assets/overlay/romantic.svg"
+    },
+
+    {
+        name:"Bubbles",
+        description:"A fun and playful travel memory style.",
+        overlay:"assets/overlay/bubbles.svg"
+    },
+
+    {
+        name:"Winter",
+        description:"Perfect for snowy escapes and cozy adventures.",
+        overlay:"assets/overlay/winter.svg"
+    },
+
+    {
+        name:"Stars",
+        description:"A magical style for unforgettable journeys.",
+        overlay:"assets/overlay/stars.svg"
+    },
+
+    {
+        name:"Classic",
+        description:"A simple keepsake with no added decorations.",
+        overlay:"assets/overlay/blank.svg"
+    }
+
+];
 
 
-    card.addEventListener("click", () => {
-
-
-        // Remove previous selection
-
-        filmCards.forEach(item => {
-
-            item.classList.remove("selected");
-
-        });
+let currentFilm = 0;
 
 
 
-        // Add current selection
-
-        card.classList.add("selected");
+function updateFilmStyle(){
 
 
-
-        // Save selected film style
-
-        selectedFilmStyle = card.dataset.style;
+    const style = filmStyles[currentFilm];
 
 
+    if(filmOverlay){
 
-        // Optional: update preview overlay
+        filmOverlay.src = style.overlay;
 
-        updateFilmPreview(selectedFilmStyle);
-
-
-
-        console.log("Selected film:", selectedFilmStyle);
-
-
-    });
-
-
-});
-
-
-
-/* =====================================================
-        UPDATE FILM SVG PREVIEW
-====================================================== */
-
-
-function updateFilmPreview(style){
-
-
-    const svgOverlays = document.querySelectorAll(".film-overlay");
-
-
-    svgOverlays.forEach(svg => {
-
-        svg.style.display = "none";
-
-    });
-
-
-
-    const activeOverlay = document.querySelector(
-        `.film-overlay.${style}`
-    );
-
-
-    if(activeOverlay){
-
-        activeOverlay.style.display = "block";
+        filmOverlay.alt = style.name + " Film Style";
 
     }
 
 
+    if(filmStyleName){
+
+        filmStyleName.textContent = style.name;
+
+    }
+
+
+    if(filmStyleDescription){
+
+        filmStyleDescription.textContent = style.description;
+
+    }
+
+
+    selectedFilmStyle = style.name.toLowerCase();
+
+
 }
 
-        /* =====================================================
-        FILM STYLE CAROUSEL ARROWS
-====================================================== */
 
 
-const filmOptions = document.querySelector(".film-style-options");
+if(nextFilm){
 
-const filmPrev = document.querySelector(".film-arrow.left");
-
-const filmNext = document.querySelector(".film-arrow.right");
+    nextFilm.addEventListener("click",()=>{
 
 
-
-if(filmOptions && filmPrev && filmNext){
-
+        currentFilm++;
 
 
-    filmPrev.addEventListener("click",()=>{
+        if(currentFilm >= filmStyles.length){
+
+            currentFilm = 0;
+
+        }
 
 
-        filmOptions.scrollBy({
-
-            left:-250,
-
-            behavior:"smooth"
-
-        });
+        updateFilmStyle();
 
 
     });
 
+}
 
 
 
+if(previousFilm){
 
-    filmNext.addEventListener("click",()=>{
+    previousFilm.addEventListener("click",()=>{
 
 
-        filmOptions.scrollBy({
+        currentFilm--;
 
-            left:250,
 
-            behavior:"smooth"
+        if(currentFilm < 0){
 
-        });
+            currentFilm = filmStyles.length - 1;
+
+        }
+
+
+        updateFilmStyle();
 
 
     });
 
+}
 
+
+
+if(chooseFilmStyle){
+
+    chooseFilmStyle.addEventListener("click",()=>{
+
+
+        selectedFilmStyle = filmStyles[currentFilm].name.toLowerCase();
+
+
+        console.log(
+            "Selected film:",
+            selectedFilmStyle
+        );
+
+
+    });
 
 }
+
+
 
 
 /* =====================================================
