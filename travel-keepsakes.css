@@ -133,6 +133,7 @@ nav{
     color:var(--accent);
 
 }
+
 /* =====================================================
                 PHOTO BOOTH ACCORDION
 ===================================================== */
@@ -285,6 +286,7 @@ nav{
     display:flex;
     justify-content:center;
     align-items:center;
+    flex-wrap:wrap;
     gap:2rem;
 
 }
@@ -299,9 +301,8 @@ nav{
 
     width:220px;
 
-    background:none;
-
     border:none;
+    background:none;
 
     padding:0;
 
@@ -323,7 +324,6 @@ nav{
 }
 
 
-
 .film-card.selected .preview-film{
 
     box-shadow:
@@ -335,14 +335,14 @@ nav{
 
 
 /* =====================================================
-            FILM PREVIEW
+            FILM FRAME
 ===================================================== */
 
 .preview-film{
 
     position:relative;
 
-    background:#faf7f0;
+    background:#1f1f1f;
 
     border-radius:12px;
 
@@ -357,7 +357,7 @@ nav{
 
 
 
-/* subtle film border */
+/* Inner film border */
 
 .preview-film::before{
 
@@ -367,7 +367,7 @@ nav{
 
     inset:6px;
 
-    border:1px solid rgba(0,0,0,.12);
+    border:1px solid rgba(255,255,255,.18);
 
     border-radius:8px;
 
@@ -378,7 +378,7 @@ nav{
 
 
 /* =====================================================
-            PHOTO FRAMES
+            PHOTO WINDOW
 ===================================================== */
 
 .preview-photo{
@@ -389,9 +389,9 @@ nav{
 
     aspect-ratio:1 / 1;
 
-    background:#fffdf8;
+    background:#e8dfd3;
 
-    margin-bottom:10px;
+    border-radius:5px;
 
     overflow:hidden;
 
@@ -399,10 +399,35 @@ nav{
 
 
 
-/* SVG DOODLE LAYER */
+/* =====================================================
+            PHOTO + SVG LAYERS
+===================================================== */
 
-.preview-photo img,
-.preview-photo svg{
+
+/* Actual uploaded photo */
+
+.preview-photo img.photo{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:1;
+
+}
+
+
+
+/* SVG decorations */
+
+.preview-photo svg,
+.preview-photo img:not(.photo){
 
     position:absolute;
 
@@ -414,41 +439,14 @@ nav{
 
     object-fit:contain;
 
+    pointer-events:none;
+
     z-index:2;
 
 }
 
 
 
-/* Actual photo layer */
-
-.preview-photo img.photo{
-
-    object-fit:cover;
-
-    z-index:1;
-
-}
-
-
-
-/* film title */
-
-.preview-film span{
-
-    display:block;
-
-    margin-top:8px;
-
-    font-size:.7rem;
-
-    letter-spacing:.15em;
-
-    color:#444;
-
-    text-transform:uppercase;
-
-}
 /* =====================================================
             FILM LABEL
 ===================================================== */
@@ -457,9 +455,13 @@ nav{
 
     display:block;
 
+    margin-top:10px;
+
     color:#f7f2e8;
 
-    font-size:.7rem;
+    text-align:center;
+
+    font-size:.75rem;
 
     letter-spacing:.15em;
 
@@ -468,66 +470,13 @@ nav{
 }
 
 
-/* =====================================================
-            PHOTO WINDOW
-===================================================== */
-
-.preview-photo{
-
-    width:100%;
-
-    aspect-ratio:1 / 1;
-
-    background:#e8dfd3;
-
-    border-radius:4px;
-
-    margin-bottom:10px;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-
-/* Remove placeholder when SVGs are added */
-
-.preview-photo::before{
-
-    display:none;
-
-}
-
-
-
-/* Style name */
-
-.preview-film span{
-
-    display:block;
-
-    color:white;
-
-    text-align:center;
-
-    font-size:.75rem;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-
-}
-
-
 
 /* =====================================================
-            DOODLE STYLE PREVIEWS
+            FILM STYLE BACKGROUNDS
 ===================================================== */
 
 
-/* VINTAGE */
+/* Vintage */
 
 .vintage-preview .preview-photo{
 
@@ -536,25 +485,8 @@ nav{
 }
 
 
-.vintage-preview .preview-photo::after{
 
-    content:"✦  ✈  ✦";
-
-    position:absolute;
-
-    inset:auto 0 12px;
-
-    text-align:center;
-
-    font-size:22px;
-
-    color:#9b7748;
-
-}
-
-
-
-/* PASSPORT */
+/* Passport */
 
 .passport-preview .preview-photo{
 
@@ -563,25 +495,8 @@ nav{
 }
 
 
-.passport-preview .preview-photo::after{
 
-    content:"✈  PARIS  ✈";
-
-    position:absolute;
-
-    inset:auto 0 12px;
-
-    text-align:center;
-
-    font-size:18px;
-
-    color:#6e8b74;
-
-}
-
-
-
-/* COASTAL */
+/* Coastal */
 
 .coastal-preview .preview-photo{
 
@@ -590,25 +505,8 @@ nav{
 }
 
 
-.coastal-preview .preview-photo::after{
 
-    content:"☀︎  〰  🐚";
-
-    position:absolute;
-
-    inset:auto 0 12px;
-
-    text-align:center;
-
-    font-size:24px;
-
-    color:#4d8490;
-
-}
-
-
-
-/* SCRAPBOOK */
+/* Scrapbook */
 
 .scrapbook-preview .preview-photo{
 
@@ -617,25 +515,8 @@ nav{
 }
 
 
-.scrapbook-preview .preview-photo::after{
 
-    content:"✂  ✿  ★";
-
-    position:absolute;
-
-    inset:auto 0 12px;
-
-    text-align:center;
-
-    font-size:24px;
-
-    color:#a56b4f;
-
-}
-
-
-
-/* CLASSIC */
+/* Classic */
 
 .classic-preview .preview-photo{
 
@@ -644,24 +525,27 @@ nav{
 }
 
 
-.classic-preview .preview-photo::after{
 
-    content:"CLASSIC";
+/* =====================================================
+            MOBILE
+===================================================== */
 
-    position:absolute;
+@media(max-width:700px){
 
-    inset:auto 0 12px;
+    .film-style-options{
 
-    text-align:center;
+        gap:1.25rem;
 
-    font-size:14px;
+    }
 
-    letter-spacing:.2em;
 
-    color:white;
+    .film-card{
+
+        width:180px;
+
+    }
 
 }
-
 
 /* =====================================================
                 TEXT
@@ -718,12 +602,15 @@ nav{
 .share-keepsake{
 
     max-width:700px;
+
     margin:4rem auto;
+
     padding:3rem;
 
     background:#fffdf8;
 
     border:2px solid var(--ink);
+
     border-radius:18px;
 
     box-shadow:10px 10px 0 rgba(0,0,0,.08);
@@ -751,6 +638,8 @@ nav{
     margin-bottom:1rem;
 
 }
+
+
 
 .ready-screen p,
 .developing-screen p,
@@ -780,7 +669,7 @@ nav{
 
     margin:1rem auto;
 
-    padding:0;
+    padding:.5rem 1rem;
 
     border:none;
 
@@ -842,14 +731,9 @@ nav{
                 CAMERA
 ===================================================== */
 
-
 .camera-area{
 
     display:none;
-
-    max-width:700px;
-
-    margin:4rem auto;
 
 }
 
@@ -869,7 +753,7 @@ nav{
 
     border-radius:18px;
 
-    background:#d8d8d8;
+    background:#e8dfd3;
 
     position:relative;
 
@@ -921,36 +805,9 @@ nav{
                 DEVELOPING
 ===================================================== */
 
-
 .developing-screen{
 
     display:none;
-
-    max-width:700px;
-
-    margin:4rem auto;
-
-    padding:3rem;
-
-    background:#fffdf8;
-
-    border:2px solid var(--ink);
-
-    border-radius:18px;
-
-    box-shadow:10px 10px 0 rgba(0,0,0,.08);
-
-    text-align:center;
-
-}
-
-
-
-.developing-screen h3{
-
-    margin-bottom:1rem;
-
-    font-family:var(--heading-font);
 
 }
 
@@ -993,7 +850,6 @@ nav{
 
     }
 
-
     50%{
 
         transform:scaleX(1);
@@ -1001,7 +857,6 @@ nav{
         opacity:1;
 
     }
-
 
     100%{
 
@@ -1014,16 +869,14 @@ nav{
 }
 
 
+
 /* =====================================================
                 FILM REVEAL
 ===================================================== */
 
-
 .film-reveal{
 
     display:none;
-
-    text-align:center;
 
 }
 
@@ -1073,7 +926,6 @@ nav{
 
     }
 
-
     to{
 
         opacity:1;
@@ -1086,8 +938,9 @@ nav{
 
 
 
-/* Buttons */
-
+/* =====================================================
+                BUTTONS
+===================================================== */
 
 .download-button,
 .restart-button{
@@ -1096,7 +949,7 @@ nav{
 
     margin:.5rem;
 
-    background:#fff;
+    background:#fffdf8;
 
     border:2px solid var(--ink);
 
@@ -1105,6 +958,8 @@ nav{
     cursor:pointer;
 
     transition:.3s;
+
+    font-family:var(--body-font);
 
 }
 
@@ -1120,30 +975,14 @@ nav{
 }
 
 
+
 /* =====================================================
                 SHARE
 ===================================================== */
 
-
 .share-keepsake{
 
     display:none;
-
-    max-width:700px;
-
-    margin:4rem auto;
-
-    padding:3rem;
-
-    background:#fffdf8;
-
-    border:2px solid var(--ink);
-
-    border-radius:18px;
-
-    box-shadow:10px 10px 0 rgba(0,0,0,.08);
-
-    text-align:center;
 
 }
 
@@ -1154,7 +993,6 @@ nav{
     color:var(--accent);
 
 }
-
 
 /* =====================================================
                 RETURN LINK
