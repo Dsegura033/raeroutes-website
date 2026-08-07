@@ -667,7 +667,19 @@ nav{
 
 .camera-area{
 
-    display:none;
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    background:rgba(0,0,0,.75);
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
 
 }
 
