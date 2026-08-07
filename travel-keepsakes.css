@@ -353,9 +353,6 @@ nav{
 
 .preview-film{
 
-    transform:scaleX(1.08);
-    transform-origin:center;
-
     position:relative;
 
     background:#1f1f1f;
@@ -367,6 +364,9 @@ nav{
     overflow:hidden;
 
     box-shadow:8px 10px 0 rgba(0,0,0,.08);
+
+    transform:scaleX(1.08);
+    transform-origin:center;
 
 }
 
