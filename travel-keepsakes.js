@@ -327,7 +327,6 @@ if(chooseFilmStyle){
 }
 
 
-
 /* =====================================================
         CAMERA ACCESS
 ====================================================== */
@@ -346,45 +345,83 @@ async function startCamera() {
 
         });
 
+
         cameraPreview.srcObject = cameraStream;
 
-        cameraArea.style.display = "block";
 
-        cameraPreview.style.display = "block";
+        if(cameraArea){
+
+            cameraArea.style.display = "flex";
+
+        }
+
+
+        if(cameraPreview){
+
+            cameraPreview.style.display = "block";
+
+        }
+
 
     }
 
-    catch (error) {
+    catch(error){
 
         console.log(error);
 
-        cameraArea.style.display = "none";
+
+        if(cameraArea){
+
+            cameraArea.style.display = "none";
+
+        }
 
     }
 
 }
-        
+
+
 /* =====================================================
-        CAMERA BUTTON
+        START PHOTO BOOTH
 ====================================================== */
 
 
-if(cameraButton){
+if(startButton){
 
-    cameraButton.addEventListener("click", ()=>{
 
-        cameraArea.style.display = "flex";
+    startButton.addEventListener("click", async()=>{
 
-        startCamera();
+
+        capturedPhotos = [];
+
+        currentPhoto = 0;
+
+
+        if(!cameraStream){
+
+            await startCamera();
+
+        }
+
+
+        if(cameraArea){
+
+            cameraArea.style.display = "flex";
+
+        }
+
+
+        if(readyScreen){
+
+            readyScreen.style.display = "none";
+
+        }
+
 
     });
 
 }
-
-
-
-
-
+        
 /* =====================================================
         UPLOAD PHOTO MODE
 ====================================================== */
@@ -541,8 +578,28 @@ if(startButton){
 
 
 
+/* =====================================================
+        READY BUTTON
+====================================================== */
 
 
+if(readyButton){
+
+
+    readyButton.addEventListener("click",()=>{
+
+
+        currentPhoto = 0;
+
+
+        takePhoto();
+
+
+    });
+
+
+}
+        
 
 /* =====================================================
         TAKE PHOTOS
