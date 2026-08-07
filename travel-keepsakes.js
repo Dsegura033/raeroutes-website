@@ -206,9 +206,9 @@ const filmStyles = [
     },
 
     {
-        name:"Sparkle",
+        name:"Sparkles",
         description:"A magical style for unforgettable journeys.",
-        overlay:"assets/overlay/sparkle.png"
+        overlay:"assets/overlay/sparkles.png"
     },
 
     {
