@@ -109,6 +109,7 @@ const filmReveal = document.getElementById("filmReveal");
 const cameraArea = document.getElementById("cameraArea");
 
 const cameraPreview = document.getElementById("cameraPreview");
+const readyButton = document.getElementById("readyButton");
 
 const cameraButton = document.getElementById("cameraButton");
 
