@@ -393,7 +393,6 @@ nav{
 }
 
 
-
 /* SVG overlay */
 
 .film-overlay{
@@ -402,13 +401,11 @@ nav{
 
     inset:0;
 
-    width:100%;
+    width:95%;
 
-    height:100%;
+    height:95%;
 
     object-fit:cover;
-
-    transform:scale(.96);
 
     pointer-events:none;
 
