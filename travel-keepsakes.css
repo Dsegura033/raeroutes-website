@@ -408,6 +408,8 @@ nav{
 
     object-fit:cover;
 
+    transform:scale(.96);
+
     pointer-events:none;
 
     z-index:5;
