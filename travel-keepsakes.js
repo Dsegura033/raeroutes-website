@@ -109,6 +109,7 @@ const filmReveal = document.getElementById("filmReveal");
 const cameraArea = document.getElementById("cameraArea");
 
 const cameraPreview = document.getElementById("cameraPreview");
+        
 const readyButton = document.getElementById("readyButton");
 
 const cameraButton = document.getElementById("cameraButton");
@@ -423,163 +424,8 @@ if(startButton){
 
 }
         
-/* =====================================================
-        UPLOAD PHOTO MODE
-====================================================== */
 
-
-if(uploadButton){
-
-
-    uploadButton.addEventListener("click", ()=>{
-
-
-        photoUpload.click();
-
-
-    });
-
-
-}
-
-
-
-if(photoUpload){
-
-
-    photoUpload.addEventListener("change",(event)=>{
-
-
-        const files = Array.from(event.target.files)
-            .slice(0,4);
-
-
-
-        if(files.length === 0){
-
-            return;
-
-        }
-
-
-
-        capturedPhotos = [];
-
-
-
-        files.forEach(file=>{
-
-
-            const reader = new FileReader();
-
-
-
-            reader.onload = (e)=>{
-
-
-                capturedPhotos.push(e.target.result);
-
-
-
-                // Continue once uploads finish
-
-                if(capturedPhotos.length === files.length){
-
-
-                    showDeveloping();
-
-
-                }
-
-
-            };
-
-
-
-            reader.readAsDataURL(file);
-
-
-
-        });
-
-
-
-    });
-
-
-}
-
-
-
-
-
-
-/* =====================================================
-        START PHOTO BOOTH
-====================================================== */
-
-
-if(startButton){
-
-
-    startButton.addEventListener("click", async()=>{
-
-
-        capturedPhotos = [];
-
-        currentPhoto = 0;
-
-
-
-        if(!cameraStream){
-
-
-            await startCamera();
-
-
-        }
-
-
-
-        if(cameraArea){
-
-
-            cameraArea.style.display = "block";
-
-
-        }
-
-
-
-        if(readyScreen){
-
-
-            readyScreen.style.display = "none";
-
-
-        }
-
-
-
-        setTimeout(()=>{
-
-
-            takePhoto();
-
-
-        },500);
-
-
-
-    });
-
-
-}
-
-
-
-
-/* =====================================================
+ /* =====================================================
         READY BUTTON
 ====================================================== */
 
@@ -600,9 +446,9 @@ if(readyButton){
 
 
 }
-        
 
-/* =====================================================
+        
+ /* =====================================================
         TAKE PHOTOS
 ====================================================== */
 
@@ -692,10 +538,6 @@ function takePhoto(){
 }
 
 
-
-
-
-
 /* =====================================================
         COUNTDOWN
 ====================================================== */
@@ -774,8 +616,8 @@ function countdownSequence(callback){
 
 
 }
-        
-/* =====================================================
+
+        /* =====================================================
         CAPTURE IMAGE
 ====================================================== */
 
@@ -849,6 +691,99 @@ function captureImage(){
 
 
 }
+
+
+
+
+        
+/* =====================================================
+        UPLOAD PHOTO MODE
+====================================================== */
+
+
+if(uploadButton){
+
+
+    uploadButton.addEventListener("click", ()=>{
+
+
+        photoUpload.click();
+
+
+    });
+
+
+}
+
+
+
+if(photoUpload){
+
+
+    photoUpload.addEventListener("change",(event)=>{
+
+
+        const files = Array.from(event.target.files)
+            .slice(0,4);
+
+
+
+        if(files.length === 0){
+
+            return;
+
+        }
+
+
+
+        capturedPhotos = [];
+
+
+
+        files.forEach(file=>{
+
+
+            const reader = new FileReader();
+
+
+
+            reader.onload = (e)=>{
+
+
+                capturedPhotos.push(e.target.result);
+
+
+
+                // Continue once uploads finish
+
+                if(capturedPhotos.length === files.length){
+
+
+                    showDeveloping();
+
+
+                }
+
+
+            };
+
+
+
+            reader.readAsDataURL(file);
+
+
+
+        });
+
+
+
+    });
+
+
+}
+
+
+
 
         
 /* =====================================================
