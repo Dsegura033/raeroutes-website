@@ -358,33 +358,28 @@ async function startCamera() {
 
         console.log(error);
 
-        alert(
-            "To use the Photo Booth, please allow camera access when your browser asks. If you choose not to, you can still create your keepsake by uploading photos instead."
-        );
+        cameraArea.style.display = "none";
 
     }
 
 }
         
- /* =====================================================
+/* =====================================================
         CAMERA BUTTON
 ====================================================== */
 
 
 if(cameraButton){
 
-
     cameraButton.addEventListener("click", ()=>{
 
+        cameraArea.style.display = "flex";
 
         startCamera();
 
-
     });
 
-
 }
-
 
 
 
